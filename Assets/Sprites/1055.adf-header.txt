@@ -1,0 +1,16 @@
+Type: 1, Extra Length: 3
+Extra Bytes:  222  57   0
+NumberOfFrames: 12
+Id: 65914 U:    1 X:    0 Y:    0 W:   24 H:   48
+Id: 65915 U:    1 X:   24 Y:    0 W:   24 H:   48
+Id: 65916 U:    1 X:   48 Y:    0 W:   24 H:   48
+Id: 65917 U:    1 X:    0 Y:   48 W:   24 H:   48
+Id: 65918 U:    1 X:   24 Y:   48 W:   24 H:   48
+Id: 65919 U:    1 X:   48 Y:   48 W:   24 H:   48
+Id: 65920 U:    1 X:    0 Y:   96 W:   24 H:   48
+Id: 65921 U:    1 X:   24 Y:   96 W:   24 H:   48
+Id: 65922 U:    1 X:   48 Y:   96 W:   24 H:   48
+Id: 65923 U:    1 X:    0 Y:  144 W:   24 H:   48
+Id: 65924 U:    1 X:   24 Y:  144 W:   24 H:   48
+Id: 65925 U:    1 X:   48 Y:  144 W:   24 H:   48
+U: 268

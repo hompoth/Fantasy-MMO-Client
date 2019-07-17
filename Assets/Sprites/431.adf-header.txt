@@ -1,0 +1,12 @@
+Type: 1, Extra Length: 5
+Extra Bytes:   47 228 136 171   0
+NumberOfFrames: 8
+Id: 2640 U:    1 X:    0 Y:    0 W:   48 H:   64
+Id: 2641 U:    1 X:   48 Y:    0 W:   48 H:   64
+Id: 2642 U:    1 X:    0 Y:   64 W:   48 H:   64
+Id: 2643 U:    1 X:   48 Y:   64 W:   48 H:   64
+Id: 2644 U:    1 X:    0 Y:  128 W:   48 H:   64
+Id: 2645 U:    1 X:   48 Y:  128 W:   48 H:   64
+Id: 2646 U:    1 X:    0 Y:  192 W:   48 H:   64
+Id: 2647 U:    1 X:   48 Y:  192 W:   48 H:   64
+U: 186

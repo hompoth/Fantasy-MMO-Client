@@ -1,0 +1,12 @@
+Type: 1, Extra Length: 3
+Extra Bytes:  237 100   0
+NumberOfFrames: 8
+Id: 100132 U:    1 X:    0 Y:    0 W:   48 H:   48
+Id: 100133 U:    1 X:   48 Y:    0 W:   48 H:   48
+Id: 100134 U:    1 X:   96 Y:    0 W:   48 H:   48
+Id: 100135 U:    1 X:  144 Y:    0 W:   48 H:   48
+Id: 100136 U:    1 X:  192 Y:    0 W:   48 H:   48
+Id: 100137 U:    1 X:  240 Y:    0 W:   48 H:   48
+Id: 100138 U:    1 X:  288 Y:    0 W:   48 H:   48
+Id: 100139 U:    1 X:  336 Y:    0 W:   48 H:   48
+U: 184

@@ -1,0 +1,5 @@
+Type: 1, Extra Length: 14
+Extra Bytes:    5 168 178 144  62 137  43 104  12 249 234  49  58   0
+NumberOfFrames: 1
+Id: 19999 U:    1 X:    0 Y:    0 W:   32 H:   32
+U: 48

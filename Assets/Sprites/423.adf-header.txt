@@ -1,0 +1,12 @@
+Type: 1, Extra Length: 5
+Extra Bytes:  150  83  80 196   0
+NumberOfFrames: 8
+Id: 2528 U:    1 X:    0 Y:    0 W:   24 H:   48
+Id: 2529 U:    1 X:   24 Y:    0 W:   24 H:   48
+Id: 2530 U:    1 X:    0 Y:   48 W:   24 H:   48
+Id: 2531 U:    1 X:   24 Y:   48 W:   24 H:   48
+Id: 2532 U:    1 X:    0 Y:   96 W:   24 H:   48
+Id: 2533 U:    1 X:   24 Y:   96 W:   24 H:   48
+Id: 2534 U:    1 X:    0 Y:  144 W:   24 H:   48
+Id: 2535 U:    1 X:   24 Y:  144 W:   24 H:   48
+U: 186
