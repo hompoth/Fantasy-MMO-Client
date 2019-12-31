@@ -20,13 +20,22 @@ public class SlotUI : MonoBehaviour
 
 	private string SLASH = Path.DirectorySeparatorChar.ToString();
 
+    void Start() {
+        m_textBubble.gameObject.SetActive(false);
+    }
+
     public void MouseOver(Vector3 worldPosition) {
-        m_textBubble.transform.position = worldPosition;
+        MouseEnter(worldPosition);
     }
 
     public void MouseEnter(Vector3 worldPosition) {
-        m_textBubble.gameObject.SetActive(true);
-        m_textBubble.transform.position = worldPosition;
+        if(!string.IsNullOrEmpty(GetSlotText())) {
+            m_textBubble.gameObject.SetActive(true);
+            m_textBubble.transform.position = worldPosition;
+        }
+        else {
+            m_textBubble.gameObject.SetActive(false);
+        }
     }
 
     public void MouseExit(Vector3 worldPosition) {
@@ -79,6 +88,7 @@ public class SlotUI : MonoBehaviour
 
     public void SetSlotAmount(int amount) {
         m_slotAmount = Mathf.Max(amount, 1);
+        m_textBubble.UpdateBubbleText(GetSlotText());
     }
 
     public int GetSlotAmount(bool controlKeyPressed) {
@@ -88,7 +98,6 @@ public class SlotUI : MonoBehaviour
     public void SetSlotName(string name) {
         m_slotName = name;
         m_textBubble.UpdateBubbleText(GetSlotText());
-        m_textBubble.gameObject.SetActive(false);
     }
 
     public string GetSlotName() {

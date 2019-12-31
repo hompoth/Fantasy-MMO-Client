@@ -11,13 +11,22 @@ public class ItemDrop : MonoBehaviour
     string m_itemName;
     int m_itemCount;
 
+    void Start() {
+        m_textBubble.gameObject.SetActive(false);
+    }
+
     public void MouseOver(Vector3 worldPosition) {
-        m_textBubble.transform.position = worldPosition;
+        MouseEnter(worldPosition);
     }
 
     public void MouseEnter(Vector3 worldPosition) {
-        m_textBubble.gameObject.SetActive(true);
-        m_textBubble.transform.position = worldPosition;
+        if(!string.IsNullOrEmpty(GetItemText())) {
+            m_textBubble.gameObject.SetActive(true);
+            m_textBubble.transform.position = worldPosition;
+        }
+        else {
+            m_textBubble.gameObject.SetActive(false);
+        }
     }
 
     public void MouseExit(Vector3 worldPosition) {
@@ -35,7 +44,6 @@ public class ItemDrop : MonoBehaviour
         m_itemName = itemName;
         m_itemCount = count;
         m_textBubble.UpdateBubbleText(GetItemText());
-        m_textBubble.gameObject.SetActive(false);
     }
 
     public string GetItemText() {

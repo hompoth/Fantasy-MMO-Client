@@ -10,6 +10,7 @@ public class TextBubbleUI : MonoBehaviour
     public GameObject m_innerBorder, m_middleBorder, m_outerBorder;
     public GameObject m_innerBackground, m_middleBackground;
     public BubbleType m_bubbleType;
+    Vector3 m_textPosition;
 
     public void UpdateBubbleText(string text) {
         if(!string.IsNullOrEmpty(text)) {
@@ -38,8 +39,12 @@ public class TextBubbleUI : MonoBehaviour
     }
 
     private void OffsetText(int offsetX, int offsetY) {
+        Vector3 position = m_textPosition;
         Transform gameObjectTransform = asperetaTextObject.gameObject.transform;
-        Vector3 position = gameObjectTransform.localPosition;
+        if(position == default(Vector3)) {
+            position = gameObjectTransform.localPosition;
+            m_textPosition = position;
+        }
         position.x += offsetX * 1/32f;
         position.y += offsetY * 1/32f;
         gameObjectTransform.localPosition = position;

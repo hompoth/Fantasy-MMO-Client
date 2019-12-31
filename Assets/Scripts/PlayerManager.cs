@@ -107,6 +107,10 @@ public class PlayerManager : MonoBehaviour
     string m_playerTitle, m_playerName, m_playerSurname;
     AnimAttackType attackType;
 
+    void Start() {
+        m_textBubble.gameObject.SetActive(false);
+    }
+
     public void MouseOver(Vector3 worldPosition) {
         if(PlayerState.GetNameFormat().Equals(NameFormat.VisibleOnHover)) {
             m_textBubble.transform.position = worldPosition;
@@ -229,7 +233,6 @@ public class PlayerManager : MonoBehaviour
         m_playerName = name.Trim();
         UpdatePlayerName();
         m_textBubble.UpdateBubbleText(GetPlayerName());
-        m_textBubble.gameObject.SetActive(false);
     }
 
     public string GetPlayerName() {
