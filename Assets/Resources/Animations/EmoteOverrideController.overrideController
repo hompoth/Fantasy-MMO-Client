@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EmoteOverrideController
+  m_Controller: {fileID: 9100000, guid: 991ca4f98891b5947ae774fc34daadce, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: dd2681f3220d0ba4f98ea70e68a69da1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ec9f9eba8aa502d4b969bdf0385a6eff, type: 2}

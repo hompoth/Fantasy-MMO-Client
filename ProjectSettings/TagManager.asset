@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LoginManager
+  - ProgressBar
+  - LoadingMapName
+  - Map
+  - ItemDrop
+  - Spell
+  - PlayerController
+  - Window
   layers:
   - Default
   - TransparentFX
@@ -13,13 +21,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ItemDrop
+  - Spell
+  - Map
+  - MainPlayer
+  - AdminPlayer
+  - Slot
+  - Button
   - 
   - 
   - 
@@ -38,6 +46,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BaseGround
+    uniqueID: 2375298445
+    locked: 0
+  - name: AccentGround
+    uniqueID: 233996693
+    locked: 0
+  - name: ItemDrop
+    uniqueID: 1496800767
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TopLayer
+    uniqueID: 2396205213
+    locked: 0
+  - name: UI
+    uniqueID: 2686156991
+    locked: 0
+  - name: Cursor
+    uniqueID: 2259985481
     locked: 0

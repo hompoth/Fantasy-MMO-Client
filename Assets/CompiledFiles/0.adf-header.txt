@@ -1,0 +1,2799 @@
+Type: 1, Extra Length: 150
+Extra Bytes:  198 105 115  81 255  74 236  41 205 186 171 242 251 227  70 124 194  84 248  27 232 231 141 118  90  46  99  51 159 201 154 102  50  13 183  49  88 163  90  37  93   5  23  88 233  94 212 171 178 205 198 155 180  84  17  14 130 116  65  33  61 220 135 112 233  62 161  65 225 252 103  62   1 126 151 234 220 107 150 143  56  92  42 236 176  59 251  50 175  60  84 236  24 219  92   2  26 254  67 251 250 170  58 251  41 209 230   5  60 124 148 117 216 190  97 137 249  92 187 168 153  15 149 177 235 241 179   5 239 247   0 233 161  58 229 202  11 203 208  72  71 100 189  31  35  30 168  28 123
+NumberOfFrames: 2795
+Animation Id:    180 Frame Ids:    100    101    102    103 Delimiter: 10
+Animation Id:    181 Frame Ids:    104    105    106    107 Delimiter: 10
+Animation Id:    182 Frame Ids:    108    109    110    111 Delimiter: 10
+Animation Id:    183 Frame Ids:    112    113    114    115 Delimiter: 10
+Animation Id:    184 Frame Ids:    116    117    118    119 Delimiter: 10
+Animation Id:    185 Frame Ids:    120    121    122    123 Delimiter: 10
+Animation Id:    186 Frame Ids:    124    125    126    127 Delimiter: 10
+Animation Id:    187 Frame Ids:    128    129    130    131 Delimiter: 10
+Animation Id:    188 Frame Ids:    132    133    134    135 Delimiter: 10
+Animation Id:    189 Frame Ids:    136    137    138    139 Delimiter: 10
+Animation Id:    190 Frame Ids:    140    141    142    143 Delimiter: 10
+Animation Id:    191 Frame Ids:    144    145    146    147 Delimiter: 10
+Id: 1100 X:    0 Y:    0 W:   24 H:   48
+Id: 1101 X:   24 Y:    0 W:   24 H:   48
+Id: 1102 X:   48 Y:    0 W:   24 H:   48
+Id: 1103 X:   72 Y:    0 W:   24 H:   48
+Id: 1104 X:   96 Y:    0 W:   24 H:   48
+Id: 1105 X:  120 Y:    0 W:   24 H:   48
+Id: 1106 X:  144 Y:    0 W:   24 H:   48
+Id: 1107 X:    0 Y:   48 W:   24 H:   48
+Id: 1108 X:   24 Y:   48 W:   24 H:   48
+Id: 1109 X:   48 Y:   48 W:   24 H:   48
+Id: 1110 X:   72 Y:   48 W:   24 H:   48
+Id: 1111 X:   96 Y:   48 W:   24 H:   48
+Id: 1112 X:  120 Y:   48 W:   24 H:   48
+Id: 1113 X:  144 Y:   48 W:   24 H:   48
+Id: 1114 X:    0 Y:   96 W:   24 H:   48
+Id: 1115 X:   24 Y:   96 W:   24 H:   48
+Id: 1116 X:   48 Y:   96 W:   24 H:   48
+Id: 1117 X:   72 Y:   96 W:   24 H:   48
+Id: 1118 X:   96 Y:   96 W:   24 H:   48
+Id: 1119 X:  120 Y:   96 W:   24 H:   48
+Id: 1120 X:  144 Y:   96 W:   24 H:   48
+Id: 1121 X:    0 Y:  144 W:   24 H:   48
+Id: 1122 X:   24 Y:  144 W:   24 H:   48
+Id: 1123 X:   48 Y:  144 W:   24 H:   48
+Id: 1124 X:   72 Y:  144 W:   24 H:   48
+Id: 1125 X:   96 Y:  144 W:   24 H:   48
+Id: 1126 X:  120 Y:  144 W:   24 H:   48
+Id: 1127 X:  144 Y:  144 W:   24 H:   48
+Animation Id:   1800 Frame Ids:   1100   1101   1102   1103   1104 Delimiter: 4
+Animation Id:   1801 Frame Ids:   1107   1108   1109   1110   1111 Delimiter: 4
+Animation Id:   1802 Frame Ids:   1114   1115   1116   1117   1118 Delimiter: 4
+Animation Id:   1803 Frame Ids:   1121   1122   1123   1124   1125 Delimiter: 4
+Animation Id:   1808 Frame Ids:   1300   1301   1302   1303   1304 Delimiter: 4
+Animation Id:   1809 Frame Ids:   1307   1308   1309   1310   1311 Delimiter: 4
+Animation Id:   1810 Frame Ids:   1314   1315   1316   1317   1318 Delimiter: 4
+Animation Id:   1811 Frame Ids:   1321   1322   1323   1324   1325 Delimiter: 4
+Animation Id:   1812 Frame Ids:   1400   1401   1402   1403   1404 Delimiter: 4
+Animation Id:   1813 Frame Ids:   1407   1408   1409   1410   1411 Delimiter: 4
+Animation Id:   1814 Frame Ids:   1414   1415   1416   1417   1418 Delimiter: 4
+Animation Id:   1815 Frame Ids:   1421   1422   1423   1424   1425 Delimiter: 4
+Animation Id:   1850 Frame Ids:   1105   1106 Delimiter: 4
+Animation Id:   1851 Frame Ids:   1112   1113 Delimiter: 4
+Animation Id:   1852 Frame Ids:   1119   1120 Delimiter: 4
+Animation Id:   1853 Frame Ids:   1126   1127 Delimiter: 4
+Animation Id:   1858 Frame Ids:   1305   1306 Delimiter: 4
+Animation Id:   1859 Frame Ids:   1312   1313 Delimiter: 4
+Animation Id:   1860 Frame Ids:   1319   1320 Delimiter: 4
+Animation Id:   1861 Frame Ids:   1326   1327 Delimiter: 4
+Animation Id:   1862 Frame Ids:   1405   1406 Delimiter: 4
+Animation Id:   1863 Frame Ids:   1412   1413 Delimiter: 4
+Animation Id:   1864 Frame Ids:   1419   1420 Delimiter: 4
+Animation Id:   1865 Frame Ids:   1426   1427 Delimiter: 4
+Animation Id:   1900 Frame Ids:   1150   1151   1152   1153   1154 Delimiter: 4
+Animation Id:   1901 Frame Ids:   1157   1158   1159   1160   1161 Delimiter: 4
+Animation Id:   1902 Frame Ids:   1164   1165   1166   1167   1168 Delimiter: 4
+Animation Id:   1903 Frame Ids:   1171   1172   1173   1174   1175 Delimiter: 4
+Animation Id:   1908 Frame Ids:   1350   1351   1352   1353   1354 Delimiter: 4
+Animation Id:   1909 Frame Ids:   1357   1358   1359   1360   1361 Delimiter: 4
+Animation Id:   1910 Frame Ids:   1364   1365   1366   1367   1368 Delimiter: 4
+Animation Id:   1911 Frame Ids:   1371   1372   1373   1374   1375 Delimiter: 4
+Animation Id:   1912 Frame Ids:   1450   1451   1452   1453   1454 Delimiter: 4
+Animation Id:   1913 Frame Ids:   1457   1458   1459   1460   1461 Delimiter: 4
+Animation Id:   1914 Frame Ids:   1464   1465   1466   1467   1468 Delimiter: 4
+Animation Id:   1915 Frame Ids:   1471   1472   1473   1474   1475 Delimiter: 4
+Animation Id:   1950 Frame Ids:   1155   1156 Delimiter: 4
+Animation Id:   1951 Frame Ids:   1162   1163 Delimiter: 4
+Animation Id:   1952 Frame Ids:   1169   1170 Delimiter: 4
+Animation Id:   1953 Frame Ids:   1176   1177 Delimiter: 4
+Animation Id:   1958 Frame Ids:   1355   1356 Delimiter: 4
+Animation Id:   1959 Frame Ids:   1362   1363 Delimiter: 4
+Animation Id:   1960 Frame Ids:   1369   1370 Delimiter: 4
+Animation Id:   1961 Frame Ids:   1376   1377 Delimiter: 4
+Animation Id:   1962 Frame Ids:   1455   1456 Delimiter: 4
+Animation Id:   1963 Frame Ids:   1462   1463 Delimiter: 4
+Animation Id:   1964 Frame Ids:   1469   1470 Delimiter: 4
+Animation Id:   1965 Frame Ids:   1476   1477 Delimiter: 4
+Animation Id:   4500 Frame Ids:   2000   2001   2002   2003   2004 Delimiter: 4
+Animation Id:   4501 Frame Ids:   2007   2008   2009   2010   2011 Delimiter: 4
+Animation Id:   4502 Frame Ids:   2014   2015   2016   2017   2018 Delimiter: 4
+Animation Id:   4503 Frame Ids:   2021   2022   2023   2024   2025 Delimiter: 4
+Animation Id:   4504 Frame Ids:   2005   2006 Delimiter: 4
+Animation Id:   4505 Frame Ids:   2012   2013 Delimiter: 4
+Animation Id:   4506 Frame Ids:   2019   2020 Delimiter: 4
+Animation Id:   4507 Frame Ids:   2026   2027 Delimiter: 4
+Animation Id:   4510 Frame Ids:   2030   2031   2032   2033   2034 Delimiter: 4
+Animation Id:   4511 Frame Ids:   2037   2038   2039   2040   2041 Delimiter: 4
+Animation Id:   4512 Frame Ids:   2044   2045   2046   2047   2048 Delimiter: 4
+Animation Id:   4513 Frame Ids:   2051   2052   2053   2054   2055 Delimiter: 4
+Animation Id:   4514 Frame Ids:   2035   2036 Delimiter: 4
+Animation Id:   4515 Frame Ids:   2042   2043 Delimiter: 4
+Animation Id:   4516 Frame Ids:   2049   2050 Delimiter: 4
+Animation Id:   4517 Frame Ids:   2056   2057 Delimiter: 4
+Animation Id:   4520 Frame Ids:   2060   2061   2062   2063   2064 Delimiter: 4
+Animation Id:   4521 Frame Ids:   2067   2068   2069   2070   2071 Delimiter: 4
+Animation Id:   4522 Frame Ids:   2074   2075   2076   2077   2078 Delimiter: 4
+Animation Id:   4523 Frame Ids:   2081   2082   2083   2084   2085 Delimiter: 4
+Animation Id:   4524 Frame Ids:   2065   2066 Delimiter: 4
+Animation Id:   4525 Frame Ids:   2072   2073 Delimiter: 4
+Animation Id:   4526 Frame Ids:   2079   2080 Delimiter: 4
+Animation Id:   4527 Frame Ids:   2086   2087 Delimiter: 4
+Animation Id:   4530 Frame Ids:   2110   2111   2112   2113   2114 Delimiter: 4
+Animation Id:   4531 Frame Ids:   2117   2118   2119   2120   2121 Delimiter: 4
+Animation Id:   4532 Frame Ids:   2124   2125   2126   2127   2128 Delimiter: 4
+Animation Id:   4533 Frame Ids:   2131   2132   2133   2134   2135 Delimiter: 4
+Animation Id:   4534 Frame Ids:   2115   2116 Delimiter: 4
+Animation Id:   4535 Frame Ids:   2122   2123 Delimiter: 4
+Animation Id:   4536 Frame Ids:   2129   2130 Delimiter: 4
+Animation Id:   4537 Frame Ids:   2136   2137 Delimiter: 4
+Animation Id:   4540 Frame Ids:   2140   2141   2142   2143   2144 Delimiter: 4
+Animation Id:   4541 Frame Ids:   2147   2148   2149   2150   2151 Delimiter: 4
+Animation Id:   4542 Frame Ids:   2154   2155   2156   2157   2158 Delimiter: 4
+Animation Id:   4543 Frame Ids:   2161   2162   2163   2164   2165 Delimiter: 4
+Animation Id:   4544 Frame Ids:   2145   2146 Delimiter: 4
+Animation Id:   4545 Frame Ids:   2152   2153 Delimiter: 4
+Animation Id:   4546 Frame Ids:   2159   2160 Delimiter: 4
+Animation Id:   4547 Frame Ids:   2166   2167 Delimiter: 4
+Animation Id:   4550 Frame Ids:   2170   2171   2172   2173   2174 Delimiter: 4
+Animation Id:   4551 Frame Ids:   2177   2178   2179   2180   2181 Delimiter: 4
+Animation Id:   4552 Frame Ids:   2184   2185   2186   2187   2188 Delimiter: 4
+Animation Id:   4553 Frame Ids:   2191   2192   2193   2194   2195 Delimiter: 4
+Animation Id:   4554 Frame Ids:   2175   2176 Delimiter: 4
+Animation Id:   4555 Frame Ids:   2182   2183 Delimiter: 4
+Animation Id:   4556 Frame Ids:   2189   2190 Delimiter: 4
+Animation Id:   4557 Frame Ids:   2196   2197 Delimiter: 4
+Animation Id:   4560 Frame Ids:   2200   2201   2202   2203   2204 Delimiter: 4
+Animation Id:   4561 Frame Ids:   2207   2208   2209   2210   2211 Delimiter: 4
+Animation Id:   4562 Frame Ids:   2214   2215   2216   2217   2218 Delimiter: 4
+Animation Id:   4563 Frame Ids:   2221   2222   2223   2224   2225 Delimiter: 4
+Animation Id:   4564 Frame Ids:   2205   2206 Delimiter: 4
+Animation Id:   4565 Frame Ids:   2212   2213 Delimiter: 4
+Animation Id:   4566 Frame Ids:   2219   2220 Delimiter: 4
+Animation Id:   4567 Frame Ids:   2226   2227 Delimiter: 4
+Animation Id:   4570 Frame Ids:   2230   2231   2232   2233   2234 Delimiter: 4
+Animation Id:   4571 Frame Ids:   2237   2238   2239   2240   2241 Delimiter: 4
+Animation Id:   4572 Frame Ids:   2244   2245   2246   2247   2248 Delimiter: 4
+Animation Id:   4573 Frame Ids:   2251   2252   2253   2254   2255 Delimiter: 4
+Animation Id:   4574 Frame Ids:   2235   2236 Delimiter: 4
+Animation Id:   4575 Frame Ids:   2242   2243 Delimiter: 4
+Animation Id:   4576 Frame Ids:   2249   2250 Delimiter: 4
+Animation Id:   4577 Frame Ids:   2256   2257 Delimiter: 4
+Animation Id:   4580 Frame Ids:   2260   2261   2262   2263   2264 Delimiter: 4
+Animation Id:   4581 Frame Ids:   2267   2268   2269   2270   2271 Delimiter: 4
+Animation Id:   4582 Frame Ids:   2274   2275   2276   2277   2278 Delimiter: 4
+Animation Id:   4583 Frame Ids:   2281   2282   2283   2284   2285 Delimiter: 4
+Animation Id:   4584 Frame Ids:   2265   2266 Delimiter: 4
+Animation Id:   4585 Frame Ids:   2272   2273 Delimiter: 4
+Animation Id:   4586 Frame Ids:   2279   2280 Delimiter: 4
+Animation Id:   4587 Frame Ids:   2286   2287 Delimiter: 4
+Animation Id:   4590 Frame Ids:   2290   2291   2292   2293   2294 Delimiter: 4
+Animation Id:   4591 Frame Ids:   2297   2298   2299   2300   2301 Delimiter: 4
+Animation Id:   4592 Frame Ids:   2304   2305   2306   2307   2308 Delimiter: 4
+Animation Id:   4593 Frame Ids:   2311   2312   2313   2314   2315 Delimiter: 4
+Animation Id:   4594 Frame Ids:   2295   2296 Delimiter: 4
+Animation Id:   4595 Frame Ids:   2302   2303 Delimiter: 4
+Animation Id:   4596 Frame Ids:   2309   2310 Delimiter: 4
+Animation Id:   4597 Frame Ids:   2316   2317 Delimiter: 4
+Animation Id:   4600 Frame Ids:   2320   2321   2322   2323   2324 Delimiter: 4
+Animation Id:   4601 Frame Ids:   2327   2328   2329   2330   2331 Delimiter: 4
+Animation Id:   4602 Frame Ids:   2334   2335   2336   2337   2338 Delimiter: 4
+Animation Id:   4603 Frame Ids:   2341   2342   2343   2344   2345 Delimiter: 4
+Animation Id:   4604 Frame Ids:   2325   2326 Delimiter: 4
+Animation Id:   4605 Frame Ids:   2332   2333 Delimiter: 4
+Animation Id:   4606 Frame Ids:   2339   2340 Delimiter: 4
+Animation Id:   4607 Frame Ids:   2346   2347 Delimiter: 4
+Animation Id:   4610 Frame Ids:   2350   2351   2352   2353   2354 Delimiter: 4
+Animation Id:   4611 Frame Ids:   2357   2358   2359   2360   2361 Delimiter: 4
+Animation Id:   4612 Frame Ids:   2364   2365   2366   2367   2368 Delimiter: 4
+Animation Id:   4613 Frame Ids:   2371   2372   2373   2374   2375 Delimiter: 4
+Animation Id:   4614 Frame Ids:   2355   2356 Delimiter: 4
+Animation Id:   4615 Frame Ids:   2362   2363 Delimiter: 4
+Animation Id:   4616 Frame Ids:   2369   2370 Delimiter: 4
+Animation Id:   4617 Frame Ids:   2376   2377 Delimiter: 4
+Animation Id:   4620 Frame Ids:   2380   2381   2382   2383   2384 Delimiter: 4
+Animation Id:   4621 Frame Ids:   2387   2388   2389   2390   2391 Delimiter: 4
+Animation Id:   4622 Frame Ids:   2394   2395   2396   2397   2398 Delimiter: 4
+Animation Id:   4623 Frame Ids:   2401   2402   2403   2404   2405 Delimiter: 4
+Animation Id:   4624 Frame Ids:   2385   2386 Delimiter: 4
+Animation Id:   4625 Frame Ids:   2392   2393 Delimiter: 4
+Animation Id:   4626 Frame Ids:   2399   2400 Delimiter: 4
+Animation Id:   4627 Frame Ids:   2406   2407 Delimiter: 4
+Animation Id:   4630 Frame Ids:   2410   2411   2412   2413   2414 Delimiter: 4
+Animation Id:   4631 Frame Ids:   2417   2418   2419   2420   2421 Delimiter: 4
+Animation Id:   4632 Frame Ids:   2424   2425   2426   2427   2428 Delimiter: 4
+Animation Id:   4633 Frame Ids:   2431   2432   2433   2434   2435 Delimiter: 4
+Animation Id:   4634 Frame Ids:   2415   2416 Delimiter: 4
+Animation Id:   4635 Frame Ids:   2422   2423 Delimiter: 4
+Animation Id:   4636 Frame Ids:   2429   2430 Delimiter: 4
+Animation Id:   4637 Frame Ids:   2436   2437 Delimiter: 4
+Animation Id:   4640 Frame Ids:   2440   2441   2442   2443   2444 Delimiter: 4
+Animation Id:   4641 Frame Ids:   2447   2448   2449   2450   2451 Delimiter: 4
+Animation Id:   4642 Frame Ids:   2454   2455   2456   2457   2458 Delimiter: 4
+Animation Id:   4643 Frame Ids:   2461   2462   2463   2464   2465 Delimiter: 4
+Animation Id:   4644 Frame Ids:   2445   2446 Delimiter: 4
+Animation Id:   4645 Frame Ids:   2452   2453 Delimiter: 4
+Animation Id:   4646 Frame Ids:   2459   2460 Delimiter: 4
+Animation Id:   4647 Frame Ids:   2466   2467 Delimiter: 4
+Animation Id:   4650 Frame Ids:   2470   2471   2472   2473   2474 Delimiter: 4
+Animation Id:   4651 Frame Ids:   2477   2478   2479   2480   2481 Delimiter: 4
+Animation Id:   4652 Frame Ids:   2484   2485   2486   2487   2488 Delimiter: 4
+Animation Id:   4653 Frame Ids:   2491   2492   2493   2494   2495 Delimiter: 4
+Animation Id:   4654 Frame Ids:   2475   2476 Delimiter: 4
+Animation Id:   4655 Frame Ids:   2482   2483 Delimiter: 4
+Animation Id:   4656 Frame Ids:   2489   2490 Delimiter: 4
+Animation Id:   4657 Frame Ids:   2496   2497 Delimiter: 4
+Animation Id:   4660 Frame Ids:   2500   2501   2502   2503   2504 Delimiter: 4
+Animation Id:   4661 Frame Ids:   2505   2506   2507   2508   2509 Delimiter: 4
+Animation Id:   4662 Frame Ids:   2510   2511   2512   2513   2514 Delimiter: 4
+Animation Id:   4663 Frame Ids:   2515   2516   2517   2518   2519 Delimiter: 4
+Animation Id:   4664 Frame Ids:   2520   2521 Delimiter: 4
+Animation Id:   4665 Frame Ids:   2522   2523 Delimiter: 4
+Animation Id:   4666 Frame Ids:   2524   2525 Delimiter: 4
+Animation Id:   4667 Frame Ids:   2526   2527 Delimiter: 4
+Animation Id:   4668 Frame Ids:   2528   2529 Delimiter: 4
+Animation Id:   4669 Frame Ids:   2530   2531 Delimiter: 4
+Animation Id:   4670 Frame Ids:   2532   2533 Delimiter: 4
+Animation Id:   4671 Frame Ids:   2534   2535 Delimiter: 4
+Animation Id:   4675 Frame Ids:   2540   2541   2542   2543   2544 Delimiter: 4
+Animation Id:   4676 Frame Ids:   2545   2546   2547   2548   2549 Delimiter: 4
+Animation Id:   4677 Frame Ids:   2550   2551   2552   2553   2554 Delimiter: 4
+Animation Id:   4678 Frame Ids:   2555   2556   2557   2558   2559 Delimiter: 4
+Animation Id:   4679 Frame Ids:   2560   2561 Delimiter: 4
+Animation Id:   4680 Frame Ids:   2562   2563 Delimiter: 4
+Animation Id:   4681 Frame Ids:   2564   2565 Delimiter: 4
+Animation Id:   4682 Frame Ids:   2566   2567 Delimiter: 4
+Animation Id:   4683 Frame Ids:   2568   2569 Delimiter: 4
+Animation Id:   4684 Frame Ids:   2570   2571 Delimiter: 4
+Animation Id:   4685 Frame Ids:   2572   2573 Delimiter: 4
+Animation Id:   4686 Frame Ids:   2574   2575 Delimiter: 4
+Animation Id:   4690 Frame Ids:   2580   2581   2582   2583   2584 Delimiter: 4
+Animation Id:   4691 Frame Ids:   2585   2586   2587   2588   2589 Delimiter: 4
+Animation Id:   4692 Frame Ids:   2590   2591   2592   2593   2594 Delimiter: 4
+Animation Id:   4693 Frame Ids:   2595   2596   2597   2598   2599 Delimiter: 4
+Animation Id:   4694 Frame Ids:   2600   2601 Delimiter: 4
+Animation Id:   4695 Frame Ids:   2602   2603 Delimiter: 4
+Animation Id:   4696 Frame Ids:   2604   2605 Delimiter: 4
+Animation Id:   4697 Frame Ids:   2606   2607 Delimiter: 4
+Animation Id:   4698 Frame Ids:   2608   2609 Delimiter: 4
+Animation Id:   4699 Frame Ids:   2610   2611 Delimiter: 4
+Animation Id:   4700 Frame Ids:   2612   2613 Delimiter: 4
+Animation Id:   4701 Frame Ids:   2614   2615 Delimiter: 4
+Animation Id:   4705 Frame Ids:   2620   2621   2622   2623   2624 Delimiter: 4
+Animation Id:   4706 Frame Ids:   2625   2626   2627   2628   2629 Delimiter: 4
+Animation Id:   4707 Frame Ids:   2630   2631   2632   2633   2634 Delimiter: 4
+Animation Id:   4708 Frame Ids:   2635   2636   2637   2638   2639 Delimiter: 4
+Animation Id:   4709 Frame Ids:   2640   2641 Delimiter: 4
+Animation Id:   4710 Frame Ids:   2642   2643 Delimiter: 4
+Animation Id:   4711 Frame Ids:   2644   2645 Delimiter: 4
+Animation Id:   4712 Frame Ids:   2646   2647 Delimiter: 4
+Animation Id:   4713 Frame Ids:   2648   2649 Delimiter: 4
+Animation Id:   4714 Frame Ids:   2650   2651 Delimiter: 4
+Animation Id:   4715 Frame Ids:   2652   2653 Delimiter: 4
+Animation Id:   4716 Frame Ids:   2654   2655 Delimiter: 4
+Animation Id:   4720 Frame Ids:   2660   2661   2662   2663   2664 Delimiter: 4
+Animation Id:   4721 Frame Ids:   2665   2666   2667   2668   2669 Delimiter: 4
+Animation Id:   4722 Frame Ids:   2670   2671   2672   2673   2674 Delimiter: 4
+Animation Id:   4723 Frame Ids:   2675   2676   2677   2678   2679 Delimiter: 4
+Animation Id:   4724 Frame Ids:   2680   2681 Delimiter: 4
+Animation Id:   4725 Frame Ids:   2682   2683 Delimiter: 4
+Animation Id:   4726 Frame Ids:   2684   2685 Delimiter: 4
+Animation Id:   4727 Frame Ids:   2686   2687 Delimiter: 4
+Animation Id:   4728 Frame Ids:   2688   2689 Delimiter: 4
+Animation Id:   4729 Frame Ids:   2690   2691 Delimiter: 4
+Animation Id:   4730 Frame Ids:   2692   2693 Delimiter: 4
+Animation Id:   4731 Frame Ids:   2694   2695 Delimiter: 4
+Animation Id:   4735 Frame Ids:   2700   2701   2702   2703   2704 Delimiter: 4
+Animation Id:   4736 Frame Ids:   2705   2706   2707   2708   2709 Delimiter: 4
+Animation Id:   4737 Frame Ids:   2710   2711   2712   2713   2714 Delimiter: 4
+Animation Id:   4738 Frame Ids:   2715   2716   2717   2718   2719 Delimiter: 4
+Animation Id:   4739 Frame Ids:   2720   2721 Delimiter: 4
+Animation Id:   4740 Frame Ids:   2722   2723 Delimiter: 4
+Animation Id:   4741 Frame Ids:   2724   2725 Delimiter: 4
+Animation Id:   4742 Frame Ids:   2726   2727 Delimiter: 4
+Animation Id:   4743 Frame Ids:   2728   2729 Delimiter: 4
+Animation Id:   4744 Frame Ids:   2730   2731 Delimiter: 4
+Animation Id:   4745 Frame Ids:   2732   2733 Delimiter: 4
+Animation Id:   4746 Frame Ids:   2734   2735 Delimiter: 4
+Animation Id:   7500 Frame Ids:   5000   5001   5002   5003   5004 Delimiter: 4
+Animation Id:   7501 Frame Ids:   5007   5008   5009   5010   5011 Delimiter: 4
+Animation Id:   7502 Frame Ids:   5014   5015   5016   5017   5018 Delimiter: 4
+Animation Id:   7503 Frame Ids:   5021   5022   5023   5024   5025 Delimiter: 4
+Animation Id:   7504 Frame Ids:   5005   5006 Delimiter: 4
+Animation Id:   7505 Frame Ids:   5012   5013 Delimiter: 4
+Animation Id:   7506 Frame Ids:   5019   5020 Delimiter: 4
+Animation Id:   7507 Frame Ids:   5026   5027 Delimiter: 4
+Animation Id:   7510 Frame Ids:   5030   5031   5032   5033   5034 Delimiter: 4
+Animation Id:   7511 Frame Ids:   5037   5038   5039   5040   5041 Delimiter: 4
+Animation Id:   7512 Frame Ids:   5044   5045   5046   5047   5048 Delimiter: 4
+Animation Id:   7513 Frame Ids:   5051   5052   5053   5054   5055 Delimiter: 4
+Animation Id:   7514 Frame Ids:   5035   5036 Delimiter: 4
+Animation Id:   7515 Frame Ids:   5042   5043 Delimiter: 4
+Animation Id:   7516 Frame Ids:   5049   5050 Delimiter: 4
+Animation Id:   7517 Frame Ids:   5056   5057 Delimiter: 4
+Animation Id:   7520 Frame Ids:   5060   5061   5062   5063   5064 Delimiter: 4
+Animation Id:   7521 Frame Ids:   5067   5068   5069   5070   5071 Delimiter: 4
+Animation Id:   7522 Frame Ids:   5074   5075   5076   5077   5078 Delimiter: 4
+Animation Id:   7523 Frame Ids:   5081   5082   5083   5084   5085 Delimiter: 4
+Animation Id:   7524 Frame Ids:   5065   5066 Delimiter: 4
+Animation Id:   7525 Frame Ids:   5072   5073 Delimiter: 4
+Animation Id:   7526 Frame Ids:   5079   5080 Delimiter: 4
+Animation Id:   7527 Frame Ids:   5086   5087 Delimiter: 4
+Animation Id:   7530 Frame Ids:   5110   5111   5112   5113   5114 Delimiter: 4
+Animation Id:   7531 Frame Ids:   5117   5118   5119   5120   5121 Delimiter: 4
+Animation Id:   7532 Frame Ids:   5124   5125   5126   5127   5128 Delimiter: 4
+Animation Id:   7533 Frame Ids:   5131   5132   5133   5134   5135 Delimiter: 4
+Animation Id:   7534 Frame Ids:   5115   5116 Delimiter: 4
+Animation Id:   7535 Frame Ids:   5122   5123 Delimiter: 4
+Animation Id:   7536 Frame Ids:   5129   5130 Delimiter: 4
+Animation Id:   7537 Frame Ids:   5136   5137 Delimiter: 4
+Animation Id:   7540 Frame Ids:   5140   5141   5142   5143   5144 Delimiter: 4
+Animation Id:   7541 Frame Ids:   5147   5148   5149   5150   5151 Delimiter: 4
+Animation Id:   7542 Frame Ids:   5154   5155   5156   5157   5158 Delimiter: 4
+Animation Id:   7543 Frame Ids:   5161   5162   5163   5164   5165 Delimiter: 4
+Animation Id:   7544 Frame Ids:   5145   5146 Delimiter: 4
+Animation Id:   7545 Frame Ids:   5152   5153 Delimiter: 4
+Animation Id:   7546 Frame Ids:   5159   5160 Delimiter: 4
+Animation Id:   7547 Frame Ids:   5166   5167 Delimiter: 4
+Animation Id:   7550 Frame Ids:   5170   5171   5172   5173   5174 Delimiter: 4
+Animation Id:   7551 Frame Ids:   5177   5178   5179   5180   5181 Delimiter: 4
+Animation Id:   7552 Frame Ids:   5184   5185   5186   5187   5188 Delimiter: 4
+Animation Id:   7553 Frame Ids:   5191   5192   5193   5194   5195 Delimiter: 4
+Animation Id:   7554 Frame Ids:   5175   5176 Delimiter: 4
+Animation Id:   7555 Frame Ids:   5182   5183 Delimiter: 4
+Animation Id:   7556 Frame Ids:   5189   5190 Delimiter: 4
+Animation Id:   7557 Frame Ids:   5196   5197 Delimiter: 4
+Animation Id:   7560 Frame Ids:   5200   5201   5202   5203   5204 Delimiter: 4
+Animation Id:   7561 Frame Ids:   5207   5208   5209   5210   5211 Delimiter: 4
+Animation Id:   7562 Frame Ids:   5214   5215   5216   5217   5218 Delimiter: 4
+Animation Id:   7563 Frame Ids:   5221   5222   5223   5224   5225 Delimiter: 4
+Animation Id:   7564 Frame Ids:   5205   5206 Delimiter: 4
+Animation Id:   7565 Frame Ids:   5212   5213 Delimiter: 4
+Animation Id:   7566 Frame Ids:   5219   5220 Delimiter: 4
+Animation Id:   7567 Frame Ids:   5226   5227 Delimiter: 4
+Animation Id:   7570 Frame Ids:   5230   5231   5232   5233   5234 Delimiter: 4
+Animation Id:   7571 Frame Ids:   5237   5238   5239   5240   5241 Delimiter: 4
+Animation Id:   7572 Frame Ids:   5244   5245   5246   5247   5248 Delimiter: 4
+Animation Id:   7573 Frame Ids:   5251   5252   5253   5254   5255 Delimiter: 4
+Animation Id:   7574 Frame Ids:   5235   5236 Delimiter: 4
+Animation Id:   7575 Frame Ids:   5242   5243 Delimiter: 4
+Animation Id:   7576 Frame Ids:   5249   5250 Delimiter: 4
+Animation Id:   7577 Frame Ids:   5256   5257 Delimiter: 4
+Animation Id:   7580 Frame Ids:   5260   5261   5262   5263   5264 Delimiter: 4
+Animation Id:   7581 Frame Ids:   5267   5268   5269   5270   5271 Delimiter: 4
+Animation Id:   7582 Frame Ids:   5274   5275   5276   5277   5278 Delimiter: 4
+Animation Id:   7583 Frame Ids:   5281   5282   5283   5284   5285 Delimiter: 4
+Animation Id:   7584 Frame Ids:   5265   5266 Delimiter: 4
+Animation Id:   7585 Frame Ids:   5272   5273 Delimiter: 4
+Animation Id:   7586 Frame Ids:   5279   5280 Delimiter: 4
+Animation Id:   7587 Frame Ids:   5286   5287 Delimiter: 4
+Animation Id:   7590 Frame Ids:   5290   5291   5292   5293   5294 Delimiter: 4
+Animation Id:   7591 Frame Ids:   5297   5298   5299   5300   5301 Delimiter: 4
+Animation Id:   7592 Frame Ids:   5304   5305   5306   5307   5308 Delimiter: 4
+Animation Id:   7593 Frame Ids:   5311   5312   5313   5314   5315 Delimiter: 4
+Animation Id:   7594 Frame Ids:   5295   5296 Delimiter: 4
+Animation Id:   7595 Frame Ids:   5302   5303 Delimiter: 4
+Animation Id:   7596 Frame Ids:   5309   5310 Delimiter: 4
+Animation Id:   7597 Frame Ids:   5316   5317 Delimiter: 4
+Animation Id:   7600 Frame Ids:   5320   5321   5322   5323   5324 Delimiter: 4
+Animation Id:   7601 Frame Ids:   5327   5328   5329   5330   5331 Delimiter: 4
+Animation Id:   7602 Frame Ids:   5334   5335   5336   5337   5338 Delimiter: 4
+Animation Id:   7603 Frame Ids:   5341   5342   5343   5344   5345 Delimiter: 4
+Animation Id:   7604 Frame Ids:   5325   5326 Delimiter: 4
+Animation Id:   7605 Frame Ids:   5332   5333 Delimiter: 4
+Animation Id:   7606 Frame Ids:   5339   5340 Delimiter: 4
+Animation Id:   7607 Frame Ids:   5346   5347 Delimiter: 4
+Animation Id:   7610 Frame Ids:   5350   5351   5352   5353   5354 Delimiter: 4
+Animation Id:   7611 Frame Ids:   5357   5358   5359   5360   5361 Delimiter: 4
+Animation Id:   7612 Frame Ids:   5364   5365   5366   5367   5368 Delimiter: 4
+Animation Id:   7613 Frame Ids:   5371   5372   5373   5374   5375 Delimiter: 4
+Animation Id:   7614 Frame Ids:   5355   5356 Delimiter: 4
+Animation Id:   7615 Frame Ids:   5362   5363 Delimiter: 4
+Animation Id:   7616 Frame Ids:   5369   5370 Delimiter: 4
+Animation Id:   7617 Frame Ids:   5376   5377 Delimiter: 4
+Animation Id:   7620 Frame Ids:   5380   5381   5382   5383   5384 Delimiter: 4
+Animation Id:   7621 Frame Ids:   5387   5388   5389   5390   5391 Delimiter: 4
+Animation Id:   7622 Frame Ids:   5394   5395   5396   5397   5398 Delimiter: 4
+Animation Id:   7623 Frame Ids:   5401   5402   5403   5404   5405 Delimiter: 4
+Animation Id:   7624 Frame Ids:   5385   5386 Delimiter: 4
+Animation Id:   7625 Frame Ids:   5392   5393 Delimiter: 4
+Animation Id:   7626 Frame Ids:   5399   5400 Delimiter: 4
+Animation Id:   7627 Frame Ids:   5406   5407 Delimiter: 4
+Animation Id:   7630 Frame Ids:   5410   5411   5412   5413   5414 Delimiter: 4
+Animation Id:   7631 Frame Ids:   5417   5418   5419   5420   5421 Delimiter: 4
+Animation Id:   7632 Frame Ids:   5424   5425   5426   5427   5428 Delimiter: 4
+Animation Id:   7633 Frame Ids:   5431   5432   5433   5434   5435 Delimiter: 4
+Animation Id:   7634 Frame Ids:   5415   5416 Delimiter: 4
+Animation Id:   7635 Frame Ids:   5422   5423 Delimiter: 4
+Animation Id:   7636 Frame Ids:   5429   5430 Delimiter: 4
+Animation Id:   7637 Frame Ids:   5436   5437 Delimiter: 4
+Animation Id:   7640 Frame Ids:   5440   5441   5442   5443   5444 Delimiter: 4
+Animation Id:   7641 Frame Ids:   5447   5448   5449   5450   5451 Delimiter: 4
+Animation Id:   7642 Frame Ids:   5454   5455   5456   5457   5458 Delimiter: 4
+Animation Id:   7643 Frame Ids:   5461   5462   5463   5464   5465 Delimiter: 4
+Animation Id:   7644 Frame Ids:   5445   5446 Delimiter: 4
+Animation Id:   7645 Frame Ids:   5452   5453 Delimiter: 4
+Animation Id:   7646 Frame Ids:   5459   5460 Delimiter: 4
+Animation Id:   7647 Frame Ids:   5466   5467 Delimiter: 4
+Animation Id:   7650 Frame Ids:   5480   5481   5482   5483   5484 Delimiter: 4
+Animation Id:   7651 Frame Ids:   5487   5488   5489   5490   5491 Delimiter: 4
+Animation Id:   7652 Frame Ids:   5494   5495   5496   5497   5498 Delimiter: 4
+Animation Id:   7653 Frame Ids:   5501   5502   5503   5504   5505 Delimiter: 4
+Animation Id:   7654 Frame Ids:   5485   5486 Delimiter: 4
+Animation Id:   7655 Frame Ids:   5492   5493 Delimiter: 4
+Animation Id:   7656 Frame Ids:   5499   5500 Delimiter: 4
+Animation Id:   7657 Frame Ids:   5506   5507 Delimiter: 4
+Animation Id:   7660 Frame Ids:   5510   5511   5512   5513   5514 Delimiter: 4
+Animation Id:   7661 Frame Ids:   5517   5518   5519   5520   5521 Delimiter: 4
+Animation Id:   7662 Frame Ids:   5524   5525   5526   5527   5528 Delimiter: 4
+Animation Id:   7663 Frame Ids:   5531   5532   5533   5534   5535 Delimiter: 4
+Animation Id:   7664 Frame Ids:   5515   5516 Delimiter: 4
+Animation Id:   7665 Frame Ids:   5522   5523 Delimiter: 4
+Animation Id:   7666 Frame Ids:   5529   5530 Delimiter: 4
+Animation Id:   7667 Frame Ids:   5536   5537 Delimiter: 4
+Animation Id:   7670 Frame Ids:   5540   5541   5542   5543   5544 Delimiter: 4
+Animation Id:   7671 Frame Ids:   5547   5548   5549   5550   5551 Delimiter: 4
+Animation Id:   7672 Frame Ids:   5554   5555   5556   5557   5558 Delimiter: 4
+Animation Id:   7673 Frame Ids:   5561   5562   5563   5564   5565 Delimiter: 4
+Animation Id:   7674 Frame Ids:   5545   5546 Delimiter: 4
+Animation Id:   7675 Frame Ids:   5552   5553 Delimiter: 4
+Animation Id:   7676 Frame Ids:   5559   5560 Delimiter: 4
+Animation Id:   7677 Frame Ids:   5566   5567 Delimiter: 4
+Animation Id:   7680 Frame Ids:   5570   5571   5572   5573   5574 Delimiter: 4
+Animation Id:   7681 Frame Ids:   5577   5578   5579   5580   5581 Delimiter: 4
+Animation Id:   7682 Frame Ids:   5584   5585   5586   5587   5588 Delimiter: 4
+Animation Id:   7683 Frame Ids:   5591   5592   5593   5594   5595 Delimiter: 4
+Animation Id:   7684 Frame Ids:   5575   5576 Delimiter: 4
+Animation Id:   7685 Frame Ids:   5582   5583 Delimiter: 4
+Animation Id:   7686 Frame Ids:   5589   5590 Delimiter: 4
+Animation Id:   7687 Frame Ids:   5596   5597 Delimiter: 4
+Animation Id:   9500 Frame Ids:   8000   8001   8002   8003   8004 Delimiter: 4
+Animation Id:   9501 Frame Ids:   8007   8008   8009   8010   8011 Delimiter: 4
+Animation Id:   9502 Frame Ids:   8014   8015   8016   8017   8018 Delimiter: 4
+Animation Id:   9503 Frame Ids:   8021   8022   8023   8024   8025 Delimiter: 4
+Animation Id:   9504 Frame Ids:   8005   8006 Delimiter: 4
+Animation Id:   9505 Frame Ids:   8012   8013 Delimiter: 4
+Animation Id:   9506 Frame Ids:   8019   8020 Delimiter: 4
+Animation Id:   9507 Frame Ids:   8026   8027 Delimiter: 4
+Animation Id:   9520 Frame Ids:   8060   8061   8062   8063   8064 Delimiter: 4
+Animation Id:   9521 Frame Ids:   8067   8068   8069   8070   8071 Delimiter: 4
+Animation Id:   9522 Frame Ids:   8074   8075   8076   8077   8078 Delimiter: 4
+Animation Id:   9523 Frame Ids:   8081   8082   8083   8084   8085 Delimiter: 4
+Animation Id:   9524 Frame Ids:   8065   8066 Delimiter: 4
+Animation Id:   9525 Frame Ids:   8072   8073 Delimiter: 4
+Animation Id:   9526 Frame Ids:   8079   8080 Delimiter: 4
+Animation Id:   9527 Frame Ids:   8086   8087 Delimiter: 4
+Animation Id:   9530 Frame Ids:   8090   8091   8092   8093   8094 Delimiter: 4
+Animation Id:   9531 Frame Ids:   8097   8098   8099   8100   8101 Delimiter: 4
+Animation Id:   9532 Frame Ids:   8104   8105   8106   8107   8108 Delimiter: 4
+Animation Id:   9533 Frame Ids:   8111   8112   8113   8114   8115 Delimiter: 4
+Animation Id:   9534 Frame Ids:   8095   8096 Delimiter: 4
+Animation Id:   9535 Frame Ids:   8102   8103 Delimiter: 4
+Animation Id:   9536 Frame Ids:   8109   8110 Delimiter: 4
+Animation Id:   9537 Frame Ids:   8116   8117 Delimiter: 4
+Animation Id:   9540 Frame Ids:   8120   8121   8122   8123   8124 Delimiter: 4
+Animation Id:   9541 Frame Ids:   8127   8128   8129   8130   8131 Delimiter: 4
+Animation Id:   9542 Frame Ids:   8134   8135   8136   8137   8138 Delimiter: 4
+Animation Id:   9543 Frame Ids:   8141   8142   8143   8144   8145 Delimiter: 4
+Animation Id:   9544 Frame Ids:   8125   8126 Delimiter: 4
+Animation Id:   9545 Frame Ids:   8132   8133 Delimiter: 4
+Animation Id:   9546 Frame Ids:   8139   8140 Delimiter: 4
+Animation Id:   9547 Frame Ids:   8146   8147 Delimiter: 4
+Animation Id:   9560 Frame Ids:   8150   8151   8152   8153   8154 Delimiter: 4
+Animation Id:   9561 Frame Ids:   8157   8158   8159   8160   8161 Delimiter: 4
+Animation Id:   9562 Frame Ids:   8164   8165   8166   8167   8168 Delimiter: 4
+Animation Id:   9563 Frame Ids:   8171   8172   8173   8174   8175 Delimiter: 4
+Animation Id:   9564 Frame Ids:   8155   8156 Delimiter: 4
+Animation Id:   9565 Frame Ids:   8162   8163 Delimiter: 4
+Animation Id:   9566 Frame Ids:   8169   8170 Delimiter: 4
+Animation Id:   9567 Frame Ids:   8176   8177 Delimiter: 4
+Animation Id:   9570 Frame Ids:   8180   8181   8182   8183   8184 Delimiter: 4
+Animation Id:   9571 Frame Ids:   8187   8188   8189   8190   8191 Delimiter: 4
+Animation Id:   9572 Frame Ids:   8194   8195   8196   8197   8198 Delimiter: 4
+Animation Id:   9573 Frame Ids:   8201   8202   8203   8204   8205 Delimiter: 4
+Animation Id:   9574 Frame Ids:   8185   8186 Delimiter: 4
+Animation Id:   9575 Frame Ids:   8192   8193 Delimiter: 4
+Animation Id:   9576 Frame Ids:   8199   8200 Delimiter: 4
+Animation Id:   9577 Frame Ids:   8206   8207 Delimiter: 4
+Animation Id:   9580 Frame Ids:   8210   8211   8212   8213   8214 Delimiter: 4
+Animation Id:   9581 Frame Ids:   8217   8218   8219   8220   8221 Delimiter: 4
+Animation Id:   9582 Frame Ids:   8224   8225   8226   8227   8228 Delimiter: 4
+Animation Id:   9583 Frame Ids:   8231   8232   8233   8234   8235 Delimiter: 4
+Animation Id:   9584 Frame Ids:   8215   8216 Delimiter: 4
+Animation Id:   9585 Frame Ids:   8222   8223 Delimiter: 4
+Animation Id:   9586 Frame Ids:   8229   8230 Delimiter: 4
+Animation Id:   9587 Frame Ids:   8236   8237 Delimiter: 4
+Animation Id:   9590 Frame Ids:   8240   8241   8242   8243   8244 Delimiter: 4
+Animation Id:   9591 Frame Ids:   8247   8248   8249   8250   8251 Delimiter: 4
+Animation Id:   9592 Frame Ids:   8254   8255   8256   8257   8258 Delimiter: 4
+Animation Id:   9593 Frame Ids:   8261   8262   8263   8264   8265 Delimiter: 4
+Animation Id:   9594 Frame Ids:   8245   8246 Delimiter: 4
+Animation Id:   9595 Frame Ids:   8252   8253 Delimiter: 4
+Animation Id:   9596 Frame Ids:   8259   8260 Delimiter: 4
+Animation Id:   9597 Frame Ids:   8266   8267 Delimiter: 4
+Animation Id:   9600 Frame Ids:   8270   8271   8272   8273   8274 Delimiter: 4
+Animation Id:   9601 Frame Ids:   8277   8278   8279   8280   8281 Delimiter: 4
+Animation Id:   9602 Frame Ids:   8284   8285   8286   8287   8288 Delimiter: 4
+Animation Id:   9603 Frame Ids:   8291   8292   8293   8294   8295 Delimiter: 4
+Animation Id:   9604 Frame Ids:   8275   8276 Delimiter: 4
+Animation Id:   9605 Frame Ids:   8282   8283 Delimiter: 4
+Animation Id:   9606 Frame Ids:   8289   8290 Delimiter: 4
+Animation Id:   9607 Frame Ids:   8296   8297 Delimiter: 4
+Animation Id:  35000 Frame Ids:  20000  20001  20002  20003 Delimiter: 3
+Animation Id:  35001 Frame Ids:  20006  20007  20008  20009 Delimiter: 3
+Animation Id:  35002 Frame Ids:  20012  20013  20014  20015 Delimiter: 3
+Animation Id:  35003 Frame Ids:  20018  20019  20020  20021 Delimiter: 3
+Animation Id:  35004 Frame Ids:  20024  20025  20026  20027 Delimiter: 3
+Animation Id:  35005 Frame Ids:  20032  20033  20034  20035 Delimiter: 3
+Animation Id:  35006 Frame Ids:  20040  20041  20042  20043 Delimiter: 3
+Animation Id:  35007 Frame Ids:  20048  20049  20050  20051 Delimiter: 3
+Animation Id:  35008 Frame Ids:  20056  20057  20058  20059 Delimiter: 3
+Animation Id:  35009 Frame Ids:  20064  20065  20066  20067 Delimiter: 3
+Animation Id:  35010 Frame Ids:  20072  20073  20074  20075 Delimiter: 3
+Animation Id:  35011 Frame Ids:  20080  20081  20082  20083 Delimiter: 3
+Animation Id:  35012 Frame Ids:  20088  20089  20090  20091 Delimiter: 3
+Animation Id:  35013 Frame Ids:  20096  20097  20098  20099 Delimiter: 3
+Animation Id:  35014 Frame Ids:  20104  20105  20106  20107 Delimiter: 3
+Animation Id:  35015 Frame Ids:  20112  20113  20114  20115 Delimiter: 3
+Animation Id:  35016 Frame Ids:  20120  20121  20122  20123 Delimiter: 3
+Animation Id:  35017 Frame Ids:  20126  20127  20128  20129 Delimiter: 3
+Animation Id:  35018 Frame Ids:  20132  20133  20134  20135 Delimiter: 3
+Animation Id:  35019 Frame Ids:  20138  20139  20140  20141 Delimiter: 3
+Animation Id:  35020 Frame Ids:  20144  20145  20146  20147 Delimiter: 3
+Animation Id:  35021 Frame Ids:  20150  20151  20152  20153 Delimiter: 3
+Animation Id:  35022 Frame Ids:  20156  20157  20158  20159 Delimiter: 3
+Animation Id:  35023 Frame Ids:  20162  20163  20164  20165 Delimiter: 3
+Animation Id:  35024 Frame Ids:  20168  20169  20170  20171 Delimiter: 3
+Animation Id:  35025 Frame Ids:  20174  20175  20176  20177 Delimiter: 3
+Animation Id:  35026 Frame Ids:  20180  20181  20182  20183 Delimiter: 3
+Animation Id:  35027 Frame Ids:  20186  20187  20188  20189 Delimiter: 3
+Animation Id:  35028 Frame Ids:  20192  20193  20194  20195 Delimiter: 3
+Animation Id:  35029 Frame Ids:  20198  20199  20200  20201 Delimiter: 3
+Animation Id:  35030 Frame Ids:  20204  20205  20206  20207 Delimiter: 3
+Animation Id:  35031 Frame Ids:  20210  20211  20212  20213 Delimiter: 3
+Animation Id:  35032 Frame Ids:  20216  20217  20218  20219 Delimiter: 3
+Animation Id:  35033 Frame Ids:  20222  20223  20224  20225 Delimiter: 3
+Animation Id:  35034 Frame Ids:  20228  20229  20230  20231 Delimiter: 3
+Animation Id:  35035 Frame Ids:  20234  20235  20236  20237 Delimiter: 3
+Animation Id:  35036 Frame Ids:  20240  20241  20242  20243 Delimiter: 3
+Animation Id:  35037 Frame Ids:  20246  20247  20248  20249 Delimiter: 3
+Animation Id:  35038 Frame Ids:  20252  20253  20254  20255 Delimiter: 3
+Animation Id:  35039 Frame Ids:  20258  20259  20260  20261 Delimiter: 3
+Animation Id:  35040 Frame Ids:  20264  20265  20266  20267 Delimiter: 3
+Animation Id:  35041 Frame Ids:  20270  20271  20272  20273 Delimiter: 3
+Animation Id:  35042 Frame Ids:  20276  20277  20278  20279 Delimiter: 3
+Animation Id:  35043 Frame Ids:  20282  20283  20284  20285 Delimiter: 3
+Animation Id:  35044 Frame Ids:  20288  20289  20290  20291 Delimiter: 3
+Animation Id:  35045 Frame Ids:  20294  20295  20296  20297 Delimiter: 3
+Animation Id:  35046 Frame Ids:  20300  20301  20302  20303 Delimiter: 3
+Animation Id:  35047 Frame Ids:  20306  20307  20308  20309 Delimiter: 3
+Animation Id:  35048 Frame Ids:  20312  20313  20314  20315 Delimiter: 3
+Animation Id:  35049 Frame Ids:  20318  20319  20320  20321 Delimiter: 3
+Animation Id:  35050 Frame Ids:  20324  20325  20326  20327 Delimiter: 3
+Animation Id:  35051 Frame Ids:  20330  20331  20332  20333 Delimiter: 3
+Animation Id:  35052 Frame Ids:  20336  20337  20338  20339 Delimiter: 3
+Animation Id:  35053 Frame Ids:  20342  20343  20344  20345 Delimiter: 3
+Animation Id:  35054 Frame Ids:  20348  20349  20350  20351 Delimiter: 3
+Animation Id:  35055 Frame Ids:  20354  20355  20356  20357 Delimiter: 3
+Animation Id:  35056 Frame Ids:  20360  20361  20362  20363 Delimiter: 3
+Animation Id:  35057 Frame Ids:  20366  20367  20368  20369 Delimiter: 3
+Animation Id:  35058 Frame Ids:  20372  20373  20374  20375 Delimiter: 3
+Animation Id:  35059 Frame Ids:  20378  20379  20380  20381 Delimiter: 3
+Animation Id:  35060 Frame Ids:  20384  20385  20386  20387 Delimiter: 3
+Animation Id:  35061 Frame Ids:  20390  20391  20392  20393 Delimiter: 3
+Animation Id:  35062 Frame Ids:  20396  20397  20398  20399 Delimiter: 3
+Animation Id:  35063 Frame Ids:  20402  20403  20404  20405 Delimiter: 3
+Animation Id:  35064 Frame Ids:  20408  20409  20410  20411  20412 Delimiter: 4
+Animation Id:  35065 Frame Ids:  20416  20417  20418  20419  20420 Delimiter: 4
+Animation Id:  35066 Frame Ids:  20424  20425  20426  20427  20428 Delimiter: 4
+Animation Id:  35067 Frame Ids:  20432  20433  20434  20435  20436 Delimiter: 4
+Animation Id:  35068 Frame Ids:  20440  20441  20442  20443 Delimiter: 4
+Animation Id:  35069 Frame Ids:  20446  20447  20448  20449 Delimiter: 4
+Animation Id:  35070 Frame Ids:  20452  20453  20454  20455 Delimiter: 4
+Animation Id:  35071 Frame Ids:  20458  20459  20460  20461 Delimiter: 4
+Animation Id:  35072 Frame Ids:  20464  20465  20466  20467 Delimiter: 4
+Animation Id:  35073 Frame Ids:  20470  20471  20472  20473 Delimiter: 4
+Animation Id:  35074 Frame Ids:  20476  20477  20478  20479 Delimiter: 4
+Animation Id:  35075 Frame Ids:  20482  20483  20484  20485 Delimiter: 4
+Animation Id:  35076 Frame Ids:  20488  20489  20490  20491 Delimiter: 4
+Animation Id:  35077 Frame Ids:  20494  20495  20496  20497 Delimiter: 4
+Animation Id:  35078 Frame Ids:  20500  20501  20502  20503 Delimiter: 4
+Animation Id:  35079 Frame Ids:  20506  20507  20508  20509 Delimiter: 4
+Animation Id:  35080 Frame Ids:  20512  20513  20514  20515 Delimiter: 4
+Animation Id:  35081 Frame Ids:  20518  20519  20520  20521 Delimiter: 4
+Animation Id:  35082 Frame Ids:  20524  20525  20526  20527 Delimiter: 4
+Animation Id:  35083 Frame Ids:  20530  20531  20532  20533 Delimiter: 4
+Animation Id:  35084 Frame Ids:  20536  20537  20538  20539 Delimiter: 4
+Animation Id:  35085 Frame Ids:  20542  20543  20544  20545 Delimiter: 4
+Animation Id:  35086 Frame Ids:  20548  20549  20550  20551 Delimiter: 4
+Animation Id:  35087 Frame Ids:  20554  20555  20556  20557 Delimiter: 4
+Animation Id:  35088 Frame Ids:  20560  20561 Delimiter: 4
+Animation Id:  35089 Frame Ids:  20565  20566 Delimiter: 4
+Animation Id:  35090 Frame Ids:  20570  20571 Delimiter: 4
+Animation Id:  35091 Frame Ids:  20575  20576 Delimiter: 4
+Animation Id:  35092 Frame Ids:  20580  20581 Delimiter: 4
+Animation Id:  35093 Frame Ids:  20585  20586 Delimiter: 4
+Animation Id:  35094 Frame Ids:  20590  20591 Delimiter: 4
+Animation Id:  35095 Frame Ids:  20595  20596 Delimiter: 4
+Animation Id:  35096 Frame Ids:  20600  20601  20602  20603 Delimiter: 4
+Animation Id:  35097 Frame Ids:  20607  20608  20609  20610 Delimiter: 4
+Animation Id:  35098 Frame Ids:  20614  20615  20616  20617 Delimiter: 4
+Animation Id:  35099 Frame Ids:  20621  20622  20623  20624 Delimiter: 4
+Animation Id:  35100 Frame Ids:  20628  20629  20630  20631 Delimiter: 4
+Animation Id:  35101 Frame Ids:  20634  20635  20636  20637 Delimiter: 4
+Animation Id:  35102 Frame Ids:  20640  20641  20642  20643 Delimiter: 4
+Animation Id:  35103 Frame Ids:  20646  20647  20648  20649 Delimiter: 4
+Animation Id:  35104 Frame Ids:  20652  20653  20654  20655  20656 Delimiter: 4
+Animation Id:  35105 Frame Ids:  20659  20660  20661  20662  20663 Delimiter: 4
+Animation Id:  35106 Frame Ids:  20666  20667  20668  20669  20670 Delimiter: 4
+Animation Id:  35107 Frame Ids:  20673  20674  20675  20676  20677 Delimiter: 4
+Animation Id:  35108 Frame Ids:  20680  20681  20682  20683 Delimiter: 4
+Animation Id:  35109 Frame Ids:  20686  20687  20688  20689 Delimiter: 4
+Animation Id:  35110 Frame Ids:  20692  20693  20694  20695 Delimiter: 4
+Animation Id:  35111 Frame Ids:  20698  20699  20700  20701 Delimiter: 4
+Animation Id:  35112 Frame Ids:  20704  20705  20706  20707 Delimiter: 4
+Animation Id:  35113 Frame Ids:  20710  20711  20712  20713 Delimiter: 4
+Animation Id:  35114 Frame Ids:  20716  20717  20718  20719 Delimiter: 4
+Animation Id:  35115 Frame Ids:  20722  20723  20724  20725 Delimiter: 4
+Animation Id:  35116 Frame Ids:  20728  20729  20730  20731 Delimiter: 4
+Animation Id:  35117 Frame Ids:  20734  20735  20736  20737 Delimiter: 4
+Animation Id:  35118 Frame Ids:  20740  20741  20742  20743 Delimiter: 4
+Animation Id:  35119 Frame Ids:  20746  20747  20748  20749 Delimiter: 4
+Animation Id:  35120 Frame Ids:  20752  20753  20754  20755 Delimiter: 4
+Animation Id:  35121 Frame Ids:  20758  20759  20760  20761 Delimiter: 4
+Animation Id:  35122 Frame Ids:  20764  20765  20766  20767 Delimiter: 4
+Animation Id:  35123 Frame Ids:  20770  20771  20772  20773 Delimiter: 4
+Animation Id:  35124 Frame Ids:  20776  20777  20778  20779 Delimiter: 4
+Animation Id:  35125 Frame Ids:  20782  20783  20784  20785 Delimiter: 4
+Animation Id:  35126 Frame Ids:  20788  20789  20790  20791 Delimiter: 4
+Animation Id:  35127 Frame Ids:  20794  20795  20796  20797 Delimiter: 4
+Animation Id:  35128 Frame Ids:  20800  20801  20802  20803 Delimiter: 4
+Animation Id:  35129 Frame Ids:  20807  20808  20809  20810 Delimiter: 4
+Animation Id:  35130 Frame Ids:  20814  20815  20816  20817 Delimiter: 4
+Animation Id:  35131 Frame Ids:  20821  20822  20823  20824 Delimiter: 4
+Animation Id:  35132 Frame Ids:  20828  20829  20830  20831 Delimiter: 4
+Animation Id:  35133 Frame Ids:  20834  20835  20836  20837 Delimiter: 4
+Animation Id:  35134 Frame Ids:  20840  20841  20842  20843 Delimiter: 4
+Animation Id:  35135 Frame Ids:  20846  20847  20848  20849 Delimiter: 4
+Animation Id:  35136 Frame Ids:  20852  20853  20854  20855 Delimiter: 4
+Animation Id:  35137 Frame Ids:  20861  20862  20863  20864 Delimiter: 4
+Animation Id:  35138 Frame Ids:  20870  20871  20872  20873 Delimiter: 4
+Animation Id:  35139 Frame Ids:  20879  20880  20881  20882 Delimiter: 4
+Animation Id:  35140 Frame Ids:  20888  20889  20890  20891 Delimiter: 4
+Animation Id:  35141 Frame Ids:  20894  20895  20896  20897 Delimiter: 4
+Animation Id:  35142 Frame Ids:  20900  20901  20902  20903 Delimiter: 4
+Animation Id:  35143 Frame Ids:  20906  20907  20908  20909 Delimiter: 4
+Animation Id:  35144 Frame Ids:  20912  20913  20914  20915 Delimiter: 4
+Animation Id:  35145 Frame Ids:  20918  20919  20920  20921 Delimiter: 4
+Animation Id:  35146 Frame Ids:  20924  20925  20926  20927 Delimiter: 4
+Animation Id:  35147 Frame Ids:  20930  20931  20932  20933 Delimiter: 4
+Animation Id:  35148 Frame Ids:  20936  20937  20938  20939 Delimiter: 4
+Animation Id:  35149 Frame Ids:  20942  20943  20944  20945 Delimiter: 4
+Animation Id:  35150 Frame Ids:  20948  20949  20950  20951 Delimiter: 4
+Animation Id:  35151 Frame Ids:  20954  20955  20956  20957 Delimiter: 4
+Animation Id:  35152 Frame Ids:  20960  20961  20962  20963 Delimiter: 4
+Animation Id:  35153 Frame Ids:  20966  20967  20968  20969 Delimiter: 4
+Animation Id:  35154 Frame Ids:  20972  20973  20974  20975 Delimiter: 4
+Animation Id:  35155 Frame Ids:  20978  20979  20980  20981 Delimiter: 4
+Animation Id:  35156 Frame Ids:  20984  20985  20986  20987 Delimiter: 4
+Animation Id:  35157 Frame Ids:  20990  20991  20992  20993 Delimiter: 4
+Animation Id:  35158 Frame Ids:  20996  20997  20998  20999 Delimiter: 4
+Animation Id:  35159 Frame Ids:  21002  21003  21004  21005 Delimiter: 4
+Animation Id:  35160 Frame Ids:  21008  21009  21010  21011 Delimiter: 4
+Animation Id:  35161 Frame Ids:  21014  21015  21016  21017 Delimiter: 4
+Animation Id:  35162 Frame Ids:  21020  21021  21022  21023 Delimiter: 4
+Animation Id:  35163 Frame Ids:  21026  21027  21028  21029 Delimiter: 4
+Animation Id:  35164 Frame Ids:  21032  21033  21034  21035 Delimiter: 4
+Animation Id:  35165 Frame Ids:  21038  21039  21040  21041 Delimiter: 4
+Animation Id:  35166 Frame Ids:  21044  21045  21046  21047 Delimiter: 4
+Animation Id:  35167 Frame Ids:  21050  21051  21052  21053 Delimiter: 4
+Animation Id:  35168 Frame Ids:  21056  21057  21058  21059  21060 Delimiter: 4
+Animation Id:  35169 Frame Ids:  21063  21064  21065  21066  21067 Delimiter: 4
+Animation Id:  35170 Frame Ids:  21070  21071  21072  21073  21074 Delimiter: 4
+Animation Id:  35171 Frame Ids:  21077  21078  21079  21080  21081 Delimiter: 4
+Animation Id:  35172 Frame Ids:  21084  21085  21086  21087  21088 Delimiter: 4
+Animation Id:  35173 Frame Ids:  21091  21092  21093  21094  21095 Delimiter: 4
+Animation Id:  35174 Frame Ids:  21098  21099  21100  21101  21102 Delimiter: 4
+Animation Id:  35175 Frame Ids:  21105  21106  21107  21108  21109 Delimiter: 4
+Animation Id:  35176 Frame Ids:  21112  21113  21114 Delimiter: 4
+Animation Id:  35177 Frame Ids:  21119  21120  21121 Delimiter: 4
+Animation Id:  35178 Frame Ids:  21126  21127  21128 Delimiter: 4
+Animation Id:  35179 Frame Ids:  21133  21134  21135 Delimiter: 4
+Animation Id:  35180 Frame Ids:  21140  21141  21142  21143 Delimiter: 4
+Animation Id:  35181 Frame Ids:  21147  21148  21149  21150 Delimiter: 4
+Animation Id:  35182 Frame Ids:  21154  21155  21156  21157 Delimiter: 4
+Animation Id:  35183 Frame Ids:  21161  21162  21163  21164 Delimiter: 4
+Animation Id:  35184 Frame Ids:  21168  21169  21170  21171 Delimiter: 4
+Animation Id:  35185 Frame Ids:  21175  21176  21177  21178 Delimiter: 4
+Animation Id:  35186 Frame Ids:  21182  21183  21184  21185 Delimiter: 4
+Animation Id:  35187 Frame Ids:  21189  21190  21191  21192 Delimiter: 4
+Animation Id:  35188 Frame Ids:  21196  21197  21198  21199 Delimiter: 4
+Animation Id:  35189 Frame Ids:  21203  21204  21205  21206 Delimiter: 4
+Animation Id:  35190 Frame Ids:  21210  21211  21212  21213 Delimiter: 4
+Animation Id:  35191 Frame Ids:  21217  21218  21219  21220 Delimiter: 4
+Animation Id:  35192 Frame Ids:  21224  21225  21226  21227  21228 Delimiter: 4
+Animation Id:  35193 Frame Ids:  21231  21232  21233  21234  21235 Delimiter: 4
+Animation Id:  35194 Frame Ids:  21238  21239  21240  21241  21242 Delimiter: 4
+Animation Id:  35195 Frame Ids:  21245  21246  21247  21248  21249 Delimiter: 4
+Animation Id:  35196 Frame Ids:  21252  21253  21254  21255  21256 Delimiter: 4
+Animation Id:  35197 Frame Ids:  21259  21260  21261  21262  21263 Delimiter: 4
+Animation Id:  35198 Frame Ids:  21266  21267  21268  21269  21270 Delimiter: 4
+Animation Id:  35199 Frame Ids:  21273  21274  21275  21276  21277 Delimiter: 4
+Animation Id:  35200 Frame Ids:  21280  21281  21282  21283 Delimiter: 4
+Animation Id:  35201 Frame Ids:  21286  21287  21288  21289 Delimiter: 4
+Animation Id:  35202 Frame Ids:  21292  21293  21294  21295 Delimiter: 4
+Animation Id:  35203 Frame Ids:  21298  21299  21300  21301 Delimiter: 4
+Animation Id:  35204 Frame Ids:  21310  21311  21312  21313 Delimiter: 4
+Animation Id:  35205 Frame Ids:  21316  21317  21318  21319 Delimiter: 4
+Animation Id:  35206 Frame Ids:  21322  21323  21324  21325 Delimiter: 4
+Animation Id:  35207 Frame Ids:  21328  21329  21330  21331 Delimiter: 4
+Animation Id:  35208 Frame Ids:  21334  21335  21336  21337 Delimiter: 4
+Animation Id:  35209 Frame Ids:  21340  21341  21342  21343 Delimiter: 4
+Animation Id:  35210 Frame Ids:  21346  21347  21348  21349 Delimiter: 4
+Animation Id:  35211 Frame Ids:  21352  21353  21354  21355 Delimiter: 4
+Animation Id:  35212 Frame Ids:  21358  21359  21360  21361 Delimiter: 4
+Animation Id:  35213 Frame Ids:  21365  21366  21367  21368 Delimiter: 4
+Animation Id:  35214 Frame Ids:  21372  21373  21374  21375 Delimiter: 4
+Animation Id:  35215 Frame Ids:  21379  21380  21381  21382 Delimiter: 4
+Animation Id:  35216 Frame Ids:  21386  21387  21388  21389 Delimiter: 4
+Animation Id:  35217 Frame Ids:  21392  21393  21394  21395 Delimiter: 4
+Animation Id:  35218 Frame Ids:  21398  21399  21400  21401 Delimiter: 4
+Animation Id:  35219 Frame Ids:  21404  21405  21406  21407 Delimiter: 4
+Animation Id:  35220 Frame Ids:  21410  21411  21412  21413 Delimiter: 4
+Animation Id:  35221 Frame Ids:  21416  21417  21418  21419 Delimiter: 4
+Animation Id:  35222 Frame Ids:  21422  21423  21424  21425 Delimiter: 4
+Animation Id:  35223 Frame Ids:  21428  21429  21430  21431 Delimiter: 4
+Animation Id:  35224 Frame Ids:  21434  21435  21436  21437  21438 Delimiter: 4
+Animation Id:  35225 Frame Ids:  21441  21442  21443  21444  21445 Delimiter: 4
+Animation Id:  35226 Frame Ids:  21448  21449  21450  21451  21452 Delimiter: 4
+Animation Id:  35227 Frame Ids:  21455  21456  21457  21458  21459 Delimiter: 4
+Animation Id:  35228 Frame Ids:  21462  21463  21464  21465 Delimiter: 4
+Animation Id:  35229 Frame Ids:  21469  21470  21471  21472 Delimiter: 4
+Animation Id:  35230 Frame Ids:  21476  21477  21478  21479 Delimiter: 4
+Animation Id:  35231 Frame Ids:  21483  21484  21485  21486 Delimiter: 4
+Animation Id:  35232 Frame Ids:  21490  21491  21492  21493  21494 Delimiter: 4
+Animation Id:  35233 Frame Ids:  21497  21498  21499  21500  21501 Delimiter: 4
+Animation Id:  35234 Frame Ids:  21504  21505  21506  21507  21508 Delimiter: 4
+Animation Id:  35235 Frame Ids:  21511  21512  21513  21514  21515 Delimiter: 4
+Animation Id:  35236 Frame Ids:  21630  21631  21632  21633 Delimiter: 4
+Animation Id:  35237 Frame Ids:  21636  21637  21638  21639 Delimiter: 4
+Animation Id:  35238 Frame Ids:  21642  21643  21644  21645 Delimiter: 4
+Animation Id:  35239 Frame Ids:  21648  21649  21650  21651 Delimiter: 4
+Animation Id:  35500 Frame Ids:  20004  20005 Delimiter: 3
+Animation Id:  35501 Frame Ids:  20010  20011 Delimiter: 3
+Animation Id:  35502 Frame Ids:  20016  20017 Delimiter: 3
+Animation Id:  35503 Frame Ids:  20022  20023 Delimiter: 3
+Animation Id:  35504 Frame Ids:  20028  20029  20030  20031 Delimiter: 3
+Animation Id:  35505 Frame Ids:  20036  20037  20038  20039 Delimiter: 3
+Animation Id:  35506 Frame Ids:  20044  20045  20046  20047 Delimiter: 3
+Animation Id:  35507 Frame Ids:  20052  20053  20054  20055 Delimiter: 3
+Animation Id:  35508 Frame Ids:  20060  20061  20062  20063 Delimiter: 3
+Animation Id:  35509 Frame Ids:  20068  20069  20070  20071 Delimiter: 3
+Animation Id:  35510 Frame Ids:  20076  20077  20078  20079 Delimiter: 3
+Animation Id:  35511 Frame Ids:  20084  20085  20086  20087 Delimiter: 3
+Animation Id:  35512 Frame Ids:  20092  20093  20094  20095 Delimiter: 3
+Animation Id:  35513 Frame Ids:  20100  20101  20102  20103 Delimiter: 3
+Animation Id:  35514 Frame Ids:  20108  20109  20110  20111 Delimiter: 3
+Animation Id:  35515 Frame Ids:  20116  20117  20118  20119 Delimiter: 3
+Animation Id:  35516 Frame Ids:  20124  20125 Delimiter: 3
+Animation Id:  35517 Frame Ids:  20130  20131 Delimiter: 3
+Animation Id:  35518 Frame Ids:  20136  20137 Delimiter: 3
+Animation Id:  35519 Frame Ids:  20142  20143 Delimiter: 3
+Animation Id:  35520 Frame Ids:  20148  20149 Delimiter: 3
+Animation Id:  35521 Frame Ids:  20154  20155 Delimiter: 3
+Animation Id:  35522 Frame Ids:  20160  20161 Delimiter: 3
+Animation Id:  35523 Frame Ids:  20166  20167 Delimiter: 3
+Animation Id:  35524 Frame Ids:  20172  20173 Delimiter: 3
+Animation Id:  35525 Frame Ids:  20178  20178 Delimiter: 3
+Animation Id:  35526 Frame Ids:  20184  20185 Delimiter: 3
+Animation Id:  35527 Frame Ids:  20190  20191 Delimiter: 3
+Animation Id:  35528 Frame Ids:  20196  20197 Delimiter: 3
+Animation Id:  35529 Frame Ids:  20202  20203 Delimiter: 3
+Animation Id:  35530 Frame Ids:  20208  20209 Delimiter: 3
+Animation Id:  35531 Frame Ids:  20214  20215 Delimiter: 3
+Animation Id:  35532 Frame Ids:  20220  20221 Delimiter: 3
+Animation Id:  35533 Frame Ids:  20226  20227 Delimiter: 3
+Animation Id:  35534 Frame Ids:  20232  20233 Delimiter: 3
+Animation Id:  35535 Frame Ids:  20238  20239 Delimiter: 3
+Animation Id:  35536 Frame Ids:  20244  20245 Delimiter: 3
+Animation Id:  35537 Frame Ids:  20250  20251 Delimiter: 3
+Animation Id:  35538 Frame Ids:  20256  20257 Delimiter: 3
+Animation Id:  35539 Frame Ids:  20262  20263 Delimiter: 3
+Animation Id:  35540 Frame Ids:  20268  20269 Delimiter: 3
+Animation Id:  35541 Frame Ids:  20274  20275 Delimiter: 3
+Animation Id:  35542 Frame Ids:  20280  20281 Delimiter: 3
+Animation Id:  35543 Frame Ids:  20286  20287 Delimiter: 3
+Animation Id:  35544 Frame Ids:  20292  20293 Delimiter: 3
+Animation Id:  35545 Frame Ids:  20298  20299 Delimiter: 3
+Animation Id:  35546 Frame Ids:  20304  20305 Delimiter: 3
+Animation Id:  35547 Frame Ids:  20310  20311 Delimiter: 3
+Animation Id:  35548 Frame Ids:  20316  20317 Delimiter: 3
+Animation Id:  35549 Frame Ids:  20322  20323 Delimiter: 3
+Animation Id:  35550 Frame Ids:  20328  20329 Delimiter: 3
+Animation Id:  35551 Frame Ids:  20334  20335 Delimiter: 3
+Animation Id:  35552 Frame Ids:  20340  20341 Delimiter: 3
+Animation Id:  35553 Frame Ids:  20346  20346 Delimiter: 3
+Animation Id:  35554 Frame Ids:  20352  20353 Delimiter: 3
+Animation Id:  35555 Frame Ids:  20358  20359 Delimiter: 3
+Animation Id:  35556 Frame Ids:  20364  20365 Delimiter: 3
+Animation Id:  35557 Frame Ids:  20370  20371 Delimiter: 3
+Animation Id:  35558 Frame Ids:  20376  20377 Delimiter: 3
+Animation Id:  35559 Frame Ids:  20382  20383 Delimiter: 3
+Animation Id:  35560 Frame Ids:  20388  20389 Delimiter: 3
+Animation Id:  35561 Frame Ids:  20394  20395 Delimiter: 3
+Animation Id:  35562 Frame Ids:  20400  20401 Delimiter: 3
+Animation Id:  35563 Frame Ids:  20406  20407 Delimiter: 3
+Animation Id:  35564 Frame Ids:  20413  20414  20415 Delimiter: 4
+Animation Id:  35565 Frame Ids:  20421  20422  20423 Delimiter: 4
+Animation Id:  35566 Frame Ids:  20429  20430  20431 Delimiter: 4
+Animation Id:  35567 Frame Ids:  20437  20438  20439 Delimiter: 4
+Animation Id:  35568 Frame Ids:  20444  20445 Delimiter: 4
+Animation Id:  35569 Frame Ids:  20450  20451 Delimiter: 4
+Animation Id:  35570 Frame Ids:  20456  20457 Delimiter: 4
+Animation Id:  35571 Frame Ids:  20462  20463 Delimiter: 4
+Animation Id:  35572 Frame Ids:  20468  20469 Delimiter: 4
+Animation Id:  35573 Frame Ids:  20474  20475 Delimiter: 4
+Animation Id:  35574 Frame Ids:  20480  20481 Delimiter: 4
+Animation Id:  35575 Frame Ids:  20486  20487 Delimiter: 4
+Animation Id:  35576 Frame Ids:  20492  20493 Delimiter: 4
+Animation Id:  35577 Frame Ids:  20498  20499 Delimiter: 4
+Animation Id:  35578 Frame Ids:  20504  20505 Delimiter: 4
+Animation Id:  35579 Frame Ids:  20510  20511 Delimiter: 4
+Animation Id:  35580 Frame Ids:  20516  20517 Delimiter: 4
+Animation Id:  35581 Frame Ids:  20522  20523 Delimiter: 4
+Animation Id:  35582 Frame Ids:  20528  20529 Delimiter: 4
+Animation Id:  35583 Frame Ids:  20534  20535 Delimiter: 4
+Animation Id:  35584 Frame Ids:  20540  20541 Delimiter: 4
+Animation Id:  35585 Frame Ids:  20546  20547 Delimiter: 4
+Animation Id:  35586 Frame Ids:  20552  20553 Delimiter: 4
+Animation Id:  35587 Frame Ids:  20558  20559 Delimiter: 4
+Animation Id:  35588 Frame Ids:  20562  20563  20564 Delimiter: 4
+Animation Id:  35589 Frame Ids:  20567  20568  20569 Delimiter: 4
+Animation Id:  35590 Frame Ids:  20572  20573  20574 Delimiter: 4
+Animation Id:  35591 Frame Ids:  20577  20578  20579 Delimiter: 4
+Animation Id:  35592 Frame Ids:  20582  20583  20584 Delimiter: 4
+Animation Id:  35593 Frame Ids:  20587  20588  20589 Delimiter: 4
+Animation Id:  35594 Frame Ids:  20592  20593  20594 Delimiter: 4
+Animation Id:  35595 Frame Ids:  20597  20598  20599 Delimiter: 4
+Animation Id:  35596 Frame Ids:  20604  20605  20606 Delimiter: 4
+Animation Id:  35597 Frame Ids:  20611  20612  20613 Delimiter: 4
+Animation Id:  35598 Frame Ids:  20618  20619  20620 Delimiter: 4
+Animation Id:  35599 Frame Ids:  20625  20626  20627 Delimiter: 4
+Animation Id:  35600 Frame Ids:  20632  20633 Delimiter: 4
+Animation Id:  35601 Frame Ids:  20638  20639 Delimiter: 4
+Animation Id:  35602 Frame Ids:  20644  20645 Delimiter: 4
+Animation Id:  35603 Frame Ids:  20650  20651 Delimiter: 4
+Animation Id:  35604 Frame Ids:  20657  20658 Delimiter: 4
+Animation Id:  35605 Frame Ids:  20664  20665 Delimiter: 4
+Animation Id:  35606 Frame Ids:  20671  20672 Delimiter: 4
+Animation Id:  35607 Frame Ids:  20678  20679 Delimiter: 4
+Animation Id:  35608 Frame Ids:  20684  20685 Delimiter: 4
+Animation Id:  35609 Frame Ids:  20690  20691 Delimiter: 4
+Animation Id:  35610 Frame Ids:  20696  20697 Delimiter: 4
+Animation Id:  35611 Frame Ids:  20702  20703 Delimiter: 4
+Animation Id:  35612 Frame Ids:  20708  20709 Delimiter: 4
+Animation Id:  35613 Frame Ids:  20714  20715 Delimiter: 4
+Animation Id:  35614 Frame Ids:  20720  20721 Delimiter: 4
+Animation Id:  35615 Frame Ids:  20726  20727 Delimiter: 4
+Animation Id:  35616 Frame Ids:  20732  20733 Delimiter: 4
+Animation Id:  35617 Frame Ids:  20738  20739 Delimiter: 4
+Animation Id:  35618 Frame Ids:  20744  20745 Delimiter: 4
+Animation Id:  35619 Frame Ids:  20750  20751 Delimiter: 4
+Animation Id:  35620 Frame Ids:  20756  20757 Delimiter: 4
+Animation Id:  35621 Frame Ids:  20762  20763 Delimiter: 4
+Animation Id:  35622 Frame Ids:  20768  20769 Delimiter: 4
+Animation Id:  35623 Frame Ids:  20774  20775 Delimiter: 4
+Animation Id:  35624 Frame Ids:  20780  20781 Delimiter: 4
+Animation Id:  35625 Frame Ids:  20786  20787 Delimiter: 4
+Animation Id:  35626 Frame Ids:  20792  20793 Delimiter: 4
+Animation Id:  35627 Frame Ids:  20798  20799 Delimiter: 4
+Animation Id:  35628 Frame Ids:  20804  20805  20806 Delimiter: 4
+Animation Id:  35629 Frame Ids:  20811  20812  20813 Delimiter: 4
+Animation Id:  35630 Frame Ids:  20818  20819  20820 Delimiter: 4
+Animation Id:  35631 Frame Ids:  20825  20826  20827 Delimiter: 4
+Animation Id:  35632 Frame Ids:  20832  20833 Delimiter: 4
+Animation Id:  35633 Frame Ids:  20838  20839 Delimiter: 4
+Animation Id:  35634 Frame Ids:  20844  20845 Delimiter: 4
+Animation Id:  35635 Frame Ids:  20850  20851 Delimiter: 4
+Animation Id:  35636 Frame Ids:  20856  20857  20858  20859  20860 Delimiter: 4
+Animation Id:  35637 Frame Ids:  20865  20866  20867  20868  20869 Delimiter: 4
+Animation Id:  35638 Frame Ids:  20874  20875  20876  20877  20878 Delimiter: 4
+Animation Id:  35639 Frame Ids:  20883  20884  20885  20886  20887 Delimiter: 4
+Animation Id:  35640 Frame Ids:  20892  20893 Delimiter: 4
+Animation Id:  35641 Frame Ids:  20898  20899 Delimiter: 4
+Animation Id:  35642 Frame Ids:  20904  20905 Delimiter: 4
+Animation Id:  35643 Frame Ids:  20910  20911 Delimiter: 4
+Animation Id:  35644 Frame Ids:  20916  20917 Delimiter: 4
+Animation Id:  35645 Frame Ids:  20922  20923 Delimiter: 4
+Animation Id:  35646 Frame Ids:  20928  20929 Delimiter: 4
+Animation Id:  35647 Frame Ids:  20934  20935 Delimiter: 4
+Animation Id:  35648 Frame Ids:  20940  20941 Delimiter: 4
+Animation Id:  35649 Frame Ids:  20946  20947 Delimiter: 4
+Animation Id:  35650 Frame Ids:  20952  20953 Delimiter: 4
+Animation Id:  35651 Frame Ids:  20958  20959 Delimiter: 4
+Animation Id:  35652 Frame Ids:  20964  20965 Delimiter: 4
+Animation Id:  35653 Frame Ids:  20970  20971 Delimiter: 4
+Animation Id:  35654 Frame Ids:  20976  20977 Delimiter: 4
+Animation Id:  35655 Frame Ids:  20982  20983 Delimiter: 4
+Animation Id:  35656 Frame Ids:  20988  20989 Delimiter: 4
+Animation Id:  35657 Frame Ids:  20994  20995 Delimiter: 4
+Animation Id:  35658 Frame Ids:  21000  21001 Delimiter: 4
+Animation Id:  35659 Frame Ids:  21006  21007 Delimiter: 4
+Animation Id:  35660 Frame Ids:  21012  21013 Delimiter: 4
+Animation Id:  35661 Frame Ids:  21018  21019 Delimiter: 4
+Animation Id:  35662 Frame Ids:  21024  21025 Delimiter: 4
+Animation Id:  35663 Frame Ids:  21030  21031 Delimiter: 4
+Animation Id:  35664 Frame Ids:  21036  21037 Delimiter: 4
+Animation Id:  35665 Frame Ids:  21042  21043 Delimiter: 4
+Animation Id:  35666 Frame Ids:  21048  21049 Delimiter: 4
+Animation Id:  35667 Frame Ids:  21054  21055 Delimiter: 4
+Animation Id:  35668 Frame Ids:  21061  21062 Delimiter: 4
+Animation Id:  35669 Frame Ids:  21068  21069 Delimiter: 4
+Animation Id:  35670 Frame Ids:  21075  21076 Delimiter: 4
+Animation Id:  35671 Frame Ids:  21082  21083 Delimiter: 4
+Animation Id:  35672 Frame Ids:  21089  21090 Delimiter: 4
+Animation Id:  35673 Frame Ids:  21096  21097 Delimiter: 4
+Animation Id:  35674 Frame Ids:  21103  21104 Delimiter: 4
+Animation Id:  35675 Frame Ids:  21110  21111 Delimiter: 4
+Animation Id:  35676 Frame Ids:  21115  21116  21117  21118 Delimiter: 4
+Animation Id:  35677 Frame Ids:  21122  21123  21124  21125 Delimiter: 4
+Animation Id:  35678 Frame Ids:  21129  21130  21131  21132 Delimiter: 4
+Animation Id:  35679 Frame Ids:  21136  21137  21138  21139 Delimiter: 4
+Animation Id:  35680 Frame Ids:  21144  21145  21146 Delimiter: 4
+Animation Id:  35681 Frame Ids:  21151  21152  21153 Delimiter: 4
+Animation Id:  35682 Frame Ids:  21158  21159  21160 Delimiter: 4
+Animation Id:  35683 Frame Ids:  21165  21166  21167 Delimiter: 4
+Animation Id:  35684 Frame Ids:  21172  21173  21174 Delimiter: 4
+Animation Id:  35685 Frame Ids:  21179  21180  21181 Delimiter: 4
+Animation Id:  35686 Frame Ids:  21186  21187  21188 Delimiter: 4
+Animation Id:  35687 Frame Ids:  21193  21194  21195 Delimiter: 4
+Animation Id:  35688 Frame Ids:  21200  21201  21202 Delimiter: 4
+Animation Id:  35689 Frame Ids:  21207  21208  21209 Delimiter: 4
+Animation Id:  35690 Frame Ids:  21214  21215  21216 Delimiter: 4
+Animation Id:  35691 Frame Ids:  21221  21222  21223 Delimiter: 4
+Animation Id:  35692 Frame Ids:  21229  21230 Delimiter: 4
+Animation Id:  35693 Frame Ids:  21236  21237 Delimiter: 4
+Animation Id:  35694 Frame Ids:  21243  21244 Delimiter: 4
+Animation Id:  35695 Frame Ids:  21250  21251 Delimiter: 4
+Animation Id:  35696 Frame Ids:  21257  21258 Delimiter: 4
+Animation Id:  35697 Frame Ids:  21264  21265 Delimiter: 4
+Animation Id:  35698 Frame Ids:  21271  21272 Delimiter: 4
+Animation Id:  35699 Frame Ids:  21278  21279 Delimiter: 4
+Animation Id:  35700 Frame Ids:  21284  21285 Delimiter: 4
+Animation Id:  35701 Frame Ids:  21290  21291 Delimiter: 4
+Animation Id:  35702 Frame Ids:  21296  21297 Delimiter: 4
+Animation Id:  35703 Frame Ids:  21302  21303 Delimiter: 4
+Animation Id:  35704 Frame Ids:  21314  21315 Delimiter: 4
+Animation Id:  35705 Frame Ids:  21320  21321 Delimiter: 4
+Animation Id:  35706 Frame Ids:  21326  21327 Delimiter: 4
+Animation Id:  35707 Frame Ids:  21332  21333 Delimiter: 4
+Animation Id:  35708 Frame Ids:  21338  21339 Delimiter: 4
+Animation Id:  35709 Frame Ids:  21344  21345 Delimiter: 4
+Animation Id:  35710 Frame Ids:  21350  21351 Delimiter: 4
+Animation Id:  35711 Frame Ids:  21356  21357 Delimiter: 4
+Animation Id:  35712 Frame Ids:  21362  21363  21364 Delimiter: 4
+Animation Id:  35713 Frame Ids:  21369  21370  21371 Delimiter: 4
+Animation Id:  35714 Frame Ids:  21376  21377  21378 Delimiter: 4
+Animation Id:  35715 Frame Ids:  21383  21384  21385 Delimiter: 4
+Animation Id:  35716 Frame Ids:  21390  21391 Delimiter: 4
+Animation Id:  35717 Frame Ids:  21396  21397 Delimiter: 4
+Animation Id:  35718 Frame Ids:  21402  21403 Delimiter: 4
+Animation Id:  35719 Frame Ids:  21408  21409 Delimiter: 4
+Animation Id:  35720 Frame Ids:  21414  21415 Delimiter: 4
+Animation Id:  35721 Frame Ids:  21420  21421 Delimiter: 4
+Animation Id:  35722 Frame Ids:  21426  21427 Delimiter: 4
+Animation Id:  35723 Frame Ids:  21432  21433 Delimiter: 4
+Animation Id:  35724 Frame Ids:  21439  21440 Delimiter: 4
+Animation Id:  35725 Frame Ids:  21446  21447 Delimiter: 4
+Animation Id:  35726 Frame Ids:  21453  21454 Delimiter: 4
+Animation Id:  35727 Frame Ids:  21460  21461 Delimiter: 4
+Animation Id:  35728 Frame Ids:  21466  21467  21468 Delimiter: 4
+Animation Id:  35729 Frame Ids:  21473  21474  21475 Delimiter: 4
+Animation Id:  35730 Frame Ids:  21480  21481  21482 Delimiter: 4
+Animation Id:  35731 Frame Ids:  21487  21488  21489 Delimiter: 4
+Animation Id:  35732 Frame Ids:  21495  21496 Delimiter: 4
+Animation Id:  35733 Frame Ids:  21502  21503 Delimiter: 4
+Animation Id:  35734 Frame Ids:  21509  21510 Delimiter: 4
+Animation Id:  35735 Frame Ids:  21516  21517 Delimiter: 4
+Animation Id:  35736 Frame Ids:  21634  21635 Delimiter: 4
+Animation Id:  35737 Frame Ids:  21640  21641 Delimiter: 4
+Animation Id:  35738 Frame Ids:  21646  21647 Delimiter: 4
+Animation Id:  35739 Frame Ids:  21652  21653 Delimiter: 4
+Animation Id:  50000 Frame Ids:  40005  40006 Delimiter: 4
+Animation Id:  50001 Frame Ids:  40012  40013 Delimiter: 4
+Animation Id:  50002 Frame Ids:  40019  40020 Delimiter: 4
+Animation Id:  50003 Frame Ids:  40026  40027 Delimiter: 4
+Animation Id:  50004 Frame Ids:  40035  40036 Delimiter: 4
+Animation Id:  50005 Frame Ids:  40042  40043 Delimiter: 4
+Animation Id:  50006 Frame Ids:  40049  40050 Delimiter: 4
+Animation Id:  50007 Frame Ids:  40056  40057 Delimiter: 4
+Animation Id:  50008 Frame Ids:  40065  40066 Delimiter: 4
+Animation Id:  50009 Frame Ids:  40072  40073 Delimiter: 4
+Animation Id:  50010 Frame Ids:  40079  40080 Delimiter: 4
+Animation Id:  50011 Frame Ids:  40086  40087 Delimiter: 4
+Animation Id:  50012 Frame Ids:  40093  40094 Delimiter: 4
+Animation Id:  50013 Frame Ids:  40100  40101 Delimiter: 4
+Animation Id:  50014 Frame Ids:  40107  40108 Delimiter: 4
+Animation Id:  50015 Frame Ids:  40114  40115 Delimiter: 4
+Animation Id:  50016 Frame Ids:  40121  40122 Delimiter: 4
+Animation Id:  50017 Frame Ids:  40128  40129 Delimiter: 4
+Animation Id:  50018 Frame Ids:  40135  40136 Delimiter: 4
+Animation Id:  50019 Frame Ids:  40142  40143 Delimiter: 4
+Animation Id:  50020 Frame Ids:  40149  40150 Delimiter: 4
+Animation Id:  50021 Frame Ids:  40156  40157 Delimiter: 4
+Animation Id:  50022 Frame Ids:  40163  40164 Delimiter: 4
+Animation Id:  50023 Frame Ids:  40170  40171 Delimiter: 4
+Animation Id:  50024 Frame Ids:  40177  40178 Delimiter: 4
+Animation Id:  50025 Frame Ids:  40184  40185 Delimiter: 4
+Animation Id:  50026 Frame Ids:  40191  40192 Delimiter: 4
+Animation Id:  50027 Frame Ids:  40198  40199 Delimiter: 4
+Animation Id:  50028 Frame Ids:  40205  40206 Delimiter: 4
+Animation Id:  50029 Frame Ids:  40212  40213 Delimiter: 4
+Animation Id:  50030 Frame Ids:  40219  40220 Delimiter: 4
+Animation Id:  50031 Frame Ids:  40226  40227 Delimiter: 4
+Animation Id:  50032 Frame Ids:  40233  40234 Delimiter: 4
+Animation Id:  50033 Frame Ids:  40240  40241 Delimiter: 4
+Animation Id:  50034 Frame Ids:  40247  40248 Delimiter: 4
+Animation Id:  50035 Frame Ids:  40254  40255 Delimiter: 4
+Animation Id:  50036 Frame Ids:  40261  40262 Delimiter: 4
+Animation Id:  50037 Frame Ids:  40268  40269 Delimiter: 4
+Animation Id:  50038 Frame Ids:  40275  40276 Delimiter: 4
+Animation Id:  50039 Frame Ids:  40282  40283 Delimiter: 4
+Animation Id:  50040 Frame Ids:  40289  40290 Delimiter: 4
+Animation Id:  50041 Frame Ids:  40296  40297 Delimiter: 4
+Animation Id:  50042 Frame Ids:  40303  40304 Delimiter: 4
+Animation Id:  50043 Frame Ids:  40310  40311 Delimiter: 4
+Animation Id:  50044 Frame Ids:  40317  40318 Delimiter: 4
+Animation Id:  50045 Frame Ids:  40324  40325 Delimiter: 4
+Animation Id:  50046 Frame Ids:  40331  40332 Delimiter: 4
+Animation Id:  50047 Frame Ids:  40338  40339 Delimiter: 4
+Animation Id:  50048 Frame Ids:  40345  40346 Delimiter: 4
+Animation Id:  50049 Frame Ids:  40352  40353 Delimiter: 4
+Animation Id:  50050 Frame Ids:  40359  40360 Delimiter: 4
+Animation Id:  50051 Frame Ids:  40366  40367 Delimiter: 4
+Animation Id:  50052 Frame Ids:  40375  40376 Delimiter: 4
+Animation Id:  50053 Frame Ids:  40382  40383 Delimiter: 4
+Animation Id:  50054 Frame Ids:  40389  40390 Delimiter: 4
+Animation Id:  50055 Frame Ids:  40396  40397 Delimiter: 4
+Animation Id:  50056 Frame Ids:  40405  40406 Delimiter: 4
+Animation Id:  50057 Frame Ids:  40412  40413 Delimiter: 4
+Animation Id:  50058 Frame Ids:  40419  40420 Delimiter: 4
+Animation Id:  50059 Frame Ids:  40426  40427 Delimiter: 4
+Animation Id:  50060 Frame Ids:  40433  40434 Delimiter: 4
+Animation Id:  50061 Frame Ids:  40440  40441 Delimiter: 4
+Animation Id:  50062 Frame Ids:  40447  40448 Delimiter: 4
+Animation Id:  50063 Frame Ids:  40454  40455 Delimiter: 4
+Animation Id:  50064 Frame Ids:  40461  40462 Delimiter: 4
+Animation Id:  50065 Frame Ids:  40468  40469 Delimiter: 4
+Animation Id:  50066 Frame Ids:  40475  40476 Delimiter: 4
+Animation Id:  50067 Frame Ids:  40482  40483 Delimiter: 4
+Animation Id:  50068 Frame Ids:  40489  40490 Delimiter: 4
+Animation Id:  50069 Frame Ids:  40496  40497 Delimiter: 4
+Animation Id:  50070 Frame Ids:  40503  40504 Delimiter: 4
+Animation Id:  50071 Frame Ids:  40510  40511 Delimiter: 4
+Animation Id:  50072 Frame Ids:  40517  40518 Delimiter: 4
+Animation Id:  50073 Frame Ids:  40524  40525 Delimiter: 4
+Animation Id:  50074 Frame Ids:  40531  40532 Delimiter: 4
+Animation Id:  50075 Frame Ids:  40538  40539 Delimiter: 4
+Animation Id:  50076 Frame Ids:  40545  40546 Delimiter: 4
+Animation Id:  50077 Frame Ids:  40552  40553 Delimiter: 4
+Animation Id:  50078 Frame Ids:  40559  40560 Delimiter: 4
+Animation Id:  50079 Frame Ids:  40566  40567 Delimiter: 4
+Animation Id:  50080 Frame Ids:  40573  40574 Delimiter: 4
+Animation Id:  50081 Frame Ids:  40580  40581 Delimiter: 4
+Animation Id:  50082 Frame Ids:  40587  40588 Delimiter: 4
+Animation Id:  50083 Frame Ids:  40594  40595 Delimiter: 4
+Animation Id:  50084 Frame Ids:  40601  40602 Delimiter: 4
+Animation Id:  50085 Frame Ids:  40608  40609 Delimiter: 4
+Animation Id:  50086 Frame Ids:  40615  40616 Delimiter: 4
+Animation Id:  50087 Frame Ids:  40622  40623 Delimiter: 4
+Animation Id:  50088 Frame Ids:  40629  40630 Delimiter: 4
+Animation Id:  50089 Frame Ids:  40636  40637 Delimiter: 4
+Animation Id:  50090 Frame Ids:  40643  40644 Delimiter: 4
+Animation Id:  50091 Frame Ids:  40650  40651 Delimiter: 4
+Animation Id:  50092 Frame Ids:  40657  40658 Delimiter: 4
+Animation Id:  50093 Frame Ids:  40664  40665 Delimiter: 4
+Animation Id:  50094 Frame Ids:  40671  40672 Delimiter: 4
+Animation Id:  50095 Frame Ids:  40678  40679 Delimiter: 4
+Animation Id:  50096 Frame Ids:  40685  40686 Delimiter: 4
+Animation Id:  50097 Frame Ids:  40692  40693 Delimiter: 4
+Animation Id:  50098 Frame Ids:  40699  40700 Delimiter: 4
+Animation Id:  50099 Frame Ids:  40706  40707 Delimiter: 4
+Animation Id:  50100 Frame Ids:  40713  40714 Delimiter: 4
+Animation Id:  50101 Frame Ids:  40720  40721 Delimiter: 4
+Animation Id:  50102 Frame Ids:  40727  40728 Delimiter: 4
+Animation Id:  50103 Frame Ids:  40734  40735 Delimiter: 4
+Animation Id:  50104 Frame Ids:  40741  40742 Delimiter: 4
+Animation Id:  50105 Frame Ids:  40748  40749 Delimiter: 4
+Animation Id:  50106 Frame Ids:  40755  40756 Delimiter: 4
+Animation Id:  50107 Frame Ids:  40762  40763 Delimiter: 4
+Animation Id:  50108 Frame Ids:  40769  40770 Delimiter: 4
+Animation Id:  50109 Frame Ids:  40776  40777 Delimiter: 4
+Animation Id:  50110 Frame Ids:  40783  40784 Delimiter: 4
+Animation Id:  50111 Frame Ids:  40790  40791 Delimiter: 4
+Animation Id:  50112 Frame Ids:  40797  40798 Delimiter: 4
+Animation Id:  50113 Frame Ids:  40804  40805 Delimiter: 4
+Animation Id:  50114 Frame Ids:  40811  40812 Delimiter: 4
+Animation Id:  50115 Frame Ids:  40818  40819 Delimiter: 4
+Animation Id:  50116 Frame Ids:  40825  40826 Delimiter: 4
+Animation Id:  50117 Frame Ids:  40832  40833 Delimiter: 4
+Animation Id:  50118 Frame Ids:  40839  40840 Delimiter: 4
+Animation Id:  50119 Frame Ids:  40846  40847 Delimiter: 4
+Animation Id:  50120 Frame Ids:  40853  40854 Delimiter: 4
+Animation Id:  50121 Frame Ids:  40860  40861 Delimiter: 4
+Animation Id:  50122 Frame Ids:  40867  40868 Delimiter: 4
+Animation Id:  50123 Frame Ids:  40874  40875 Delimiter: 4
+Animation Id:  50124 Frame Ids:  40881  40882 Delimiter: 4
+Animation Id:  50125 Frame Ids:  40888  40889 Delimiter: 4
+Animation Id:  50126 Frame Ids:  40895  40896 Delimiter: 4
+Animation Id:  50127 Frame Ids:  40902  40903 Delimiter: 4
+Animation Id:  50128 Frame Ids:  40909  40910 Delimiter: 4
+Animation Id:  50129 Frame Ids:  40916  40917 Delimiter: 4
+Animation Id:  50130 Frame Ids:  40923  40924 Delimiter: 4
+Animation Id:  50131 Frame Ids:  40930  40931 Delimiter: 4
+Animation Id:  50132 Frame Ids:  40937  40938 Delimiter: 4
+Animation Id:  50133 Frame Ids:  40944  40945 Delimiter: 4
+Animation Id:  50134 Frame Ids:  40951  40952 Delimiter: 4
+Animation Id:  50135 Frame Ids:  40958  40959 Delimiter: 4
+Animation Id:  50136 Frame Ids:  40965  40966 Delimiter: 4
+Animation Id:  50137 Frame Ids:  40972  40973 Delimiter: 4
+Animation Id:  50138 Frame Ids:  40979  40980 Delimiter: 4
+Animation Id:  50139 Frame Ids:  40986  40987 Delimiter: 4
+Animation Id:  50140 Frame Ids:  40993  40994 Delimiter: 4
+Animation Id:  50141 Frame Ids:  41000  41001 Delimiter: 4
+Animation Id:  50142 Frame Ids:  41007  41008 Delimiter: 4
+Animation Id:  50143 Frame Ids:  41014  41015 Delimiter: 4
+Animation Id:  50144 Frame Ids:  41021  41022 Delimiter: 4
+Animation Id:  50145 Frame Ids:  41028  41029 Delimiter: 4
+Animation Id:  50146 Frame Ids:  41035  41036 Delimiter: 4
+Animation Id:  50147 Frame Ids:  41042  41043 Delimiter: 4
+Animation Id:  50148 Frame Ids:  41049  41050 Delimiter: 4
+Animation Id:  50149 Frame Ids:  41056  41057 Delimiter: 4
+Animation Id:  50150 Frame Ids:  41063  41064 Delimiter: 4
+Animation Id:  50151 Frame Ids:  41070  41071 Delimiter: 4
+Animation Id:  50152 Frame Ids:  41077  41078 Delimiter: 4
+Animation Id:  50153 Frame Ids:  41084  41085 Delimiter: 4
+Animation Id:  50154 Frame Ids:  41091  41092 Delimiter: 4
+Animation Id:  50155 Frame Ids:  41098  41099 Delimiter: 4
+Animation Id:  50156 Frame Ids:  41105  41106 Delimiter: 4
+Animation Id:  50157 Frame Ids:  41112  41113 Delimiter: 4
+Animation Id:  50158 Frame Ids:  41119  41120 Delimiter: 4
+Animation Id:  50159 Frame Ids:  41126  41127 Delimiter: 4
+Animation Id:  50176 Frame Ids:  41213  41214 Delimiter: 4
+Animation Id:  50177 Frame Ids:  41220  41221 Delimiter: 4
+Animation Id:  50178 Frame Ids:  41227  41228 Delimiter: 4
+Animation Id:  50179 Frame Ids:  41234  41235 Delimiter: 4
+Animation Id:  50180 Frame Ids:  41241  41242 Delimiter: 4
+Animation Id:  50181 Frame Ids:  41248  41249 Delimiter: 4
+Animation Id:  50182 Frame Ids:  41255  41256 Delimiter: 4
+Animation Id:  50183 Frame Ids:  41262  41263 Delimiter: 4
+Animation Id:  50184 Frame Ids:  41269  41270 Delimiter: 4
+Animation Id:  50185 Frame Ids:  41276  41277 Delimiter: 4
+Animation Id:  50186 Frame Ids:  41283  41284 Delimiter: 4
+Animation Id:  50187 Frame Ids:  41290  41291 Delimiter: 4
+Animation Id:  50192 Frame Ids:  41317  41318 Delimiter: 4
+Animation Id:  50193 Frame Ids:  41324  41325 Delimiter: 4
+Animation Id:  50194 Frame Ids:  41331  41332 Delimiter: 4
+Animation Id:  50195 Frame Ids:  41338  41339 Delimiter: 4
+Animation Id:  50196 Frame Ids:  41345  41346 Delimiter: 4
+Animation Id:  50197 Frame Ids:  41352  41353 Delimiter: 4
+Animation Id:  50198 Frame Ids:  41359  41360 Delimiter: 4
+Animation Id:  50199 Frame Ids:  41366  41367 Delimiter: 4
+Animation Id:  50200 Frame Ids:  41373  41374 Delimiter: 4
+Animation Id:  50201 Frame Ids:  41380  41381 Delimiter: 4
+Animation Id:  50202 Frame Ids:  41387  41388 Delimiter: 4
+Animation Id:  50203 Frame Ids:  41394  41395 Delimiter: 4
+Animation Id:  50204 Frame Ids:  41401  41402 Delimiter: 4
+Animation Id:  50205 Frame Ids:  41408  41409 Delimiter: 4
+Animation Id:  50206 Frame Ids:  41415  41416 Delimiter: 4
+Animation Id:  50207 Frame Ids:  41422  41423 Delimiter: 4
+Animation Id:  50208 Frame Ids:  41429  41430 Delimiter: 4
+Animation Id:  50209 Frame Ids:  41436  41437 Delimiter: 4
+Animation Id:  50210 Frame Ids:  41443  41444 Delimiter: 4
+Animation Id:  50211 Frame Ids:  41450  41451 Delimiter: 4
+Animation Id:  50216 Frame Ids:  41477  41478 Delimiter: 4
+Animation Id:  50217 Frame Ids:  41484  41485 Delimiter: 4
+Animation Id:  50218 Frame Ids:  41491  41492 Delimiter: 4
+Animation Id:  50219 Frame Ids:  41498  41499 Delimiter: 4
+Animation Id:  50220 Frame Ids:  41505  41506 Delimiter: 4
+Animation Id:  50221 Frame Ids:  41512  41513 Delimiter: 4
+Animation Id:  50222 Frame Ids:  41519  41520 Delimiter: 4
+Animation Id:  50223 Frame Ids:  41526  41527 Delimiter: 4
+Animation Id:  55000 Frame Ids:  40000  40001  40002  40003  40004 Delimiter: 4
+Animation Id:  55001 Frame Ids:  40007  40008  40009  40010  40011 Delimiter: 4
+Animation Id:  55002 Frame Ids:  40014  40015  40016  40017  40018 Delimiter: 4
+Animation Id:  55003 Frame Ids:  40021  40022  40023  40024  40025 Delimiter: 4
+Animation Id:  55004 Frame Ids:  40030  40031  40032  40033  40034 Delimiter: 4
+Animation Id:  55005 Frame Ids:  40037  40038  40039  40040  40041 Delimiter: 4
+Animation Id:  55006 Frame Ids:  40044  40045  40046  40047  40048 Delimiter: 4
+Animation Id:  55007 Frame Ids:  40051  40052  40053  40054  40055 Delimiter: 4
+Animation Id:  55008 Frame Ids:  40060  40061  40062  40063  40064 Delimiter: 4
+Animation Id:  55009 Frame Ids:  40067  40068  40069  40070  40071 Delimiter: 4
+Animation Id:  55010 Frame Ids:  40074  40075  40076  40077  40078 Delimiter: 4
+Animation Id:  55011 Frame Ids:  40081  40082  40083  40084  40085 Delimiter: 4
+Animation Id:  55012 Frame Ids:  40088  40089  40090  40091  40092 Delimiter: 4
+Animation Id:  55013 Frame Ids:  40095  40096  40097  40098  40099 Delimiter: 4
+Animation Id:  55014 Frame Ids:  40102  40103  40104  40105  40106 Delimiter: 4
+Animation Id:  55015 Frame Ids:  40109  40110  40111  40112  40113 Delimiter: 4
+Animation Id:  55016 Frame Ids:  40116  40117  40118  40119  40120 Delimiter: 4
+Animation Id:  55017 Frame Ids:  40123  40124  40125  40126  40127 Delimiter: 4
+Animation Id:  55018 Frame Ids:  40130  40131  40132  40133  40134 Delimiter: 4
+Animation Id:  55019 Frame Ids:  40137  40138  40139  40140  40141 Delimiter: 4
+Animation Id:  55020 Frame Ids:  40144  40145  40146  40147  40148 Delimiter: 4
+Animation Id:  55021 Frame Ids:  40151  40152  40153  40154  40155 Delimiter: 4
+Animation Id:  55022 Frame Ids:  40158  40159  40160  40161  40162 Delimiter: 4
+Animation Id:  55023 Frame Ids:  40165  40166  40167  40168  40169 Delimiter: 4
+Animation Id:  55024 Frame Ids:  40172  40173  40174  40175  40176 Delimiter: 4
+Animation Id:  55025 Frame Ids:  40179  40180  40181  40182  40183 Delimiter: 4
+Animation Id:  55026 Frame Ids:  40186  40187  40188  40189  40190 Delimiter: 4
+Animation Id:  55027 Frame Ids:  40193  40194  40195  40196  40197 Delimiter: 4
+Animation Id:  55028 Frame Ids:  40200  40201  40202  40203  40204 Delimiter: 4
+Animation Id:  55029 Frame Ids:  40207  40208  40209  40210  40211 Delimiter: 4
+Animation Id:  55030 Frame Ids:  40214  40215  40216  40217  40218 Delimiter: 4
+Animation Id:  55031 Frame Ids:  40221  40222  40223  40224  40225 Delimiter: 4
+Animation Id:  55032 Frame Ids:  40228  40229  40230  40231  40232 Delimiter: 4
+Animation Id:  55033 Frame Ids:  40235  40236  40237  40238  40239 Delimiter: 4
+Animation Id:  55034 Frame Ids:  40242  40243  40244  40245  40246 Delimiter: 4
+Animation Id:  55035 Frame Ids:  40249  40250  40251  40252  40253 Delimiter: 4
+Animation Id:  55036 Frame Ids:  40256  40257  40258  40259  40260 Delimiter: 4
+Animation Id:  55037 Frame Ids:  40263  40264  40265  40266  40267 Delimiter: 4
+Animation Id:  55038 Frame Ids:  40270  40271  40272  40273  40274 Delimiter: 4
+Animation Id:  55039 Frame Ids:  40277  40278  40279  40280  40281 Delimiter: 4
+Animation Id:  55040 Frame Ids:  40284  40285  40286  40287  40288 Delimiter: 4
+Animation Id:  55041 Frame Ids:  40291  40292  40293  40294  40295 Delimiter: 4
+Animation Id:  55042 Frame Ids:  40298  40299  40300  40301  40302 Delimiter: 4
+Animation Id:  55043 Frame Ids:  40305  40306  40307  40308  40309 Delimiter: 4
+Animation Id:  55044 Frame Ids:  40312  40313  40314  40315  40316 Delimiter: 4
+Animation Id:  55045 Frame Ids:  40319  40320  40321  40322  40323 Delimiter: 4
+Animation Id:  55046 Frame Ids:  40326  40327  40328  40329  40330 Delimiter: 4
+Animation Id:  55047 Frame Ids:  40333  40334  40335  40336  40337 Delimiter: 4
+Animation Id:  55048 Frame Ids:  40340  40341  40342  40343  40344 Delimiter: 4
+Animation Id:  55049 Frame Ids:  40347  40348  40349  40350  40351 Delimiter: 4
+Animation Id:  55050 Frame Ids:  40354  40355  40356  40357  40358 Delimiter: 4
+Animation Id:  55051 Frame Ids:  40361  40362  40363  40364  40365 Delimiter: 4
+Animation Id:  55052 Frame Ids:  40370  40371  40372  40373  40374 Delimiter: 4
+Animation Id:  55053 Frame Ids:  40377  40378  40379  40380  40381 Delimiter: 4
+Animation Id:  55054 Frame Ids:  40384  40385  40386  40387  40388 Delimiter: 4
+Animation Id:  55055 Frame Ids:  40391  40392  40393  40394  40395 Delimiter: 4
+Animation Id:  55056 Frame Ids:  40400  40401  40402  40403  40404 Delimiter: 4
+Animation Id:  55057 Frame Ids:  40407  40408  40409  40410  40411 Delimiter: 4
+Animation Id:  55058 Frame Ids:  40414  40415  40416  40417  40418 Delimiter: 4
+Animation Id:  55059 Frame Ids:  40421  40422  40423  40424  40425 Delimiter: 4
+Animation Id:  55060 Frame Ids:  40428  40429  40430  40431  40432 Delimiter: 4
+Animation Id:  55061 Frame Ids:  40435  40436  40437  40438  40439 Delimiter: 4
+Animation Id:  55062 Frame Ids:  40442  40443  40444  40445  40446 Delimiter: 4
+Animation Id:  55063 Frame Ids:  40449  40450  40451  40452  40453 Delimiter: 4
+Animation Id:  55064 Frame Ids:  40456  40457  40458  40459  40460 Delimiter: 4
+Animation Id:  55065 Frame Ids:  40463  40464  40465  40466  40467 Delimiter: 4
+Animation Id:  55066 Frame Ids:  40470  40471  40472  40473  40474 Delimiter: 4
+Animation Id:  55067 Frame Ids:  40477  40478  40479  40480  40481 Delimiter: 4
+Animation Id:  55068 Frame Ids:  40484  40485  40486  40487  40488 Delimiter: 4
+Animation Id:  55069 Frame Ids:  40491  40492  40493  40494  40495 Delimiter: 4
+Animation Id:  55070 Frame Ids:  40498  40499  40500  40501  40502 Delimiter: 4
+Animation Id:  55071 Frame Ids:  40505  40506  40507  40508  40509 Delimiter: 4
+Animation Id:  55072 Frame Ids:  40512  40513  40514  40515  40516 Delimiter: 4
+Animation Id:  55073 Frame Ids:  40519  40520  40521  40522  40523 Delimiter: 4
+Animation Id:  55074 Frame Ids:  40526  40527  40528  40529  40530 Delimiter: 4
+Animation Id:  55075 Frame Ids:  40533  40534  40535  40536  40537 Delimiter: 4
+Animation Id:  55076 Frame Ids:  40540  40541  40542  40543  40544 Delimiter: 4
+Animation Id:  55077 Frame Ids:  40547  40548  40549  40550  40551 Delimiter: 4
+Animation Id:  55078 Frame Ids:  40554  40555  40556  40557  40558 Delimiter: 4
+Animation Id:  55079 Frame Ids:  40561  40562  40563  40564  40565 Delimiter: 4
+Animation Id:  55080 Frame Ids:  40568  40569  40570  40571  40572 Delimiter: 4
+Animation Id:  55081 Frame Ids:  40575  40576  40577  40578  40579 Delimiter: 4
+Animation Id:  55082 Frame Ids:  40582  40583  40584  40585  40586 Delimiter: 4
+Animation Id:  55083 Frame Ids:  40589  40590  40591  40592  40593 Delimiter: 4
+Animation Id:  55084 Frame Ids:  40596  40597  40598  40599  40600 Delimiter: 4
+Animation Id:  55085 Frame Ids:  40603  40604  40605  40606  40607 Delimiter: 4
+Animation Id:  55086 Frame Ids:  40610  40611  40612  40613  40614 Delimiter: 4
+Animation Id:  55087 Frame Ids:  40617  40618  40619  40620  40621 Delimiter: 4
+Animation Id:  55088 Frame Ids:  40624  40625  40626  40627  40628 Delimiter: 4
+Animation Id:  55089 Frame Ids:  40631  40632  40633  40634  40635 Delimiter: 4
+Animation Id:  55090 Frame Ids:  40638  40639  40640  40641  40642 Delimiter: 4
+Animation Id:  55091 Frame Ids:  40645  40646  40647  40648  40649 Delimiter: 4
+Animation Id:  55092 Frame Ids:  40652  40653  40654  40655  40656 Delimiter: 4
+Animation Id:  55093 Frame Ids:  40659  40660  40661  40662  40663 Delimiter: 4
+Animation Id:  55094 Frame Ids:  40666  40667  40668  40669  40670 Delimiter: 4
+Animation Id:  55095 Frame Ids:  40673  40674  40675  40676  40677 Delimiter: 4
+Animation Id:  55096 Frame Ids:  40680  40681  40682  40683  40684 Delimiter: 4
+Animation Id:  55097 Frame Ids:  40687  40688  40689  40690  40691 Delimiter: 4
+Animation Id:  55098 Frame Ids:  40694  40695  40696  40697  40698 Delimiter: 4
+Animation Id:  55099 Frame Ids:  40701  40702  40703  40704  40705 Delimiter: 4
+Animation Id:  55100 Frame Ids:  40708  40709  40710  40711  40712 Delimiter: 4
+Animation Id:  55101 Frame Ids:  40715  40716  40717  40718  40719 Delimiter: 4
+Animation Id:  55102 Frame Ids:  40722  40723  40724  40725  40726 Delimiter: 4
+Animation Id:  55103 Frame Ids:  40729  40730  40731  40732  40733 Delimiter: 4
+Animation Id:  55104 Frame Ids:  40736  40737  40738  40739  40740 Delimiter: 4
+Animation Id:  55105 Frame Ids:  40743  40744  40745  40746  40747 Delimiter: 4
+Animation Id:  55106 Frame Ids:  40750  40751  40752  40753  40754 Delimiter: 4
+Animation Id:  55107 Frame Ids:  40757  40758  40759  40760  40761 Delimiter: 4
+Animation Id:  55108 Frame Ids:  40764  40765  40766  40767  40768 Delimiter: 4
+Animation Id:  55109 Frame Ids:  40771  40772  40773  40774  40775 Delimiter: 4
+Animation Id:  55110 Frame Ids:  40778  40779  40780  40781  40782 Delimiter: 4
+Animation Id:  55111 Frame Ids:  40785  40786  40787  40788  40789 Delimiter: 4
+Animation Id:  55112 Frame Ids:  40792  40793  40794  40795  40796 Delimiter: 4
+Animation Id:  55113 Frame Ids:  40799  40800  40801  40802  40803 Delimiter: 4
+Animation Id:  55114 Frame Ids:  40806  40807  40808  40809  40810 Delimiter: 4
+Animation Id:  55115 Frame Ids:  40813  40814  40815  40816  40817 Delimiter: 4
+Animation Id:  55116 Frame Ids:  40820  40821  40822  40823  40824 Delimiter: 4
+Animation Id:  55117 Frame Ids:  40827  40828  40829  40830  40831 Delimiter: 4
+Animation Id:  55118 Frame Ids:  40834  40835  40836  40837  40838 Delimiter: 4
+Animation Id:  55119 Frame Ids:  40841  40842  40843  40844  40845 Delimiter: 4
+Animation Id:  55120 Frame Ids:  40848  40849  40850  40851  40852 Delimiter: 4
+Animation Id:  55121 Frame Ids:  40855  40856  40857  40858  40859 Delimiter: 4
+Animation Id:  55122 Frame Ids:  40862  40863  40864  40865  40866 Delimiter: 4
+Animation Id:  55123 Frame Ids:  40869  40870  40871  40872  40873 Delimiter: 4
+Animation Id:  55124 Frame Ids:  40876  40877  40878  40879  40880 Delimiter: 4
+Animation Id:  55125 Frame Ids:  40883  40884  40885  40886  40887 Delimiter: 4
+Animation Id:  55126 Frame Ids:  40890  40891  40892  40893  40894 Delimiter: 4
+Animation Id:  55127 Frame Ids:  40897  40898  40899  40900  40901 Delimiter: 4
+Animation Id:  55128 Frame Ids:  40904  40905  40906  40907  40908 Delimiter: 4
+Animation Id:  55129 Frame Ids:  40911  40912  40913  40914  40915 Delimiter: 4
+Animation Id:  55130 Frame Ids:  40918  40919  40920  40921  40922 Delimiter: 4
+Animation Id:  55131 Frame Ids:  40925  40926  40927  40928  40929 Delimiter: 4
+Animation Id:  55132 Frame Ids:  40932  40933  40934  40935  40936 Delimiter: 4
+Animation Id:  55133 Frame Ids:  40939  40940  40941  40942  40943 Delimiter: 4
+Animation Id:  55134 Frame Ids:  40946  40947  40948  40949  40950 Delimiter: 4
+Animation Id:  55135 Frame Ids:  40953  40954  40955  40956  40957 Delimiter: 4
+Animation Id:  55136 Frame Ids:  40960  40961  40962  40963  40964 Delimiter: 4
+Animation Id:  55137 Frame Ids:  40967  40968  40969  40970  40971 Delimiter: 4
+Animation Id:  55138 Frame Ids:  40974  40975  40976  40977  40978 Delimiter: 4
+Animation Id:  55139 Frame Ids:  40981  40982  40983  40984  40985 Delimiter: 4
+Animation Id:  55140 Frame Ids:  40988  40989  40990  40991  40992 Delimiter: 4
+Animation Id:  55141 Frame Ids:  40995  40996  40997  40998  40999 Delimiter: 4
+Animation Id:  55142 Frame Ids:  41002  41003  41004  41005  41006 Delimiter: 4
+Animation Id:  55143 Frame Ids:  41009  41010  41011  41012  41013 Delimiter: 4
+Animation Id:  55144 Frame Ids:  41016  41017  41018  41019  41020 Delimiter: 4
+Animation Id:  55145 Frame Ids:  41023  41024  41025  41026  41027 Delimiter: 4
+Animation Id:  55146 Frame Ids:  41030  41031  41032  41033  41034 Delimiter: 4
+Animation Id:  55147 Frame Ids:  41037  41038  41039  41040  41041 Delimiter: 4
+Animation Id:  55148 Frame Ids:  41044  41045  41046  41047  41048 Delimiter: 4
+Animation Id:  55149 Frame Ids:  41051  41052  41053  41054  41055 Delimiter: 4
+Animation Id:  55150 Frame Ids:  41058  41059  41060  41061  41062 Delimiter: 4
+Animation Id:  55151 Frame Ids:  41065  41066  41067  41068  41069 Delimiter: 4
+Animation Id:  55152 Frame Ids:  41072  41073  41074  41075  41076 Delimiter: 4
+Animation Id:  55153 Frame Ids:  41079  41080  41081  41082  41083 Delimiter: 4
+Animation Id:  55154 Frame Ids:  41086  41087  41088  41089  41090 Delimiter: 4
+Animation Id:  55155 Frame Ids:  41093  41094  41095  41096  41097 Delimiter: 4
+Animation Id:  55156 Frame Ids:  41100  41101  41102  41103  41104 Delimiter: 4
+Animation Id:  55157 Frame Ids:  41107  41108  41109  41110  41111 Delimiter: 4
+Animation Id:  55158 Frame Ids:  41114  41115  41116  41117  41118 Delimiter: 4
+Animation Id:  55159 Frame Ids:  41121  41122  41123  41124  41125 Delimiter: 4
+Animation Id:  55160 Frame Ids:  41128  41129  41130  41131  41132 Delimiter: 4
+Animation Id:  55161 Frame Ids:  41133  41134  41135  41136  41137 Delimiter: 4
+Animation Id:  55162 Frame Ids:  41138  41139  41140  41141  41142 Delimiter: 4
+Animation Id:  55163 Frame Ids:  41143  41144  41145  41146  41147 Delimiter: 4
+Animation Id:  55164 Frame Ids:  41148  41149  41150  41151  41152 Delimiter: 4
+Animation Id:  55165 Frame Ids:  41153  41154  41155  41156  41157 Delimiter: 4
+Animation Id:  55166 Frame Ids:  41158  41159  41160  41161  41162 Delimiter: 4
+Animation Id:  55167 Frame Ids:  41163  41164  41165  41166  41167 Delimiter: 4
+Animation Id:  55168 Frame Ids:  41168  41169  41170  41171  41172 Delimiter: 4
+Animation Id:  55169 Frame Ids:  41173  41174  41175  41176  41177 Delimiter: 4
+Animation Id:  55170 Frame Ids:  41178  41179  41180  41181  41182 Delimiter: 4
+Animation Id:  55171 Frame Ids:  41183  41184  41185  41186  41187 Delimiter: 4
+Animation Id:  55172 Frame Ids:  41188  41189  41190  41191  41192 Delimiter: 4
+Animation Id:  55173 Frame Ids:  41193  41194  41195  41196  41197 Delimiter: 4
+Animation Id:  55174 Frame Ids:  41198  41199  41200  41201  41202 Delimiter: 4
+Animation Id:  55175 Frame Ids:  41203  41204  41205  41206  41207 Delimiter: 4
+Animation Id:  55176 Frame Ids:  41208  41209  41210  41211  41212 Delimiter: 4
+Animation Id:  55177 Frame Ids:  41215  41216  41217  41218  41219 Delimiter: 4
+Animation Id:  55178 Frame Ids:  41222  41223  41224  41225  41226 Delimiter: 4
+Animation Id:  55179 Frame Ids:  41229  41230  41231  41232  41233 Delimiter: 4
+Animation Id:  55180 Frame Ids:  41236  41237  41238  41239  41240 Delimiter: 4
+Animation Id:  55181 Frame Ids:  41243  41244  41245  41246  41247 Delimiter: 4
+Animation Id:  55182 Frame Ids:  41250  41251  41252  41253  41254 Delimiter: 4
+Animation Id:  55183 Frame Ids:  41257  41258  41259  41260  41261 Delimiter: 4
+Animation Id:  55184 Frame Ids:  41264  41265  41266  41267  41268 Delimiter: 4
+Animation Id:  55185 Frame Ids:  41271  41272  41273  41274  41275 Delimiter: 4
+Animation Id:  55186 Frame Ids:  41278  41279  41280  41281  41282 Delimiter: 4
+Animation Id:  55187 Frame Ids:  41285  41286  41287  41288  41289 Delimiter: 4
+Animation Id:  55188 Frame Ids:  41292  41293  41294  41295  41296 Delimiter: 4
+Animation Id:  55189 Frame Ids:  41297  41298  41299  41300  41301 Delimiter: 4
+Animation Id:  55190 Frame Ids:  41302  41303  41304  41305  41306 Delimiter: 4
+Animation Id:  55191 Frame Ids:  41307  41308  41309  41310  41311 Delimiter: 4
+Animation Id:  55192 Frame Ids:  41312  41313  41314  41315  41316 Delimiter: 4
+Animation Id:  55193 Frame Ids:  41319  41320  41321  41322  41323 Delimiter: 4
+Animation Id:  55194 Frame Ids:  41326  41327  41328  41329  41330 Delimiter: 4
+Animation Id:  55195 Frame Ids:  41333  41334  41335  41336  41337 Delimiter: 4
+Animation Id:  55196 Frame Ids:  41340  41341  41342  41343  41344 Delimiter: 4
+Animation Id:  55197 Frame Ids:  41347  41348  41349  41350  41351 Delimiter: 4
+Animation Id:  55198 Frame Ids:  41354  41355  41356  41357  41358 Delimiter: 4
+Animation Id:  55199 Frame Ids:  41361  41362  41363  41364  41365 Delimiter: 4
+Animation Id:  55200 Frame Ids:  41368  41369  41370  41371  41372 Delimiter: 4
+Animation Id:  55201 Frame Ids:  41375  41376  41377  41378  41379 Delimiter: 4
+Animation Id:  55202 Frame Ids:  41382  41383  41384  41385  41386 Delimiter: 4
+Animation Id:  55203 Frame Ids:  41389  41390  41391  41392  41393 Delimiter: 4
+Animation Id:  55204 Frame Ids:  41396  41397  41398  41399  41400 Delimiter: 4
+Animation Id:  55205 Frame Ids:  41403  41404  41405  41406  41407 Delimiter: 4
+Animation Id:  55206 Frame Ids:  41410  41411  41412  41413  41414 Delimiter: 4
+Animation Id:  55207 Frame Ids:  41417  41418  41419  41420  41421 Delimiter: 4
+Animation Id:  55208 Frame Ids:  41424  41425  41426  41427  41428 Delimiter: 4
+Animation Id:  55209 Frame Ids:  41431  41432  41433  41434  41435 Delimiter: 4
+Animation Id:  55210 Frame Ids:  41438  41439  41440  41441  41442 Delimiter: 4
+Animation Id:  55211 Frame Ids:  41445  41446  41447  41448  41449 Delimiter: 4
+Animation Id:  55212 Frame Ids:  41452  41453  41454  41455  41456 Delimiter: 4
+Animation Id:  55213 Frame Ids:  41457  41458  41459  41460  41461 Delimiter: 4
+Animation Id:  55214 Frame Ids:  41462  41463  41464  41465  41466 Delimiter: 4
+Animation Id:  55215 Frame Ids:  41467  41468  41469  41470  41471 Delimiter: 4
+Animation Id:  55216 Frame Ids:  41472  41473  41474  41475  41476 Delimiter: 4
+Animation Id:  55217 Frame Ids:  41479  41480  41481  41482  41483 Delimiter: 4
+Animation Id:  55218 Frame Ids:  41486  41487  41488  41489  41490 Delimiter: 4
+Animation Id:  55219 Frame Ids:  41493  41494  41495  41496  41497 Delimiter: 4
+Animation Id:  55220 Frame Ids:  41500  41501  41502  41503  41504 Delimiter: 4
+Animation Id:  55221 Frame Ids:  41507  41508  41509  41510  41511 Delimiter: 4
+Animation Id:  55222 Frame Ids:  41514  41515  41516  41517  41518 Delimiter: 4
+Animation Id:  55223 Frame Ids:  41521  41522  41523  41524  41525 Delimiter: 4
+Animation Id:  55224 Frame Ids:  41528  41529  41530  41531  41532 Delimiter: 4
+Animation Id:  55225 Frame Ids:  41533  41534  41535  41536  41537 Delimiter: 4
+Animation Id:  55226 Frame Ids:  41538  41539  41540  41541  41542 Delimiter: 4
+Animation Id:  55227 Frame Ids:  41543  41544  41545  41546  41547 Delimiter: 4
+Animation Id:  55228 Frame Ids:  41548  41549  41550  41551 Delimiter: 4
+Animation Id:  55229 Frame Ids:  41552  41553  41554  41555  41556 Delimiter: 4
+Animation Id:  55230 Frame Ids:  41559  41560  41561  41562  41563 Delimiter: 4
+Animation Id:  55231 Frame Ids:  41566  41567  41568  41569  41570 Delimiter: 4
+Animation Id:  55232 Frame Ids:  41573  41574  41575  41576  41577 Delimiter: 4
+Animation Id:  55233 Frame Ids:  41557  41558 Delimiter: 4
+Animation Id:  55234 Frame Ids:  41564  41565 Delimiter: 4
+Animation Id:  55235 Frame Ids:  41571  41572 Delimiter: 4
+Animation Id:  55236 Frame Ids:  41578  41579 Delimiter: 4
+Animation Id:  55237 Frame Ids:  41580  41581  41582  41583  41584 Delimiter: 4
+Animation Id:  55238 Frame Ids:  41587  41588  41589  41590  41591 Delimiter: 4
+Animation Id:  55239 Frame Ids:  41594  41595  41596  41597  41598 Delimiter: 4
+Animation Id:  55240 Frame Ids:  41601  41602  41603  41604  41605 Delimiter: 4
+Animation Id:  55241 Frame Ids:  41585  41586 Delimiter: 4
+Animation Id:  55242 Frame Ids:  41592  41593 Delimiter: 4
+Animation Id:  55243 Frame Ids:  41599  41600 Delimiter: 4
+Animation Id:  55244 Frame Ids:  41606  41607 Delimiter: 4
+Animation Id:  55245 Frame Ids:  41608  41609  41610  41611  41612 Delimiter: 4
+Animation Id:  55246 Frame Ids:  41615  41616  41617  41618  41619 Delimiter: 4
+Animation Id:  55247 Frame Ids:  41622  41623  41624  41625  41626 Delimiter: 4
+Animation Id:  55248 Frame Ids:  41629  41630  41631  41632  41633 Delimiter: 4
+Animation Id:  55249 Frame Ids:  41613  41614 Delimiter: 4
+Animation Id:  55250 Frame Ids:  41620  41621 Delimiter: 4
+Animation Id:  55251 Frame Ids:  41627  41628 Delimiter: 4
+Animation Id:  55252 Frame Ids:  41634  41635 Delimiter: 4
+Animation Id:  95000 Frame Ids:  60000  60001  60002  60003  60004 Delimiter: 4
+Animation Id:  95001 Frame Ids:  60007  60008  60009  60010  60011 Delimiter: 4
+Animation Id:  95002 Frame Ids:  60014  60015  60016  60017  60018 Delimiter: 4
+Animation Id:  95003 Frame Ids:  60021  60022  60023  60024  60025 Delimiter: 4
+Animation Id:  95004 Frame Ids:  60005  60006 Delimiter: 4
+Animation Id:  95005 Frame Ids:  60012  60013 Delimiter: 4
+Animation Id:  95006 Frame Ids:  60019  60020 Delimiter: 4
+Animation Id:  95007 Frame Ids:  60026  60027 Delimiter: 4
+Animation Id:  95010 Frame Ids:  60028  60029  60030  60031  60032 Delimiter: 4
+Animation Id:  95011 Frame Ids:  60035  60036  60037  60038  60039 Delimiter: 4
+Animation Id:  95012 Frame Ids:  60042  60043  60044  60045  60046 Delimiter: 4
+Animation Id:  95013 Frame Ids:  60049  60050  60051  60052  60053 Delimiter: 4
+Animation Id:  95014 Frame Ids:  60033  60034 Delimiter: 4
+Animation Id:  95015 Frame Ids:  60040  60041 Delimiter: 4
+Animation Id:  95016 Frame Ids:  60047  60048 Delimiter: 4
+Animation Id:  95017 Frame Ids:  60054  60055 Delimiter: 4
+Animation Id:  95020 Frame Ids:  60056  60057  60058  60059  60060 Delimiter: 4
+Animation Id:  95021 Frame Ids:  60063  60064  60065  60066  60067 Delimiter: 4
+Animation Id:  95022 Frame Ids:  60070  60071  60072  60073  60074 Delimiter: 4
+Animation Id:  95023 Frame Ids:  60077  60078  60079  60080  60081 Delimiter: 4
+Animation Id:  95024 Frame Ids:  60061  60062 Delimiter: 4
+Animation Id:  95025 Frame Ids:  60068  60069 Delimiter: 4
+Animation Id:  95026 Frame Ids:  60075  60076 Delimiter: 4
+Animation Id:  95027 Frame Ids:  60082  60083 Delimiter: 4
+Animation Id:  95030 Frame Ids:  60084  60085  60086  60087  60088 Delimiter: 4
+Animation Id:  95031 Frame Ids:  60091  60092  60093  60094  60095 Delimiter: 4
+Animation Id:  95032 Frame Ids:  60098  60099  60100  60101  60102 Delimiter: 4
+Animation Id:  95033 Frame Ids:  60105  60106  60107  60108  60109 Delimiter: 4
+Animation Id:  95034 Frame Ids:  60089  60090 Delimiter: 4
+Animation Id:  95035 Frame Ids:  60096  60097 Delimiter: 4
+Animation Id:  95036 Frame Ids:  60103  60104 Delimiter: 4
+Animation Id:  95037 Frame Ids:  60110  60111 Delimiter: 4
+Animation Id:  95040 Frame Ids:  60112  60113  60114  60115  60116 Delimiter: 4
+Animation Id:  95041 Frame Ids:  60119  60120  60121  60122  60123 Delimiter: 4
+Animation Id:  95042 Frame Ids:  60126  60127  60128  60129  60130 Delimiter: 4
+Animation Id:  95043 Frame Ids:  60133  60134  60135  60136  60137 Delimiter: 4
+Animation Id:  95044 Frame Ids:  60117  60118 Delimiter: 4
+Animation Id:  95045 Frame Ids:  60124  60125 Delimiter: 4
+Animation Id:  95046 Frame Ids:  60131  60132 Delimiter: 4
+Animation Id:  95047 Frame Ids:  60138  60139 Delimiter: 4
+Animation Id:  95050 Frame Ids:  60140  60141  60142  60143  60144 Delimiter: 4
+Animation Id:  95051 Frame Ids:  60147  60148  60149  60150  60151 Delimiter: 4
+Animation Id:  95052 Frame Ids:  60154  60155  60156  60157  60158 Delimiter: 4
+Animation Id:  95053 Frame Ids:  60161  60162  60163  60164  60165 Delimiter: 4
+Animation Id:  95054 Frame Ids:  60145  60146 Delimiter: 4
+Animation Id:  95055 Frame Ids:  60152  60153 Delimiter: 4
+Animation Id:  95056 Frame Ids:  60159  60160 Delimiter: 4
+Animation Id:  95057 Frame Ids:  60166  60167 Delimiter: 4
+Animation Id:  95060 Frame Ids:  60170  60171  60172  60173  60174 Delimiter: 4
+Animation Id:  95061 Frame Ids:  60177  60178  60179  60180  60181 Delimiter: 4
+Animation Id:  95062 Frame Ids:  60184  60185  60186  60187  60188 Delimiter: 4
+Animation Id:  95063 Frame Ids:  60191  60192  60193  60194  60195 Delimiter: 4
+Animation Id:  95064 Frame Ids:  60175  60176 Delimiter: 4
+Animation Id:  95065 Frame Ids:  60182  60183 Delimiter: 4
+Animation Id:  95066 Frame Ids:  60189  60190 Delimiter: 4
+Animation Id:  95067 Frame Ids:  60196  60197 Delimiter: 4
+Animation Id:  95070 Frame Ids:  60200  60201  60202  60203  60204 Delimiter: 4
+Animation Id:  95071 Frame Ids:  60207  60208  60209  60210  60211 Delimiter: 4
+Animation Id:  95072 Frame Ids:  60214  60215  60216  60217  60218 Delimiter: 4
+Animation Id:  95073 Frame Ids:  60221  60222  60223  60224  60225 Delimiter: 4
+Animation Id:  95074 Frame Ids:  60205  60206 Delimiter: 4
+Animation Id:  95075 Frame Ids:  60212  60213 Delimiter: 4
+Animation Id:  95076 Frame Ids:  60219  60220 Delimiter: 4
+Animation Id:  95077 Frame Ids:  60226  60227 Delimiter: 4
+Animation Id:  95080 Frame Ids:  60230  60231  60232  60233  60234 Delimiter: 4
+Animation Id:  95081 Frame Ids:  60237  60238  60239  60240  60241 Delimiter: 4
+Animation Id:  95082 Frame Ids:  60244  60245  60246  60247  60248 Delimiter: 4
+Animation Id:  95083 Frame Ids:  60251  60252  60253  60254  60255 Delimiter: 4
+Animation Id:  95084 Frame Ids:  60235  60236 Delimiter: 4
+Animation Id:  95085 Frame Ids:  60242  60243 Delimiter: 4
+Animation Id:  95086 Frame Ids:  60249  60250 Delimiter: 4
+Animation Id:  95087 Frame Ids:  60256  60257 Delimiter: 4
+Animation Id:  95090 Frame Ids:  60260  60261  60262  60263  60264 Delimiter: 4
+Animation Id:  95091 Frame Ids:  60267  60268  60269  60270  60271 Delimiter: 4
+Animation Id:  95092 Frame Ids:  60274  60275  60276  60277  60278 Delimiter: 4
+Animation Id:  95093 Frame Ids:  60281  60282  60283  60284  60285 Delimiter: 4
+Animation Id:  95094 Frame Ids:  60265  60266 Delimiter: 4
+Animation Id:  95095 Frame Ids:  60272  60273 Delimiter: 4
+Animation Id:  95096 Frame Ids:  60279  60280 Delimiter: 4
+Animation Id:  95097 Frame Ids:  60286  60287 Delimiter: 4
+Animation Id:  95100 Frame Ids:  60290  60291  60292  60293  60294 Delimiter: 4
+Animation Id:  95101 Frame Ids:  60297  60298  60299  60300  60301 Delimiter: 4
+Animation Id:  95102 Frame Ids:  60304  60305  60306  60307  60308 Delimiter: 4
+Animation Id:  95103 Frame Ids:  60311  60312  60313  60314  60315 Delimiter: 4
+Animation Id:  95104 Frame Ids:  60295  60296 Delimiter: 4
+Animation Id:  95105 Frame Ids:  60302  60303 Delimiter: 4
+Animation Id:  95106 Frame Ids:  60309  60310 Delimiter: 4
+Animation Id:  95107 Frame Ids:  60316  60317 Delimiter: 4
+Animation Id:  95110 Frame Ids:  60318  60319  60320  60321  60322 Delimiter: 4
+Animation Id:  95111 Frame Ids:  60325  60326  60327  60328  60329 Delimiter: 4
+Animation Id:  95112 Frame Ids:  60332  60333  60334  60335  60336 Delimiter: 4
+Animation Id:  95113 Frame Ids:  60339  60340  60341  60342  60343 Delimiter: 4
+Animation Id:  95114 Frame Ids:  60323  60324 Delimiter: 4
+Animation Id:  95115 Frame Ids:  60330  60331 Delimiter: 4
+Animation Id:  95116 Frame Ids:  60337  60338 Delimiter: 4
+Animation Id:  95117 Frame Ids:  60344  60345 Delimiter: 4
+Animation Id:  95120 Frame Ids:  60346  60347  60348  60349  60350 Delimiter: 4
+Animation Id:  95121 Frame Ids:  60353  60354  60355  60356  60357 Delimiter: 4
+Animation Id:  95122 Frame Ids:  60360  60361  60362  60363  60364 Delimiter: 4
+Animation Id:  95123 Frame Ids:  60367  60368  60369  60370  60371 Delimiter: 4
+Animation Id:  95124 Frame Ids:  60351  60352 Delimiter: 4
+Animation Id:  95125 Frame Ids:  60358  60359 Delimiter: 4
+Animation Id:  95126 Frame Ids:  60365  60366 Delimiter: 4
+Animation Id:  95127 Frame Ids:  60372  60373 Delimiter: 4
+Animation Id:  95130 Frame Ids:  60374  60375  60376  60377  60378 Delimiter: 4
+Animation Id:  95131 Frame Ids:  60381  60382  60383  60384  60385 Delimiter: 4
+Animation Id:  95132 Frame Ids:  60388  60389  60390  60391  60392 Delimiter: 4
+Animation Id:  95133 Frame Ids:  60395  60396  60397  60398  60399 Delimiter: 4
+Animation Id:  95134 Frame Ids:  60379  60380 Delimiter: 4
+Animation Id:  95135 Frame Ids:  60386  60387 Delimiter: 4
+Animation Id:  95136 Frame Ids:  60393  60394 Delimiter: 4
+Animation Id:  95137 Frame Ids:  60400  60401 Delimiter: 4
+Animation Id:  95140 Frame Ids:  60402  60403  60404  60405  60406 Delimiter: 4
+Animation Id:  95141 Frame Ids:  60409  60410  60411  60412  60413 Delimiter: 4
+Animation Id:  95142 Frame Ids:  60416  60417  60418  60419  60420 Delimiter: 4
+Animation Id:  95143 Frame Ids:  60423  60424  60425  60426  60427 Delimiter: 4
+Animation Id:  95144 Frame Ids:  60407  60408 Delimiter: 4
+Animation Id:  95145 Frame Ids:  60414  60415 Delimiter: 4
+Animation Id:  95146 Frame Ids:  60421  60422 Delimiter: 4
+Animation Id:  95147 Frame Ids:  60428  60429 Delimiter: 4
+Animation Id:  95150 Frame Ids:  60430  60431  60432  60433  60434 Delimiter: 4
+Animation Id:  95151 Frame Ids:  60437  60438  60439  60440  60441 Delimiter: 4
+Animation Id:  95152 Frame Ids:  60444  60445  60446  60447  60448 Delimiter: 4
+Animation Id:  95153 Frame Ids:  60451  60452  60453  60454  60455 Delimiter: 4
+Animation Id:  95154 Frame Ids:  60435  60436 Delimiter: 4
+Animation Id:  95155 Frame Ids:  60442  60443 Delimiter: 4
+Animation Id:  95156 Frame Ids:  60449  60450 Delimiter: 4
+Animation Id:  95157 Frame Ids:  60456  60457 Delimiter: 4
+Animation Id:  95160 Frame Ids:  60458  60459  60460  60461  60462 Delimiter: 4
+Animation Id:  95161 Frame Ids:  60465  60466  60467  60468  60469 Delimiter: 4
+Animation Id:  95162 Frame Ids:  60472  60473  60474  60475  60476 Delimiter: 4
+Animation Id:  95163 Frame Ids:  60479  60480  60481  60482  60483 Delimiter: 4
+Animation Id:  95164 Frame Ids:  60463  60464 Delimiter: 4
+Animation Id:  95165 Frame Ids:  60470  60471 Delimiter: 4
+Animation Id:  95166 Frame Ids:  60477  60478 Delimiter: 4
+Animation Id:  95167 Frame Ids:  60484  60485 Delimiter: 4
+Animation Id:  95170 Frame Ids:  60486  60487  60488  60489  60490 Delimiter: 4
+Animation Id:  95171 Frame Ids:  60493  60494  60495  60496  60497 Delimiter: 4
+Animation Id:  95172 Frame Ids:  60500  60501  60502  60503  60504 Delimiter: 4
+Animation Id:  95173 Frame Ids:  60507  60508  60509  60510  60511 Delimiter: 4
+Animation Id:  95174 Frame Ids:  60491  60492 Delimiter: 4
+Animation Id:  95175 Frame Ids:  60498  60499 Delimiter: 4
+Animation Id:  95176 Frame Ids:  60505  60506 Delimiter: 4
+Animation Id:  95177 Frame Ids:  60512  60513 Delimiter: 4
+Animation Id:  95190 Frame Ids:  60540  60541  60542  60543  60544 Delimiter: 4
+Animation Id:  95191 Frame Ids:  60547  60548  60549  60550  60551 Delimiter: 4
+Animation Id:  95192 Frame Ids:  60554  60555  60556  60557  60558 Delimiter: 4
+Animation Id:  95193 Frame Ids:  60561  60562  60563  60564  60565 Delimiter: 4
+Animation Id:  95194 Frame Ids:  60545  60546 Delimiter: 4
+Animation Id:  95195 Frame Ids:  60552  60553 Delimiter: 4
+Animation Id:  95196 Frame Ids:  60559  60560 Delimiter: 4
+Animation Id:  95197 Frame Ids:  60566  60567 Delimiter: 4
+Animation Id:  95200 Frame Ids:  60568  60569  60570  60571  60572 Delimiter: 4
+Animation Id:  95201 Frame Ids:  60575  60576  60577  60578  60579 Delimiter: 4
+Animation Id:  95202 Frame Ids:  60582  60583  60584  60585  60586 Delimiter: 4
+Animation Id:  95203 Frame Ids:  60589  60590  60591  60592  60593 Delimiter: 4
+Animation Id:  95204 Frame Ids:  60573  60574 Delimiter: 4
+Animation Id:  95205 Frame Ids:  60580  60581 Delimiter: 4
+Animation Id:  95206 Frame Ids:  60587  60588 Delimiter: 4
+Animation Id:  95207 Frame Ids:  60594  60595 Delimiter: 4
+Animation Id:  95210 Frame Ids:  60596  60597  60598  60599  60600 Delimiter: 4
+Animation Id:  95211 Frame Ids:  60603  60604  60605  60606  60607 Delimiter: 4
+Animation Id:  95212 Frame Ids:  60610  60611  60612  60613  60614 Delimiter: 4
+Animation Id:  95213 Frame Ids:  60617  60618  60619  60620  60621 Delimiter: 4
+Animation Id:  95214 Frame Ids:  60601  60602 Delimiter: 4
+Animation Id:  95215 Frame Ids:  60608  60609 Delimiter: 4
+Animation Id:  95216 Frame Ids:  60615  60616 Delimiter: 4
+Animation Id:  95217 Frame Ids:  60622  60623 Delimiter: 4
+Animation Id:  95230 Frame Ids:  60650  60651  60652  60653  60654 Delimiter: 4
+Animation Id:  95231 Frame Ids:  60657  60658  60659  60660  60661 Delimiter: 4
+Animation Id:  95232 Frame Ids:  60664  60665  60666  60667  60668 Delimiter: 4
+Animation Id:  95233 Frame Ids:  60671  60672  60673  60674  60675 Delimiter: 4
+Animation Id:  95234 Frame Ids:  60655  60656 Delimiter: 4
+Animation Id:  95235 Frame Ids:  60662  60663 Delimiter: 4
+Animation Id:  95236 Frame Ids:  60669  60670 Delimiter: 4
+Animation Id:  95237 Frame Ids:  60676  60677 Delimiter: 4
+Animation Id:  95240 Frame Ids:  60678  60679  60680  60681  60682 Delimiter: 4
+Animation Id:  95241 Frame Ids:  60685  60686  60687  60688  60689 Delimiter: 4
+Animation Id:  95242 Frame Ids:  60692  60693  60694  60695  60696 Delimiter: 4
+Animation Id:  95243 Frame Ids:  60699  60700  60701  60702  60703 Delimiter: 4
+Animation Id:  95244 Frame Ids:  60683  60684 Delimiter: 4
+Animation Id:  95245 Frame Ids:  60690  60691 Delimiter: 4
+Animation Id:  95246 Frame Ids:  60697  60698 Delimiter: 4
+Animation Id:  95247 Frame Ids:  60704  60705 Delimiter: 4
+Animation Id:  95250 Frame Ids:  60706  60707  60708  60709  60710 Delimiter: 4
+Animation Id:  95251 Frame Ids:  60713  60714  60715  60716  60717 Delimiter: 4
+Animation Id:  95252 Frame Ids:  60720  60721  60722  60723  60724 Delimiter: 4
+Animation Id:  95253 Frame Ids:  60727  60728  60729  60730  60731 Delimiter: 4
+Animation Id:  95254 Frame Ids:  60711  60712 Delimiter: 4
+Animation Id:  95255 Frame Ids:  60718  60719 Delimiter: 4
+Animation Id:  95256 Frame Ids:  60725  60726 Delimiter: 4
+Animation Id:  95257 Frame Ids:  60732  60733 Delimiter: 4
+Animation Id:  95260 Frame Ids:  60734  60735  60736  60737  60738 Delimiter: 4
+Animation Id:  95261 Frame Ids:  60741  60742  60743  60744  60745 Delimiter: 4
+Animation Id:  95262 Frame Ids:  60748  60749  60750  60751  60752 Delimiter: 4
+Animation Id:  95263 Frame Ids:  60755  60756  60757  60758  60759 Delimiter: 4
+Animation Id:  95264 Frame Ids:  60739  60740 Delimiter: 4
+Animation Id:  95265 Frame Ids:  60746  60747 Delimiter: 4
+Animation Id:  95266 Frame Ids:  60753  60754 Delimiter: 4
+Animation Id:  95267 Frame Ids:  60760  60761 Delimiter: 4
+Animation Id:  95270 Frame Ids:  60762  60763  60764  60765  60766 Delimiter: 4
+Animation Id:  95271 Frame Ids:  60769  60770  60771  60772  60773 Delimiter: 4
+Animation Id:  95272 Frame Ids:  60776  60777  60778  60779  60780 Delimiter: 4
+Animation Id:  95273 Frame Ids:  60783  60784  60785  60786  60787 Delimiter: 4
+Animation Id:  95274 Frame Ids:  60767  60768 Delimiter: 4
+Animation Id:  95275 Frame Ids:  60774  60775 Delimiter: 4
+Animation Id:  95276 Frame Ids:  60781  60782 Delimiter: 4
+Animation Id:  95277 Frame Ids:  60788  60789 Delimiter: 4
+Animation Id:  95280 Frame Ids:  60790  60791  60792  60793  60794 Delimiter: 4
+Animation Id:  95281 Frame Ids:  60797  60798  60799  60800  60801 Delimiter: 4
+Animation Id:  95282 Frame Ids:  60804  60805  60806  60807  60808 Delimiter: 4
+Animation Id:  95283 Frame Ids:  60811  60812  60813  60814  60815 Delimiter: 4
+Animation Id:  95284 Frame Ids:  60795  60796 Delimiter: 4
+Animation Id:  95285 Frame Ids:  60802  60803 Delimiter: 4
+Animation Id:  95286 Frame Ids:  60809  60810 Delimiter: 4
+Animation Id:  95287 Frame Ids:  60816  60817 Delimiter: 4
+Animation Id:  95290 Frame Ids:  60818  60819  60820  60821  60822 Delimiter: 4
+Animation Id:  95291 Frame Ids:  60825  60826  60827  60828  60829 Delimiter: 4
+Animation Id:  95292 Frame Ids:  60832  60833  60834  60835  60836 Delimiter: 4
+Animation Id:  95293 Frame Ids:  60839  60840  60841  60842  60843 Delimiter: 4
+Animation Id:  95294 Frame Ids:  60823  60824 Delimiter: 4
+Animation Id:  95295 Frame Ids:  60830  60831 Delimiter: 4
+Animation Id:  95296 Frame Ids:  60837  60838 Delimiter: 4
+Animation Id:  95297 Frame Ids:  60844  60845 Delimiter: 4
+Animation Id:  95300 Frame Ids:  60846  60847  60848  60849  60850 Delimiter: 4
+Animation Id:  95301 Frame Ids:  60853  60854  60855  60856  60857 Delimiter: 4
+Animation Id:  95302 Frame Ids:  60860  60861  60862  60863  60864 Delimiter: 4
+Animation Id:  95303 Frame Ids:  60867  60868  60869  60870  60871 Delimiter: 4
+Animation Id:  95304 Frame Ids:  60851  60852 Delimiter: 4
+Animation Id:  95305 Frame Ids:  60858  60859 Delimiter: 4
+Animation Id:  95306 Frame Ids:  60865  60866 Delimiter: 4
+Animation Id:  95307 Frame Ids:  60872  60873 Delimiter: 4
+Animation Id:  95310 Frame Ids:  60878  60879  60880  60881  60882 Delimiter: 4
+Animation Id:  95311 Frame Ids:  60885  60886  60887  60888  60889 Delimiter: 4
+Animation Id:  95312 Frame Ids:  60892  60893  60894  60895  60896 Delimiter: 4
+Animation Id:  95313 Frame Ids:  60899  60900  60901  60902  60903 Delimiter: 4
+Animation Id:  95314 Frame Ids:  60883  60884 Delimiter: 4
+Animation Id:  95315 Frame Ids:  60890  60891 Delimiter: 4
+Animation Id:  95316 Frame Ids:  60897  60898 Delimiter: 4
+Animation Id:  95317 Frame Ids:  60904  60905 Delimiter: 4
+Animation Id:  95320 Frame Ids:  60906  60907  60908  60909  60910 Delimiter: 4
+Animation Id:  95321 Frame Ids:  60913  60914  60915  60916  60917 Delimiter: 4
+Animation Id:  95322 Frame Ids:  60920  60921  60922  60923  60924 Delimiter: 4
+Animation Id:  95323 Frame Ids:  60927  60928  60929  60930  60931 Delimiter: 4
+Animation Id:  95324 Frame Ids:  60911  60912 Delimiter: 4
+Animation Id:  95325 Frame Ids:  60918  60919 Delimiter: 4
+Animation Id:  95326 Frame Ids:  60925  60926 Delimiter: 4
+Animation Id:  95327 Frame Ids:  60932  60933 Delimiter: 4
+Animation Id:  95330 Frame Ids:  60934  60935  60936  60937  60938 Delimiter: 4
+Animation Id:  95331 Frame Ids:  60941  60942  60943  60944  60945 Delimiter: 4
+Animation Id:  95332 Frame Ids:  60948  60949  60950  60951  60952 Delimiter: 4
+Animation Id:  95333 Frame Ids:  60955  60956  60957  60958  60959 Delimiter: 4
+Animation Id:  95334 Frame Ids:  60939  60940 Delimiter: 4
+Animation Id:  95335 Frame Ids:  60946  60947 Delimiter: 4
+Animation Id:  95336 Frame Ids:  60953  60954 Delimiter: 4
+Animation Id:  95337 Frame Ids:  60960  60961 Delimiter: 4
+Animation Id:  95340 Frame Ids:  60962  60963  60964  60965  60966 Delimiter: 4
+Animation Id:  95341 Frame Ids:  60969  60970  60971  60972  60973 Delimiter: 4
+Animation Id:  95342 Frame Ids:  60976  60977  60978  60979  60980 Delimiter: 4
+Animation Id:  95343 Frame Ids:  60983  60984  60985  60986  60987 Delimiter: 4
+Animation Id:  95344 Frame Ids:  60967  60968 Delimiter: 4
+Animation Id:  95345 Frame Ids:  60974  60975 Delimiter: 4
+Animation Id:  95346 Frame Ids:  60981  60982 Delimiter: 4
+Animation Id:  95347 Frame Ids:  60988  60989 Delimiter: 4
+Animation Id:  95350 Frame Ids:  60990  60991  60992  60993  60994 Delimiter: 4
+Animation Id:  95351 Frame Ids:  60997  60998  60999  61000  61001 Delimiter: 4
+Animation Id:  95352 Frame Ids:  61004  61005  61006  61007  61008 Delimiter: 4
+Animation Id:  95353 Frame Ids:  61011  61012  61013  61014  61015 Delimiter: 4
+Animation Id:  95354 Frame Ids:  60995  60996 Delimiter: 4
+Animation Id:  95355 Frame Ids:  61002  61003 Delimiter: 4
+Animation Id:  95356 Frame Ids:  61009  61010 Delimiter: 4
+Animation Id:  95357 Frame Ids:  61016  61017 Delimiter: 4
+Animation Id:  95360 Frame Ids:  61018  61019  61020  61021  61022 Delimiter: 4
+Animation Id:  95361 Frame Ids:  61025  61026  61027  61028  61029 Delimiter: 4
+Animation Id:  95362 Frame Ids:  61032  61033  61034  61035  61036 Delimiter: 4
+Animation Id:  95363 Frame Ids:  61039  61040  61041  61042  61043 Delimiter: 4
+Animation Id:  95364 Frame Ids:  61023  61024 Delimiter: 4
+Animation Id:  95365 Frame Ids:  61030  61031 Delimiter: 4
+Animation Id:  95366 Frame Ids:  61037  61038 Delimiter: 4
+Animation Id:  95367 Frame Ids:  61044  61045 Delimiter: 4
+Animation Id:  95370 Frame Ids:  61046  61047  61048  61049  61050 Delimiter: 4
+Animation Id:  95371 Frame Ids:  61053  61054  61055  61056  61057 Delimiter: 4
+Animation Id:  95372 Frame Ids:  61060  61061  61062  61063  61064 Delimiter: 4
+Animation Id:  95373 Frame Ids:  61067  61068  61069  61070  61071 Delimiter: 4
+Animation Id:  95374 Frame Ids:  61051  61052 Delimiter: 4
+Animation Id:  95375 Frame Ids:  61058  61059 Delimiter: 4
+Animation Id:  95376 Frame Ids:  61065  61066 Delimiter: 4
+Animation Id:  95377 Frame Ids:  61072  61073 Delimiter: 4
+Animation Id:  95380 Frame Ids:  61074  61075  61076  61077  61078 Delimiter: 4
+Animation Id:  95381 Frame Ids:  61081  61082  61083  61084  61085 Delimiter: 4
+Animation Id:  95382 Frame Ids:  61088  61089  61090  61091  61092 Delimiter: 4
+Animation Id:  95383 Frame Ids:  61095  61096  61097  61098  61099 Delimiter: 4
+Animation Id:  95384 Frame Ids:  61079  61080 Delimiter: 4
+Animation Id:  95385 Frame Ids:  61086  61087 Delimiter: 4
+Animation Id:  95386 Frame Ids:  61093  61094 Delimiter: 4
+Animation Id:  95387 Frame Ids:  61100  61101 Delimiter: 4
+Animation Id:  95390 Frame Ids:  61102  61103  61104  61105  61106 Delimiter: 4
+Animation Id:  95391 Frame Ids:  61109  61110  61111  61112  61113 Delimiter: 4
+Animation Id:  95392 Frame Ids:  61116  61117  61118  61119  61120 Delimiter: 4
+Animation Id:  95393 Frame Ids:  61123  61124  61125  61126  61127 Delimiter: 4
+Animation Id:  95394 Frame Ids:  61107  61108 Delimiter: 4
+Animation Id:  95395 Frame Ids:  61114  61115 Delimiter: 4
+Animation Id:  95396 Frame Ids:  61121  61122 Delimiter: 4
+Animation Id:  95397 Frame Ids:  61128  61129 Delimiter: 4
+Animation Id:  95400 Frame Ids:  61130  61131  61132  61133  61134 Delimiter: 4
+Animation Id:  95401 Frame Ids:  61137  61138  61139  61140  61141 Delimiter: 4
+Animation Id:  95402 Frame Ids:  61144  61145  61146  61147  61148 Delimiter: 4
+Animation Id:  95403 Frame Ids:  61151  61152  61153  61154  61155 Delimiter: 4
+Animation Id:  95404 Frame Ids:  61135  61136 Delimiter: 4
+Animation Id:  95405 Frame Ids:  61142  61143 Delimiter: 4
+Animation Id:  95406 Frame Ids:  61149  61150 Delimiter: 4
+Animation Id:  95407 Frame Ids:  61156  61157 Delimiter: 4
+Animation Id:  95410 Frame Ids:  61158  61159  61160  61161  61162 Delimiter: 4
+Animation Id:  95411 Frame Ids:  61165  61166  61167  61168  61169 Delimiter: 4
+Animation Id:  95412 Frame Ids:  61172  61173  61174  61175  61176 Delimiter: 4
+Animation Id:  95413 Frame Ids:  61179  61180  61181  61182  61183 Delimiter: 4
+Animation Id:  95414 Frame Ids:  61163  61164 Delimiter: 4
+Animation Id:  95415 Frame Ids:  61170  61171 Delimiter: 4
+Animation Id:  95416 Frame Ids:  61177  61178 Delimiter: 4
+Animation Id:  95417 Frame Ids:  61184  61185 Delimiter: 4
+Animation Id:  95420 Frame Ids:  61186  61187  61188  61189  61190 Delimiter: 4
+Animation Id:  95421 Frame Ids:  61193  61194  61195  61196  61197 Delimiter: 4
+Animation Id:  95422 Frame Ids:  61200  61201  61202  61203  61204 Delimiter: 4
+Animation Id:  95423 Frame Ids:  61207  61208  61209  61210  61211 Delimiter: 4
+Animation Id:  95424 Frame Ids:  61191  61192 Delimiter: 4
+Animation Id:  95425 Frame Ids:  61198  61199 Delimiter: 4
+Animation Id:  95426 Frame Ids:  61205  61206 Delimiter: 4
+Animation Id:  95427 Frame Ids:  61212  61213 Delimiter: 4
+Animation Id:  95430 Frame Ids:  61214  61215  61216  61217  61218 Delimiter: 4
+Animation Id:  95431 Frame Ids:  61221  61222  61223  61224  61225 Delimiter: 4
+Animation Id:  95432 Frame Ids:  61228  61229  61230  61231  61232 Delimiter: 4
+Animation Id:  95433 Frame Ids:  61235  61236  61237  61238  61239 Delimiter: 4
+Animation Id:  95434 Frame Ids:  61219  61220 Delimiter: 4
+Animation Id:  95435 Frame Ids:  61226  61227 Delimiter: 4
+Animation Id:  95436 Frame Ids:  61233  61234 Delimiter: 4
+Animation Id:  95437 Frame Ids:  61240  61241 Delimiter: 4
+Animation Id:  95440 Frame Ids:  61242  61243  61244  61245  61246 Delimiter: 4
+Animation Id:  95441 Frame Ids:  61249  61250  61251  61252  61253 Delimiter: 4
+Animation Id:  95442 Frame Ids:  61256  61257  61258  61259  61260 Delimiter: 4
+Animation Id:  95443 Frame Ids:  61263  61264  61265  61266  61267 Delimiter: 4
+Animation Id:  95444 Frame Ids:  61247  61248 Delimiter: 4
+Animation Id:  95445 Frame Ids:  61254  61255 Delimiter: 4
+Animation Id:  95446 Frame Ids:  61261  61262 Delimiter: 4
+Animation Id:  95447 Frame Ids:  61268  61269 Delimiter: 4
+Animation Id:  95450 Frame Ids:  61270  61271  61272  61273  61274 Delimiter: 4
+Animation Id:  95451 Frame Ids:  61277  61278  61279  61280  61281 Delimiter: 4
+Animation Id:  95452 Frame Ids:  61284  61285  61286  61287  61288 Delimiter: 4
+Animation Id:  95453 Frame Ids:  61291  61292  61293  61294  61295 Delimiter: 4
+Animation Id:  95454 Frame Ids:  61275  61276 Delimiter: 4
+Animation Id:  95455 Frame Ids:  61282  61283 Delimiter: 4
+Animation Id:  95456 Frame Ids:  61289  61290 Delimiter: 4
+Animation Id:  95457 Frame Ids:  61296  61297 Delimiter: 4
+Animation Id:  96000 Frame Ids:  65000  65001  65002  65003  65004 Delimiter: 4
+Animation Id:  96001 Frame Ids:  65007  65008  65009  65010  65011 Delimiter: 4
+Animation Id:  96002 Frame Ids:  65014  65015  65016  65017  65018 Delimiter: 4
+Animation Id:  96003 Frame Ids:  65021  65022  65023  65024  65025 Delimiter: 4
+Animation Id:  96004 Frame Ids:  65005  65006 Delimiter: 4
+Animation Id:  96005 Frame Ids:  65012  65013 Delimiter: 4
+Animation Id:  96006 Frame Ids:  65019  65020 Delimiter: 4
+Animation Id:  96007 Frame Ids:  65026  65027 Delimiter: 4
+Animation Id:  96010 Frame Ids:  67666  67667  67668  67669  67670 Delimiter: 4
+Animation Id:  96011 Frame Ids:  67673  67674  67675  67676  67677 Delimiter: 4
+Animation Id:  96012 Frame Ids:  67680  67681  67682  67683  67684 Delimiter: 4
+Animation Id:  96013 Frame Ids:  67687  67688  67689  67690  67691 Delimiter: 4
+Animation Id:  96014 Frame Ids:  67671  67672 Delimiter: 4
+Animation Id:  96015 Frame Ids:  67678  67679 Delimiter: 4
+Animation Id:  96016 Frame Ids:  67685  67686 Delimiter: 4
+Animation Id:  96017 Frame Ids:  67692  67693 Delimiter: 4
+Animation Id:  96020 Frame Ids:  65060  65061  65062  65063  65064 Delimiter: 4
+Animation Id:  96021 Frame Ids:  65067  65068  65069  65070  65071 Delimiter: 4
+Animation Id:  96022 Frame Ids:  65074  65075  65076  65077  65078 Delimiter: 4
+Animation Id:  96023 Frame Ids:  65081  65082  65083  65084  65085 Delimiter: 4
+Animation Id:  96024 Frame Ids:  65065  65066 Delimiter: 4
+Animation Id:  96025 Frame Ids:  65072  65073 Delimiter: 4
+Animation Id:  96026 Frame Ids:  65079  65080 Delimiter: 4
+Animation Id:  96027 Frame Ids:  65086  65087 Delimiter: 4
+Animation Id:  96030 Frame Ids:  65090  65091  65092  65093  65094 Delimiter: 4
+Animation Id:  96031 Frame Ids:  65097  65098  65099  65100  65101 Delimiter: 4
+Animation Id:  96032 Frame Ids:  65104  65105  65106  65107  65108 Delimiter: 4
+Animation Id:  96033 Frame Ids:  65111  65112  65113  65114  65115 Delimiter: 4
+Animation Id:  96034 Frame Ids:  65065  65066 Delimiter: 4
+Animation Id:  96035 Frame Ids:  65102  65103 Delimiter: 4
+Animation Id:  96036 Frame Ids:  65109  65110 Delimiter: 4
+Animation Id:  96037 Frame Ids:  65116  65117 Delimiter: 4
+Animation Id:  96050 Frame Ids:  65120  65121  65122  65123  65124 Delimiter: 4
+Animation Id:  96051 Frame Ids:  65127  65128  65129  65130  65131 Delimiter: 4
+Animation Id:  96052 Frame Ids:  65134  65135  65136  65137  65138 Delimiter: 4
+Animation Id:  96053 Frame Ids:  65141  65142  65143  65144  65145 Delimiter: 4
+Animation Id:  96054 Frame Ids:  65125  65126 Delimiter: 4
+Animation Id:  96055 Frame Ids:  65132  65133 Delimiter: 4
+Animation Id:  96056 Frame Ids:  65139  65140 Delimiter: 4
+Animation Id:  96057 Frame Ids:  65146  65147 Delimiter: 4
+Animation Id:  96060 Frame Ids:  67694  67695  67696  67697  67698 Delimiter: 4
+Animation Id:  96061 Frame Ids:  67701  67702  67703  67704  67705 Delimiter: 4
+Animation Id:  96062 Frame Ids:  67708  67709  67710  67711  67712 Delimiter: 4
+Animation Id:  96063 Frame Ids:  67715  67716  67717  67718  67719 Delimiter: 4
+Animation Id:  96064 Frame Ids:  67699  67700 Delimiter: 4
+Animation Id:  96065 Frame Ids:  67706  67707 Delimiter: 4
+Animation Id:  96066 Frame Ids:  67713  67714 Delimiter: 4
+Animation Id:  96067 Frame Ids:  67720  67721 Delimiter: 4
+Animation Id:  96070 Frame Ids:  65180  65181  65182  65183  65184 Delimiter: 4
+Animation Id:  96071 Frame Ids:  65187  65188  65189  65190  65191 Delimiter: 4
+Animation Id:  96072 Frame Ids:  65194  65195  65196  65197  65198 Delimiter: 4
+Animation Id:  96073 Frame Ids:  65201  65202  65203  65204  65205 Delimiter: 4
+Animation Id:  96074 Frame Ids:  65185  65186 Delimiter: 4
+Animation Id:  96075 Frame Ids:  65192  65193 Delimiter: 4
+Animation Id:  96076 Frame Ids:  65199  65200 Delimiter: 4
+Animation Id:  96077 Frame Ids:  65206  65207 Delimiter: 4
+Animation Id:  96080 Frame Ids:  65210  65211  65212  65213  65214 Delimiter: 4
+Animation Id:  96081 Frame Ids:  65217  65218  65219  65220  65221 Delimiter: 4
+Animation Id:  96082 Frame Ids:  65224  65225  65226  65227  65228 Delimiter: 4
+Animation Id:  96083 Frame Ids:  65231  65232  65233  65234  65235 Delimiter: 4
+Animation Id:  96084 Frame Ids:  65215  65216 Delimiter: 4
+Animation Id:  96085 Frame Ids:  65222  65223 Delimiter: 4
+Animation Id:  96086 Frame Ids:  65229  65230 Delimiter: 4
+Animation Id:  96087 Frame Ids:  65236  65237 Delimiter: 4
+Animation Id:  96100 Frame Ids:  65240  65241  65242  65243  65244 Delimiter: 4
+Animation Id:  96101 Frame Ids:  65247  65248  65249  65250  65251 Delimiter: 4
+Animation Id:  96102 Frame Ids:  65254  65255  65256  65257  65258 Delimiter: 4
+Animation Id:  96103 Frame Ids:  65261  65262  65263  65264  65265 Delimiter: 4
+Animation Id:  96104 Frame Ids:  65245  65246 Delimiter: 4
+Animation Id:  96105 Frame Ids:  65252  65253 Delimiter: 4
+Animation Id:  96106 Frame Ids:  65259  65260 Delimiter: 4
+Animation Id:  96107 Frame Ids:  65266  65267 Delimiter: 4
+Animation Id:  96120 Frame Ids:  65300  65301  65302  65303  65304 Delimiter: 4
+Animation Id:  96121 Frame Ids:  65307  65308  65309  65310  65311 Delimiter: 4
+Animation Id:  96122 Frame Ids:  65314  65315  65316  65317  65318 Delimiter: 4
+Animation Id:  96123 Frame Ids:  65321  65322  65323  65324  65325 Delimiter: 4
+Animation Id:  96124 Frame Ids:  65305  65306 Delimiter: 4
+Animation Id:  96125 Frame Ids:  65312  65313 Delimiter: 4
+Animation Id:  96126 Frame Ids:  65319  65320 Delimiter: 4
+Animation Id:  96127 Frame Ids:  65326  65327 Delimiter: 4
+Animation Id:  96130 Frame Ids:  65330  65331  65332  65333  65334 Delimiter: 4
+Animation Id:  96131 Frame Ids:  65337  65338  65339  65340  65341 Delimiter: 4
+Animation Id:  96132 Frame Ids:  65344  65345  65346  65347  65348 Delimiter: 4
+Animation Id:  96133 Frame Ids:  65351  65352  65353  65354  65355 Delimiter: 4
+Animation Id:  96134 Frame Ids:  65335  65336 Delimiter: 4
+Animation Id:  96135 Frame Ids:  65342  65343 Delimiter: 4
+Animation Id:  96136 Frame Ids:  65349  65350 Delimiter: 4
+Animation Id:  96137 Frame Ids:  65356  65357 Delimiter: 4
+Animation Id:  96140 Frame Ids:  65360  65361  65362  65363  65364 Delimiter: 4
+Animation Id:  96141 Frame Ids:  65367  65368  65369  65370  65371 Delimiter: 4
+Animation Id:  96142 Frame Ids:  65374  65375  65376  65377  65378 Delimiter: 4
+Animation Id:  96143 Frame Ids:  65381  65382  65383  65384  65385 Delimiter: 4
+Animation Id:  96144 Frame Ids:  65365  65366 Delimiter: 4
+Animation Id:  96145 Frame Ids:  65372  65373 Delimiter: 4
+Animation Id:  96146 Frame Ids:  65379  65380 Delimiter: 4
+Animation Id:  96147 Frame Ids:  65386  65387 Delimiter: 4
+Animation Id:  96160 Frame Ids:  65420  65421  65422  65423  65424 Delimiter: 4
+Animation Id:  96161 Frame Ids:  65427  65428  65429  65430  65431 Delimiter: 4
+Animation Id:  96162 Frame Ids:  65434  65435  65436  65437  65438 Delimiter: 4
+Animation Id:  96163 Frame Ids:  65441  65442  65443  65444  65445 Delimiter: 4
+Animation Id:  96164 Frame Ids:  65425  65426 Delimiter: 4
+Animation Id:  96165 Frame Ids:  65432  65433 Delimiter: 4
+Animation Id:  96166 Frame Ids:  65439  65440 Delimiter: 4
+Animation Id:  96167 Frame Ids:  65446  65447 Delimiter: 4
+Animation Id:  96170 Frame Ids:  65450  65451  65452  65453  65454 Delimiter: 4
+Animation Id:  96171 Frame Ids:  65457  65458  65459  65460  65461 Delimiter: 4
+Animation Id:  96172 Frame Ids:  65464  65465  65466  65467  65468 Delimiter: 4
+Animation Id:  96173 Frame Ids:  65471  65472  65473  65474  65475 Delimiter: 4
+Animation Id:  96174 Frame Ids:  65455  65456 Delimiter: 4
+Animation Id:  96175 Frame Ids:  65462  65463 Delimiter: 4
+Animation Id:  96176 Frame Ids:  65469  65470 Delimiter: 4
+Animation Id:  96177 Frame Ids:  65476  65477 Delimiter: 4
+Animation Id:  96180 Frame Ids:  65480  65481  65482  65483  65484 Delimiter: 4
+Animation Id:  96181 Frame Ids:  65487  65488  65489  65490  65491 Delimiter: 4
+Animation Id:  96182 Frame Ids:  65494  65495  65496  65497  65498 Delimiter: 4
+Animation Id:  96183 Frame Ids:  65501  65502  65503  65504  65505 Delimiter: 4
+Animation Id:  96184 Frame Ids:  65485  65486 Delimiter: 4
+Animation Id:  96185 Frame Ids:  65492  65493 Delimiter: 4
+Animation Id:  96186 Frame Ids:  65499  65500 Delimiter: 4
+Animation Id:  96187 Frame Ids:  65506  65507 Delimiter: 4
+Animation Id:  96200 Frame Ids:  65540  65541  65542  65543  65544 Delimiter: 4
+Animation Id:  96201 Frame Ids:  65547  65548  65549  65550  65551 Delimiter: 4
+Animation Id:  96202 Frame Ids:  65554  65555  65556  65557  65558 Delimiter: 4
+Animation Id:  96203 Frame Ids:  65561  65562  65563  65564  65565 Delimiter: 4
+Animation Id:  96204 Frame Ids:  65545  65546 Delimiter: 4
+Animation Id:  96205 Frame Ids:  65552  65553 Delimiter: 4
+Animation Id:  96206 Frame Ids:  65559  65560 Delimiter: 4
+Animation Id:  96207 Frame Ids:  65566  65567 Delimiter: 4
+Animation Id:  96210 Frame Ids:  65570  65571  65572  65573  65574 Delimiter: 4
+Animation Id:  96211 Frame Ids:  65577  65578  65579  65580  65581 Delimiter: 4
+Animation Id:  96212 Frame Ids:  65584  65585  65586  65587  65588 Delimiter: 4
+Animation Id:  96213 Frame Ids:  65591  65592  65593  65594  65595 Delimiter: 4
+Animation Id:  96214 Frame Ids:  65575  65576 Delimiter: 4
+Animation Id:  96215 Frame Ids:  65582  65583 Delimiter: 4
+Animation Id:  96216 Frame Ids:  65589  65590 Delimiter: 4
+Animation Id:  96217 Frame Ids:  65596  65597 Delimiter: 4
+Animation Id:  96220 Frame Ids:  65598  65599  65600  65601  65602 Delimiter: 4
+Animation Id:  96221 Frame Ids:  65605  65606  65607  65608  65609 Delimiter: 4
+Animation Id:  96222 Frame Ids:  65612  65613  65614  65615  65616 Delimiter: 4
+Animation Id:  96223 Frame Ids:  65619  65620  65621  65622  65623 Delimiter: 4
+Animation Id:  96224 Frame Ids:  65603  65604 Delimiter: 4
+Animation Id:  96225 Frame Ids:  65610  65611 Delimiter: 4
+Animation Id:  96226 Frame Ids:  65617  65618 Delimiter: 4
+Animation Id:  96227 Frame Ids:  65624  65625 Delimiter: 4
+Animation Id:  96230 Frame Ids:  65626  65627  65628 Delimiter: 4
+Animation Id:  96231 Frame Ids:  65629  65630  65631 Delimiter: 4
+Animation Id:  96232 Frame Ids:  65632  65633  65634 Delimiter: 4
+Animation Id:  96233 Frame Ids:  65635  65636  65637 Delimiter: 4
+Animation Id:  96240 Frame Ids:  65638  65639  65640  65641  65642 Delimiter: 4
+Animation Id:  96241 Frame Ids:  65645  65646  65647  65648  65649 Delimiter: 4
+Animation Id:  96242 Frame Ids:  65652  65653  65654  65655  65656 Delimiter: 4
+Animation Id:  96243 Frame Ids:  65659  65660  65661  65662  65663 Delimiter: 4
+Animation Id:  96244 Frame Ids:  65643  65644 Delimiter: 4
+Animation Id:  96245 Frame Ids:  65650  65651 Delimiter: 4
+Animation Id:  96246 Frame Ids:  65657  65658 Delimiter: 4
+Animation Id:  96247 Frame Ids:  65664  65665 Delimiter: 4
+Animation Id:  96250 Frame Ids:  65666  65667  65668  65669  65670 Delimiter: 4
+Animation Id:  96251 Frame Ids:  65673  65674  65675  65676  65677 Delimiter: 4
+Animation Id:  96252 Frame Ids:  65680  65681  65682  65683  65684 Delimiter: 4
+Animation Id:  96253 Frame Ids:  65687  65688  65689  65690  65691 Delimiter: 4
+Animation Id:  96254 Frame Ids:  65671  65672 Delimiter: 4
+Animation Id:  96255 Frame Ids:  65678  65679 Delimiter: 4
+Animation Id:  96256 Frame Ids:  65685  65686 Delimiter: 4
+Animation Id:  96257 Frame Ids:  65692  65693 Delimiter: 4
+Animation Id:  96260 Frame Ids:  65694  65695  65696  65697  65698 Delimiter: 4
+Animation Id:  96261 Frame Ids:  65701  65702  65703  65704  65705 Delimiter: 4
+Animation Id:  96262 Frame Ids:  65708  65709  65710  65711  65712 Delimiter: 4
+Animation Id:  96263 Frame Ids:  65715  65716  65717  65718  65719 Delimiter: 4
+Animation Id:  96264 Frame Ids:  65699  65700 Delimiter: 4
+Animation Id:  96265 Frame Ids:  65706  65707 Delimiter: 4
+Animation Id:  96266 Frame Ids:  65713  65714 Delimiter: 4
+Animation Id:  96267 Frame Ids:  65720  65721 Delimiter: 4
+Animation Id:  96270 Frame Ids:  65722  65723  65724 Delimiter: 4
+Animation Id:  96271 Frame Ids:  65725  65726  65727 Delimiter: 4
+Animation Id:  96272 Frame Ids:  65728  65729  65730 Delimiter: 4
+Animation Id:  96273 Frame Ids:  65731  65732  65733 Delimiter: 4
+Animation Id:  96280 Frame Ids:  65734  65735  65736  65737  65738 Delimiter: 4
+Animation Id:  96281 Frame Ids:  65741  65742  65743  65744  65745 Delimiter: 4
+Animation Id:  96282 Frame Ids:  65748  65749  65750  65751  65752 Delimiter: 4
+Animation Id:  96283 Frame Ids:  65755  65756  65757  65758  65759 Delimiter: 4
+Animation Id:  96284 Frame Ids:  65739  65740 Delimiter: 4
+Animation Id:  96285 Frame Ids:  65746  65747 Delimiter: 4
+Animation Id:  96286 Frame Ids:  65753  65754 Delimiter: 4
+Animation Id:  96287 Frame Ids:  65760  65761 Delimiter: 4
+Animation Id:  96290 Frame Ids:  65762  65763  65764  65765  65766 Delimiter: 4
+Animation Id:  96291 Frame Ids:  65769  65770  65771  65772  65773 Delimiter: 4
+Animation Id:  96292 Frame Ids:  65776  65777  65778  65779  65780 Delimiter: 4
+Animation Id:  96293 Frame Ids:  65783  65784  65785  65786  65787 Delimiter: 4
+Animation Id:  96294 Frame Ids:  65767  65768 Delimiter: 4
+Animation Id:  96295 Frame Ids:  65774  65775 Delimiter: 4
+Animation Id:  96296 Frame Ids:  65781  65782 Delimiter: 4
+Animation Id:  96297 Frame Ids:  65788  65789 Delimiter: 4
+Animation Id:  96300 Frame Ids:  65790  65791  65792  65793  65794 Delimiter: 4
+Animation Id:  96301 Frame Ids:  65797  65798  65799  65800  65801 Delimiter: 4
+Animation Id:  96302 Frame Ids:  65804  65805  65806  65807  65808 Delimiter: 4
+Animation Id:  96303 Frame Ids:  65811  65812  65813  65814  65815 Delimiter: 4
+Animation Id:  96304 Frame Ids:  65795  65796 Delimiter: 4
+Animation Id:  96305 Frame Ids:  65802  65803 Delimiter: 4
+Animation Id:  96306 Frame Ids:  65809  65810 Delimiter: 4
+Animation Id:  96307 Frame Ids:  65816  65817 Delimiter: 4
+Animation Id:  96310 Frame Ids:  65818  65819  65820 Delimiter: 4
+Animation Id:  96311 Frame Ids:  65821  65822  65823 Delimiter: 4
+Animation Id:  96312 Frame Ids:  65824  65825  65826 Delimiter: 4
+Animation Id:  96313 Frame Ids:  65827  65828  65829 Delimiter: 4
+Animation Id:  96320 Frame Ids:  65830  65831  65832  65833  65834 Delimiter: 4
+Animation Id:  96321 Frame Ids:  65837  65838  65839  65840  65841 Delimiter: 4
+Animation Id:  96322 Frame Ids:  65844  65845  65846  65847  65848 Delimiter: 4
+Animation Id:  96323 Frame Ids:  65851  65852  65853  65854  65855 Delimiter: 4
+Animation Id:  96324 Frame Ids:  65835  65836 Delimiter: 4
+Animation Id:  96325 Frame Ids:  65842  65842 Delimiter: 4
+Animation Id:  96326 Frame Ids:  65849  65850 Delimiter: 4
+Animation Id:  96327 Frame Ids:  65856  65857 Delimiter: 4
+Animation Id:  96330 Frame Ids:  65858  65859  65860  65861  65862 Delimiter: 4
+Animation Id:  96331 Frame Ids:  65865  65866  65867  65868  65869 Delimiter: 4
+Animation Id:  96332 Frame Ids:  65872  65873  65874  65875  65876 Delimiter: 4
+Animation Id:  96333 Frame Ids:  65879  65880  65881  65882  65883 Delimiter: 4
+Animation Id:  96334 Frame Ids:  65863  65864 Delimiter: 4
+Animation Id:  96335 Frame Ids:  65870  65871 Delimiter: 4
+Animation Id:  96336 Frame Ids:  65877  65878 Delimiter: 4
+Animation Id:  96337 Frame Ids:  65884  65885 Delimiter: 4
+Animation Id:  96340 Frame Ids:  65886  65887  65888  65889  65890 Delimiter: 4
+Animation Id:  96341 Frame Ids:  65893  65894  65895  65896  65897 Delimiter: 4
+Animation Id:  96342 Frame Ids:  65900  65901  65902  65903  65904 Delimiter: 4
+Animation Id:  96343 Frame Ids:  65907  65908  65909  65910  65911 Delimiter: 4
+Animation Id:  96344 Frame Ids:  65891  65892 Delimiter: 4
+Animation Id:  96345 Frame Ids:  65898  65899 Delimiter: 4
+Animation Id:  96346 Frame Ids:  65905  65906 Delimiter: 4
+Animation Id:  96347 Frame Ids:  65912  65913 Delimiter: 4
+Animation Id:  96360 Frame Ids:  65926  65927  65928  65929  65930 Delimiter: 4
+Animation Id:  96361 Frame Ids:  65933  65934  65935  65936  65937 Delimiter: 4
+Animation Id:  96362 Frame Ids:  65940  65941  65942  65943  65944 Delimiter: 4
+Animation Id:  96363 Frame Ids:  65947  65948  65949  65950  65951 Delimiter: 4
+Animation Id:  96364 Frame Ids:  65931  65932 Delimiter: 4
+Animation Id:  96365 Frame Ids:  65938  65939 Delimiter: 4
+Animation Id:  96366 Frame Ids:  65945  65946 Delimiter: 4
+Animation Id:  96367 Frame Ids:  65952  65953 Delimiter: 4
+Animation Id:  96370 Frame Ids:  65954  65955  65956  65957  65958 Delimiter: 4
+Animation Id:  96371 Frame Ids:  65961  65962  65963  65964  65965 Delimiter: 4
+Animation Id:  96372 Frame Ids:  65968  65969  65970  65971  65972 Delimiter: 4
+Animation Id:  96373 Frame Ids:  65975  65976  65977  65978  65979 Delimiter: 4
+Animation Id:  96374 Frame Ids:  65959  65960 Delimiter: 4
+Animation Id:  96375 Frame Ids:  65966  65967 Delimiter: 4
+Animation Id:  96376 Frame Ids:  65973  65974 Delimiter: 4
+Animation Id:  96377 Frame Ids:  65980  65981 Delimiter: 4
+Animation Id:  96380 Frame Ids:  65982  65983  65984  65985  65986 Delimiter: 4
+Animation Id:  96381 Frame Ids:  65989  65990  65991  65992  65993 Delimiter: 4
+Animation Id:  96382 Frame Ids:  65996  65997  65998  65999  66000 Delimiter: 4
+Animation Id:  96383 Frame Ids:  66003  66004  66005  66006  66007 Delimiter: 4
+Animation Id:  96384 Frame Ids:  65987  65988 Delimiter: 4
+Animation Id:  96385 Frame Ids:  65994  65995 Delimiter: 4
+Animation Id:  96386 Frame Ids:  66001  66002 Delimiter: 4
+Animation Id:  96387 Frame Ids:  66008  66009 Delimiter: 4
+Animation Id:  96400 Frame Ids:  66022  66023  66024  66025  66026 Delimiter: 4
+Animation Id:  96401 Frame Ids:  66029  66030  66031  66032  66033 Delimiter: 4
+Animation Id:  96402 Frame Ids:  66036  66037  66038  66039  66040 Delimiter: 4
+Animation Id:  96403 Frame Ids:  66043  66044  66045  66046  66047 Delimiter: 4
+Animation Id:  96404 Frame Ids:  66027  66028 Delimiter: 4
+Animation Id:  96405 Frame Ids:  66034  66035 Delimiter: 4
+Animation Id:  96406 Frame Ids:  66041  66042 Delimiter: 4
+Animation Id:  96407 Frame Ids:  66048  66049 Delimiter: 4
+Animation Id:  96410 Frame Ids:  66050  66051  66052  66053  66054 Delimiter: 4
+Animation Id:  96411 Frame Ids:  66057  66058  66059  66060  66061 Delimiter: 4
+Animation Id:  96412 Frame Ids:  66064  66065  66066  66067  66068 Delimiter: 4
+Animation Id:  96413 Frame Ids:  66071  66072  66073  66074  66075 Delimiter: 4
+Animation Id:  96414 Frame Ids:  66055  66056 Delimiter: 4
+Animation Id:  96415 Frame Ids:  66062  66063 Delimiter: 4
+Animation Id:  96416 Frame Ids:  66069  66070 Delimiter: 4
+Animation Id:  96417 Frame Ids:  66076  66077 Delimiter: 4
+Animation Id:  96420 Frame Ids:  66078  66079  66080  66081  66082 Delimiter: 4
+Animation Id:  96421 Frame Ids:  66085  66086  66087  66088  66089 Delimiter: 4
+Animation Id:  96422 Frame Ids:  66092  66093  66094  66095  66096 Delimiter: 4
+Animation Id:  96423 Frame Ids:  66099  66100  66101  66102  66103 Delimiter: 4
+Animation Id:  96424 Frame Ids:  66083  66084 Delimiter: 4
+Animation Id:  96425 Frame Ids:  66090  66091 Delimiter: 4
+Animation Id:  96426 Frame Ids:  66097  66098 Delimiter: 4
+Animation Id:  96427 Frame Ids:  66104  66105 Delimiter: 4
+Animation Id:  96440 Frame Ids:  66118  66119  66120  66121  66122 Delimiter: 4
+Animation Id:  96441 Frame Ids:  66125  66126  66127  66128  66129 Delimiter: 4
+Animation Id:  96442 Frame Ids:  66132  66133  66134  66135  66136 Delimiter: 4
+Animation Id:  96443 Frame Ids:  66139  66140  66141  66142  66143 Delimiter: 4
+Animation Id:  96444 Frame Ids:  66123  66124 Delimiter: 4
+Animation Id:  96445 Frame Ids:  66130  66131 Delimiter: 4
+Animation Id:  96446 Frame Ids:  66137  66138 Delimiter: 4
+Animation Id:  96447 Frame Ids:  66144  66145 Delimiter: 4
+Animation Id:  96450 Frame Ids:  66146  66147  66148  66149  66150 Delimiter: 4
+Animation Id:  96451 Frame Ids:  66153  66154  66155  66156  66157 Delimiter: 4
+Animation Id:  96452 Frame Ids:  66160  66161  66162  66163  66164 Delimiter: 4
+Animation Id:  96453 Frame Ids:  66167  66168  66169  66170  66171 Delimiter: 4
+Animation Id:  96454 Frame Ids:  66151  66152 Delimiter: 4
+Animation Id:  96455 Frame Ids:  66158  66159 Delimiter: 4
+Animation Id:  96456 Frame Ids:  66165  66166 Delimiter: 4
+Animation Id:  96457 Frame Ids:  66172  66173 Delimiter: 4
+Animation Id:  96460 Frame Ids:  66174  66175  66176  66177  66178 Delimiter: 4
+Animation Id:  96461 Frame Ids:  66181  66182  66183  66184  66185 Delimiter: 4
+Animation Id:  96462 Frame Ids:  66188  66189  66190  66191  66192 Delimiter: 4
+Animation Id:  96463 Frame Ids:  66195  66196  66197  66198  66199 Delimiter: 4
+Animation Id:  96464 Frame Ids:  66179  66180 Delimiter: 4
+Animation Id:  96465 Frame Ids:  66186  66187 Delimiter: 4
+Animation Id:  96466 Frame Ids:  66193  66194 Delimiter: 4
+Animation Id:  96467 Frame Ids:  66200  66201 Delimiter: 4
+Animation Id:  96480 Frame Ids:  66214  66215  66216  66217  66218 Delimiter: 4
+Animation Id:  96481 Frame Ids:  66221  66222  66223  66224  66225 Delimiter: 4
+Animation Id:  96482 Frame Ids:  66228  66229  66230  66231  66232 Delimiter: 4
+Animation Id:  96483 Frame Ids:  66235  66236  66237  66238  66239 Delimiter: 4
+Animation Id:  96484 Frame Ids:  66219  66220 Delimiter: 4
+Animation Id:  96485 Frame Ids:  66226  66227 Delimiter: 4
+Animation Id:  96486 Frame Ids:  66233  66234 Delimiter: 4
+Animation Id:  96487 Frame Ids:  66240  66241 Delimiter: 4
+Animation Id:  96490 Frame Ids:  66242  66243  66244  66245  66246 Delimiter: 4
+Animation Id:  96491 Frame Ids:  66249  66250  66251  66252  66253 Delimiter: 4
+Animation Id:  96492 Frame Ids:  66256  66257  66258  66259  66260 Delimiter: 4
+Animation Id:  96493 Frame Ids:  66263  66264  66265  66266  66267 Delimiter: 4
+Animation Id:  96494 Frame Ids:  66247  66248 Delimiter: 4
+Animation Id:  96495 Frame Ids:  66254  66255 Delimiter: 4
+Animation Id:  96496 Frame Ids:  66261  66262 Delimiter: 4
+Animation Id:  96497 Frame Ids:  66268  66269 Delimiter: 4
+Animation Id:  96500 Frame Ids:  66270  66271  66272  66273  66274 Delimiter: 4
+Animation Id:  96501 Frame Ids:  66277  66278  66279  66280  66281 Delimiter: 4
+Animation Id:  96502 Frame Ids:  66284  66285  66286  66287  66288 Delimiter: 4
+Animation Id:  96503 Frame Ids:  66291  66292  66293  66294  66295 Delimiter: 4
+Animation Id:  96504 Frame Ids:  66275  66276 Delimiter: 4
+Animation Id:  96505 Frame Ids:  66282  66283 Delimiter: 4
+Animation Id:  96506 Frame Ids:  66289  66290 Delimiter: 4
+Animation Id:  96507 Frame Ids:  66296  66297 Delimiter: 4
+Animation Id:  96520 Frame Ids:  66310  66311  66312  66313  66314 Delimiter: 4
+Animation Id:  96521 Frame Ids:  66317  66318  66319  66320  66321 Delimiter: 4
+Animation Id:  96522 Frame Ids:  66324  66325  66326  66327  66328 Delimiter: 4
+Animation Id:  96523 Frame Ids:  66331  66332  66333  66334  66335 Delimiter: 4
+Animation Id:  96524 Frame Ids:  66315  66316 Delimiter: 4
+Animation Id:  96525 Frame Ids:  66322  66323 Delimiter: 4
+Animation Id:  96526 Frame Ids:  66329  66330 Delimiter: 4
+Animation Id:  96527 Frame Ids:  66336  66337 Delimiter: 4
+Animation Id:  96530 Frame Ids:  66338  66339  66340  66341  66342 Delimiter: 4
+Animation Id:  96531 Frame Ids:  66345  66346  66347  66348  66349 Delimiter: 4
+Animation Id:  96532 Frame Ids:  66352  66353  66354  66355  66356 Delimiter: 4
+Animation Id:  96533 Frame Ids:  66359  66360  66361  66362  66363 Delimiter: 4
+Animation Id:  96534 Frame Ids:  66343  66344 Delimiter: 4
+Animation Id:  96535 Frame Ids:  66350  66351 Delimiter: 4
+Animation Id:  96536 Frame Ids:  66357  66358 Delimiter: 4
+Animation Id:  96537 Frame Ids:  66364  66365 Delimiter: 4
+Animation Id:  96540 Frame Ids:  66366  66367  66368  66369  66370 Delimiter: 4
+Animation Id:  96541 Frame Ids:  66373  66374  66375  66376  66377 Delimiter: 4
+Animation Id:  96542 Frame Ids:  66380  66381  66382  66383  66384 Delimiter: 4
+Animation Id:  96543 Frame Ids:  66387  66388  66389  66390  66391 Delimiter: 4
+Animation Id:  96544 Frame Ids:  66371  66372 Delimiter: 4
+Animation Id:  96545 Frame Ids:  66378  66379 Delimiter: 4
+Animation Id:  96546 Frame Ids:  66385  66386 Delimiter: 4
+Animation Id:  96547 Frame Ids:  66392  66393 Delimiter: 4
+Animation Id:  96560 Frame Ids:  66430  66431  66432  66433  66434 Delimiter: 4
+Animation Id:  96561 Frame Ids:  66437  66438  66439  66440  66441 Delimiter: 4
+Animation Id:  96562 Frame Ids:  66444  66445  66446  66447  66448 Delimiter: 4
+Animation Id:  96563 Frame Ids:  66451  66452  66453  66454  66455 Delimiter: 4
+Animation Id:  96564 Frame Ids:  66435  66436 Delimiter: 4
+Animation Id:  96565 Frame Ids:  66442  66443 Delimiter: 4
+Animation Id:  96566 Frame Ids:  66449  66450 Delimiter: 4
+Animation Id:  96567 Frame Ids:  66456  66457 Delimiter: 4
+Animation Id:  96570 Frame Ids:  66458  66459  66460  66461  66462 Delimiter: 4
+Animation Id:  96571 Frame Ids:  66465  66466  66467  66468  66469 Delimiter: 4
+Animation Id:  96572 Frame Ids:  66472  66473  66474  66475  66476 Delimiter: 4
+Animation Id:  96573 Frame Ids:  66479  66480  66481  66482  66483 Delimiter: 4
+Animation Id:  96574 Frame Ids:  66463  66464 Delimiter: 4
+Animation Id:  96575 Frame Ids:  66470  66471 Delimiter: 4
+Animation Id:  96576 Frame Ids:  66477  66478 Delimiter: 4
+Animation Id:  96577 Frame Ids:  66484  66485 Delimiter: 4
+Animation Id:  96580 Frame Ids:  66486  66487  66488  66489  66490 Delimiter: 4
+Animation Id:  96581 Frame Ids:  66493  66494  66495  66496  66497 Delimiter: 4
+Animation Id:  96582 Frame Ids:  66500  66501  66502  66503  66504 Delimiter: 4
+Animation Id:  96583 Frame Ids:  66507  66508  66509  66510  66511 Delimiter: 4
+Animation Id:  96584 Frame Ids:  66491  66492 Delimiter: 4
+Animation Id:  96585 Frame Ids:  66498  66499 Delimiter: 4
+Animation Id:  96586 Frame Ids:  66505  66506 Delimiter: 4
+Animation Id:  96587 Frame Ids:  66512  66513 Delimiter: 4
+Animation Id:  96600 Frame Ids:  66540  66541  66542  66543  66544 Delimiter: 4
+Animation Id:  96601 Frame Ids:  66547  66548  66549  66550  66551 Delimiter: 4
+Animation Id:  96602 Frame Ids:  66554  66555  66556  66557  66558 Delimiter: 4
+Animation Id:  96603 Frame Ids:  66561  66562  66563  66564  66565 Delimiter: 4
+Animation Id:  96604 Frame Ids:  66545  66546 Delimiter: 4
+Animation Id:  96605 Frame Ids:  66552  66553 Delimiter: 4
+Animation Id:  96606 Frame Ids:  66559  66560 Delimiter: 4
+Animation Id:  96607 Frame Ids:  66566  66567 Delimiter: 4
+Animation Id:  96610 Frame Ids:  66568  66569  66570  66571  66572 Delimiter: 4
+Animation Id:  96611 Frame Ids:  66575  66576  66577  66578  66579 Delimiter: 4
+Animation Id:  96612 Frame Ids:  66582  66583  66584  66585  66586 Delimiter: 4
+Animation Id:  96613 Frame Ids:  66589  66590  66591  66592  66593 Delimiter: 4
+Animation Id:  96614 Frame Ids:  66573  66574 Delimiter: 4
+Animation Id:  96615 Frame Ids:  66580  66581 Delimiter: 4
+Animation Id:  96616 Frame Ids:  66587  66588 Delimiter: 4
+Animation Id:  96617 Frame Ids:  66594  66595 Delimiter: 4
+Animation Id:  96620 Frame Ids:  66596  66597  66598  66599  66600 Delimiter: 4
+Animation Id:  96621 Frame Ids:  66603  66604  66605  66606  66607 Delimiter: 4
+Animation Id:  96622 Frame Ids:  66610  66611  66612  66613  66614 Delimiter: 4
+Animation Id:  96623 Frame Ids:  66617  66618  66619  66620  66621 Delimiter: 4
+Animation Id:  96624 Frame Ids:  66601  66602 Delimiter: 4
+Animation Id:  96625 Frame Ids:  66608  66609 Delimiter: 4
+Animation Id:  96626 Frame Ids:  66615  66616 Delimiter: 4
+Animation Id:  96627 Frame Ids:  66622  66623 Delimiter: 4
+Animation Id:  96640 Frame Ids:  66653  66654  66655  66656  66657 Delimiter: 4
+Animation Id:  96641 Frame Ids:  66660  66661  66662  66663  66664 Delimiter: 4
+Animation Id:  96642 Frame Ids:  66667  66668  66669  66670  66671 Delimiter: 4
+Animation Id:  96643 Frame Ids:  66674  66675  66676  66677  66678 Delimiter: 4
+Animation Id:  96644 Frame Ids:  66658  66659 Delimiter: 4
+Animation Id:  96645 Frame Ids:  66665  66666 Delimiter: 4
+Animation Id:  96646 Frame Ids:  66672  66673 Delimiter: 4
+Animation Id:  96647 Frame Ids:  66679  66680 Delimiter: 4
+Animation Id:  96650 Frame Ids:  66681  66682  66683  66684  66685 Delimiter: 4
+Animation Id:  96651 Frame Ids:  66688  66689  66690  66691  66692 Delimiter: 4
+Animation Id:  96652 Frame Ids:  66695  66696  66697  66698  66699 Delimiter: 4
+Animation Id:  96653 Frame Ids:  66702  66703  66704  66705  66706 Delimiter: 4
+Animation Id:  96654 Frame Ids:  66686  66687 Delimiter: 4
+Animation Id:  96655 Frame Ids:  66693  66694 Delimiter: 4
+Animation Id:  96656 Frame Ids:  66700  66701 Delimiter: 4
+Animation Id:  96657 Frame Ids:  66707  66708 Delimiter: 4
+Animation Id:  96660 Frame Ids:  66709  66710  66711  66712  66713 Delimiter: 4
+Animation Id:  96661 Frame Ids:  66716  66717  66718  66719  66720 Delimiter: 4
+Animation Id:  96662 Frame Ids:  66723  66724  66725  66726  66727 Delimiter: 4
+Animation Id:  96663 Frame Ids:  66730  66731  66732  66733  66734 Delimiter: 4
+Animation Id:  96664 Frame Ids:  66714  66715 Delimiter: 4
+Animation Id:  96665 Frame Ids:  66721  66722 Delimiter: 4
+Animation Id:  96666 Frame Ids:  66728  66729 Delimiter: 4
+Animation Id:  96667 Frame Ids:  66735  66736 Delimiter: 4
+Animation Id:  96680 Frame Ids:  66777  66778  66779  66780  66781 Delimiter: 4
+Animation Id:  96681 Frame Ids:  66784  66785  66786  66787  66788 Delimiter: 4
+Animation Id:  96682 Frame Ids:  66791  66792  66793  66794  66795 Delimiter: 4
+Animation Id:  96683 Frame Ids:  66798  66799  66800  66801  66802 Delimiter: 4
+Animation Id:  96684 Frame Ids:  66782  66783 Delimiter: 4
+Animation Id:  96685 Frame Ids:  66789  66790 Delimiter: 4
+Animation Id:  96686 Frame Ids:  66796  66797 Delimiter: 4
+Animation Id:  96687 Frame Ids:  66803  66804 Delimiter: 4
+Animation Id:  96690 Frame Ids:  66805  66806  66807  66808  66809 Delimiter: 4
+Animation Id:  96691 Frame Ids:  66812  66813  66814  66815  66816 Delimiter: 4
+Animation Id:  96692 Frame Ids:  66819  66820  66821  66822  66823 Delimiter: 4
+Animation Id:  96693 Frame Ids:  66826  66827  66828  66829  66830 Delimiter: 4
+Animation Id:  96694 Frame Ids:  66810  66811 Delimiter: 4
+Animation Id:  96695 Frame Ids:  66817  66818 Delimiter: 4
+Animation Id:  96696 Frame Ids:  66824  66825 Delimiter: 4
+Animation Id:  96697 Frame Ids:  66831  66832 Delimiter: 4
+Animation Id:  96700 Frame Ids:  66833  66834  66835  66836  66837 Delimiter: 4
+Animation Id:  96701 Frame Ids:  66840  66841  66842  66843  66844 Delimiter: 4
+Animation Id:  96702 Frame Ids:  66847  66848  66849  66850  66851 Delimiter: 4
+Animation Id:  96703 Frame Ids:  66854  66855  66856  66857  66858 Delimiter: 4
+Animation Id:  96704 Frame Ids:  66838  66839 Delimiter: 4
+Animation Id:  96705 Frame Ids:  66845  66846 Delimiter: 4
+Animation Id:  96706 Frame Ids:  66852  66853 Delimiter: 4
+Animation Id:  96707 Frame Ids:  66859  66860 Delimiter: 4
+Animation Id:  96720 Frame Ids:  66900  66901  66902  66903  66904 Delimiter: 4
+Animation Id:  96721 Frame Ids:  66907  66908  66909  66910  66911 Delimiter: 4
+Animation Id:  96722 Frame Ids:  66914  66915  66916  66917  66918 Delimiter: 4
+Animation Id:  96723 Frame Ids:  66921  66922  66923  66924  66925 Delimiter: 4
+Animation Id:  96724 Frame Ids:  66905  66906 Delimiter: 4
+Animation Id:  96725 Frame Ids:  66912  66913 Delimiter: 4
+Animation Id:  96726 Frame Ids:  66919  66920 Delimiter: 4
+Animation Id:  96727 Frame Ids:  66926  66927 Delimiter: 4
+Animation Id:  96730 Frame Ids:  66928  66929  66930  66931  66932 Delimiter: 4
+Animation Id:  96731 Frame Ids:  66935  66936  66937  66938  66939 Delimiter: 4
+Animation Id:  96732 Frame Ids:  66942  66943  66944  66945  66946 Delimiter: 4
+Animation Id:  96733 Frame Ids:  66949  66950  66951  66952  66953 Delimiter: 4
+Animation Id:  96734 Frame Ids:  66933  66934 Delimiter: 4
+Animation Id:  96735 Frame Ids:  66940  66941 Delimiter: 4
+Animation Id:  96736 Frame Ids:  66947  66948 Delimiter: 4
+Animation Id:  96737 Frame Ids:  66954  66955 Delimiter: 4
+Animation Id:  96740 Frame Ids:  66956  66957  66958  66959  66960 Delimiter: 4
+Animation Id:  96741 Frame Ids:  66963  66964  66965  66966  66967 Delimiter: 4
+Animation Id:  96742 Frame Ids:  66970  66971  66972  66973  66974 Delimiter: 4
+Animation Id:  96743 Frame Ids:  66977  66978  66979  66980  66981 Delimiter: 4
+Animation Id:  96744 Frame Ids:  66961  66962 Delimiter: 4
+Animation Id:  96745 Frame Ids:  66968  66969 Delimiter: 4
+Animation Id:  96746 Frame Ids:  66975  66976 Delimiter: 4
+Animation Id:  96747 Frame Ids:  66982  66983 Delimiter: 4
+Animation Id:  96760 Frame Ids:  67000  67001  67002  67003  67004 Delimiter: 4
+Animation Id:  96761 Frame Ids:  67007  67008  67009  67010  67011 Delimiter: 4
+Animation Id:  96762 Frame Ids:  67014  67015  67016  67017  67018 Delimiter: 4
+Animation Id:  96763 Frame Ids:  67021  67022  67023  67024  67025 Delimiter: 4
+Animation Id:  96764 Frame Ids:  67005  67006 Delimiter: 4
+Animation Id:  96765 Frame Ids:  67012  67013 Delimiter: 4
+Animation Id:  96766 Frame Ids:  67019  67020 Delimiter: 4
+Animation Id:  96767 Frame Ids:  67026  67027 Delimiter: 4
+Animation Id:  96770 Frame Ids:  67028  67029  67030  67031  67032 Delimiter: 4
+Animation Id:  96771 Frame Ids:  67035  67036  67037  67038  67039 Delimiter: 4
+Animation Id:  96772 Frame Ids:  67042  67043  67044  67045  67046 Delimiter: 4
+Animation Id:  96773 Frame Ids:  67049  67050  67051  67052  67053 Delimiter: 4
+Animation Id:  96774 Frame Ids:  67033  67034 Delimiter: 4
+Animation Id:  96775 Frame Ids:  67040  67041 Delimiter: 4
+Animation Id:  96776 Frame Ids:  67047  67048 Delimiter: 4
+Animation Id:  96777 Frame Ids:  67054  67055 Delimiter: 4
+Animation Id:  96780 Frame Ids:  67056  67057  67058  67059  67060 Delimiter: 4
+Animation Id:  96781 Frame Ids:  67063  67064  67065  67066  67067 Delimiter: 4
+Animation Id:  96782 Frame Ids:  67070  67071  67072  67073  67074 Delimiter: 4
+Animation Id:  96783 Frame Ids:  67077  67078  67079  67080  67081 Delimiter: 4
+Animation Id:  96784 Frame Ids:  67061  67062 Delimiter: 4
+Animation Id:  96785 Frame Ids:  67068  67069 Delimiter: 4
+Animation Id:  96786 Frame Ids:  67075  67076 Delimiter: 4
+Animation Id:  96787 Frame Ids:  67082  67083 Delimiter: 4
+Animation Id:  96800 Frame Ids:  67110  67111  67112  67113  67114 Delimiter: 4
+Animation Id:  96801 Frame Ids:  67117  67118  67119  67120  67121 Delimiter: 4
+Animation Id:  96802 Frame Ids:  67124  67125  67126  67127  67128 Delimiter: 4
+Animation Id:  96803 Frame Ids:  67131  67132  67133  67134  67135 Delimiter: 4
+Animation Id:  96804 Frame Ids:  67115  67116 Delimiter: 4
+Animation Id:  96805 Frame Ids:  67122  67123 Delimiter: 4
+Animation Id:  96806 Frame Ids:  67129  67130 Delimiter: 4
+Animation Id:  96807 Frame Ids:  67136  67137 Delimiter: 4
+Animation Id:  96810 Frame Ids:  67138  67139  67140  67141  67142 Delimiter: 4
+Animation Id:  96811 Frame Ids:  67145  67146  67147  67148  67149 Delimiter: 4
+Animation Id:  96812 Frame Ids:  67152  67153  67154  67155  67156 Delimiter: 4
+Animation Id:  96813 Frame Ids:  67159  67160  67161  67162  67163 Delimiter: 4
+Animation Id:  96814 Frame Ids:  67143  67144 Delimiter: 4
+Animation Id:  96815 Frame Ids:  67150  67151 Delimiter: 4
+Animation Id:  96816 Frame Ids:  67157  67158 Delimiter: 4
+Animation Id:  96817 Frame Ids:  67164  67165 Delimiter: 4
+Animation Id:  96820 Frame Ids:  67166  67167  67168  67169  67170 Delimiter: 4
+Animation Id:  96821 Frame Ids:  67173  67174  67175  67176  67177 Delimiter: 4
+Animation Id:  96822 Frame Ids:  67180  67181  67182  67183  67184 Delimiter: 4
+Animation Id:  96823 Frame Ids:  67187  67188  67189  67190  67191 Delimiter: 4
+Animation Id:  96824 Frame Ids:  67171  67172 Delimiter: 4
+Animation Id:  96825 Frame Ids:  67178  67179 Delimiter: 4
+Animation Id:  96826 Frame Ids:  67185  67186 Delimiter: 4
+Animation Id:  96827 Frame Ids:  67192  67193 Delimiter: 4
+Animation Id:  96840 Frame Ids:  67220  67221  67222  67223  67224 Delimiter: 4
+Animation Id:  96841 Frame Ids:  67227  67228  67229  67230  67231 Delimiter: 4
+Animation Id:  96842 Frame Ids:  67234  67235  67236  67237  67238 Delimiter: 4
+Animation Id:  96843 Frame Ids:  67241  67242  67243  67244  67245 Delimiter: 4
+Animation Id:  96844 Frame Ids:  67225  67226 Delimiter: 4
+Animation Id:  96845 Frame Ids:  67232  67233 Delimiter: 4
+Animation Id:  96846 Frame Ids:  67239  67240 Delimiter: 4
+Animation Id:  96847 Frame Ids:  67246  67247 Delimiter: 4
+Animation Id:  96850 Frame Ids:  67248  67249  67250  67251  67252 Delimiter: 4
+Animation Id:  96851 Frame Ids:  67255  67256  67257  67258  67259 Delimiter: 4
+Animation Id:  96852 Frame Ids:  67262  67263  67264  67265  67266 Delimiter: 4
+Animation Id:  96853 Frame Ids:  67269  67270  67271  67272  67273 Delimiter: 4
+Animation Id:  96854 Frame Ids:  67253  67254 Delimiter: 4
+Animation Id:  96855 Frame Ids:  67260  67261 Delimiter: 4
+Animation Id:  96856 Frame Ids:  67267  67268 Delimiter: 4
+Animation Id:  96857 Frame Ids:  67274  67275 Delimiter: 4
+Animation Id:  96860 Frame Ids:  67276  67277  67278  67279  67280 Delimiter: 4
+Animation Id:  96861 Frame Ids:  67283  67284  67285  67286  67287 Delimiter: 4
+Animation Id:  96862 Frame Ids:  67290  67291  67292  67293  67294 Delimiter: 4
+Animation Id:  96863 Frame Ids:  67297  67298  67299  67300  67301 Delimiter: 4
+Animation Id:  96864 Frame Ids:  67281  67282 Delimiter: 4
+Animation Id:  96865 Frame Ids:  67288  67289 Delimiter: 4
+Animation Id:  96866 Frame Ids:  67295  67296 Delimiter: 4
+Animation Id:  96867 Frame Ids:  67302  67303 Delimiter: 4
+Animation Id:  96880 Frame Ids:  67330  67331  67332  67333  67334 Delimiter: 4
+Animation Id:  96881 Frame Ids:  67337  67338  67339  67340  67341 Delimiter: 4
+Animation Id:  96882 Frame Ids:  67344  67345  67346  67347  67348 Delimiter: 4
+Animation Id:  96883 Frame Ids:  67351  67352  67353  67354  67355 Delimiter: 4
+Animation Id:  96884 Frame Ids:  67335  67336 Delimiter: 4
+Animation Id:  96885 Frame Ids:  67342  67343 Delimiter: 4
+Animation Id:  96886 Frame Ids:  67349  67350 Delimiter: 4
+Animation Id:  96887 Frame Ids:  67356  67357 Delimiter: 4
+Animation Id:  96890 Frame Ids:  67358  67359  67360  67361  67362 Delimiter: 4
+Animation Id:  96891 Frame Ids:  67365  67366  67367  67368  67369 Delimiter: 4
+Animation Id:  96892 Frame Ids:  67372  67373  67374  67375  67376 Delimiter: 4
+Animation Id:  96893 Frame Ids:  67379  67380  67381  67382  67383 Delimiter: 4
+Animation Id:  96894 Frame Ids:  67363  67364 Delimiter: 4
+Animation Id:  96895 Frame Ids:  67370  67371 Delimiter: 4
+Animation Id:  96896 Frame Ids:  67377  67378 Delimiter: 4
+Animation Id:  96897 Frame Ids:  67384  67385 Delimiter: 4
+Animation Id:  96900 Frame Ids:  67386  67387  67388  67389  67390 Delimiter: 4
+Animation Id:  96901 Frame Ids:  67393  67394  67395  67396  67397 Delimiter: 4
+Animation Id:  96902 Frame Ids:  67400  67401  67402  67403  67404 Delimiter: 4
+Animation Id:  96903 Frame Ids:  67407  67408  67409  67410  67411 Delimiter: 4
+Animation Id:  96904 Frame Ids:  67391  67392 Delimiter: 4
+Animation Id:  96905 Frame Ids:  67398  67399 Delimiter: 4
+Animation Id:  96906 Frame Ids:  67405  67406 Delimiter: 4
+Animation Id:  96907 Frame Ids:  67412  67413 Delimiter: 4
+Animation Id:  96910 Frame Ids:  67414  67415  67416  67417  67418 Delimiter: 4
+Animation Id:  96911 Frame Ids:  67421  67422  67423  67424  67425 Delimiter: 4
+Animation Id:  96912 Frame Ids:  67428  67429  67430  67431  67432 Delimiter: 4
+Animation Id:  96913 Frame Ids:  67435  67436  67437  67438  67439 Delimiter: 4
+Animation Id:  96914 Frame Ids:  67419  67420 Delimiter: 4
+Animation Id:  96915 Frame Ids:  67426  67427 Delimiter: 4
+Animation Id:  96916 Frame Ids:  67433  67434 Delimiter: 4
+Animation Id:  96917 Frame Ids:  67440  67441 Delimiter: 4
+Animation Id:  96920 Frame Ids:  67442  67443  67444  67445  67446 Delimiter: 4
+Animation Id:  96921 Frame Ids:  67449  67450  67451  67452  67453 Delimiter: 4
+Animation Id:  96922 Frame Ids:  67456  67457  67458  67459  67460 Delimiter: 4
+Animation Id:  96923 Frame Ids:  67463  67464  67465  67466  67467 Delimiter: 4
+Animation Id:  96924 Frame Ids:  67447  67448 Delimiter: 4
+Animation Id:  96925 Frame Ids:  67454  67455 Delimiter: 4
+Animation Id:  96926 Frame Ids:  67461  67462 Delimiter: 4
+Animation Id:  96927 Frame Ids:  67468  67469 Delimiter: 4
+Animation Id:  96930 Frame Ids:  67470  67471  67472  67473  67474 Delimiter: 4
+Animation Id:  96931 Frame Ids:  67477  67478  67479  67480  67481 Delimiter: 4
+Animation Id:  96932 Frame Ids:  67484  67485  67486  67487  67488 Delimiter: 4
+Animation Id:  96933 Frame Ids:  67491  67492  67493  67494  67495 Delimiter: 4
+Animation Id:  96934 Frame Ids:  67475  67476 Delimiter: 4
+Animation Id:  96935 Frame Ids:  67482  67483 Delimiter: 4
+Animation Id:  96936 Frame Ids:  67489  67490 Delimiter: 4
+Animation Id:  96937 Frame Ids:  67496  67497 Delimiter: 4
+Animation Id:  96940 Frame Ids:  67498  67499  67500  67501  67502 Delimiter: 4
+Animation Id:  96941 Frame Ids:  67505  67506  67507  67508  67509 Delimiter: 4
+Animation Id:  96942 Frame Ids:  67512  67513  67514  67515  67516 Delimiter: 4
+Animation Id:  96943 Frame Ids:  67519  67520  67521  67522  67523 Delimiter: 4
+Animation Id:  96944 Frame Ids:  67503  67504 Delimiter: 4
+Animation Id:  96945 Frame Ids:  67510  67511 Delimiter: 4
+Animation Id:  96946 Frame Ids:  67517  67518 Delimiter: 4
+Animation Id:  96947 Frame Ids:  67524  67525 Delimiter: 4
+Animation Id:  96950 Frame Ids:  67526  67527  67528  67529  67530 Delimiter: 4
+Animation Id:  96951 Frame Ids:  67533  67534  67535  67536  67537 Delimiter: 4
+Animation Id:  96952 Frame Ids:  67540  67541  67542  67543  67544 Delimiter: 4
+Animation Id:  96953 Frame Ids:  67547  67548  67549  67550  67551 Delimiter: 4
+Animation Id:  96954 Frame Ids:  67531  67532 Delimiter: 4
+Animation Id:  96955 Frame Ids:  67538  67539 Delimiter: 4
+Animation Id:  96956 Frame Ids:  67545  67546 Delimiter: 4
+Animation Id:  96957 Frame Ids:  67552  67553 Delimiter: 4
+Animation Id:  96960 Frame Ids:  67554  67555  67556  67557  67558 Delimiter: 4
+Animation Id:  96961 Frame Ids:  67561  67562  67563  67564  67565 Delimiter: 4
+Animation Id:  96962 Frame Ids:  67568  67569  67570  67571  67572 Delimiter: 4
+Animation Id:  96963 Frame Ids:  67575  67576  67577  67578  67579 Delimiter: 4
+Animation Id:  96964 Frame Ids:  67559  67560 Delimiter: 4
+Animation Id:  96965 Frame Ids:  67566  67567 Delimiter: 4
+Animation Id:  96966 Frame Ids:  67573  67574 Delimiter: 4
+Animation Id:  96967 Frame Ids:  67580  67581 Delimiter: 4
+Animation Id:  96970 Frame Ids:  67582  67583  67584  67585  67586 Delimiter: 4
+Animation Id:  96971 Frame Ids:  67589  67590  67591  67592  67593 Delimiter: 4
+Animation Id:  96972 Frame Ids:  67596  67597  67598  67599  67600 Delimiter: 4
+Animation Id:  96973 Frame Ids:  67603  67604  67605  67606  67607 Delimiter: 4
+Animation Id:  96974 Frame Ids:  67587  67588 Delimiter: 4
+Animation Id:  96975 Frame Ids:  67594  67595 Delimiter: 4
+Animation Id:  96976 Frame Ids:  67601  67602 Delimiter: 4
+Animation Id:  96977 Frame Ids:  67608  67609 Delimiter: 4
+Animation Id:  96980 Frame Ids:  67610  67611  67612  67613  67614 Delimiter: 4
+Animation Id:  96981 Frame Ids:  67617  67618  67619  67620  67621 Delimiter: 4
+Animation Id:  96982 Frame Ids:  67624  67625  67626  67627  67628 Delimiter: 4
+Animation Id:  96983 Frame Ids:  67631  67632  67633  67634  67635 Delimiter: 4
+Animation Id:  96984 Frame Ids:  67615  67616 Delimiter: 4
+Animation Id:  96985 Frame Ids:  67622  67623 Delimiter: 4
+Animation Id:  96986 Frame Ids:  67629  67630 Delimiter: 4
+Animation Id:  96987 Frame Ids:  67636  67637 Delimiter: 4
+Animation Id:  96990 Frame Ids:  67638  67639  67640  67641  67642 Delimiter: 4
+Animation Id:  96991 Frame Ids:  67645  67646  67647  67648  67649 Delimiter: 4
+Animation Id:  96992 Frame Ids:  67652  67653  67654  67655  67656 Delimiter: 4
+Animation Id:  96993 Frame Ids:  67659  67660  67661  67662  67663 Delimiter: 4
+Animation Id:  96994 Frame Ids:  67643  67644 Delimiter: 4
+Animation Id:  96995 Frame Ids:  67650  67651 Delimiter: 4
+Animation Id:  96996 Frame Ids:  67657  67658 Delimiter: 4
+Animation Id:  96997 Frame Ids:  67664  67665 Delimiter: 4
+Animation Id:  97000 Frame Ids:  70000  70001  70002  70003  70004 Delimiter: 4
+Animation Id:  97001 Frame Ids:  70007  70008  70009  70010  70011 Delimiter: 4
+Animation Id:  97002 Frame Ids:  70014  70015  70016  70017  70018 Delimiter: 4
+Animation Id:  97003 Frame Ids:  70021  70022  70023  70024  70025 Delimiter: 4
+Animation Id:  97004 Frame Ids:  70005  70006 Delimiter: 4
+Animation Id:  97005 Frame Ids:  70012  70013 Delimiter: 4
+Animation Id:  97006 Frame Ids:  70019  70020 Delimiter: 4
+Animation Id:  97007 Frame Ids:  70026  70027 Delimiter: 4
+Animation Id:  97020 Frame Ids:  70060  70061  70062  70063  70064 Delimiter: 4
+Animation Id:  97021 Frame Ids:  70067  70068  70069  70070  70071 Delimiter: 4
+Animation Id:  97022 Frame Ids:  70074  70075  70076  70077  70078 Delimiter: 4
+Animation Id:  97023 Frame Ids:  70081  70082  70083  70084  70085 Delimiter: 4
+Animation Id:  97024 Frame Ids:  70065  70066 Delimiter: 4
+Animation Id:  97025 Frame Ids:  70072  70073 Delimiter: 4
+Animation Id:  97026 Frame Ids:  70079  70080 Delimiter: 4
+Animation Id:  97027 Frame Ids:  70086  70087 Delimiter: 4
+Animation Id:  97030 Frame Ids:  70090  70091  70092  70093  70094 Delimiter: 4
+Animation Id:  97031 Frame Ids:  70097  70098  70099  70100  70101 Delimiter: 4
+Animation Id:  97032 Frame Ids:  70104  70105  70106  70107  70108 Delimiter: 4
+Animation Id:  97033 Frame Ids:  70111  70112  70113  70114  70115 Delimiter: 4
+Animation Id:  97034 Frame Ids:  70095  70096 Delimiter: 4
+Animation Id:  97035 Frame Ids:  70102  70103 Delimiter: 4
+Animation Id:  97036 Frame Ids:  70109  70110 Delimiter: 4
+Animation Id:  97037 Frame Ids:  70116  70117 Delimiter: 4
+Animation Id:  97040 Frame Ids:  70120  70121  70122  70123  70124 Delimiter: 4
+Animation Id:  97041 Frame Ids:  70127  70128  70129  70130  70131 Delimiter: 4
+Animation Id:  97042 Frame Ids:  70134  70135  70136  70137  70138 Delimiter: 4
+Animation Id:  97043 Frame Ids:  70141  70142  70143  70144  70145 Delimiter: 4
+Animation Id:  97044 Frame Ids:  70125  70126 Delimiter: 4
+Animation Id:  97045 Frame Ids:  70132  70133 Delimiter: 4
+Animation Id:  97046 Frame Ids:  70139  70140 Delimiter: 4
+Animation Id:  97047 Frame Ids:  70146  70147 Delimiter: 4
+Animation Id:  97060 Frame Ids:  70180  70181  70182  70183  70184 Delimiter: 4
+Animation Id:  97061 Frame Ids:  70187  70188  70189  70190  70191 Delimiter: 4
+Animation Id:  97062 Frame Ids:  70194  70195  70196  70197  70198 Delimiter: 4
+Animation Id:  97063 Frame Ids:  70201  70202  70203  70204  70205 Delimiter: 4
+Animation Id:  97064 Frame Ids:  70185  70186 Delimiter: 4
+Animation Id:  97065 Frame Ids:  70192  70193 Delimiter: 4
+Animation Id:  97066 Frame Ids:  70199  70200 Delimiter: 4
+Animation Id:  97067 Frame Ids:  70206  70207 Delimiter: 4
+Animation Id:  97070 Frame Ids:  70210  70211  70212  70213  70214 Delimiter: 4
+Animation Id:  97071 Frame Ids:  70217  70218  70219  70220  70221 Delimiter: 4
+Animation Id:  97072 Frame Ids:  70224  70225  70226  70227  70228 Delimiter: 4
+Animation Id:  97073 Frame Ids:  70231  70232  70233  70234  70235 Delimiter: 4
+Animation Id:  97074 Frame Ids:  70215  70216 Delimiter: 4
+Animation Id:  97075 Frame Ids:  70222  70223 Delimiter: 4
+Animation Id:  97076 Frame Ids:  70229  70230 Delimiter: 4
+Animation Id:  97077 Frame Ids:  70236  70237 Delimiter: 4
+Animation Id:  97080 Frame Ids:  70238  70239  70240  70241  70242 Delimiter: 4
+Animation Id:  97081 Frame Ids:  70245  70246  70247  70248  70249 Delimiter: 4
+Animation Id:  97082 Frame Ids:  70252  70253  70254  70255  70256 Delimiter: 4
+Animation Id:  97083 Frame Ids:  70259  70260  70261  70262  70263 Delimiter: 4
+Animation Id:  97084 Frame Ids:  70243  70244 Delimiter: 4
+Animation Id:  97085 Frame Ids:  70250  70251 Delimiter: 4
+Animation Id:  97086 Frame Ids:  70257  70258 Delimiter: 4
+Animation Id:  97087 Frame Ids:  70264  70265 Delimiter: 4
+Animation Id:  97090 Frame Ids:  70266  70267  70268 Delimiter: 4
+Animation Id:  97091 Frame Ids:  70269  70270  70271 Delimiter: 4
+Animation Id:  97092 Frame Ids:  70272  70273  70274 Delimiter: 4
+Animation Id:  97093 Frame Ids:  70275  70276  70277 Delimiter: 4
+Animation Id:  97100 Frame Ids:  70278  70279  70280  70281  70282 Delimiter: 4
+Animation Id:  97101 Frame Ids:  70285  70286  70287  70288  70289 Delimiter: 4
+Animation Id:  97102 Frame Ids:  70292  70293  70294  70295  70296 Delimiter: 4
+Animation Id:  97103 Frame Ids:  70299  70300  70301  70302  70303 Delimiter: 4
+Animation Id:  97104 Frame Ids:  70283  70284 Delimiter: 4
+Animation Id:  97105 Frame Ids:  70290  70291 Delimiter: 4
+Animation Id:  97106 Frame Ids:  70297  70298 Delimiter: 4
+Animation Id:  97107 Frame Ids:  70304  70305 Delimiter: 4
+Animation Id:  97110 Frame Ids:  70306  70307  70308  70309  70310 Delimiter: 4
+Animation Id:  97111 Frame Ids:  70313  70314  70315  70316  70317 Delimiter: 4
+Animation Id:  97112 Frame Ids:  70320  70321  70322  70323  70324 Delimiter: 4
+Animation Id:  97113 Frame Ids:  70327  70328  70329  70330  70331 Delimiter: 4
+Animation Id:  97114 Frame Ids:  70311  70312 Delimiter: 4
+Animation Id:  97115 Frame Ids:  70318  70319 Delimiter: 4
+Animation Id:  97116 Frame Ids:  70325  70326 Delimiter: 4
+Animation Id:  97117 Frame Ids:  70332  70333 Delimiter: 4
+Animation Id:  97120 Frame Ids:  70334  70335  70336  70337  70338 Delimiter: 4
+Animation Id:  97121 Frame Ids:  70341  70342  70343  70344  70345 Delimiter: 4
+Animation Id:  97122 Frame Ids:  70348  70349  70350  70351  70352 Delimiter: 4
+Animation Id:  97123 Frame Ids:  70355  70356  70357  70358  70359 Delimiter: 4
+Animation Id:  97124 Frame Ids:  70339  70340 Delimiter: 4
+Animation Id:  97125 Frame Ids:  70346  70347 Delimiter: 4
+Animation Id:  97126 Frame Ids:  70353  70354 Delimiter: 4
+Animation Id:  97127 Frame Ids:  70360  70361 Delimiter: 4
+Animation Id:  97140 Frame Ids:  70374  70375  70376  70377  70378 Delimiter: 4
+Animation Id:  97141 Frame Ids:  70381  70382  70383  70384  70385 Delimiter: 4
+Animation Id:  97142 Frame Ids:  70388  70389  70390  70391  70392 Delimiter: 4
+Animation Id:  97143 Frame Ids:  70395  70396  70397  70398  70399 Delimiter: 4
+Animation Id:  97144 Frame Ids:  70379  70380 Delimiter: 4
+Animation Id:  97145 Frame Ids:  70386  70387 Delimiter: 4
+Animation Id:  97146 Frame Ids:  70393  70394 Delimiter: 4
+Animation Id:  97147 Frame Ids:  70400  70401 Delimiter: 4
+Animation Id:  97150 Frame Ids:  70402  70403  70404  70405  70406 Delimiter: 4
+Animation Id:  97151 Frame Ids:  70409  70410  70411  70412  70413 Delimiter: 4
+Animation Id:  97152 Frame Ids:  70416  70417  70418  70419  70420 Delimiter: 4
+Animation Id:  97153 Frame Ids:  70423  70424  70425  70426  70427 Delimiter: 4
+Animation Id:  97154 Frame Ids:  70407  70408 Delimiter: 4
+Animation Id:  97155 Frame Ids:  70414  70415 Delimiter: 4
+Animation Id:  97156 Frame Ids:  70421  70422 Delimiter: 4
+Animation Id:  97157 Frame Ids:  70428  70429 Delimiter: 4
+Animation Id:  97160 Frame Ids:  70430  70431  70432  70433  70434 Delimiter: 4
+Animation Id:  97161 Frame Ids:  70437  70438  70439  70440  70441 Delimiter: 4
+Animation Id:  97162 Frame Ids:  70444  70445  70446  70447  70448 Delimiter: 4
+Animation Id:  97163 Frame Ids:  70451  70452  70453  70454  70455 Delimiter: 4
+Animation Id:  97164 Frame Ids:  70435  70436 Delimiter: 4
+Animation Id:  97165 Frame Ids:  70442  70443 Delimiter: 4
+Animation Id:  97166 Frame Ids:  70449  70450 Delimiter: 4
+Animation Id:  97167 Frame Ids:  70456  70457 Delimiter: 4
+Animation Id:  97180 Frame Ids:  70490  70491  70492  70493  70494 Delimiter: 4
+Animation Id:  97181 Frame Ids:  70497  70498  70499  70500  70501 Delimiter: 4
+Animation Id:  97182 Frame Ids:  70504  70505  70506  70507  70508 Delimiter: 4
+Animation Id:  97183 Frame Ids:  70511  70512  70513  70514  70515 Delimiter: 4
+Animation Id:  97184 Frame Ids:  70495  70496 Delimiter: 4
+Animation Id:  97185 Frame Ids:  70502  70503 Delimiter: 4
+Animation Id:  97186 Frame Ids:  70509  70510 Delimiter: 4
+Animation Id:  97187 Frame Ids:  70516  70517 Delimiter: 4
+Animation Id:  97190 Frame Ids:  70520  70521  70522  70523  70524 Delimiter: 4
+Animation Id:  97191 Frame Ids:  70527  70528  70529  70530  70531 Delimiter: 4
+Animation Id:  97192 Frame Ids:  70534  70535  70536  70537  70538 Delimiter: 4
+Animation Id:  97193 Frame Ids:  70541  70542  70543  70544  70545 Delimiter: 4
+Animation Id:  97194 Frame Ids:  70525  70526 Delimiter: 4
+Animation Id:  97195 Frame Ids:  70532  70533 Delimiter: 4
+Animation Id:  97196 Frame Ids:  70539  70540 Delimiter: 4
+Animation Id:  97197 Frame Ids:  70546  70547 Delimiter: 4
+Animation Id:  97200 Frame Ids:  70550  70551  70552  70553  70554 Delimiter: 4
+Animation Id:  97201 Frame Ids:  70557  70558  70559  70560  70561 Delimiter: 4
+Animation Id:  97202 Frame Ids:  70564  70565  70566  70567  70568 Delimiter: 4
+Animation Id:  97203 Frame Ids:  70571  70572  70573  70574  70575 Delimiter: 4
+Animation Id:  97204 Frame Ids:  70555  70556 Delimiter: 4
+Animation Id:  97205 Frame Ids:  70562  70563 Delimiter: 4
+Animation Id:  97206 Frame Ids:  70569  70570 Delimiter: 4
+Animation Id:  97207 Frame Ids:  70576  70577 Delimiter: 4
+Animation Id:  97220 Frame Ids:  70610  70611  70612  70613  70614 Delimiter: 4
+Animation Id:  97221 Frame Ids:  70617  70618  70619  70620  70621 Delimiter: 4
+Animation Id:  97222 Frame Ids:  70624  70625  70626  70627  70628 Delimiter: 4
+Animation Id:  97223 Frame Ids:  70631  70632  70633  70634  70635 Delimiter: 4
+Animation Id:  97224 Frame Ids:  70615  70616 Delimiter: 4
+Animation Id:  97225 Frame Ids:  70622  70623 Delimiter: 4
+Animation Id:  97226 Frame Ids:  70629  70630 Delimiter: 4
+Animation Id:  97227 Frame Ids:  70636  70637 Delimiter: 4
+Animation Id:  97230 Frame Ids:  70640  70641  70642  70643  70644 Delimiter: 4
+Animation Id:  97231 Frame Ids:  70647  70648  70649  70650  70651 Delimiter: 4
+Animation Id:  97232 Frame Ids:  70654  70655  70656  70657  70658 Delimiter: 4
+Animation Id:  97233 Frame Ids:  70661  70662  70663  70664  70665 Delimiter: 4
+Animation Id:  97234 Frame Ids:  70645  70646 Delimiter: 4
+Animation Id:  97235 Frame Ids:  70652  70653 Delimiter: 4
+Animation Id:  97236 Frame Ids:  70659  70660 Delimiter: 4
+Animation Id:  97237 Frame Ids:  70666  70667 Delimiter: 4
+Animation Id:  97400 Frame Ids:  74000  74001  74002  74003  74004 Delimiter: 4
+Animation Id:  97401 Frame Ids:  74007  74008  74009  74010  74011 Delimiter: 4
+Animation Id:  97402 Frame Ids:  74014  74015  74016  74017  74018 Delimiter: 4
+Animation Id:  97403 Frame Ids:  74021  74022  74023  74024  74025 Delimiter: 4
+Animation Id:  97404 Frame Ids:  74005  74006 Delimiter: 4
+Animation Id:  97405 Frame Ids:  74012  74013 Delimiter: 4
+Animation Id:  97406 Frame Ids:  74019  74020 Delimiter: 4
+Animation Id:  97407 Frame Ids:  74026  74027 Delimiter: 4
+Animation Id:  97408 Frame Ids:  74028  74029  74030  74031  74032 Delimiter: 4
+Animation Id:  97409 Frame Ids:  74035  74036  74037  74038  74039 Delimiter: 4
+Animation Id:  97410 Frame Ids:  74042  74043  74044  74045  74046 Delimiter: 4
+Animation Id:  97411 Frame Ids:  74049  74050  74051  74052  74053 Delimiter: 4
+Animation Id:  97412 Frame Ids:  74033  74034 Delimiter: 4
+Animation Id:  97413 Frame Ids:  74040  74041 Delimiter: 4
+Animation Id:  97414 Frame Ids:  74047  74048 Delimiter: 4
+Animation Id:  97415 Frame Ids:  74054  74055 Delimiter: 4
+Animation Id:  97416 Frame Ids:  74056  74057  74058  74059  74060 Delimiter: 4
+Animation Id:  97417 Frame Ids:  74063  74064  74065  74066  74067 Delimiter: 4
+Animation Id:  97418 Frame Ids:  74070  74071  74072  74073  74074 Delimiter: 4
+Animation Id:  97419 Frame Ids:  74077  74078  74079  74080  74081 Delimiter: 4
+Animation Id:  97420 Frame Ids:  74061  74062 Delimiter: 4
+Animation Id:  97421 Frame Ids:  74068  74069 Delimiter: 4
+Animation Id:  97422 Frame Ids:  74075  74076 Delimiter: 4
+Animation Id:  97423 Frame Ids:  74082  74083 Delimiter: 4
+Animation Id:  97424 Frame Ids:  21546  21547  21548  21549  21550 Delimiter: 4
+Animation Id:  97425 Frame Ids:  21553  21554  21555  21556  21557 Delimiter: 4
+Animation Id:  97426 Frame Ids:  21560  21561  21562  21563  21564 Delimiter: 4
+Animation Id:  97427 Frame Ids:  21567  21568  21569  21570  21571 Delimiter: 4
+Animation Id:  97428 Frame Ids:  21551  21552 Delimiter: 4
+Animation Id:  97429 Frame Ids:  21558  21559 Delimiter: 4
+Animation Id:  97430 Frame Ids:  21565  21566 Delimiter: 4
+Animation Id:  97431 Frame Ids:  21572  21573 Delimiter: 4
+Animation Id:  97432 Frame Ids:  21574  21575  21576  21577  21578 Delimiter: 4
+Animation Id:  97433 Frame Ids:  21581  21582  21583  21584  21585 Delimiter: 4
+Animation Id:  97434 Frame Ids:  21588  21589  21590  21591  21592 Delimiter: 4
+Animation Id:  97435 Frame Ids:  21595  21596  21597  21598  21599 Delimiter: 4
+Animation Id:  97436 Frame Ids:  21579  21580 Delimiter: 4
+Animation Id:  97437 Frame Ids:  21586  21587 Delimiter: 4
+Animation Id:  97438 Frame Ids:  21593  21594 Delimiter: 4
+Animation Id:  97439 Frame Ids:  21600  21601 Delimiter: 4
+Animation Id:  97440 Frame Ids:  21602  21603  21604  21605  21606 Delimiter: 4
+Animation Id:  97441 Frame Ids:  21609  21610  21611  21612  21613 Delimiter: 4
+Animation Id:  97442 Frame Ids:  21616  21617  21618  21619  21620 Delimiter: 4
+Animation Id:  97443 Frame Ids:  21623  21624  21625  21626  21627 Delimiter: 4
+Animation Id:  97444 Frame Ids:  21607  21608 Delimiter: 4
+Animation Id:  97445 Frame Ids:  21614  21615 Delimiter: 4
+Animation Id:  97446 Frame Ids:  21621  21622 Delimiter: 4
+Animation Id:  97447 Frame Ids:  21628  21629 Delimiter: 4
+Animation Id:  98000 Frame Ids:  75000  75001  75002  75003  75004 Delimiter: 4
+Animation Id:  98001 Frame Ids:  75007  75008  75009  75010  75011 Delimiter: 4
+Animation Id:  98002 Frame Ids:  75014  75015  75016  75017  75018 Delimiter: 4
+Animation Id:  98003 Frame Ids:  75021  75022  75023  75024  75025 Delimiter: 4
+Animation Id:  98004 Frame Ids:  75005  75006 Delimiter: 4
+Animation Id:  98005 Frame Ids:  75012  75013 Delimiter: 4
+Animation Id:  98006 Frame Ids:  75019  75020 Delimiter: 4
+Animation Id:  98007 Frame Ids:  75026  75027 Delimiter: 4
+Animation Id:  98010 Frame Ids:  75030  75031  75032  75033  75034 Delimiter: 4
+Animation Id:  98011 Frame Ids:  75037  75038  75039  75040  75041 Delimiter: 4
+Animation Id:  98012 Frame Ids:  75044  75045  75046  75047  75048 Delimiter: 4
+Animation Id:  98013 Frame Ids:  75051  75052  75053  75054  75055 Delimiter: 4
+Animation Id:  98014 Frame Ids:  75035  75036 Delimiter: 4
+Animation Id:  98015 Frame Ids:  75042  75043 Delimiter: 4
+Animation Id:  98016 Frame Ids:  75049  75050 Delimiter: 4
+Animation Id:  98017 Frame Ids:  75056  75057 Delimiter: 4
+Animation Id:  98020 Frame Ids:  75060  75061  75062  75063  75064 Delimiter: 4
+Animation Id:  98021 Frame Ids:  75067  75068  75069  75070  75071 Delimiter: 4
+Animation Id:  98022 Frame Ids:  75074  75075  75076  75077  75078 Delimiter: 4
+Animation Id:  98023 Frame Ids:  75081  75082  75083  75084  75085 Delimiter: 4
+Animation Id:  98024 Frame Ids:  75065  75066 Delimiter: 4
+Animation Id:  98025 Frame Ids:  75072  75073 Delimiter: 4
+Animation Id:  98026 Frame Ids:  75079  75080 Delimiter: 4
+Animation Id:  98027 Frame Ids:  75086  75087 Delimiter: 4
+Animation Id:  98030 Frame Ids:  75090  75091  75092  75093  75094 Delimiter: 4
+Animation Id:  98031 Frame Ids:  75097  75098  75099  75100  75101 Delimiter: 4
+Animation Id:  98032 Frame Ids:  75104  75105  75106  75107  75108 Delimiter: 4
+Animation Id:  98033 Frame Ids:  75111  75112  75113  75114  75115 Delimiter: 4
+Animation Id:  98034 Frame Ids:  75095  75096 Delimiter: 4
+Animation Id:  98035 Frame Ids:  75102  75103 Delimiter: 4
+Animation Id:  98036 Frame Ids:  75109  75110 Delimiter: 4
+Animation Id:  98037 Frame Ids:  75116  75117 Delimiter: 4
+Animation Id:  98040 Frame Ids:  75120  75121  75122  75123  75124 Delimiter: 4
+Animation Id:  98041 Frame Ids:  75127  75128  75129  75130  75131 Delimiter: 4
+Animation Id:  98042 Frame Ids:  75134  75135  75136  75137  75138 Delimiter: 4
+Animation Id:  98043 Frame Ids:  75141  75142  75143  75144  75145 Delimiter: 4
+Animation Id:  98044 Frame Ids:  75125  75126 Delimiter: 4
+Animation Id:  98045 Frame Ids:  75132  75133 Delimiter: 4
+Animation Id:  98046 Frame Ids:  75139  75140 Delimiter: 4
+Animation Id:  98047 Frame Ids:  75146  75147 Delimiter: 4
+Animation Id:  98050 Frame Ids:  75150  75151  75152  75153  75154 Delimiter: 4
+Animation Id:  98051 Frame Ids:  75157  75158  75159  75160  75161 Delimiter: 4
+Animation Id:  98052 Frame Ids:  75164  75165  75166  75167  75168 Delimiter: 4
+Animation Id:  98053 Frame Ids:  75171  75172  75173  75174  75175 Delimiter: 4
+Animation Id:  98054 Frame Ids:  75155  75156 Delimiter: 4
+Animation Id:  98055 Frame Ids:  75162  75163 Delimiter: 4
+Animation Id:  98056 Frame Ids:  75169  75170 Delimiter: 4
+Animation Id:  98057 Frame Ids:  75176  75177 Delimiter: 4
+Animation Id:  98060 Frame Ids:  75180  75181  75182  75183  75184 Delimiter: 4
+Animation Id:  98061 Frame Ids:  75187  75188  75189  75190  75191 Delimiter: 4
+Animation Id:  98062 Frame Ids:  75194  75195  75196  75197  75198 Delimiter: 4
+Animation Id:  98063 Frame Ids:  75201  75202  75203  75204  75205 Delimiter: 4
+Animation Id:  98064 Frame Ids:  75185  75186 Delimiter: 4
+Animation Id:  98065 Frame Ids:  75192  75193 Delimiter: 4
+Animation Id:  98066 Frame Ids:  75199  75200 Delimiter: 4
+Animation Id:  98067 Frame Ids:  75206  75207 Delimiter: 4
+Animation Id:  98070 Frame Ids:  75210  75211  75212  75213  75214 Delimiter: 4
+Animation Id:  98071 Frame Ids:  75217  75218  75219  75220  75221 Delimiter: 4
+Animation Id:  98072 Frame Ids:  75224  75225  75226  75227  75228 Delimiter: 4
+Animation Id:  98073 Frame Ids:  75231  75232  75233  75234  75235 Delimiter: 4
+Animation Id:  98074 Frame Ids:  75215  75216 Delimiter: 4
+Animation Id:  98075 Frame Ids:  75222  75223 Delimiter: 4
+Animation Id:  98076 Frame Ids:  75229  75230 Delimiter: 4
+Animation Id:  98077 Frame Ids:  75236  75237 Delimiter: 4
+Animation Id:  98080 Frame Ids:  75240  75241  75242  75243  75244 Delimiter: 4
+Animation Id:  98081 Frame Ids:  75247  75248  75249  75250  75251 Delimiter: 4
+Animation Id:  98082 Frame Ids:  75254  75255  75256  75257  75258 Delimiter: 4
+Animation Id:  98083 Frame Ids:  75261  75262  75263  75264  75265 Delimiter: 4
+Animation Id:  98084 Frame Ids:  75245  75246 Delimiter: 4
+Animation Id:  98085 Frame Ids:  75252  75253 Delimiter: 4
+Animation Id:  98086 Frame Ids:  75259  75260 Delimiter: 4
+Animation Id:  98087 Frame Ids:  75266  75267 Delimiter: 4
+Animation Id:  98090 Frame Ids:  75270  75271  75272  75273  75274 Delimiter: 4
+Animation Id:  98091 Frame Ids:  75277  75278  75279  75280  75281 Delimiter: 4
+Animation Id:  98092 Frame Ids:  75284  75285  75286  75287  75288 Delimiter: 4
+Animation Id:  98093 Frame Ids:  75291  75292  75293  75294  75295 Delimiter: 4
+Animation Id:  98094 Frame Ids:  75275  75276 Delimiter: 4
+Animation Id:  98095 Frame Ids:  75282  75283 Delimiter: 4
+Animation Id:  98096 Frame Ids:  75289  75290 Delimiter: 4
+Animation Id:  98097 Frame Ids:  75296  75297 Delimiter: 4
+Animation Id:  98100 Frame Ids:  75300  75301  75302  75303  75304 Delimiter: 4
+Animation Id:  98101 Frame Ids:  75307  75308  75309  75310  75311 Delimiter: 4
+Animation Id:  98102 Frame Ids:  75314  75315  75316  75317  75318 Delimiter: 4
+Animation Id:  98103 Frame Ids:  75321  75322  75323  75324  75325 Delimiter: 4
+Animation Id:  98104 Frame Ids:  75305  75306 Delimiter: 4
+Animation Id:  98105 Frame Ids:  75312  75313 Delimiter: 4
+Animation Id:  98106 Frame Ids:  75319  75320 Delimiter: 4
+Animation Id:  98107 Frame Ids:  75326  75327 Delimiter: 4
+Animation Id:  98110 Frame Ids:  75330  75331  75332  75333  75334 Delimiter: 4
+Animation Id:  98111 Frame Ids:  75337  75338  75339  75340  75341 Delimiter: 4
+Animation Id:  98112 Frame Ids:  75344  75345  75346  75347  75348 Delimiter: 4
+Animation Id:  98113 Frame Ids:  75351  75352  75353  75354  75355 Delimiter: 4
+Animation Id:  98114 Frame Ids:  75335  75336 Delimiter: 4
+Animation Id:  98115 Frame Ids:  75342  75343 Delimiter: 4
+Animation Id:  98116 Frame Ids:  75349  75350 Delimiter: 4
+Animation Id:  98117 Frame Ids:  75356  75357 Delimiter: 4
+Animation Id:  98120 Frame Ids:  75360  75361  75362  75363  75364 Delimiter: 4
+Animation Id:  98121 Frame Ids:  75367  75368  75369  75370  75371 Delimiter: 4
+Animation Id:  98122 Frame Ids:  75374  75375  75376  75377  75378 Delimiter: 4
+Animation Id:  98123 Frame Ids:  75381  75382  75383  75384  75385 Delimiter: 4
+Animation Id:  98124 Frame Ids:  75365  75366 Delimiter: 4
+Animation Id:  98125 Frame Ids:  75372  75373 Delimiter: 4
+Animation Id:  98126 Frame Ids:  75379  75380 Delimiter: 4
+Animation Id:  98127 Frame Ids:  75386  75387 Delimiter: 4
+Animation Id:  98130 Frame Ids:  75390  75391  75392  75393  75394 Delimiter: 4
+Animation Id:  98131 Frame Ids:  75397  75398  75399  75400  75401 Delimiter: 4
+Animation Id:  98132 Frame Ids:  75404  75405  75406  75407  75408 Delimiter: 4
+Animation Id:  98133 Frame Ids:  75411  75412  75413  75414  75415 Delimiter: 4
+Animation Id:  98134 Frame Ids:  75395  75396 Delimiter: 4
+Animation Id:  98135 Frame Ids:  75402  75403 Delimiter: 4
+Animation Id:  98136 Frame Ids:  75409  75410 Delimiter: 4
+Animation Id:  98137 Frame Ids:  75416  75417 Delimiter: 4
+Animation Id: 115000 Frame Ids: 100000 100001 100002 100003 Delimiter: 4
+Animation Id: 115001 Frame Ids: 100004 100005 100006 100007 Delimiter: 4
+Animation Id: 115002 Frame Ids: 100008 100009 100010 100011 Delimiter: 4
+Animation Id: 115003 Frame Ids: 100012 100013 100014 100015 Delimiter: 4
+Animation Id: 115004 Frame Ids: 100016 100017 100018 100019 100020 100021 Delimiter: 4
+Animation Id: 115005 Frame Ids: 100022 100023 100024 100025 100026 100027 Delimiter: 4
+Animation Id: 115006 Frame Ids: 100028 100029 100030 100031 100032 100033 Delimiter: 4
+Animation Id: 115007 Frame Ids: 100034 100035 100036 100037 100038 100039 Delimiter: 4
+Animation Id: 115008 Frame Ids: 100040 100041 100042 100043 Delimiter: 4
+Animation Id: 115009 Frame Ids: 100044 100045 100046 100047 Delimiter: 4
+Animation Id: 115010 Frame Ids: 100048 100049 100050 100051 Delimiter: 4
+Animation Id: 115011 Frame Ids: 100052 100053 100054 100055 Delimiter: 4
+Animation Id: 115012 Frame Ids: 100056 100057 100058 100059 Delimiter: 4
+Animation Id: 115013 Frame Ids: 100060 100061 100062 100063 Delimiter: 4
+Animation Id: 115014 Frame Ids: 100064 100065 100066 100067 Delimiter: 4
+Animation Id: 115015 Frame Ids: 100068 100069 100070 100071 Delimiter: 4
+Animation Id: 115016 Frame Ids: 100072 100073 100074 100075 100076 100077 Delimiter: 4
+Animation Id: 115020 Frame Ids: 100096 100097 100098 100099 Delimiter: 4
+Animation Id: 115021 Frame Ids: 100100 100101 100102 100103 100104 100105 100106 100107 Delimiter: 4
+Animation Id: 115022 Frame Ids: 100108 100109 100110 100111 100112 100113 100114 100115 Delimiter: 4
+Animation Id: 115023 Frame Ids: 100116 100117 100118 100119 100120 100121 100122 100123 Delimiter: 4
+Animation Id: 115024 Frame Ids: 100124 100125 100126 100127 100128 100129 100130 100131 Delimiter: 4
+Animation Id: 115025 Frame Ids: 100132 100133 100134 100135 100136 100137 100138 100139 Delimiter: 4
+Animation Id: 115026 Frame Ids: 100140 100141 100142 100143 Delimiter: 4
+Animation Id: 115027 Frame Ids: 100144 100145 100146 100147 Delimiter: 4
+Animation Id: 115028 Frame Ids: 100148 100149 100150 100151 Delimiter: 4
+Animation Id: 115029 Frame Ids: 100152 100153 100154 100155 Delimiter: 4
+Animation Id: 115030 Frame Ids: 100156 100157 100158 100159 Delimiter: 4
+Animation Id: 115031 Frame Ids: 100160 100161 100162 100163 100164 100165 Delimiter: 4
+Animation Id: 115032 Frame Ids: 100166 100167 100168 100169 Delimiter: 4
+Animation Id: 115033 Frame Ids: 100170 100171 100172 100173 Delimiter: 4
+Animation Id: 115034 Frame Ids: 100174 100175 100176 100177 100178 Delimiter: 4
+Animation Id: 115035 Frame Ids: 100179 100180 100181 100182 Delimiter: 4
+Animation Id: 115036 Frame Ids: 100183 100184 100185 100186 100187 100188 Delimiter: 4
+Animation Id: 115037 Frame Ids: 100189 100190 100191 100192 Delimiter: 4
+Animation Id: 115038 Frame Ids: 100193 100194 100195 100196 100197 100198 100199 100200 Delimiter: 4
+Animation Id: 115039 Frame Ids: 100201 100202 100203 100204 Delimiter: 5
+Animation Id: 115040 Frame Ids: 100201 100202 100203 100204 100203 100202 100201 Delimiter: 4
+Animation Id: 115041 Frame Ids: 100205 100206 100207 100208 100209 Delimiter: 4
+Animation Id: 115042 Frame Ids: 100210 100211 100212 100213 Delimiter: 4
+Animation Id: 115043 Frame Ids: 100214 100215 100216 100217 100218 100219 100220 Delimiter: 4
+Animation Id: 115044 Frame Ids: 100221 100222 100223 100224 100225 100226 100227 100228 100229 100230 100231 100232 100233 100234 100235 100236 Delimiter: 4
+Animation Id: 115045 Frame Ids: 100237 100238 100239 100240 Delimiter: 4
+Animation Id: 115046 Frame Ids: 100241 100242 100243 100244 Delimiter: 4
+Animation Id: 115047 Frame Ids: 100245 100246 100247 100248 100249 Delimiter: 4
+Animation Id: 115048 Frame Ids: 100250 100251 100252 100253 100254 100255 Delimiter: 4
+Animation Id: 115049 Frame Ids: 100256 100257 100258 100259 Delimiter: 4
+Animation Id: 115050 Frame Ids: 100260 100261 100262 100263 Delimiter: 4
+Animation Id: 115051 Frame Ids: 100256 100257 100258 100259 100260 100261 100262 100263 Delimiter: 4
+Animation Id: 115052 Frame Ids: 100264 100265 100266 100267 100266 100265 100264 Delimiter: 4
+Animation Id: 115053 Frame Ids: 100268 100269 100270 Delimiter: 5
+Animation Id: 115054 Frame Ids: 100271 100272 100273 100274 100275 100276 100277 Delimiter: 4
+Animation Id: 115055 Frame Ids: 100278 100279 100280 100281 100282 100283 100284 100285 100286 100287 100288 100289 100290 Delimiter: 3
+Animation Id: 115056 Frame Ids: 100291 100292 100293 100294 100295 100296 100297 100298 100298 100298 Delimiter: 4
+U: 55981

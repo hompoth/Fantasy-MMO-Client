@@ -1,0 +1,16 @@
+Type: 1, Extra Length: 3
+Extra Bytes:  185 103
+NumberOfFrames: 12
+Id: 66010 X:    0 Y:    0 W:   24 H:   48
+Id: 66011 X:   24 Y:    0 W:   24 H:   48
+Id: 66012 X:   48 Y:    0 W:   24 H:   48
+Id: 66013 X:    0 Y:   48 W:   24 H:   48
+Id: 66014 X:   24 Y:   48 W:   24 H:   48
+Id: 66015 X:   48 Y:   48 W:   24 H:   48
+Id: 66016 X:    0 Y:   96 W:   24 H:   48
+Id: 66017 X:   24 Y:   96 W:   24 H:   48
+Id: 66018 X:   48 Y:   96 W:   24 H:   48
+Id: 66019 X:    0 Y:  144 W:   24 H:   48
+Id: 66020 X:   24 Y:  144 W:   24 H:   48
+Id: 66021 X:   48 Y:  144 W:   24 H:   48
+U: 268

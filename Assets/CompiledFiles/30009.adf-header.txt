@@ -1,0 +1,7 @@
+Type: 1, Extra Length: 5
+Extra Bytes:  198 105 115  81
+NumberOfFrames: 3
+Id: 120900 X:    0 Y:    0 W:   32 H:   32
+Id: 120901 X:   32 Y:    0 W:   32 H:   32
+Id: 120902 X:   64 Y:    0 W:   32 H:   32
+U: 81

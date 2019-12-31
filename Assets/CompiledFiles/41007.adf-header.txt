@@ -1,0 +1,9 @@
+Type: 1, Extra Length: 4
+Extra Bytes:   18 101 232
+NumberOfFrames: 5
+Id: 150624 X:    0 Y:    0 W:   64 H:   96
+Id: 150625 X:   64 Y:    0 W:   32 H:   64
+Id: 150626 X:   64 Y:   64 W:   32 H:   32
+Id: 150627 X:   96 Y:    0 W:   64 H:   96
+Id: 150628 X:    0 Y:  160 W:   64 H:   96
+U: 122

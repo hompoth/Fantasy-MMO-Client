@@ -1,0 +1,8 @@
+Type: 1, Extra Length: 2
+Extra Bytes:  130
+NumberOfFrames: 4
+Id: 41548 X:    0 Y:    0 W:   48 H:   64
+Id: 41549 X:   48 Y:    0 W:   48 H:   64
+Id: 41550 X:   96 Y:    0 W:   48 H:   64
+Id: 41551 X:  144 Y:    0 W:   48 H:   64
+U: 99

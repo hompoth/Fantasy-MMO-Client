@@ -1,0 +1,10 @@
+Type: 1, Extra Length: 2
+Extra Bytes:  205
+NumberOfFrames: 6
+Id: 100250 X:    0 Y:    0 W:   48 H:   48
+Id: 100251 X:   48 Y:    0 W:   48 H:   48
+Id: 100252 X:   96 Y:    0 W:   48 H:   48
+Id: 100253 X:  144 Y:    0 W:   48 H:   48
+Id: 100254 X:    0 Y:   48 W:   48 H:   48
+Id: 100255 X:   48 Y:   48 W:   48 H:   48
+U: 141

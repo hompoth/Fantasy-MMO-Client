@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033ba3a993a6aa8489af78a82680ab71, type: 3}
+  m_Name: 64
+  m_EditorClassIdentifier: 
+  animations:
+  - {fileID: 7400000, guid: c5628b3bf86499b42b53b5299c06002e, type: 2}
+  - {fileID: 7400000, guid: 7244c62dcbd5547469827a49b4683188, type: 2}
+  - {fileID: 7400000, guid: 11a750fb0d898514b961edfa130e77b0, type: 2}
+  - {fileID: 7400000, guid: 979b00cef7e293d48af453e61ca54723, type: 2}
+  - {fileID: 7400000, guid: eba30a4c2dd36b04b8c9038efd337cd9, type: 2}
+  - {fileID: 7400000, guid: b47894c9f4f49974f91357d400b8755e, type: 2}
+  - {fileID: 7400000, guid: c48c7cd17007b7f438c562a0391ad7e6, type: 2}
+  - {fileID: 7400000, guid: 9f427887ec436474b8d3ec1256acbd06, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 7400000, guid: c5628b3bf86499b42b53b5299c06002e, type: 2}
+  - {fileID: 7400000, guid: 7244c62dcbd5547469827a49b4683188, type: 2}
+  - {fileID: 7400000, guid: 11a750fb0d898514b961edfa130e77b0, type: 2}
+  - {fileID: 7400000, guid: 979b00cef7e293d48af453e61ca54723, type: 2}
+  - {fileID: 7400000, guid: eba30a4c2dd36b04b8c9038efd337cd9, type: 2}
+  - {fileID: 7400000, guid: b47894c9f4f49974f91357d400b8755e, type: 2}
+  - {fileID: 7400000, guid: c48c7cd17007b7f438c562a0391ad7e6, type: 2}
+  - {fileID: 7400000, guid: 9f427887ec436474b8d3ec1256acbd06, type: 2}
+  - {fileID: 7400000, guid: c5628b3bf86499b42b53b5299c06002e, type: 2}
+  - {fileID: 7400000, guid: 7244c62dcbd5547469827a49b4683188, type: 2}
+  - {fileID: 7400000, guid: 11a750fb0d898514b961edfa130e77b0, type: 2}
+  - {fileID: 7400000, guid: 979b00cef7e293d48af453e61ca54723, type: 2}
+  - {fileID: 7400000, guid: eba30a4c2dd36b04b8c9038efd337cd9, type: 2}
+  - {fileID: 7400000, guid: b47894c9f4f49974f91357d400b8755e, type: 2}
+  - {fileID: 7400000, guid: c48c7cd17007b7f438c562a0391ad7e6, type: 2}
+  - {fileID: 7400000, guid: 9f427887ec436474b8d3ec1256acbd06, type: 2}
+  spriteHeight: 1.5
+  spriteWidth: 0.75

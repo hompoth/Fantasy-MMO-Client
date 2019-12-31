@@ -1,0 +1,12 @@
+Type: 1, Extra Length: 6
+Extra Bytes:   59 251  50 175  60
+NumberOfFrames: 8
+Id: 2720 X:    0 Y:    0 W:   48 H:   64
+Id: 2721 X:   48 Y:    0 W:   48 H:   64
+Id: 2722 X:    0 Y:   64 W:   48 H:   64
+Id: 2723 X:   48 Y:   64 W:   48 H:   64
+Id: 2724 X:    0 Y:  128 W:   48 H:   64
+Id: 2725 X:   48 Y:  128 W:   48 H:   64
+Id: 2726 X:    0 Y:  192 W:   48 H:   64
+Id: 2727 X:   48 Y:  192 W:   48 H:   64
+U: 187

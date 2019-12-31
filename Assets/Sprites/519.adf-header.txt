@@ -1,9 +1,0 @@
-Type: 1, Extra Length: 2
-Extra Bytes:  232   0
-NumberOfFrames: 5
-Id: 100245 U:    1 X:    0 Y:    0 W:   48 H:   48
-Id: 100246 U:    1 X:   48 Y:    0 W:   48 H:   48
-Id: 100247 U:    1 X:   96 Y:    0 W:   48 H:   48
-Id: 100248 U:    1 X:  144 Y:    0 W:   48 H:   48
-Id: 100249 U:    1 X:    0 Y:   48 W:   48 H:   48
-U: 120
