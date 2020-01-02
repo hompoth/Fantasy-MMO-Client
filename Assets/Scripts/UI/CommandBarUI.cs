@@ -12,6 +12,17 @@ public class CommandBarUI : WindowUI
         }
     }
 
+    public void LoadDefaults() {
+        for (int index = 0; index < m_slots.Length; ++index) {
+            int referenceIndex = UserPrefs.GetCommandBarReferenceIndex(index);
+            WindowType referenceWindowType = UserPrefs.GetCommandBarReferenceWindowType(index);
+            SlotUI slot = PlayerState.GetWindowSlot(referenceWindowType, referenceIndex);
+            if(slot != null) {
+                m_slots[index].CopySlot(slot, true);
+            }
+        }
+    }
+
     public SlotUI GetSlot(int index) {
         index--;
         if(0 <= index && index < m_slots.Length) {
@@ -19,16 +30,14 @@ public class CommandBarUI : WindowUI
         }
         return null;
     }
-
-    public void LoadDefaults() {
-        for (int index = 0; index < m_slots.Length; ++index) {
-            int referenceIndex = PlayerPrefs.GetInt("CommandBar-ReferenceIndex-" + index, 0);
-            int referenceWindowTypeIndex = PlayerPrefs.GetInt("CommandBar-ReferenceWindowType-" + index, 0);
-            WindowType referenceWindowType = EnumHelper.GetName<WindowType>(referenceWindowTypeIndex);
-            SlotUI slot = PlayerState.GetWindowSlot(referenceWindowType, referenceIndex);
-            if(slot != null) {
-                m_slots[index].CopySlot(slot, true);
-            }
+    
+    public void SwapSlot(int index, int newIndex) {
+        index--;
+        newIndex--;
+        if(0 <= index && index < m_slots.Length && 0 <= newIndex && newIndex < m_slots.Length) {
+            m_slots[index].SwapWithSlot(m_slots[newIndex]);
+            UpdateSlotPrefs(index, m_slots[index]);
+            UpdateSlotPrefs(newIndex, m_slots[newIndex]);
         }
     }
 
@@ -37,11 +46,7 @@ public class CommandBarUI : WindowUI
             index--;
             if(0 <= index && index < m_slots.Length) {
                 m_slots[index].CopySlot(slot, true);
-                WindowType referenceWindowType = m_slots[index].GetReferenceWindow().GetWindowType();
-                int referenceWindowTypeIndex = EnumHelper.GetIndex<WindowType>(referenceWindowType);
-                int referenceIndex = m_slots[index].GetReferenceIndex();
-                PlayerPrefs.SetInt("CommandBar-ReferenceIndex-" + index, referenceIndex);
-                PlayerPrefs.SetInt("CommandBar-ReferenceWindowType-" + index, referenceWindowTypeIndex);
+                UpdateSlotPrefs(index, m_slots[index]);
             }
         }
         else {
@@ -49,12 +54,23 @@ public class CommandBarUI : WindowUI
         }
     }
 
+    void UpdateSlotPrefs(int index, SlotUI slot) {
+        if(slot != null && slot.GetSlotGraphicId() > 0) {
+            WindowType referenceWindowType = slot.GetReferenceWindow().GetWindowType();
+            int referenceIndex = slot.GetReferenceIndex();
+            UserPrefs.SetCommandBarReferenceIndex(index, referenceIndex);
+            UserPrefs.SetCommandBarReferenceWindowType(index, referenceWindowType);
+        }
+        else {
+            ClearSlot(index + 1);
+        }
+    }
+
     public void ClearSlot(int index) {
         index--;
         if(0 <= index && index < m_slots.Length) {
             m_slots[index].ClearSlot();
-            PlayerPrefs.DeleteKey("CommandBar-ReferenceIndex-" + index);
-            PlayerPrefs.DeleteKey("CommandBar-ReferenceWindowType-" + index);
+            UserPrefs.ClearCommandBarIndex(index);
         }
     }
 }

@@ -167,38 +167,54 @@ public class SlotUI : MonoBehaviour
         return m_referenceIndex;
     }
 
-    public void CopySlot(SlotUI slot, bool copyAsReference = false) {
-        int index = slot.GetSlotIndex();
-        int referenceIndex = slot.GetReferenceIndex();
-        int amount = slot.GetSlotAmount(true);
-        int slotId = slot.GetSlotId();
-        int soundId = slot.GetSoundId();
-        int graphicId = slot.GetSlotGraphicId();
-        Color color = slot.GetSlotColor();
-        WindowUI window = slot.GetWindow();
-        WindowUI referenceWindow = slot.GetReferenceWindow();
-        SlotType slotType = slot.GetSlotType();
-        string slotName = slot.GetSlotName();
-        string spellTarget = slot.GetSpellTarget();
-        bool enabled = slot.GetSlotEnabled();
+    public void SwapWithSlot(SlotUI slot) {
+        CopySlot(slot, false, true);
+    }
 
-        SetSlotAmount(amount);
-        SetSlotId(slotId);
-        SetSoundId(soundId);
-        SetSlotType(slotType);
-        UpdateSlotGraphic(graphicId, color);
-        SetSlotName(slotName);
-        SetSpellTarget(spellTarget);
-        
-        if(copyAsReference) {
-            SetReferenceIndex(index);
-            SetReferenceWindow(window);
-        }
-        else {
-            SetReferenceIndex(referenceIndex);
-            SetReferenceWindow(referenceWindow);
-            SetSlotIndex(index);
-            SetSlotEnabled(enabled);
+    public void CopySlot(SlotUI slot, bool copyAsReference = false, bool swapSlots = false) {
+        if(slot != null) {
+            if(copyAsReference) {
+                swapSlots = false;
+            }
+            int index = slot.GetSlotIndex();
+            int referenceIndex = slot.GetReferenceIndex();
+            int amount = slot.GetSlotAmount(true);
+            int slotId = slot.GetSlotId();
+            int soundId = slot.GetSoundId();
+            int graphicId = slot.GetSlotGraphicId();
+            Color color = slot.GetSlotColor();
+            WindowUI window = slot.GetWindow();
+            WindowUI referenceWindow = slot.GetReferenceWindow();
+            SlotType slotType = slot.GetSlotType();
+            string slotName = slot.GetSlotName();
+            string spellTarget = slot.GetSpellTarget();
+            bool enabled = slot.GetSlotEnabled();
+
+            if(swapSlots) {
+                slot.CopySlot(this);
+                slot.SetSlotIndex(index);
+            }
+
+            SetSlotAmount(amount);
+            SetSlotId(slotId);
+            SetSoundId(soundId);
+            SetSlotType(slotType);
+            UpdateSlotGraphic(graphicId, color);
+            SetSlotName(slotName);
+            SetSpellTarget(spellTarget);
+            
+            if(copyAsReference) {
+                SetReferenceIndex(index);
+                SetReferenceWindow(window);
+            }
+            else {
+                SetReferenceIndex(referenceIndex);
+                SetReferenceWindow(referenceWindow);
+                SetSlotEnabled(enabled);
+                if(!swapSlots) {
+                    SetSlotIndex(index);
+                }
+            }
         }
     }
 

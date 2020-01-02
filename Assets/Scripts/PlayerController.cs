@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         }
 
         bool shiftKeyPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-        if(CanSendCommand(KeyCode.Alpha0)) {
+        if(CanSendCommand(KeyCode.Alpha0) || CanSendCommand(KeyCode.Keypad0)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Wink);
             }
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(10);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha1)) {
+        if(CanSendCommand(KeyCode.Alpha1) || CanSendCommand(KeyCode.Keypad1)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Heart);
             }
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(1);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha2)) {
+        if(CanSendCommand(KeyCode.Alpha2) || CanSendCommand(KeyCode.Keypad2)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Question);
             }
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(2);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha3)) {
+        if(CanSendCommand(KeyCode.Alpha3) || CanSendCommand(KeyCode.Keypad3)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Ellipsis);
             }
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(3);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha4)) {
+        if(CanSendCommand(KeyCode.Alpha4) || CanSendCommand(KeyCode.Keypad4)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Poop);
             }
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(4);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha5)) {
+        if(CanSendCommand(KeyCode.Alpha5) || CanSendCommand(KeyCode.Keypad5)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Surprise);
             }
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(5);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha6)) {
+        if(CanSendCommand(KeyCode.Alpha6) || CanSendCommand(KeyCode.Keypad6)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Sleep);
             }
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(6);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha7)) {
+        if(CanSendCommand(KeyCode.Alpha7) || CanSendCommand(KeyCode.Keypad7)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Angry);
             }
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(7);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha8)) {
+        if(CanSendCommand(KeyCode.Alpha8) || CanSendCommand(KeyCode.Keypad8)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Cry);
             }
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
                 PlayerState.UseCommandSlot(8);
             }
         }
-        if(CanSendCommand(KeyCode.Alpha9)) {
+        if(CanSendCommand(KeyCode.Alpha9) || CanSendCommand(KeyCode.Keypad9)) {
             if(shiftKeyPressed) {
                 PlayerState.UseEmote(Emote.Music);
             }

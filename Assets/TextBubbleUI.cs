@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BubbleType { ItemDrop, Player, Slot };
+public enum BubbleType { ItemDrop, Player, Slot, ChatBubble };
 
 public class TextBubbleUI : MonoBehaviour
 {

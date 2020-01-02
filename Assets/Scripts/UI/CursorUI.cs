@@ -106,10 +106,10 @@ public class CursorUI : MonoBehaviour
                 GameManager.instance?.SendMessageToServer(Packet.VendorPurchaseToInventory(npcId, index));
             }
             else if(windowType.Equals(WindowType.CommandBar)) {
-                // TODO - Use a spell
+                PlayerState.UseCommandSlot(index);
             }
             else if(windowType.Equals(WindowType.SpellsWindow)) {
-                // TODO - Use a spell
+                PlayerState.UseSpellSlot(index);
             }
         }
     }
@@ -305,6 +305,11 @@ public class CursorUI : MonoBehaviour
                     GameManager.instance?.SendMessageToServer(Packet.VendorPurchaseToInventory(npcId, index));
                 }
             }
+            else if(windowType.Equals(WindowType.CommandBar)) {
+                if(newWindowType.Equals(WindowType.CommandBar)) {
+                    PlayerState.SwapCommandSlot(index, newSlotIndex);
+                }
+            }
         }
     }
 
@@ -409,7 +414,7 @@ public class CursorUI : MonoBehaviour
             }
             for (int i = m_mousedOverObjects.Count - 1; i >= 0; i--) {
                 GameObject gameObject = m_mousedOverObjects[i];
-                if(!currentMousedOverObjects.Contains(gameObject)) {
+                if(gameObject != null && !currentMousedOverObjects.Contains(gameObject)) {
                     MouseExit(gameObject, worldPosition);
                     m_mousedOverObjects.RemoveAt(i);
                 }

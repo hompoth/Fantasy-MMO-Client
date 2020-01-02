@@ -87,19 +87,20 @@ public class PlayerManager : MonoBehaviour
     public Spell spell;
     public Emoticon emoticon;
     public SpellTargetUI spellTargetObject;
-    public TextBubbleUI m_textBubble;
+    public TextBubbleUI m_textBubble, m_chatBubble;
 
     float BASE_MOVEMENT_SPEED = 0.4f;
     float BASE_ATTACK_SPEED = 1f;
     float ATTACK_ANIMATION_SPEED = 2f;
     float HP_MP_CLEAR_TIME = 2f;
+    float CHAT_BUBBLE_CLEAR_TIME = 2f;
 	string SLASH = Path.DirectorySeparatorChar.ToString();
     int playerHP = 0;
     int playerMP = 0;
     int m_bodyId;
     bool m_playerInvisible;
 
-    IEnumerator moveCoroutine, attackCoroutine, hpMpCoroutine;
+    IEnumerator moveCoroutine, attackCoroutine, hpMpCoroutine, chatBubbleCoroutine;
     bool m_isMoving, m_isAttacking, m_isAdmin, m_isPlayerInParty;
     float m_lerpSpeed, m_moveTimer, m_attackTimer, m_spriteHeight, m_spriteWidth;
     Vector3 m_currentDirection, m_startLocation, m_targetLocation;
@@ -109,6 +110,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start() {
         m_textBubble.gameObject.SetActive(false);
+        m_chatBubble.gameObject.SetActive(false);
     }
 
     public void MouseOver(Vector3 worldPosition) {
@@ -126,6 +128,24 @@ public class PlayerManager : MonoBehaviour
 
     public void MouseExit(Vector3 worldPosition) {
         m_textBubble.gameObject.SetActive(false);
+    }
+
+    public void DisplayChatBubble(string message) {
+        if(chatBubbleCoroutine != null) {
+            StopCoroutine(chatBubbleCoroutine);
+            chatBubbleCoroutine = null;
+        }
+        m_chatBubble.gameObject.SetActive(true);
+        m_chatBubble.UpdateBubbleText(message);
+        chatBubbleCoroutine = ClearChatBubble();
+        StartCoroutine(chatBubbleCoroutine);
+        
+    }
+
+    IEnumerator ClearChatBubble() {
+        yield return new WaitForSeconds(CHAT_BUBBLE_CLEAR_TIME);
+        chatBubbleCoroutine = null;
+        m_chatBubble.gameObject.SetActive(false);
     }
 
     public void DestroyAllButPlayerUI() {

@@ -317,6 +317,23 @@ public class PlayerState : MonoBehaviour
         return false;
     }
 
+    public static void UseSpellSlot(int index) {
+        if(!m_chatEnabled && !m_spellTargetEnabled) {
+            if(TryGetSpellsWindow(out List<SpellsWindowUI> spellWindowList)) {
+                SlotUI slot = spellWindowList.FirstOrDefault()?.GetSlot(index);
+                if(slot != null) {
+                    string spellTarget = slot.GetSpellTarget();
+                    if(spellTarget.Equals("T")) {
+                        CastTargetSpell(index);
+                    }
+                    else {
+                        GameManager.instance?.SendMessageToServer(Packet.Cast(index, m_playerId));
+                    }
+                }
+            }
+        }
+    }
+
     public static void UseCommandSlot(int index) {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
@@ -346,6 +363,15 @@ public class PlayerState : MonoBehaviour
         if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
             foreach(CommandBarUI commandBar in commandBarList) {
                 commandBar.CopySlot(slotIndex, slot);
+            }
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static void SwapCommandSlot(int slotIndex, int newSlotIndex) {
+        if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
+            foreach(CommandBarUI commandBar in commandBarList) {
+                commandBar.SwapSlot(slotIndex, newSlotIndex);
             }
             PlayerPrefs.Save();
         }
@@ -456,7 +482,7 @@ public class PlayerState : MonoBehaviour
     }
 
     public static void UseEmote(Emote emote) {
-        if(!m_spellTargetEnabled) {
+        if(!m_chatEnabled && !m_spellTargetEnabled) {
             int value = EnumHelper.GetNameValue<Emote>(emote);
             GameManager.instance?.SendMessageToServer(Packet.Emote(value));
         }
@@ -869,6 +895,7 @@ public class PlayerState : MonoBehaviour
 
     public static void SetMainPlayerName(int playerId, string name) {
         if(IsMainPlayer(playerId)) {
+            UserPrefs.playerName = name;
             if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
                 foreach(CharacterWindowUI characterWindow in characterWindowList) {
                     characterWindow.SetPlayerName(name);
@@ -1111,7 +1138,7 @@ public class PlayerState : MonoBehaviour
 
     static bool TryGetWindow<T>(WindowType windowType, out List<T> listOfType) {
         listOfType = null;
-        if(instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
+        if(instance.mappedWindowTypes != null && instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
             listOfType = list.Cast<T>().ToList();
             return true;
         }
@@ -1121,7 +1148,7 @@ public class PlayerState : MonoBehaviour
     static bool TryGetFirstWindow(WindowType windowType, out GameObject firstWindow) {
         firstWindow = null;
         int maxSiblingIndex = -1;
-        if(instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
+        if(instance.mappedWindowTypes != null && instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
             foreach(WindowUI window in list) {
                 int currentSiblingIndex = window.transform.GetSiblingIndex();
                 if(currentSiblingIndex > maxSiblingIndex) {

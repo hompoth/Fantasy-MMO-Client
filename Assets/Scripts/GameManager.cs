@@ -64,6 +64,10 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
+		HandleCurrentMessages();
+    }
+
+	void HandleCurrentMessages() {
 		if(IsConnectedToServer()) {
 			if(messages.Count == 0) {
 				if(Time.time - m_messageTimer > MESSAGE_TIMER_WAIT_TIME) {
@@ -79,7 +83,7 @@ public class GameManager : MonoBehaviour
 				}
 			}
 		}
-    }
+	}
 
 	void OnDestroy() {
 		StopAllCoroutines();
@@ -782,6 +786,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void DoneSendingMessages() {
+		HandleCurrentMessages();
 		m_doneSendingMessages = true;
 		PlayerState.RefreshCommandBar();
 	}
@@ -938,7 +943,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void AddPlayerChatMessage(int playerId, string message) {
-		//TODO: Player chat bubble above playerId
+		(GetPlayerManager(playerId))?.DisplayChatBubble(message);
 		AddColorChatMessage(1, message);
 	}
 
@@ -977,6 +982,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void ContinueHandlingMessages() {
+		Debug.Log("ContinueHandlingMessages");
 		m_handleMessages = true;
 		m_messageTimer = Time.time;
 	}
