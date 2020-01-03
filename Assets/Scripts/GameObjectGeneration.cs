@@ -31,9 +31,9 @@ public class GameObjectGeneration : MonoBehaviour
             //SearchForSpriteId("*.adf", false, false);
             //ConvertSpritesToPNG(false);
             
-            GenerateSpritesAndAnimations(false, false);
-            //GenerateAnimationGroups();
-            //GenerateMaps();
+            GenerateSpritesAndAnimations(false, true);
+            GenerateAnimationGroups();
+            GenerateMaps();
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
