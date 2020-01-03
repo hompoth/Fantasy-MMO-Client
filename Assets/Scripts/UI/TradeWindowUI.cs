@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO Support updating millions/thousands/ones with buttons
 public class TradeWindowUI : WindowUI
 {
     public SlotUI[] m_sourceItemSlots;

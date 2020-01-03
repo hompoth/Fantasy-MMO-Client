@@ -19,8 +19,11 @@ public class PlayerController : MonoBehaviour
         keyCodeTimerDictionary = new Dictionary<KeyCode, float>();
     }
 
-    void Update()
-    {   
+    void Update() {   
+        if(Input.GetKey(KeyCode.Minus) && CanSendCommand(KeyCode.Equals)) {
+            AutoController.ToggleActive();
+        }
+
         if (Input.GetMouseButtonUp(0)) {
             bool controlKeyPressed = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
             PlayerState.LeftMouseUp(controlKeyPressed);
@@ -147,22 +150,27 @@ public class PlayerController : MonoBehaviour
 
         if(CanMovePlayer(out Vector3 inputVector)) {
             PlayerState.HandlePlayerMovement(inputVector);
+            AutoController.Disable();
         }
 
         if(CanSendCommand(KeyCode.LeftArrow)) {
             PlayerState.LeftArrow();
+            AutoController.Disable();
         }
 
         if(CanSendCommand(KeyCode.RightArrow)) {
             PlayerState.RightArrow();
+            AutoController.Disable();
         }
 
         if(CanSendCommand(KeyCode.UpArrow)) {
             PlayerState.UpArrow();
+            AutoController.Disable();
         }
 
         if(CanSendCommand(KeyCode.DownArrow)) {
             PlayerState.DownArrow();
+            AutoController.Disable();
         }
 
         if (CanSendCommand(KeyCode.G)) {
