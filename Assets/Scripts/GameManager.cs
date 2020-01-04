@@ -573,7 +573,6 @@ public class GameManager : MonoBehaviour
 			}
 			
 		}
-		Debug.Log(closestPlayer);
 		return closestPlayer;
 	}
 
@@ -982,7 +981,6 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void ContinueHandlingMessages() {
-		Debug.Log("ContinueHandlingMessages");
 		m_handleMessages = true;
 		m_messageTimer = Time.time;
 	}

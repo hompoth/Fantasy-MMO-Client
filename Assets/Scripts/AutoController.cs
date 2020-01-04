@@ -15,30 +15,26 @@ public class AutoController : MonoBehaviour
         }
     }
 
+
     public static void SetAutoTask(AutoTask task) {
         switch(m_task) {
             case AutoTask.AttackInSpot:
-                //Movement: None
+                //AttackInSpot: Idle
                 break;
             case AutoTask.AttackFullMap:
-                //Movement: Follow path around map
-                //Move towards mobs and items
+                //AttackFullMap: Regroup, AttackMob, PickUp, CycleMaps
                 break;
             case AutoTask.AttackAndWander:
-                //Movement: Move towards a random point
-                //Move towards mobs and items
+                //AttackAndWander: Regroup, AttackMob, PickUp, Wander
                 break;
             case AutoTask.FollowGroup:
-                //Movement: Follow group while avoiding mobs. Otherwise defer to another task
+                //FollowGroup: Regroup, FollowGroup, Idle (Minita)
                 break;
             case AutoTask.FarmGold:
-                //Movement: If inventory full, move towards/search for sell vendor. Otherwise defer to another task
+                //FarmGold: SellItems, PickUp, AttackMob, Wander
                 break;
             case AutoTask.BossFarming:
-                //Movement: Move towards next boss in list. 
-                //If there, kill it and reset timer. 
-                //If not there, reset timer. 
-                //Otherwise defer to another task
+                //BossFarming: Regroup, KillBoss (for each boss), PickUp, CycleMaps
                 break;
         }
     }
@@ -92,7 +88,9 @@ public class AutoController : MonoBehaviour
     //  Party Leader
     //  Party members of a certain class
     //  Party members low on hp/mp
-    //  Farthest/Closest enemy
+    //  Near most enemies
+    //  Furthest from most enemies (furthest and single)
+    //  Closest to a plus, line, spray
     //Source. Target/Self
     //Spell hit pattern. (single, plus, spray, line)
     //
@@ -106,10 +104,68 @@ public class AutoController : MonoBehaviour
     //Type something when players in range
     //Emote when players in range
 
+
     //Send actions to a thread to not be restricted by update's frame-based speed
 
+    //Task
+    //Movement: new Mob(dist), new Player(dist), new Drop(dist), new Wander(new Point[]{point1, point2, etc})
+    // movement-list.FirstActiveOrDefault()?.Move(); - triggered per movement timer
+    // Move() will generate the path and then move to the next location
+
+    //Disabled Attacking:
+    // Minita
+    // Paradise
+    // Shops
+    // If vendor
+    // If player
+    // If missed?
+
+
+
+
+    //Move Tasks:
+    // KillBoss - Priority based on timer (i.e. if boss alive) - Find player (mob), keep moving towards player until dead
+    // SellItems - Priority based on inventory fullness and items available to sell - Find player (vendor), sell to vendor
+    // PickUp - Priority based on item drop within range - Move to item drop
+    // AttackMob - Priority based on mobs within range - MoveTo
+    // FollowGroup - Priority based on if in group - Space out around group. If leader is not on map, go to map.
+    // Regroup - Priority based on if group isn't fully present after a given time period or player dies - Search for missing members
+    // Avoid - Priority based on non-grouped players nearby - Run to a waypoint
+    // Idle - Always active - Move to a location to idle
+    // Wander - Always active - Go to a random attainable location. If at that location, generate a new one.
+    // CycleMaps - Always active - Use ScanMap function and cycle waypoints of maps
+
+    //Move functions:
+    // Find player (mob/player/vendor) - Go to map, MoveTo / ScanMap
+    // ScanMap - Generate waypoints such that each spot of the map is visible, then move through them in an efficient manner.
+
+    //Move actions:
+    // Player - Attack - Move to player such that it is within your attack range
+    // Player - Follow - Move to one or more players and remain spaced out
+    // Location - MoveTo - Move to a location on the map
+    // Location - MoveToMap - Cache waypoints and move through them
+
+    //Attack Range:
+    //FL, SOS, Ranged dist (a circle of given radius)
+
+    //Avoid Location:
+    //Mob Range - Applicable to all movement (per mob type)
+    //Tile - To avoid a boss room for example
+
+    //Note - If point can't be moved to or a timer passes, skip it. I.e move to next waypoint
+    //       Also find way to ignore mob range at times
+
     public static void ToggleActive() {
-        m_active = !m_active;
+        if(m_active) {
+            Disable();
+        }
+        else {
+            Enable();
+        }
+    }
+
+    public static void Enable() {
+        m_active = true;
     }
 
     public static void Disable() {
