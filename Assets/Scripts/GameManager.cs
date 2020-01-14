@@ -314,6 +314,14 @@ public class GameManager : MonoBehaviour
 		return PlayerState.GetMainPlayerManager();
 	}
 
+	public bool MainPlayerIsSurrounded() {
+		PlayerManager mainPlayer = PlayerState.GetMainPlayerManager();
+		if(mainPlayer != null) {
+			return mainPlayer.IsSurrounded();
+		}
+		return false;
+	}
+
     public void Disconnect(){
 		if (SceneManager.GetActiveScene().name.Equals("LoginScreen")) {
 			DisplayLoginMessage("Unable to connect to the server.");

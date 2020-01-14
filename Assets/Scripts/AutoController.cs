@@ -1,46 +1,96 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
-public enum AutoTask { AttackInSpot, AttackFullMap, AttackAndWander, FollowGroup, FarmGold, BossFarming }
+public enum AutoType { AttackInSpot, AttackFullMap, AttackAndWander, FollowGroup, FarmGold, BossFarming }
 
 public class AutoController : MonoBehaviour
 {
-    public static AutoTask m_task;
     static bool m_active = false;
+    public GameManager m_gameManager;
+    public AutoControllerState m_controllerState;
+    public AutoType m_task;
+    const float MOVEMENT_TASK_TIME = 0.4f;  // TODO Use BASE_MOVEMENT_SPEED from PlayerManager
+    IEnumerator m_autoTaskCoroutine;
+    List<AutoTask> m_taskList;
 
-    void Update() {
-        if(m_active) {
+    void Start() {
+        m_taskList = new List<AutoTask>();
+        SetAutoTask(m_task);
+    }
 
+    IEnumerator CalculateAutoTask() {
+        while(m_autoTaskCoroutine != null) {
+            yield return new WaitForSeconds(MOVEMENT_TASK_TIME);
+            if(!AutoController.IsEnabled()) {
+                m_autoTaskCoroutine = null;
+            }
+            else {
+                AutoTask chosenTask = null;
+                foreach(AutoTask task in m_taskList) {
+                    if(task.IsActive(m_gameManager, m_controllerState)) {
+                        chosenTask = task;
+                        break;
+                    }
+                }
+                chosenTask?.Move(m_gameManager, m_controllerState);
+            }
         }
     }
 
-
-    public static void SetAutoTask(AutoTask task) {
+    public void SetAutoTask(AutoType task) {
+        if(m_autoTaskCoroutine != null) {
+            StopCoroutine(m_autoTaskCoroutine);
+            m_autoTaskCoroutine = null;
+        } 
+        m_taskList.Clear();
         switch(m_task) {
-            case AutoTask.AttackInSpot:
-                //AttackInSpot: Idle
+            case AutoType.AttackInSpot:
+                m_taskList.Add(new IdleTask());
                 break;
-            case AutoTask.AttackFullMap:
-                //AttackFullMap: Regroup, AttackMob, PickUp, CycleMaps
+            case AutoType.AttackFullMap:
+                m_taskList.Add(new RegroupTask());
+                m_taskList.Add(new AvoidPlayerTask());
+                m_taskList.Add(new AttackMobTask());
+                m_taskList.Add(new PickUpTask());
+                m_taskList.Add(new CycleMapsTask());
                 break;
-            case AutoTask.AttackAndWander:
-                //AttackAndWander: Regroup, AttackMob, PickUp, Wander
+            case AutoType.AttackAndWander:
+                m_taskList.Add(new RegroupTask());
+                m_taskList.Add(new AvoidPlayerTask());
+                m_taskList.Add(new AttackMobTask());
+                m_taskList.Add(new PickUpTask());
+                m_taskList.Add(new WanderTask());
                 break;
-            case AutoTask.FollowGroup:
-                //FollowGroup: Regroup, FollowGroup, Idle (Minita)
+            case AutoType.FollowGroup:
+                m_taskList.Add(new RegroupTask());
+                m_taskList.Add(new FollowGroupTask());
+                m_taskList.Add(new IdleTask());
                 break;
-            case AutoTask.FarmGold:
-                //FarmGold: SellItems, PickUp, AttackMob, Wander
+            case AutoType.FarmGold:
+                m_taskList.Add(new RegroupTask());
+                m_taskList.Add(new AvoidPlayerTask());
+                m_taskList.Add(new SellItemsTask());
+                m_taskList.Add(new PickUpTask());
+                m_taskList.Add(new AttackMobTask());
+                m_taskList.Add(new WanderTask());
                 break;
-            case AutoTask.BossFarming:
-                //BossFarming: Regroup, KillBoss (for each boss), PickUp, CycleMaps
+            case AutoType.BossFarming:
+                m_taskList.Add(new RegroupTask());
+                m_taskList.Add(new AvoidPlayerTask());
+                m_taskList.Add(new KillBossTask());
+                m_taskList.Add(new PickUpTask());
+                m_taskList.Add(new CycleMapsTask());
                 break;
         }
+        m_autoTaskCoroutine = CalculateAutoTask();
+        StartCoroutine(m_autoTaskCoroutine);
     }
+
 
     //----How it works.
-    // AutoTask can be updated at any time. When changed, a new set of tasks will be chosen.
+    // AutoType can be updated at any time. When changed, a new set of tasks will be chosen.
     // Each second task priority will be re-calculated.
     // Per update, use any actions that are off cooldown and have a target (and meet other requirements like hp/mp)
     // Per tile movement, get the task movement-priority.
@@ -85,19 +135,26 @@ public class AutoController : MonoBehaviour
     //Cycle time.
     //Target pattern:
     //  Cycle Party
+    //  Cycle Mobs
     //  Party Leader
     //  Party members of a certain class
     //  Party members low on hp/mp
-    //  Near most enemies
+    //  Near most enemies (line attack, plus attack)
     //  Furthest from most enemies (furthest and single)
     //  Closest to a plus, line, spray
     //Source. Target/Self
     //Spell hit pattern. (single, plus, spray, line)
+    //Spell range (for the given pattern)
+    //Atomic - Add atomic check for using spells. Adds 100ms wait per atomic spell used.
+    //Disable when player close.
+    //Note: Add ability to keep track of damage and NPC hp.
+    // Some sort of predictive ability
     //
     //Items:
     //Pickup or ignore
     //Sell when inventory is full
     //Destroy when encountered
+    //Use item
     //
     //Misc:
     //Buy hp/mp
@@ -155,6 +212,7 @@ public class AutoController : MonoBehaviour
     //Note - If point can't be moved to or a timer passes, skip it. I.e move to next waypoint
     //       Also find way to ignore mob range at times
 
+
     public static void ToggleActive() {
         if(m_active) {
             Disable();
@@ -164,11 +222,23 @@ public class AutoController : MonoBehaviour
         }
     }
 
+    //Move enable/disable to a higher state and make AutoController non-static. 
+    //Have the higher state enable/disable all running controllers.
     public static void Enable() {
+        //SetAutoTask(m_task);
         m_active = true;
     }
 
     public static void Disable() {
+        //if(m_autoTaskCoroutine != null) {
+        //    StopCoroutine(m_autoTaskCoroutine);
+        //    m_autoTaskCoroutine = null;
+        //} 
+        //m_taskList.Clear();
         m_active = false;
+    }
+
+    public static bool IsEnabled() {
+        return m_active;
     }
 }

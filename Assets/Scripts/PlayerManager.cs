@@ -605,6 +605,16 @@ public class PlayerManager : MonoBehaviour
         return PlayerState.IsMainPlayer(m_playerId);
     }
 
+    public bool IsSurrounded() {
+        if(IsPositionBlocked(m_targetLocation + Vector3.up) &&
+            IsPositionBlocked(m_targetLocation + Vector3.down) &&
+            IsPositionBlocked(m_targetLocation + Vector3.left) &&
+            IsPositionBlocked(m_targetLocation + Vector3.right)) {
+            return true;
+        }
+        return false;
+    }
+
     bool IsPositionBlocked(Vector2 position) {
         int blockMask = ((1 << 0) | (1 << 11) | (1 << 12));
         if(!m_isAdmin){
