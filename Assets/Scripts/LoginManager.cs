@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.IO;
 using TMPro;
  
 public class LoginManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class LoginManager : MonoBehaviour
     public TMP_InputField ipField, portField, usernameField, passwordField;
     private IEnumerator pendingCoroutine;
     public GameManager m_gameManager;
+    string SLASH = Path.DirectorySeparatorChar.ToString();
  
     private void Start() { 
         popUpMessage.SetActive(false);
@@ -66,9 +68,11 @@ public class LoginManager : MonoBehaviour
         return false;
     }
 
-    public void CreateGameManager() {
-        //m_gameManager = new GameManager();
-        ClientManager.AddGameManager(m_gameManager);
+    void CreateGameManager() {
+		GameManager prefab = Resources.Load<GameManager>("Prefabs" + SLASH + "GameManager");
+		if (prefab != null) {
+			m_gameManager = Instantiate(prefab, Vector3.one, Quaternion.identity); 
+		}
     }
 
     public void LoginToServer() {

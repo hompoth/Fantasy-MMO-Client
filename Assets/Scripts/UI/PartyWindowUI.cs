@@ -10,7 +10,8 @@ public class PartyWindowUI : WindowUI
     public PartyPlayerUI[] partyPlayers;
     Dictionary<int, int> playerIndexMapping;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         partyPlayers = new PartyPlayerUI[10];
         playerIndexMapping = new Dictionary<int, int>();
     }

@@ -8,7 +8,8 @@ public class VendorWindowUI : WindowUI
     public ButtonUI m_closeButton;
     public SlotUI[] m_itemSlots;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         for (int index = 0; index < m_itemSlots.Length; ++index) {
             m_itemSlots[index].SetSlotIndex(index + 1);
         }

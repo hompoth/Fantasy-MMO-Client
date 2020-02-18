@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_windowType: 23
+  m_spriteRenderer: {fileID: 6684016069141115764}
+  m_solidOnHover: 1
 --- !u!210 &6684016069141115766
 SortingGroup:
   m_ObjectHideFlags: 0

@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_windowType: 14
+  m_spriteRenderer: {fileID: 6185971257854075696}
+  m_solidOnHover: 1
   partyPlayers:
   - {fileID: 0}
   - {fileID: 0}

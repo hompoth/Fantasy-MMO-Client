@@ -11,18 +11,32 @@ public enum WindowType { OptionsBar=1, InventoryWindow, SpellsWindow, CommandBar
 public abstract class WindowUI : MonoBehaviour
 {
     public WindowType m_windowType;
+    public SpriteRenderer m_spriteRenderer;
+    public bool m_solidOnHover;
     private int m_windowId, m_npcId, m_unknownId, m_unknown2Id;
 
-    public void MouseOver(Vector3 worldPosition) {
+    public void Awake() {
+        if(m_solidOnHover) {
+            m_spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
+        }
+        else {
+            m_spriteRenderer.color = new Color(1f, 1f, 1f, 0.95f);
+        }
+    }
 
+    public void MouseOver(Vector3 worldPosition) {
     }
 
     public void MouseEnter(Vector3 worldPosition) {
-        
+        if(m_solidOnHover) {
+            m_spriteRenderer.color = new Color(1f, 1f, 1f, 0.95f);
+        }
     }
 
     public void MouseExit(Vector3 worldPosition) {
-
+        if(m_solidOnHover) {
+            m_spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
+        }
     }
 
     public WindowType GetWindowType() {

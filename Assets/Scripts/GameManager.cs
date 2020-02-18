@@ -317,6 +317,7 @@ public class GameManager : MonoBehaviour
 		}
 		else {
 			DisplayLoginMessage("Disconnected from the server.");
+			ClientManager.RemoveGameManager(this);
 		}
         CancelLogin();
     }
@@ -376,9 +377,8 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void BeforeLoadScene(string previousSceneName, string sceneName) {
-		if(!(previousSceneName.Equals("GameWorld") && sceneName.Equals("GameWorld"))) {
-			// On logout, clear chat, etc.
-			ClearPlayerState();
+		if(previousSceneName.Equals("LoginScreen") && sceneName.Equals("GameWorld")) {
+			ClientManager.AddGameManager(this);
 		}
 		if(sceneName.Equals("GameWorld")) {
         	Cursor.visible = false;

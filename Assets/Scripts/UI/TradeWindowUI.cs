@@ -12,7 +12,8 @@ public class TradeWindowUI : WindowUI
     public ButtonUI m_closeButton, m_okayButton;
     int m_millionsCount, m_thousandsCount, m_onesCount;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         for (int index = 0; index < m_sourceItemSlots.Length; ++index) {
             m_sourceItemSlots[index].SetSlotIndex(index + 1);
         }

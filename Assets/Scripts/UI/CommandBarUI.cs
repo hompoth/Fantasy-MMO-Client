@@ -6,7 +6,8 @@ public class CommandBarUI : WindowUI
 {
     public SlotUI[] m_slots;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         for (int index = 0; index < m_slots.Length; ++index) {
             m_slots[index].SetSlotIndex(index + 1);
         }

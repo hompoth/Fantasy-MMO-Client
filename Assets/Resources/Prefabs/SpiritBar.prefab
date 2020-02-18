@@ -368,6 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_windowType: 9
+  m_spriteRenderer: {fileID: 7555607167856949447}
+  m_solidOnHover: 0
   statBarSpriteMask: {fileID: 7555607168519946111}
   asperetaTextObject: {fileID: 3367173374711227973}
 --- !u!210 &7555607167856949444

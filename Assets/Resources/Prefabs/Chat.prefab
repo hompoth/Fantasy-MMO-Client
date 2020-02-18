@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_windowType: 12
+  m_spriteRenderer: {fileID: 1549091716986263245}
+  m_solidOnHover: 1
   m_indexGameObject: {fileID: 1549091717403110205}
   m_inputLine: {fileID: 5989515228149618721}
   m_textLines:

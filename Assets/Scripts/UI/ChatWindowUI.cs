@@ -19,7 +19,8 @@ public class ChatWindowUI : WindowUI
     string[] m_messageBoxText;
     Color[] m_messageBoxColor;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         m_previousInputText = new string[PREVIOUS_INPUT_TEXT_SIZE];
         m_messageBoxText = new string[MESSAGE_BOX_SIZE];
         m_messageBoxColor = new Color[MESSAGE_BOX_SIZE];

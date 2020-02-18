@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_windowType: 6
+  m_spriteRenderer: {fileID: 2524390421965844050}
+  m_solidOnHover: 0
   m_fps: {fileID: 32019414044059882}
   m_updatePerSecond: 1
 --- !u!210 &2524390421965844060
@@ -250,11 +252,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TextObject
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 822935643133796561, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -361,10 +358,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+    - target: {fileID: 4940904143090118330, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -381,19 +378,9 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4940904143090118330, guid: 5d8fef50fd364504bb00262a9d238120,
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_text
+      propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
@@ -435,6 +422,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d8fef50fd364504bb00262a9d238120, type: 3}

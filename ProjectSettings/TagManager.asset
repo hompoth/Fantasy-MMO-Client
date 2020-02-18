@@ -12,6 +12,7 @@ TagManager:
   - Spell
   - PlayerController
   - Window
+  - ClientManager
   layers:
   - Default
   - TransparentFX

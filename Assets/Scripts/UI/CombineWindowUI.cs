@@ -7,7 +7,8 @@ public class CombineWindowUI : WindowUI
     public SlotUI[] m_itemSlots;
     public ButtonUI m_combineButton, m_okayButton;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         for (int index = 0; index < m_itemSlots.Length; ++index) {
             m_itemSlots[index].SetSlotIndex(index + 1);
         }

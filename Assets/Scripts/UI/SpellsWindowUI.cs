@@ -6,7 +6,8 @@ public class SpellsWindowUI : WindowUI
 {
     public SlotUI[] m_spellSlots;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         for (int index = 0; index < m_spellSlots.Length; ++index) {
             m_spellSlots[index].SetSlotIndex(index + 1);
         }

@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_windowType: 5
+  m_spriteRenderer: {fileID: 1231511608751097877}
+  m_solidOnHover: 1
   m_spellSlots:
   - {fileID: 3493116084005140971}
   - {fileID: 5570883531543461556}
@@ -174,11 +176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (13)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -284,6 +281,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (13)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -326,11 +328,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (14)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -436,6 +433,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (14)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -478,11 +480,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -588,6 +585,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -630,11 +632,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (12)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -740,6 +737,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (12)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -782,11 +784,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -892,6 +889,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -934,11 +936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1044,6 +1041,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -1086,11 +1088,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1196,6 +1193,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -1238,11 +1240,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1348,6 +1345,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -1390,11 +1392,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1500,6 +1497,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -1542,11 +1544,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1652,6 +1649,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -1694,11 +1696,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1804,6 +1801,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -1846,11 +1848,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1956,6 +1953,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -1998,11 +2000,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2108,6 +2105,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -2150,11 +2152,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2260,6 +2257,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -2302,11 +2304,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2412,6 +2409,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_window
@@ -2454,11 +2456,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231511608751097876}
     m_Modifications:
-    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
-        type: 3}
-      propertyPath: m_Name
-      value: SlotUI (15)
-      objectReference: {fileID: 0}
     - target: {fileID: 5591923136780718625, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2563,6 +2560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 881625042106701003, guid: d201f1629f3bd5f438314eed1a025c6a,
+        type: 3}
+      propertyPath: m_Name
+      value: SlotUI (15)
       objectReference: {fileID: 0}
     - target: {fileID: 3177224665572803299, guid: d201f1629f3bd5f438314eed1a025c6a,
         type: 3}

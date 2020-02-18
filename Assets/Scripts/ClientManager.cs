@@ -43,8 +43,17 @@ public class ClientManager : MonoBehaviour
 	}
 
 	public static void AddGameManager(GameManager manager) {
+		GameObject gameObject = GameObject.FindWithTag("ClientManager");
+		if(gameObject != null) {
+			manager.transform.SetParent(gameObject.transform);
+		}
 		m_gameManagers.Add(manager);
 		LoadPlayerPreferences(manager);
+	}
+
+	public static void RemoveGameManager(GameManager manager) {
+		m_gameManagers.Remove(manager);
+		Destroy(manager.gameObject, 10);
 	}
 
     static void LoadPlayerPreferences(GameManager manager) {

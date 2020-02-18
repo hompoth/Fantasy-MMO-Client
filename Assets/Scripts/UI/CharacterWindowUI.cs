@@ -9,7 +9,8 @@ public class CharacterWindowUI : WindowUI
     public AsperetaTextObject m_playerName, m_guildName, m_className, m_playerLevel, m_experience, m_strength, m_stamina, m_intelligence, 
         m_dexterity, m_armor, m_fireResist, m_waterResist, m_earthResist, m_airResist, m_spiritResist, m_gold, m_health, m_mana, m_spirit;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         for (int index = 0; index < m_itemSlots.Length; ++index) {
             m_itemSlots[index].SetSlotIndex(index + 32);
         }
