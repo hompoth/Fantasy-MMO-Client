@@ -15,7 +15,7 @@ public class MapChangeEvent : Event
 		manager.StopHandlingMessages();
 		manager.LoadScene("GameWorld", mapName, () => {
 			manager.LoadMap(mapId);
-			manager.SendMessageToServer(Packet.DoneLoadingMap(mapId));
+			manager.SendDoneLoadingMap(mapId);
 			manager.ContinueHandlingMessages();
 		});
 	}

@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     const string VERTICAL_INPUT = "Vertical";
     const string HORIZONTAL_INPUT = "Horizontal";
 
+    public PlayerState m_state;
+    public AutoController m_autoController;
+
     Dictionary<KeyCode, float> keyCodeTimerDictionary;
     float m_clickTimer;
 
@@ -21,262 +24,273 @@ public class PlayerController : MonoBehaviour
 
     void Update() {   
         if(Input.GetKey(KeyCode.Minus) && CanSendCommand(KeyCode.Equals)) {
-            AutoController.ToggleActive();
+            m_autoController.ToggleActive();
         }
 
         if (Input.GetMouseButtonUp(0)) {
             bool controlKeyPressed = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
-            PlayerState.LeftMouseUp(controlKeyPressed);
+            m_state.LeftMouseUp(controlKeyPressed);
         }
          
         if (Input.GetMouseButtonDown(0)) {
-            PlayerState.LeftMouseDown();
+            m_state.LeftMouseDown();
             float now = Time.time;
             if(now - m_clickTimer < DOUBLE_CLICK_WAIT_TIME) {
-                PlayerState.LeftDoubleClick();
+                m_state.LeftDoubleClick();
             }
             m_clickTimer = now;
         }
 
         if(Input.GetMouseButtonUp(1)) {
-            PlayerState.RightMouseUp();
+            m_state.RightMouseUp();
         }
 
         if (Input.GetMouseButtonDown(1)) {
             bool controlKeyPressed = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
-            PlayerState.RightMouseDown(controlKeyPressed);
+            m_state.RightMouseDown(controlKeyPressed);
         }
 
         bool shiftKeyPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         if(CanSendCommand(KeyCode.Alpha0) || CanSendCommand(KeyCode.Keypad0)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Wink);
+                m_state.UseEmote(Emote.Wink);
             }
             else {
-                PlayerState.UseCommandSlot(10);
+                m_state.UseCommandSlot(10);
             }
         }
         if(CanSendCommand(KeyCode.Alpha1) || CanSendCommand(KeyCode.Keypad1)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Heart);
+                m_state.UseEmote(Emote.Heart);
             }
             else {
-                PlayerState.UseCommandSlot(1);
+                m_state.UseCommandSlot(1);
             }
         }
         if(CanSendCommand(KeyCode.Alpha2) || CanSendCommand(KeyCode.Keypad2)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Question);
+                m_state.UseEmote(Emote.Question);
             }
             else {
-                PlayerState.UseCommandSlot(2);
+                m_state.UseCommandSlot(2);
             }
         }
         if(CanSendCommand(KeyCode.Alpha3) || CanSendCommand(KeyCode.Keypad3)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Ellipsis);
+                m_state.UseEmote(Emote.Ellipsis);
             }
             else {
-                PlayerState.UseCommandSlot(3);
+                m_state.UseCommandSlot(3);
             }
         }
         if(CanSendCommand(KeyCode.Alpha4) || CanSendCommand(KeyCode.Keypad4)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Poop);
+                m_state.UseEmote(Emote.Poop);
             }
             else {
-                PlayerState.UseCommandSlot(4);
+                m_state.UseCommandSlot(4);
             }
         }
         if(CanSendCommand(KeyCode.Alpha5) || CanSendCommand(KeyCode.Keypad5)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Surprise);
+                m_state.UseEmote(Emote.Surprise);
             }
             else {
-                PlayerState.UseCommandSlot(5);
+                m_state.UseCommandSlot(5);
             }
         }
         if(CanSendCommand(KeyCode.Alpha6) || CanSendCommand(KeyCode.Keypad6)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Sleep);
+                m_state.UseEmote(Emote.Sleep);
             }
             else {
-                PlayerState.UseCommandSlot(6);
+                m_state.UseCommandSlot(6);
             }
         }
         if(CanSendCommand(KeyCode.Alpha7) || CanSendCommand(KeyCode.Keypad7)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Angry);
+                m_state.UseEmote(Emote.Angry);
             }
             else {
-                PlayerState.UseCommandSlot(7);
+                m_state.UseCommandSlot(7);
             }
         }
         if(CanSendCommand(KeyCode.Alpha8) || CanSendCommand(KeyCode.Keypad8)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Cry);
+                m_state.UseEmote(Emote.Cry);
             }
             else {
-                PlayerState.UseCommandSlot(8);
+                m_state.UseCommandSlot(8);
             }
         }
         if(CanSendCommand(KeyCode.Alpha9) || CanSendCommand(KeyCode.Keypad9)) {
             if(shiftKeyPressed) {
-                PlayerState.UseEmote(Emote.Music);
+                m_state.UseEmote(Emote.Music);
             }
             else {
-                PlayerState.UseCommandSlot(9);
+                m_state.UseCommandSlot(9);
             }
         }
 
         if(CanSendCommand(KeyCode.Home)) {
-            PlayerState.Home();
+            m_state.Home();
         }
 
         if(CanSendCommand(KeyCode.Return)) {
-            PlayerState.Enter();
+            m_state.Enter();
         }
 
         if(CanSendCommand(KeyCode.Slash)) {
-            PlayerState.EnableChat();
+            m_state.EnableChat();
         }
         
         if (CanSendCommand(KeyCode.Escape)) {
-            PlayerState.Escape();
+            m_state.Escape();
         }
         else {
-            PlayerState.AddInputText(Input.inputString);
+            m_state.AddInputText(Input.inputString);
         }
 
         if(CanMovePlayer(out Vector3 inputVector)) {
-            PlayerState.HandlePlayerMovement(inputVector);
-            AutoController.Disable();
+            m_state.HandlePlayerMovement(inputVector);
+            m_autoController.Disable();
         }
 
         if(CanSendCommand(KeyCode.LeftArrow)) {
-            PlayerState.LeftArrow();
-            AutoController.Disable();
+            m_state.LeftArrow();
+            m_autoController.Disable();
         }
 
         if(CanSendCommand(KeyCode.RightArrow)) {
-            PlayerState.RightArrow();
-            AutoController.Disable();
+            m_state.RightArrow();
+            m_autoController.Disable();
         }
 
         if(CanSendCommand(KeyCode.UpArrow)) {
-            PlayerState.UpArrow();
-            AutoController.Disable();
+            m_state.UpArrow();
+            m_autoController.Disable();
         }
 
         if(CanSendCommand(KeyCode.DownArrow)) {
-            PlayerState.DownArrow();
-            AutoController.Disable();
+            m_state.DownArrow();
+            m_autoController.Disable();
         }
 
         if (CanSendCommand(KeyCode.G)) {
-            PlayerState.AddGuildText();
+            m_state.AddGuildText();
         }
 
         if (CanSendCommand(KeyCode.T)) {
-            PlayerState.AddTellText();
+            m_state.AddTellText();
         }
 
         if (CanSendCommand(KeyCode.R)) {
-            PlayerState.AddReplyText();
+            m_state.AddReplyText();
         }
 
         if (CanSendCommand(KeyCode.PageUp)) {
-            PlayerState.PageUp();
+            m_state.PageUp();
         }
 
         if (CanSendCommand(KeyCode.PageDown)) {
-            PlayerState.PageDown();
+            m_state.PageDown();
         }
         
         if (CanSendCommand(KeyCode.Space)) {
-            PlayerState.Attack();
+            m_state.Attack();
         }
 
         if(CanSendCommand(KeyCode.Comma)) {
-            PlayerState.PickUp();
+            m_state.PickUp();
         }
         
         if(CanSendCommand(KeyCode.S)) {
-            PlayerState.ToggleSpellsWindow();
+            m_state.ToggleSpellsWindow();
         }
         
         if(CanSendCommand(KeyCode.I)) {
-            PlayerState.ToggleInventory();
+            m_state.ToggleInventory();
         }
         
         if(CanSendCommand(KeyCode.C)) {
-            PlayerState.ToggleCharacterWindow();
+            m_state.ToggleCharacterWindow();
         }
 
         if(CanSendCommand(KeyCode.P)) {
-            PlayerState.TogglePartyWindow(true);
+            m_state.TogglePartyWindow(true);
         }
 
         if(CanSendCommand(KeyCode.F1)) {
-            PlayerState.MinimizeScreen();
+            m_state.MinimizeScreen();
         }
     
         if(CanSendCommand(KeyCode.F2)) {
-            PlayerState.ToggleCommandBar();
+            m_state.ToggleCommandBar();
         }
 
         if(CanSendCommand(KeyCode.F3)) {
-            PlayerState.ToggleBuffBar();
+            m_state.ToggleBuffBar();
         }
 
         if(CanSendCommand(KeyCode.F4)) {
-            PlayerState.ToggleChatWindow();
+            m_state.ToggleChatWindow();
         }
     
         if(CanSendCommand(KeyCode.F5)) {
-            PlayerState.ToggleFPSBar();
+            m_state.ToggleFPSBar();
         }
 
         if(CanSendCommand(KeyCode.F6)) {
-            PlayerState.ToggleHealthBar();
+            m_state.ToggleHealthBar();
         }
 
         if(CanSendCommand(KeyCode.F7)) {
-            PlayerState.ToggleManaBar();
+            m_state.ToggleManaBar();
         }
 
         if(CanSendCommand(KeyCode.F8)) {
-            PlayerState.ToggleSpiritBar();
+            m_state.ToggleSpiritBar();
         }
     
         if(CanSendCommand(KeyCode.F9)) {
-            PlayerState.ToggleExperienceBar();
+            m_state.ToggleExperienceBar();
         }
 
         if(CanSendCommand(KeyCode.F10)) {
-            PlayerState.TogglePartyWindow(false);
+            m_state.TogglePartyWindow(false);
         }
     
         if(CanSendCommand(KeyCode.F11)) {
-            PlayerState.ToggleOptionsBar();
+            m_state.ToggleOptionsBar();
         }
     
         if(CanSendCommand(KeyCode.F12)) {
-            PlayerState.ToggleDiscardButton();
+            m_state.ToggleDiscardButton();
         }
+    }
+
+    bool IsWindowBlockingMovement() {
+        if(m_state.GetWindowTypeCount(WindowType.VendorWindow) > 0) {
+            return true;
+        }
+        else if(m_state.GetWindowTypeCount(WindowType.TradeWindow) > 0) {
+            return true;
+        }
+        return false;
     }
 
     private bool CanMovePlayer(out Vector3 inputVector) {
         float vertical = Input.GetAxisRaw(VERTICAL_INPUT);
         float horizontal = Input.GetAxisRaw(HORIZONTAL_INPUT);
-
-        if(vertical != 0) {
-            inputVector = new Vector3(0, vertical, 0);
-            return true;
-        }
-        else if(horizontal != 0) {
-            inputVector = new Vector3(horizontal, 0, 0);
-            return true;
+        if(!IsWindowBlockingMovement()) {
+            if(vertical != 0) {
+                inputVector = new Vector3(0, vertical, 0);
+                return true;
+            }
+            else if(horizontal != 0) {
+                inputVector = new Vector3(horizontal, 0, 0);
+                return true;
+            }
         }
         inputVector = Vector3.zero;
         return false;

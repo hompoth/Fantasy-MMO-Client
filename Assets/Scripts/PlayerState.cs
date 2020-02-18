@@ -4,18 +4,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public enum NameFormat {
-    Hidden, Visible, VisibleOnHover,
-}
-
-public enum HealthManaFormat {
-    Hidden, Visible, VisibleOnUpdate,
-}
-
 public class PlayerState : MonoBehaviour
 {
 	public CursorUI cursor;
     public Camera mainCamera;
+    public GameManager m_gameManager;
 
     public Dictionary<int,WindowUI> mappedWindowIds;
     public Dictionary<WindowType,List<WindowUI>> mappedWindowTypes;
@@ -26,74 +19,38 @@ public class PlayerState : MonoBehaviour
     const string FILTER_MESSAGE = "/filter", VITABAR_MESSAGE = "/vitabar";
     const string NAMES_MESSAGE = "/names", QUIT_MESSAGE = "/quit", SLASH = "/";
     const string TOGGLESOUND_MESSAGE = "/togglesound";
-
-    static PlayerState instance;
-    static PlayerManager m_playerManager;
-    static int m_playerId, m_spellTargetIndex, m_spellTargetPlayerId;
-    static bool m_chatEnabled, m_canSeeInvisible, m_spellTargetEnabled;
-    static float movementTimer;
-    static string m_messageFromPlayerName;
-    static NameFormat m_nameFormat;
-    static HealthManaFormat m_healthManaFormat;
+    PlayerManager m_playerManager;
+    int m_playerId, m_spellTargetIndex, m_spellTargetPlayerId;
+    bool m_chatEnabled, m_spellTargetEnabled;
+    float movementTimer;
+    string m_messageFromPlayerName;
 
     void Awake()
     {
-		if(instance == null) {
-			instance = this;
-			DontDestroyOnLoad(gameObject);
-            mappedWindowIds = new Dictionary<int,WindowUI>();
-            mappedWindowTypes = new Dictionary<WindowType,List<WindowUI>>();
-            LoadPlayerPreferences();
-        }
-        else {
-            Destroy(gameObject);
-        }
+        mappedWindowIds = new Dictionary<int,WindowUI>();
+        mappedWindowTypes = new Dictionary<WindowType,List<WindowUI>>();
     }
 
     void LateUpdate() {
-        if(m_playerManager != null && instance != null) {
+        if(m_playerManager != null) {
             Vector3 position = m_playerManager.transform.localPosition;
-            instance.transform.localPosition = position;
+            transform.localPosition = position;
         }
     }
 
-    void LoadPlayerPreferences() {
-        int nameFormatIndex;
-        if(PlayerPrefs.HasKey("PlayerState-NameFormat")) {
-            nameFormatIndex = PlayerPrefs.GetInt("PlayerState-NameFormat");
-        }
-        else {
-            nameFormatIndex = 1;
-            PlayerPrefs.SetInt("PlayerState-NameFormat", nameFormatIndex);
-        }
-        m_nameFormat = EnumHelper.GetName<NameFormat>(nameFormatIndex);
-        GameManager.instance.UpdatePlayerNameFormat();
-        int healthManaFormatIndex;
-        if(PlayerPrefs.HasKey("PlayerState-HealthManaFormat")) {
-            healthManaFormatIndex = PlayerPrefs.GetInt("PlayerState-HealthManaFormat");
-        }
-        else {
-            healthManaFormatIndex = 2;
-            PlayerPrefs.SetInt("PlayerState-HealthManaFormat", nameFormatIndex);
-        }
-        m_healthManaFormat = EnumHelper.GetName<HealthManaFormat>(healthManaFormatIndex);
-        GameManager.instance.UpdatePlayerHealthManaFormat();
-        PlayerPrefs.Save();
+    public GameObject GetGameObject() {
+        return gameObject;
     }
 
-    public static GameObject GetGameObject() {
-        return instance.gameObject;
-    }
-
-    public static void AddWindowToHierarchy(WindowUI window) {
+    public void AddWindowToHierarchy(WindowUI window) {
         GameObject windowObject = window.gameObject;
-        windowObject.transform.SetParent(instance.transform);
+        windowObject.transform.SetParent(transform);
         windowObject.transform.SetAsLastSibling();
         windowObject.transform.localPosition = GetWindowPosition(window);
         UpdateSorting();
     }
 
-    static Vector3 GetWindowPosition(WindowUI window) {
+    Vector3 GetWindowPosition(WindowUI window) {
         Vector3 position = Vector3.zero;
         WindowType windowType = window.GetWindowType();
         BoxCollider2D collider = window.GetComponent<BoxCollider2D>();
@@ -180,28 +137,28 @@ public class PlayerState : MonoBehaviour
         return position;
     }
 
-    public static bool TryGetWindowUI(int windowId, out WindowUI window) {
-        return instance.mappedWindowIds.TryGetValue(windowId, out window);
+    public bool TryGetWindowUI(int windowId, out WindowUI window) {
+        return mappedWindowIds.TryGetValue(windowId, out window);
     }
 
-    public static void ShowWindow(int windowId) {
+    public void ShowWindow(int windowId) {
         if(TryGetWindowUI(windowId, out WindowUI window)) {
             window.gameObject.SetActive(true);
         }
     }
 
-    public static int GetWindowTypeCount(WindowType windowType) {
-        if(!instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
+    public int GetWindowTypeCount(WindowType windowType) {
+        if(!mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
             return 0;
         }
         return list.Count();
     }
 
-    public static void LoadWindow(int windowId, WindowType windowType, WindowUI window) {
-        instance.mappedWindowIds.Add(windowId, window);
-        if(!instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
+    public void LoadWindow(int windowId, WindowType windowType, WindowUI window) {
+        mappedWindowIds.Add(windowId, window);
+        if(!mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
             list = new List<WindowUI>();
-            instance.mappedWindowTypes.Add(windowType, list);
+            mappedWindowTypes.Add(windowType, list);
         }
         else {
             WindowUI originalWindow = list.FirstOrDefault();
@@ -209,76 +166,71 @@ public class PlayerState : MonoBehaviour
                 window.Copy(originalWindow);
             }
         }
-        instance.mappedWindowTypes[windowType].Add(window);
+        mappedWindowTypes[windowType].Add(window);
     }
 
-    public static void RemoveWindow(int windowId, WindowType windowType, WindowUI window) {
-        instance.mappedWindowIds.Remove(windowId);
-        if(instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
+    public void RemoveWindow(int windowId, WindowType windowType, WindowUI window) {
+        mappedWindowIds.Remove(windowId);
+        if(mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
             list.Remove(window);
             if(list.Count == 0) {
-                instance.mappedWindowTypes.Remove(windowType);
+                mappedWindowTypes.Remove(windowType);
             }
         }
     }
 
-    public static void LeftMouseUp(bool controlKeyPressed) {
-        instance.cursor.LeftMouseUp(controlKeyPressed);
+    public void LeftMouseUp(bool controlKeyPressed) {
+        cursor.LeftMouseUp(controlKeyPressed);
     }
 
-    public static void LeftMouseDown() {
-        instance.cursor.LeftMouseDown();
+    public void LeftMouseDown() {
+        cursor.LeftMouseDown();
     }
 
-    public static void LeftDoubleClick() {
-        instance.cursor.LeftDoubleClick();
+    public void LeftDoubleClick() {
+        cursor.LeftDoubleClick();
     }
 
-    public static void RightMouseUp() {
-        instance.cursor.RightMouseUp();
+    public void RightMouseUp() {
+        cursor.RightMouseUp();
     }
 
-    public static void RightMouseDown(bool controlKeyPressed) {
-        instance.cursor.RightMouseDown(controlKeyPressed);
+    public void RightMouseDown(bool controlKeyPressed) {
+        cursor.RightMouseDown(controlKeyPressed);
     }
 
-    public static void EnableCamera() {
+    public void EnableCamera() {
         SetGameUIActive(true);
     }
 
-    public static void DisableCamera() {
+    public void DisableCamera() {
         SetGameUIActive(false);
     }
 
-    private static void SetGameUIActive(bool isActive) {
-        if(instance != null) {
-            instance.gameObject.SetActive(isActive);
-            instance.mainCamera.gameObject.SetActive(isActive);
-            foreach (Transform child in instance.gameObject.transform) {
-                SpriteRenderer spriteRenderer = child.gameObject.GetComponent<SpriteRenderer>();
-                if(spriteRenderer != null) {
-                    spriteRenderer.enabled = isActive;
-                }
+    private void SetGameUIActive(bool isActive) {
+        gameObject.SetActive(isActive);
+        mainCamera.gameObject.SetActive(isActive);
+        foreach (Transform child in gameObject.transform) {
+            SpriteRenderer spriteRenderer = child.gameObject.GetComponent<SpriteRenderer>();
+            if(spriteRenderer != null) {
+                spriteRenderer.enabled = isActive;
             }
         }
     }
 
-    public static void Destroy() {
-        if(instance != null) {
-            Destroy(instance.gameObject);
-            instance = null;
-        }
+    public void Destroy() {
+        Destroy(gameObject);
     }
 
-    public static void RefreshCommandBar() {
+    public void RefreshCommandBar() {
         if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
             foreach(CommandBarUI commandBar in commandBarList) {
-                commandBar.LoadDefaults();
+                commandBar.LoadDefaults(this);
             }
         }
     }
 
-    public static SlotUI GetWindowSlot(WindowType windowType, int index) {
+    public SlotUI GetWindowSlot(WindowType windowType, int index) {
         if(windowType.Equals(WindowType.InventoryWindow)) {
             if(TryGetInventoryWindow(out List<InventoryWindowUI> inventoryWindowList)) {
                 return inventoryWindowList.FirstOrDefault()?.GetSlot(index);
@@ -297,27 +249,27 @@ public class PlayerState : MonoBehaviour
         return null;
     }
     
-    static void CastTargetSpell(int index) {
+    void CastTargetSpell(int index) {
         m_spellTargetEnabled = true;
         m_spellTargetIndex = index;
-        GameObject targetedPlayer = GameManager.instance?.GetPlayer(m_spellTargetPlayerId);
+        GameObject targetedPlayer = m_gameManager.GetPlayer(m_spellTargetPlayerId);
         if(!WithinSpellRange(targetedPlayer)) {
             m_spellTargetPlayerId = m_playerId;
         }
-        GameManager.instance?.TargetSpellCast(m_spellTargetPlayerId);
+        m_gameManager.TargetSpellCast(m_spellTargetPlayerId);
     }
 
-    static bool WithinSpellRange(GameObject player) {
+    bool WithinSpellRange(GameObject player) {
         if(player != null) {
             GameObject mainPlayer = m_playerManager.gameObject;
-            if(GameManager.instance != null && GameManager.instance.WithinSpellRange(mainPlayer, player)) {
+            if(m_gameManager.WithinSpellRange(mainPlayer, player)) {
                 return true;
             }
         }
         return false;
     }
 
-    public static void UseSpellSlot(int index) {
+    public void UseSpellSlot(int index) {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             if(TryGetSpellsWindow(out List<SpellsWindowUI> spellWindowList)) {
                 SlotUI slot = spellWindowList.FirstOrDefault()?.GetSlot(index);
@@ -327,14 +279,14 @@ public class PlayerState : MonoBehaviour
                         CastTargetSpell(index);
                     }
                     else {
-                        GameManager.instance?.SendMessageToServer(Packet.Cast(index, m_playerId));
+                        m_gameManager.SendCast(index, m_playerId);
                     }
                 }
             }
         }
     }
 
-    public static void UseCommandSlot(int index) {
+    public void UseCommandSlot(int index) {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
                 SlotUI slot = commandBarList.FirstOrDefault()?.GetSlot(index);
@@ -343,7 +295,7 @@ public class PlayerState : MonoBehaviour
                     int referenceIndex = slot.GetReferenceIndex();
                     
                     if(referenceWindowType.Equals(WindowType.InventoryWindow) || referenceWindowType.Equals(WindowType.CharacterWindow)) {
-                        GameManager.instance?.SendMessageToServer(Packet.Use(referenceIndex));
+                        m_gameManager.SendUse(referenceIndex);
                     }
                     else if(referenceWindowType.Equals(WindowType.SpellsWindow)) {
                         string spellTarget = slot.GetSpellTarget();
@@ -351,7 +303,7 @@ public class PlayerState : MonoBehaviour
                             CastTargetSpell(referenceIndex);
                         }
                         else {
-                            GameManager.instance?.SendMessageToServer(Packet.Cast(referenceIndex, m_playerId));
+                            m_gameManager.SendCast(referenceIndex, m_playerId);
                         }
                     }
                 }
@@ -359,25 +311,25 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void AddCommandSlot(int slotIndex, SlotUI slot) {
+    public void AddCommandSlot(int slotIndex, SlotUI slot) {
         if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
             foreach(CommandBarUI commandBar in commandBarList) {
                 commandBar.CopySlot(slotIndex, slot);
             }
-            PlayerPrefs.Save();
+            UserPrefs.Save();
         }
     }
 
-    public static void SwapCommandSlot(int slotIndex, int newSlotIndex) {
+    public void SwapCommandSlot(int slotIndex, int newSlotIndex) {
         if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
             foreach(CommandBarUI commandBar in commandBarList) {
                 commandBar.SwapSlot(slotIndex, newSlotIndex);
             }
-            PlayerPrefs.Save();
+            UserPrefs.Save();
         }
     }
 
-    public static void ClearCommandSlot(int slotIndex) {
+    public void ClearCommandSlot(int slotIndex) {
         if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
             foreach(CommandBarUI commandBar in commandBarList) {
                 commandBar.ClearSlot(slotIndex);
@@ -385,9 +337,9 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void LeftArrow() {
+    public void LeftArrow() {
         if(m_spellTargetEnabled) {
-            if(GameManager.instance != null && GameManager.instance.TryGetTargetPlayerUp(m_spellTargetPlayerId, out int playerId)) {
+            if(m_gameManager.TryGetTargetPlayerUp(m_spellTargetPlayerId, out int playerId)) {
                 SwapSpellTarget(playerId);
             }
             else {
@@ -403,9 +355,9 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void RightArrow() {
+    public void RightArrow() {
         if(m_spellTargetEnabled) {
-            if(GameManager.instance != null && GameManager.instance.TryGetTargetPlayerDown(m_spellTargetPlayerId, out int playerId)) {
+            if(m_gameManager.TryGetTargetPlayerDown(m_spellTargetPlayerId, out int playerId)) {
                 SwapSpellTarget(playerId);
             }
             else {
@@ -421,9 +373,9 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void UpArrow() {
+    public void UpArrow() {
         if(m_spellTargetEnabled) {
-            if(GameManager.instance != null && GameManager.instance.TryGetTargetPlayerUp(m_spellTargetPlayerId, out int playerId)) {
+            if(m_gameManager.TryGetTargetPlayerUp(m_spellTargetPlayerId, out int playerId)) {
                 SwapSpellTarget(playerId);
             }
             else {
@@ -439,9 +391,9 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void DownArrow() {
+    public void DownArrow() {
         if(m_spellTargetEnabled) {
-            if(GameManager.instance != null && GameManager.instance.TryGetTargetPlayerDown(m_spellTargetPlayerId, out int playerId)) {
+            if(m_gameManager.TryGetTargetPlayerDown(m_spellTargetPlayerId, out int playerId)) {
                 SwapSpellTarget(playerId);
             }
             else {
@@ -457,15 +409,15 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    static void SwapSpellTarget(int playerId) {
+    void SwapSpellTarget(int playerId) {
         if(playerId != m_spellTargetPlayerId) {
-            GameManager.instance?.CancelTargetSpellCast(m_spellTargetPlayerId);
+            m_gameManager.CancelTargetSpellCast(m_spellTargetPlayerId);
             m_spellTargetPlayerId = playerId;
-            GameManager.instance?.TargetSpellCast(m_spellTargetPlayerId);
+            m_gameManager.TargetSpellCast(m_spellTargetPlayerId);
         }
     }
 
-    public static void PageUp() {
+    public void PageUp() {
         if(TryGetChatWindow(out List<ChatWindowUI> characterWindowList)) {
             foreach(ChatWindowUI chatWindow in characterWindowList) {
                 chatWindow.PageUp();
@@ -473,7 +425,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void PageDown() {
+    public void PageDown() {
         if(TryGetChatWindow(out List<ChatWindowUI> characterWindowList)) {
             foreach(ChatWindowUI chatWindow in characterWindowList) {
                 chatWindow.PageDown();
@@ -481,54 +433,54 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void UseEmote(Emote emote) {
+    public void UseEmote(Emote emote) {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             int value = EnumHelper.GetNameValue<Emote>(emote);
-            GameManager.instance?.SendMessageToServer(Packet.Emote(value));
+            m_gameManager.SendEmote(value);
         }
     }
 
-    public static void PickUp() {
+    public void PickUp() {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
-            GameManager.instance?.SendMessageToServer(Packet.PickUp());
+            m_gameManager.SendPickUp();
         }
     }
 
-    public static void ToggleSpellsWindow() {
+    public void ToggleSpellsWindow() {
         if(!m_chatEnabled && !m_spellTargetEnabled && TryGetFirstWindow(WindowType.SpellsWindow, out GameObject spellsWindowObject)) {
             ToggleActive(spellsWindowObject);
         }
     }
 
-    public static void ToggleInventory() {
+    public void ToggleInventory() {
         if(!m_chatEnabled && !m_spellTargetEnabled && TryGetFirstWindow(WindowType.InventoryWindow, out GameObject inventoryWindowObject)) {
             ToggleActive(inventoryWindowObject);
         }
     }
 
-    public static void ToggleCharacterWindow() {
+    public void ToggleCharacterWindow() {
         if(!m_chatEnabled && !m_spellTargetEnabled && TryGetFirstWindow(WindowType.CharacterWindow, out GameObject characterWindowObject)) {
             ToggleActive(characterWindowObject);
         }
     }
 
-    public static void MinimizeScreen() {
-        GameManager.instance?.MinimizeScreen();
+    public void MinimizeScreen() {
+        m_gameManager.MinimizeScreen();
     }
 
-    public static void ToggleCommandBar() {
+    public void ToggleCommandBar() {
         if(TryGetFirstWindow(WindowType.CommandBar, out GameObject commandBarObject)) {
             ToggleActive(commandBarObject);
         }
     }
 
-    public static void ToggleBuffBar() {
+    public void ToggleBuffBar() {
         if(TryGetFirstWindow(WindowType.BuffBar, out GameObject buffBarObject)) {
             ToggleActive(buffBarObject);
         }
     }
 
-    public static void ToggleChatWindow() {
+    public void ToggleChatWindow() {
         if(TryGetFirstWindow(WindowType.ChatWindow, out GameObject chatWindowObject)) {
             ToggleActive(chatWindowObject);
             //if(!instance.chatWindow.gameObject.activeSelf) {
@@ -539,37 +491,37 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void ToggleFPSBar() {
+    public void ToggleFPSBar() {
         if(TryGetFirstWindow(WindowType.FpsBar, out GameObject fpsBarObject)) {
             ToggleActive(fpsBarObject);
         }
     }
 
-    public static void ToggleHealthBar() {
+    public void ToggleHealthBar() {
         if(TryGetFirstWindow(WindowType.HealthBar, out GameObject healthBarObject)) {
             ToggleActive(healthBarObject);
         }
     }
 
-    public static void ToggleManaBar() {
+    public void ToggleManaBar() {
         if(TryGetFirstWindow(WindowType.ManaBar, out GameObject manaBarObject)) {
             ToggleActive(manaBarObject);
         }
     }
 
-    public static void ToggleSpiritBar() {
+    public void ToggleSpiritBar() {
         if(TryGetFirstWindow(WindowType.SpiritBar, out GameObject spiritBarObject)) {
             ToggleActive(spiritBarObject);
         }
     }
 
-    public static void ToggleExperienceBar() {
+    public void ToggleExperienceBar() {
         if(TryGetFirstWindow(WindowType.ExperienceBar, out GameObject experienceBarObject)) {
             ToggleActive(experienceBarObject);
         }
     }
 
-    public static void TogglePartyWindow(bool toggleWhenChatDisabled) {
+    public void TogglePartyWindow(bool toggleWhenChatDisabled) {
         if(!toggleWhenChatDisabled || toggleWhenChatDisabled && !m_chatEnabled && !m_spellTargetEnabled) {
             if(TryGetFirstWindow(WindowType.PartyWindow, out GameObject partyWindowObject)) {
                 ToggleActive(partyWindowObject);
@@ -577,91 +529,47 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void ToggleOptionsBar() {
+    public void ToggleOptionsBar() {
         if(TryGetFirstWindow(WindowType.OptionsBar, out GameObject optionsBarObject)) {
             ToggleActive(optionsBarObject);
         }
     }
 
-    public static void ToggleDiscardButton() {
+    public void ToggleDiscardButton() {
         if(TryGetFirstWindow(WindowType.DiscardButton, out GameObject discardButtonObject)) {
             ToggleActive(discardButtonObject);
         }
     }
 
-    public static void HandlePlayerMovement(Vector3 inputVector) {
+    public void HandlePlayerMovement(Vector3 inputVector) {
         if(!m_spellTargetEnabled) {
             if((m_playerManager != null) && !m_chatEnabled && (!inputVector.Equals(Vector3.zero))) {
                 if (!m_playerManager.IsFacingDirection(inputVector)) {
                     if (m_playerManager.Face(inputVector, true)) {
                         movementTimer = Time.time;
                         FacingDirection direction = m_playerManager.GetPlayerFacingDirection();
-                        GameManager.instance.SendMessageToServer(Packet.Face(direction));
+                        m_gameManager.SendFace(direction);
                     }
                 }
                 else if(Time.time - movementTimer > MOVEMENT_WAIT_TIME) {
                     if(m_playerManager.Move(true)){
                         MovingDirection direction = m_playerManager.GetPlayerMovingDirection();
-                        GameManager.instance.SendMessageToServer(Packet.Move(direction));
+                        m_gameManager.SendMove(direction);
                     }
                 }
             }
         }
     }
 
-    public static void Attack() {
+    public void Attack() {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             if(m_playerManager != null && m_playerManager.Attack(true)){
-                GameManager.instance.SendMessageToServer(Packet.Attack());
+                m_gameManager.SendAttack();
             }
         }
     }
 
-    public static NameFormat GetNameFormat() {
-        return m_nameFormat;
-    }
-
-    public static HealthManaFormat GetHealthManaFormat() {
-        return m_healthManaFormat;
-    }
-
-    public static void SwitchNameFormat() {
-        m_nameFormat = EnumHelper.GetNextName<NameFormat>(m_nameFormat);
-        PlayerPrefs.SetInt("PlayerState-NameFormat", EnumHelper.GetIndex<NameFormat>(m_nameFormat));
-        switch(m_nameFormat) {
-            case NameFormat.Hidden:
-                GameManager.instance.AddColorChatMessage(7, "Player names are now disabled.");
-                break;
-            case NameFormat.VisibleOnHover:
-                GameManager.instance.AddColorChatMessage(7, "Player names are now visible when mouse is over target.");
-                break;
-            case NameFormat.Visible:
-                GameManager.instance.AddColorChatMessage(7, "Player names are now visible.");
-                break;
-        }
-        GameManager.instance.UpdatePlayerNameFormat();
-        PlayerPrefs.Save();
-    }
-    
-    public static void SwitchHealthManaFormat() {
-        m_healthManaFormat = EnumHelper.GetNextName<HealthManaFormat>(m_healthManaFormat);
-        PlayerPrefs.SetInt("PlayerState-HealthManaFormat", EnumHelper.GetIndex<HealthManaFormat>(m_healthManaFormat)); 
-        switch(m_healthManaFormat) {
-            case HealthManaFormat.Hidden:
-                GameManager.instance.AddColorChatMessage(7, "Player vitality bars are now hidden.");
-                break;
-            case HealthManaFormat.VisibleOnUpdate:
-                GameManager.instance.AddColorChatMessage(7, "Player vitality bars are being shown when updated.");
-                break;
-            case HealthManaFormat.Visible:
-                GameManager.instance.AddColorChatMessage(7, "Player vitality bars are now visible.");
-                break;
-        }
-        GameManager.instance.UpdatePlayerHealthManaFormat();
-        PlayerPrefs.Save();
-    }
-
-    public static void EnableChat() {
+    public void EnableChat() {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             if(TryGetChatWindow(out List<ChatWindowUI> characterWindowList)) {
                 foreach(ChatWindowUI chatWindow in characterWindowList) {
@@ -672,9 +580,9 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void Escape() {
+    public void Escape() {
         if(m_spellTargetEnabled) {
-            GameManager.instance?.CancelTargetSpellCast(m_spellTargetPlayerId);
+            m_gameManager.CancelTargetSpellCast(m_spellTargetPlayerId);
             m_spellTargetEnabled = false;
         }
         else if(m_chatEnabled) {
@@ -687,15 +595,15 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void Home() {
+    public void Home() {
         if(m_spellTargetEnabled) {
             SwapSpellTarget(m_playerId);
         }
     }
 
-    public static void Enter() {
+    public void Enter() {
         if(m_spellTargetEnabled) {
-            GameManager.instance?.HandleTargetSpellCast(m_spellTargetIndex, m_spellTargetPlayerId);
+            m_gameManager.HandleTargetSpellCast(m_spellTargetIndex, m_spellTargetPlayerId);
             m_spellTargetEnabled = false;
         }
         else {
@@ -718,39 +626,39 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    static void HandleChatInput(string inputText) {
+    void HandleChatInput(string inputText) {
         if(inputText.StartsWith(SLASH)) {
             if(inputText.Equals(QUIT_MESSAGE)) {
-                GameManager.instance.Disconnect();
+                m_gameManager.Disconnect();
             }
             else if(inputText.Equals(NAMES_MESSAGE)) {
-                PlayerState.SwitchNameFormat();
+                ClientManager.SwitchNameFormat();
             }
             else if(inputText.Equals(VITABAR_MESSAGE)) {
-                PlayerState.SwitchHealthManaFormat();
+                ClientManager.SwitchHealthManaFormat();
             }
             else if(inputText.StartsWith(FILTER_MESSAGE)) {
                 if(inputText.Length > FILTER_MESSAGE.Length) {
                     inputText = inputText.Substring(FILTER_MESSAGE.Length + 1);
                 }
-                GameManager.instance.HandleFilter(inputText);
+                m_gameManager.HandleFilter(inputText);
             }
             else if(inputText.StartsWith(TOGGLESOUND_MESSAGE)) {
-                GameManager.instance.ToggleSound();
+                m_gameManager.ToggleSound();
             }
             else if(inputText.StartsWith("/send")){ // TODO Remove this
-                GameManager.instance.SendMessageToServer(inputText.Substring(6));
+                m_gameManager.SendMessageToServer(inputText.Substring(6));
             }
             else {
-                GameManager.instance.SendMessageToServer(Packet.ChatCommand(inputText));
+                m_gameManager.SendChatCommand(inputText);
             }
         }
         else {
-            GameManager.instance.SendMessageToServer(Packet.ChatMessage(inputText));
+            m_gameManager.SendChatMessage(inputText);
         }
     }
 
-    public static void AddInputText(string input) {
+    public void AddInputText(string input) {
         if(m_chatEnabled && !m_spellTargetEnabled) {
             if(TryGetChatWindow(out List<ChatWindowUI> characterWindowList)) {
                 foreach(ChatWindowUI chatWindow in characterWindowList) {
@@ -760,72 +668,70 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void AddGuildText() {
+    public void AddGuildText() {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             EnableChat();
             AddInputText("/guild ");
         }
     }
 
-    public static void AddTellText() {
+    public void AddTellText() {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             EnableChat();
             AddInputText("/tell ");
         }
     }
 
-    public static void AddReplyText() {
+    public void AddReplyText() {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             EnableChat();
             AddInputText("/tell " + m_messageFromPlayerName + " ");
         }
     }
 
-    static void ToggleActive(GameObject gameObject) {
+    void ToggleActive(GameObject gameObject) {
         gameObject.SetActive(!gameObject.activeSelf);
         if(gameObject.activeSelf) {
             MoveWindowToFront(gameObject);
         }
     }
 
-    public static void MoveWindowToFront(GameObject gameObject) {
+    public void MoveWindowToFront(GameObject gameObject) {
         gameObject.transform.SetAsLastSibling();
         UpdateSorting();
     }
 
-    static void UpdateSorting() {
-        if(instance != null) {
-            foreach(Transform windowTransform in instance.transform) {
-                SortingGroup group = windowTransform.gameObject.GetComponent<SortingGroup>();
-                if(group != null) {
-                    int index = windowTransform.GetSiblingIndex();
-                    group.sortingOrder = index;
-                }
+    void UpdateSorting() {
+        foreach(Transform windowTransform in transform) {
+            SortingGroup group = windowTransform.gameObject.GetComponent<SortingGroup>();
+            if(group != null) {
+                int index = windowTransform.GetSiblingIndex();
+                group.sortingOrder = index;
             }
         }
     }
 
-    public static bool IsChatEnabled() {
+    public bool IsChatEnabled() {
         return m_chatEnabled;
     }
 
-    public static bool IsMainPlayer(int playerId) {
+    public bool IsMainPlayer(int playerId) {
         return playerId.Equals(m_playerId);
     }
 
-    public static PlayerManager GetMainPlayerManager() {
+    public PlayerManager GetMainPlayerManager() {
         return m_playerManager;
     }
 
-    public static void TradeDone() {
+    public void TradeDone() {
         if(TryGetTradeWindow(out List<TradeWindowUI> tradeWindowList)) {
             foreach(TradeWindowUI tradeWindow in tradeWindowList) {
-                Destroy(tradeWindow.gameObject);
+                m_gameManager.RemoveWindow(tradeWindow.GetWindowId());
             }
         }
     }
 
-    public static void UpdateTradeEnabled(bool enabledForSelf, bool tradeEnabled) {
+    public void UpdateTradeEnabled(bool enabledForSelf, bool tradeEnabled) {
         if(TryGetTradeWindow(out List<TradeWindowUI> tradeWindowList)) {
             foreach(TradeWindowUI tradeWindow in tradeWindowList) {
                 tradeWindow.SetTradeEnabled(enabledForSelf, tradeEnabled);
@@ -833,7 +739,7 @@ public class PlayerState : MonoBehaviour
         }
     }
     
-    public static void UpdateTradeGold(bool goldForSelf, int amount) {
+    public void UpdateTradeGold(bool goldForSelf, int amount) {
         if(TryGetTradeWindow(out List<TradeWindowUI> tradeWindowList)) {
             foreach(TradeWindowUI tradeWindow in tradeWindowList) {
                 tradeWindow.SetTradeGold(goldForSelf, amount);
@@ -841,7 +747,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void UpdateTradeSlot(bool itemForSelf, int slotIndex, string itemName, int amount, int graphicId, int itemSlotId, Color itemSlotColor) {
+    public void UpdateTradeSlot(bool itemForSelf, int slotIndex, string itemName, int amount, int graphicId, int itemSlotId, Color itemSlotColor) {
         if(TryGetTradeWindow(out List<TradeWindowUI> tradeWindowList)) {
             foreach(TradeWindowUI tradeWindow in tradeWindowList) {
                 tradeWindow.SetTradeSlotId(itemForSelf, slotIndex, itemSlotId);
@@ -852,7 +758,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void UpdateItemSlot(int slotIndex, int itemId, string itemName, int amount, int graphicId, Color itemSlotColor) {
+    public void UpdateItemSlot(int slotIndex, int itemId, string itemName, int amount, int graphicId, Color itemSlotColor) {
         if(TryGetInventoryWindow(out List<InventoryWindowUI> inventoryWindowList)) {
             foreach(InventoryWindowUI inventoryWindow in inventoryWindowList) {
                 inventoryWindow.SetSlotId(slotIndex, itemId);
@@ -863,7 +769,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void UpdateSpellSlot(int slotIndex, string spellName, int soundId, int spellId, string spellTarget, int graphicId) {
+    public void UpdateSpellSlot(int slotIndex, string spellName, int soundId, int spellId, string spellTarget, int graphicId) {
         if(TryGetSpellsWindow(out List<SpellsWindowUI> spellsWindowList)) {
             foreach(SpellsWindowUI spellsWindow in spellsWindowList) {
                 spellsWindow.SetSlotId(slotIndex, spellId);
@@ -875,7 +781,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-	public static void UpdateBuffSlot(int slotIndex, string spellName, int spellId) {
+	public void UpdateBuffSlot(int slotIndex, string spellName, int spellId) {
         if(TryGetBuffBar(out List<BuffBarUI> buffBarList)) {
             foreach(BuffBarUI buffBar in buffBarList) {
                 buffBar.SetSpellName(slotIndex, spellName);
@@ -884,7 +790,7 @@ public class PlayerState : MonoBehaviour
         }
 	}
 
-	public static void UpdateWindowLine(int windowId, int windowLine, string description, int amount, int slotId, int graphicId, Color slotColor) {
+	public void UpdateWindowLine(int windowId, int windowLine, string description, int amount, int slotId, int graphicId, Color slotColor) {
         if(TryGetWindowUI(windowId, out WindowUI window)) {
             window.SetSlotId(windowLine, slotId);
             window.SetSlotDescription(windowLine, description);
@@ -893,7 +799,7 @@ public class PlayerState : MonoBehaviour
         }
 	}
 
-    public static void SetMainPlayerName(int playerId, string name) {
+    public void SetMainPlayerName(int playerId, string name) {
         if(IsMainPlayer(playerId)) {
             UserPrefs.playerName = name;
             if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
@@ -904,11 +810,12 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void SetMainPlayer(int playerId, GameObject playerObject) {
+    public void SetMainPlayer(int playerId, GameObject playerObject) {
         RemoveMainPlayer();
         m_playerId = playerId;
         if (playerObject != null) {
             m_playerManager = playerObject.GetComponent<PlayerManager>();
+            m_playerManager.SetIsMainPlayer(true);
             string name = m_playerManager.GetPlayerName();
             SetMainPlayerName(playerId, name);
             if(playerObject.layer != 12) {
@@ -918,7 +825,7 @@ public class PlayerState : MonoBehaviour
 		EnableCamera();
     }
 
-    static void RemoveMainPlayer() {
+    void RemoveMainPlayer() {
         if(m_playerManager != null) {
             GameObject playerObject = m_playerManager.gameObject;
             if(playerObject != null && playerObject.layer == 11) {
@@ -929,23 +836,15 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void SetMainPlayerCanSeeInvisible(bool canSeeInvisible) {
-        m_canSeeInvisible = canSeeInvisible;
-    }
-
-    public static bool GetMainPlayerCanSeeInvisible() {
-        return m_canSeeInvisible;
-    }
-
-    public static void SetMainPlayerPosition(int x, int y) {
+    public void SetMainPlayerPosition(int x, int y) {
         m_playerManager?.SetPlayerPosition(x, y);
     }
 
-    public static void SetMainPlayerAttackSpeed(int weaponSpeed) {
+    public void SetMainPlayerAttackSpeed(int weaponSpeed) {
         m_playerManager?.SetPlayerAttackSpeed(weaponSpeed);
     }
 
-    public static void SetMainPlayerStatInfo(string guildName, string unknown, string className, int level, int maxHp, int maxMp, int maxSp, int curHp, int curMp, int curSp, 
+    public void SetMainPlayerStatInfo(string guildName, string unknown, string className, int level, int maxHp, int maxMp, int maxSp, int curHp, int curMp, int curSp, 
             int statStr, int statSta, int statInt, int statDex, int armor, int resFire, int resWater, int resEarth, int resAir, int resSpirit, int gold) {
         SetMainPlayerHealth(curHp, maxHp);
         SetMainPlayerMana(curMp, maxMp);
@@ -971,13 +870,13 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-	public static void SetMainPlayerHPMPSP(int hpMax, int mpMax, int spMax, int hp, int mp, int sp) {
+	public void SetMainPlayerHPMPSP(int hpMax, int mpMax, int spMax, int hp, int mp, int sp) {
 		SetMainPlayerHealth(hp, hpMax);
         SetMainPlayerMana(mp, mpMax);
         SetMainPlayerSpirit(sp, spMax);
 	}
 
-    static void SetMainPlayerHealth(int curHp, int maxHp) {
+    void SetMainPlayerHealth(int curHp, int maxHp) {
         if(TryGetHealthBar(out List<StatBarUI> healthBarList)) {
             foreach(StatBarUI healthBar in healthBarList) {
                 UpdateStatBar(healthBar, curHp, maxHp);
@@ -990,7 +889,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    static void SetMainPlayerMana(int curMp, int maxMp) {
+    void SetMainPlayerMana(int curMp, int maxMp) {
         if(TryGetManaBar(out List<StatBarUI> manaBarList)) {
             foreach(StatBarUI manaBar in manaBarList) {
                 UpdateStatBar(manaBar, curMp, maxMp);
@@ -1003,7 +902,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    static void SetMainPlayerSpirit(int curSp, int maxSp) {
+    void SetMainPlayerSpirit(int curSp, int maxSp) {
         if(TryGetSpiritBar(out List<StatBarUI> spiritBarList)) {
             foreach(StatBarUI spiritBar in spiritBarList) {
                 UpdateStatBar(spiritBar, curSp, maxSp);
@@ -1016,7 +915,7 @@ public class PlayerState : MonoBehaviour
         }
     }	
 
-    static void UpdateStatBar(StatBarUI statBar, int curStat, int maxStat) {
+    void UpdateStatBar(StatBarUI statBar, int curStat, int maxStat) {
         int percent = 0;
         if(maxStat > 0) {
             percent = (int) Mathf.Ceil(100f * curStat / maxStat);
@@ -1025,7 +924,7 @@ public class PlayerState : MonoBehaviour
         statBar.SetStatPercent(percent);
     }
 
-    public static void SetMainPlayerExperience(int percent, int experience, int experienceTillNextLevel) {
+    public void SetMainPlayerExperience(int percent, int experience, int experienceTillNextLevel) {
         if(TryGetExperienceBar(out List<StatBarUI> experienceBarList)) {
             foreach(StatBarUI experienceBar in experienceBarList) {
                 experienceBar.SetStatAmount(experienceTillNextLevel);
@@ -1039,7 +938,7 @@ public class PlayerState : MonoBehaviour
         }
     }
     
-    public static void UpdatePartyIndex(int index, int playerId, string name, int level, string className) {
+    public void UpdatePartyIndex(int index, int playerId, string name, int level, string className) {
         if(TryGetPartyWindow(out List<PartyWindowUI> partyWindowList)) {
             foreach(PartyWindowUI partyWindow in partyWindowList) {
                 partyWindow.UpdatePartyIndex(index, playerId, name, level, className);
@@ -1047,7 +946,7 @@ public class PlayerState : MonoBehaviour
         }
 	}
 
-    public static void UpdatePartyPlayerHP(int playerId, int hpPercent) {
+    public void UpdatePartyPlayerHP(int playerId, int hpPercent) {
         if(TryGetPartyWindow(out List<PartyWindowUI> partyWindowList)) {
             foreach(PartyWindowUI partyWindow in partyWindowList) {
                 partyWindow.SetHPBar(playerId, hpPercent);
@@ -1055,7 +954,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static void UpdatePartyPlayerMP(int playerId, int mpPercent) {
+    public void UpdatePartyPlayerMP(int playerId, int mpPercent) {
         if(TryGetPartyWindow(out List<PartyWindowUI> partyWindowList)) {
             foreach(PartyWindowUI partyWindow in partyWindowList) {
                 partyWindow.SetMPBar(playerId, mpPercent);
@@ -1063,7 +962,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public static bool IsPlayerInParty(int playerId) {
+    public bool IsPlayerInParty(int playerId) {
         if(TryGetPartyWindow(out List<PartyWindowUI> partyWindowList)) {
             foreach(PartyWindowUI partyWindow in partyWindowList) {
                 if(partyWindow.IsPlayerInParty(playerId)) {
@@ -1074,7 +973,7 @@ public class PlayerState : MonoBehaviour
         return false;
     }
 
-    public static void AddChatMessage(string message, Color color) {
+    public void AddChatMessage(string message, Color color) {
         if(TryGetChatWindow(out List<ChatWindowUI> characterWindowList)) {
             foreach(ChatWindowUI chatWindow in characterWindowList) {
                 chatWindow.AddChatMessage(message, color);
@@ -1088,67 +987,67 @@ public class PlayerState : MonoBehaviour
         
     }
 
-    static bool TryGetCommandBar(out List<CommandBarUI> commandBarList) {
+    bool TryGetCommandBar(out List<CommandBarUI> commandBarList) {
         return TryGetWindow<CommandBarUI>(WindowType.CommandBar, out commandBarList);
     }
 
-    static bool TryGetBuffBar(out List<BuffBarUI> buffBarList) {
+    bool TryGetBuffBar(out List<BuffBarUI> buffBarList) {
         return TryGetWindow<BuffBarUI>(WindowType.BuffBar, out buffBarList);
     }
 
-    static bool TryGetSpellsWindow(out List<SpellsWindowUI> spellsWindowList) {
+    bool TryGetSpellsWindow(out List<SpellsWindowUI> spellsWindowList) {
         return TryGetWindow<SpellsWindowUI>(WindowType.SpellsWindow, out spellsWindowList);
     }
 
-    static bool TryGetInventoryWindow(out List<InventoryWindowUI> inventoryWindowList) {
+    bool TryGetInventoryWindow(out List<InventoryWindowUI> inventoryWindowList) {
         return TryGetWindow<InventoryWindowUI>(WindowType.InventoryWindow, out inventoryWindowList);
     }
 
-    static bool TryGetTradeWindow(out List<TradeWindowUI> tradeWindowList) {
+    bool TryGetTradeWindow(out List<TradeWindowUI> tradeWindowList) {
         return TryGetWindow<TradeWindowUI>(WindowType.TradeWindow, out tradeWindowList);
     }
 
-    static bool TryGetChatWindow(out List<ChatWindowUI> chatWindowList) {
+    bool TryGetChatWindow(out List<ChatWindowUI> chatWindowList) {
         return TryGetWindow<ChatWindowUI>(WindowType.ChatWindow, out chatWindowList);
     }
 
-    static bool TryGetPartyWindow(out List<PartyWindowUI> partyWindowList) {
+    bool TryGetPartyWindow(out List<PartyWindowUI> partyWindowList) {
         return TryGetWindow<PartyWindowUI>(WindowType.PartyWindow, out partyWindowList);
     }
 
-    static bool TryGetHealthBar(out List<StatBarUI> statBarList) {
+    bool TryGetHealthBar(out List<StatBarUI> statBarList) {
         return TryGetWindow<StatBarUI>(WindowType.HealthBar, out statBarList);
     }
 
-    static bool TryGetManaBar(out List<StatBarUI> statBarList) {
+    bool TryGetManaBar(out List<StatBarUI> statBarList) {
         return TryGetWindow<StatBarUI>(WindowType.ManaBar, out statBarList);
     }
 
-    static bool TryGetSpiritBar(out List<StatBarUI> statBarList) {
+    bool TryGetSpiritBar(out List<StatBarUI> statBarList) {
         return TryGetWindow<StatBarUI>(WindowType.SpiritBar, out statBarList);
     }
 
-    static bool TryGetExperienceBar(out List<StatBarUI> statBarList) {
+    bool TryGetExperienceBar(out List<StatBarUI> statBarList) {
         return TryGetWindow<StatBarUI>(WindowType.ExperienceBar, out statBarList);
     }
 
-    static bool TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList) {
+    bool TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList) {
         return TryGetWindow<CharacterWindowUI>(WindowType.CharacterWindow, out characterWindowList);
     }
 
-    static bool TryGetWindow<T>(WindowType windowType, out List<T> listOfType) {
+    bool TryGetWindow<T>(WindowType windowType, out List<T> listOfType) {
         listOfType = null;
-        if(instance.mappedWindowTypes != null && instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
+        if(mappedWindowTypes != null && mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
             listOfType = list.Cast<T>().ToList();
             return true;
         }
         return false;
     }
 
-    static bool TryGetFirstWindow(WindowType windowType, out GameObject firstWindow) {
+    bool TryGetFirstWindow(WindowType windowType, out GameObject firstWindow) {
         firstWindow = null;
         int maxSiblingIndex = -1;
-        if(instance.mappedWindowTypes != null && instance.mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
+        if(mappedWindowTypes != null && mappedWindowTypes.TryGetValue(windowType, out List<WindowUI> list)) {
             foreach(WindowUI window in list) {
                 int currentSiblingIndex = window.transform.GetSiblingIndex();
                 if(currentSiblingIndex > maxSiblingIndex) {

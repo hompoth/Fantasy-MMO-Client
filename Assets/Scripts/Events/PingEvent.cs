@@ -5,6 +5,6 @@ using UnityEngine;
 public class PingEvent : Event
 {
 	public override void Run(GameManager manager, string message) {
-		manager.SendMessageToServer(Packet.Pong());
+		manager.SendPong();
 	}
 }

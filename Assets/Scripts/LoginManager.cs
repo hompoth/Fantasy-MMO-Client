@@ -14,12 +14,14 @@ public class LoginManager : MonoBehaviour
     public AsperetaTextObject nameTextObject;
     public TMP_InputField ipField, portField, usernameField, passwordField;
     private IEnumerator pendingCoroutine;
+    public GameManager m_gameManager;
  
     private void Start() { 
         popUpMessage.SetActive(false);
-        usernameField.text = PlayerPrefs.GetString("LoginManager-Username");
-        ipField.text = PlayerPrefs.GetString("LoginManager-Ip");
-        portField.text = PlayerPrefs.GetString("LoginManager-Port");
+        usernameField.text = UserPrefs.GetUsername();
+        ipField.text = UserPrefs.GetServerIp();
+        portField.text = UserPrefs.GetServerPort().ToString();
+        CreateGameManager();
     }
 
     private void Update()
@@ -56,8 +58,6 @@ public class LoginManager : MonoBehaviour
     bool TryGetIpPort(out string ip, out int port) {
         ip = ipField.text;
         port = 0;
-        PlayerPrefs.SetString("LoginManager-Ip", ipField.text);
-        PlayerPrefs.SetString("LoginManager-Port", portField.text);
         if(Int32.TryParse(portField.text, out port)) {
             if(port > 0 && port < 65536) {
                 return true;
@@ -66,16 +66,23 @@ public class LoginManager : MonoBehaviour
         return false;
     }
 
+    public void CreateGameManager() {
+        //m_gameManager = new GameManager();
+        ClientManager.AddGameManager(m_gameManager);
+    }
+
     public void LoginToServer() {
         if (!popUpMessage.activeSelf) {
             string username = usernameField.text, password = passwordField.text;
-            PlayerPrefs.SetString("LoginManager-Username", username);
             if(!TryGetIpPort(out string ip, out int port)) {
                 ConnectionIssue("Invalid IP or Port.");
                 return;
             }
-            PlayerPrefs.Save();
-            GameManager.instance.ConnectToServer(ip, port, username, password);
+            UserPrefs.SetUsername(username);
+            UserPrefs.SetServerIp(ip);
+            UserPrefs.SetServerPort(port);
+            UserPrefs.Save();
+            m_gameManager.ConnectToServer(ip, port, username, password);
             InteractableObjectsEnabled(false);
             popUpMessage.SetActive(true);
             if(pendingCoroutine != null) {
@@ -104,7 +111,7 @@ public class LoginManager : MonoBehaviour
     }
 
     public void QuitGame() {
-        GameManager.instance.QuitGame();
+        ClientManager.QuitGame();
     }
 
     IEnumerator UpdatePendingMessage() {

@@ -7,6 +7,8 @@ public enum CursorType { Fairy, Baton, Crosshairs, Sword, Fist, Grab };
 
 public class CursorUI : MonoBehaviour
 {	
+    public PlayerState m_state;
+    public GameManager m_gameManager;
     public SpriteRenderer m_spriteRenderer;
     public Texture2D m_cursors;
 	public CursorType m_cursorType;
@@ -63,7 +65,7 @@ public class CursorUI : MonoBehaviour
             WindowType windowType = window.GetWindowType();
             if(windowType.Equals(WindowType.BuffBar)) {
                 int index = slot.GetSlotIndex();
-                GameManager.instance?.SendMessageToServer(Packet.KillBuff(index));
+                m_gameManager.SendKillBuff(index);
             }
             else {
                 int graphicId = slot.GetSlotGraphicId();
@@ -76,7 +78,7 @@ public class CursorUI : MonoBehaviour
         }
         else if(window != null) {
             if(TryGetSelectedButton(window, out ButtonUI button)) {
-                button.UseButton();
+                UseButton(button);
             }
             else {
                 if(TryGetMouseWorldPosition(out Vector3 worldPosition, true)) {
@@ -87,10 +89,61 @@ public class CursorUI : MonoBehaviour
             }
         }
         else if(TryGetMouseServerPosition(out int x, out int y)) {
-            GameManager.instance?.SendMessageToServer(Packet.LeftClick(x, y));
+            m_gameManager.SendLeftClick(x, y);
         }
         if(window != null) {
-            PlayerState.MoveWindowToFront(window.gameObject);
+            m_state.MoveWindowToFront(window.gameObject);
+        }
+    }
+
+    public void UseButton(ButtonUI button) {
+        ButtonType buttonType = button.GetButtonType();
+        switch(buttonType) {
+            case ButtonType.Close:
+            case ButtonType.Combine:
+            case ButtonType.unknown:
+            case ButtonType.Back:
+            case ButtonType.Next:
+                WindowUI window = button.GetWindow();
+                int windowId = window.GetWindowId();
+                int npcId = window.GetNPCId();
+                int unknown = window.GetUnknownId();
+                int unknown2 = window.GetUnknown2Id();
+                m_gameManager.SendWindowButtonClicked(buttonType, windowId, npcId, unknown, unknown2);
+                if(buttonType.Equals(ButtonType.Close) || buttonType.Equals(ButtonType.Back) || buttonType.Equals(ButtonType.Next)) {
+                    m_gameManager.RemoveWindow(windowId);
+                }
+                break;
+            case ButtonType.TradeAccept:
+                m_gameManager.SendTradeAccept();
+                break;
+            case ButtonType.TradeCancel:
+                m_gameManager.SendTradeCancel();
+                break;
+            case ButtonType.PickUp:
+                m_gameManager.SendPickUp();
+                break;
+            case ButtonType.ChatText:
+                m_state.ToggleChatWindow();
+                break;
+            case ButtonType.Help:
+                m_gameManager.SendHelp();
+                break;
+            case ButtonType.CombineBag:
+                m_gameManager.SendOpenCombineBag();
+                break;
+            case ButtonType.Inventory:
+                m_state.ToggleInventory();
+                break;
+            case ButtonType.ToggleTrade:
+                m_gameManager.SendToggleTrade();
+                break;
+            case ButtonType.Spellbook:
+                m_state.ToggleSpellsWindow();
+                break;
+            case ButtonType.Exit:
+                m_gameManager.Disconnect();
+                break;
         }
     }
 
@@ -100,16 +153,16 @@ public class CursorUI : MonoBehaviour
             int npcId = slot.GetWindow().GetNPCId();
             WindowType windowType = window.GetWindowType();
             if(windowType.Equals(WindowType.InventoryWindow)) {
-                GameManager.instance?.SendMessageToServer(Packet.Use(index));
+                m_gameManager.SendUse(index);
             }
             else if(windowType.Equals(WindowType.VendorWindow)) {
-                GameManager.instance?.SendMessageToServer(Packet.VendorPurchaseToInventory(npcId, index));
+                m_gameManager.SendVendorPurchaseToInventory(npcId, index);
             }
             else if(windowType.Equals(WindowType.CommandBar)) {
-                PlayerState.UseCommandSlot(index);
+                m_state.UseCommandSlot(index);
             }
             else if(windowType.Equals(WindowType.SpellsWindow)) {
-                PlayerState.UseSpellSlot(index);
+                m_state.UseSpellSlot(index);
             }
         }
     }
@@ -130,31 +183,31 @@ public class CursorUI : MonoBehaviour
                 WindowType windowType = window.GetWindowType();
                 if(windowType.Equals(WindowType.InventoryWindow) || windowType.Equals(WindowType.CharacterWindow) 
                     || IsCombineWindow(windowType) || windowType.Equals(WindowType.VendorWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.ItemInfo(slotId));
+                    m_gameManager.SendItemInfo(slotId);
                 }
                 else if(windowType.Equals(WindowType.SpellsWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.SpellInfo(slotId));
+                    m_gameManager.SendSpellInfo(slotId);
                 }
                 else if(windowType.Equals(WindowType.TradeWindow)) {
                     if(viewOnlySlot) {
-                        GameManager.instance?.SendMessageToServer(Packet.ItemInfo(slotId));
+                        m_gameManager.SendItemInfo(slotId);
                     }
                     else {
-                        GameManager.instance?.SendMessageToServer(Packet.DeleteTradeItem(index));
+                        m_gameManager.SendDeleteTradeItem(index);
                     }
                 }
                 else if(windowType.Equals(WindowType.CommandBar)) {
-                    PlayerState.ClearCommandSlot(index);
+                    m_state.ClearCommandSlot(index);
                 }
             }
         }
         else if(window == null) {
             if(TryGetMouseServerPosition(out int x, out int y)) {
                 if(controlKeyPressed) {
-                    GameManager.instance?.SendMessageToServer(Packet.TradeWith(x, y));
+                    m_gameManager.SendTradeWith(x, y);
                 }
                 else {
-                    GameManager.instance?.SendMessageToServer(Packet.RightClick(x, y));
+                    m_gameManager.SendRightClick(x, y);
                 }
             }
         }
@@ -193,31 +246,31 @@ public class CursorUI : MonoBehaviour
             WindowType windowType = m_selectedSlot.GetWindow().GetWindowType();
             if(window == null) {
                 if(windowType.Equals(WindowType.InventoryWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.Drop(index, amount));
+                    m_gameManager.SendDrop(index, amount);
                 }
                 else if(windowType.Equals(WindowType.CharacterWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.Use(index));
+                    m_gameManager.SendUse(index);
                 }
                 else if(IsCombineWindow(windowType)) {
-                    GameManager.instance?.SendMessageToServer(Packet.DropFromWindow(windowId, index, amount));
+                    m_gameManager.SendDropFromWindow(windowId, index, amount);
                 }
             }
             else {
                 WindowType newWindowType = window.GetWindowType();
                 if(newWindowType.Equals(WindowType.CharacterWindow)) {
                     if(windowType.Equals(WindowType.InventoryWindow)) {
-                        GameManager.instance?.SendMessageToServer(Packet.Use(index));
+                        m_gameManager.SendUse(index);
                     }
                     else if(windowType.Equals(WindowType.CharacterWindow)) {
-                        GameManager.instance?.SendMessageToServer(Packet.Use(index));
+                        m_gameManager.SendUse(index);
                     }
                 }
                 else if(newWindowType.Equals(WindowType.DiscardButton)) {
                     if(windowType.Equals(WindowType.InventoryWindow) || windowType.Equals(WindowType.CharacterWindow)) {
-                        GameManager.instance?.SendMessageToServer(Packet.DiscardItem(index));
+                        m_gameManager.SendDiscardItem(index);
                     }
                     else if(windowType.Equals(WindowType.SpellsWindow)) {
-                        GameManager.instance?.SendMessageToServer(Packet.DiscardSpell(index));
+                        m_gameManager.SendDiscardSpell(index);
                     }
                 }
             }
@@ -245,69 +298,69 @@ public class CursorUI : MonoBehaviour
             if(windowType.Equals(WindowType.InventoryWindow)) {
                 if(windowType.Equals(newWindowType) && !m_selectedSlot.Equals(newSlot)) {
                     if(controlKeyPressed) {
-                        GameManager.instance?.SendMessageToServer(Packet.Split(index, newSlotIndex));
+                        m_gameManager.SendSplit(index, newSlotIndex);
                     }
                     else {
-                        GameManager.instance?.SendMessageToServer(Packet.Change(index, newSlotIndex));
+                        m_gameManager.SendChange(index, newSlotIndex);
                     }
                 }
                 else if(newWindowType.Equals(WindowType.CharacterWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.Use(index));
+                    m_gameManager.SendUse(index);
                 }
                 else if(IsCombineWindow(newWindowType)) {
-                    GameManager.instance?.SendMessageToServer(Packet.InventoryToWindow(index, newWindowId, newSlotIndex));
+                    m_gameManager.SendInventoryToWindow(index, newWindowId, newSlotIndex);
                 }
                 else if(newWindowType.Equals(WindowType.VendorWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.InventorySellToVendor(newNpcId, index, amount));
+                    m_gameManager.SendInventorySellToVendor(newNpcId, index, amount);
                 }
                 else if(newWindowType.Equals(WindowType.TradeWindow) && !viewOnlySlot) {
-                    GameManager.instance?.SendMessageToServer(Packet.AddTradeItem(newSlotIndex, index));
+                    m_gameManager.SendAddTradeItem(newSlotIndex, index);
                 }
                 else if(newWindowType.Equals(WindowType.CommandBar)) {
-                    PlayerState.AddCommandSlot(newSlotIndex, m_selectedSlot);
+                    m_state.AddCommandSlot(newSlotIndex, m_selectedSlot);
                 }
             }
             else if(windowType.Equals(WindowType.CharacterWindow)) {
                 if(windowType.Equals(newWindowType)) {
-                    GameManager.instance?.SendMessageToServer(Packet.Use(index));
+                    m_gameManager.SendUse(index);
                 }
                 else if(newWindowType.Equals(WindowType.InventoryWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.Use(index));
+                    m_gameManager.SendUse(index);
                 }
                 else if(newWindowType.Equals(WindowType.VendorWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.InventorySellToVendor(newNpcId, index, amount));
+                    m_gameManager.SendInventorySellToVendor(newNpcId, index, amount);
                 }
                 else if(newWindowType.Equals(WindowType.CommandBar)) {
-                    PlayerState.AddCommandSlot(newSlotIndex, m_selectedSlot);
+                    m_state.AddCommandSlot(newSlotIndex, m_selectedSlot);
                 }
             }
             else if(windowType.Equals(WindowType.SpellsWindow)) {
                 if(windowType.Equals(newWindowType) && !m_selectedSlot.Equals(newSlot)) {
-                    GameManager.instance?.SendMessageToServer(Packet.Swap(index, newSlotIndex));
+                    m_gameManager.SendSwap(index, newSlotIndex);
                 }
                 else if(newWindowType.Equals(WindowType.CommandBar)) {
-                    PlayerState.AddCommandSlot(newSlotIndex, m_selectedSlot);
+                    m_state.AddCommandSlot(newSlotIndex, m_selectedSlot);
                 }
             }
             else if(IsCombineWindow(windowType)) {
                 if(IsCombineWindow(newWindowType)) {
-                    GameManager.instance?.SendMessageToServer(Packet.WindowToWindow(windowId, index, newWindowId, newSlotIndex));
+                    m_gameManager.SendWindowToWindow(windowId, index, newWindowId, newSlotIndex);
                 }
                 else if(newWindowType.Equals(WindowType.InventoryWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.WindowToInventory(windowId, index, newSlotIndex));
+                    m_gameManager.SendWindowToInventory(windowId, index, newSlotIndex);
                 }
                 else if(newWindowType.Equals(WindowType.VendorWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.WindowSellToVendor(newNpcId, windowId, index, amount));
+                    m_gameManager.SendWindowSellToVendor(newNpcId, windowId, index, amount);
                 }
             }
             else if(windowType.Equals(WindowType.VendorWindow)) {
                 if(newWindowType.Equals(WindowType.InventoryWindow)) {
-                    GameManager.instance?.SendMessageToServer(Packet.VendorPurchaseToInventory(npcId, index));
+                    m_gameManager.SendVendorPurchaseToInventory(npcId, index);
                 }
             }
             else if(windowType.Equals(WindowType.CommandBar)) {
                 if(newWindowType.Equals(WindowType.CommandBar)) {
-                    PlayerState.SwapCommandSlot(index, newSlotIndex);
+                    m_state.SwapCommandSlot(index, newSlotIndex);
                 }
             }
         }

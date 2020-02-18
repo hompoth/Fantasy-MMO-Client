@@ -15,13 +15,12 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {	
-	public static GameManager instance;
-	private static TcpClient socketConnection; 
-    private static Queue<string> messages;
-	private static string lastMessage;
-	private static CancellationTokenSource m_tokenSource;
+	public PlayerState m_state;
+	private TcpClient socketConnection; 
+    private Queue<string> messages;
+	private string lastMessage;
+	private CancellationTokenSource m_tokenSource;
 	private LoginManager loginManager;
-	private PlayerController playerController;
     private Dictionary<string, Event> messageToEvent;
     private IEnumerator loadSceneCoroutine;
 	private bool m_handleMessages = true, m_doneSendingMessages;
@@ -41,26 +40,16 @@ public class GameManager : MonoBehaviour
 		private static extern IntPtr GetActiveWindow();
 	#endif
 	
-	public void MinimizeScreen()
-	{
+	public void MinimizeScreen() {
 		#if UNITY_STANDALONE_WIN
 			ShowWindow(GetActiveWindow(), 2);
 		#endif
 	}
 
-    void Awake()
-    {
-		if(instance == null) {
-			instance = this;
-			DontDestroyOnLoad(gameObject);
-			
-			messages = new Queue<string>();
-			messageToEvent = new Dictionary<string, Event>();
-			InitializeEvents();
-		}
-		else {
-			Destroy(gameObject);
-		}
+    void Awake() {
+		messages = new Queue<string>();
+		messageToEvent = new Dictionary<string, Event>();
+		InitializeEvents();
     }
 
     void Update() {
@@ -73,7 +62,7 @@ public class GameManager : MonoBehaviour
 				if(Time.time - m_messageTimer > MESSAGE_TIMER_WAIT_TIME) {
 					Debug.Log("Update MessageTimerElapsed");
 					m_messageTimer = Time.time;
-					instance.Disconnect();
+					Disconnect();
 				}
 			}
 			else {
@@ -87,10 +76,6 @@ public class GameManager : MonoBehaviour
 
 	void OnDestroy() {
 		StopAllCoroutines();
-	}
-
-	public void QuitGame() {
-        Application.Quit();
 	}
 
 	bool IsConnectedToServer() {
@@ -130,20 +115,20 @@ public class GameManager : MonoBehaviour
 		}    
 		catch (SocketException socketException) {             
 			Debug.Log("ListenForData Socket exception: " + socketException);   
-			instance.Disconnect();
+			Disconnect();
 		}
 		catch (OperationCanceledException operationCanceledException) {             
 			Debug.Log("ListenForData OperationCanceledException: " + operationCanceledException);   
-			instance.Disconnect();
+			Disconnect();
 		} 	
 		catch (InvalidOperationException exception) {
 			Debug.Log("ListenForData InvalidOperationException " + exception);
-			instance.Disconnect();
+			Disconnect();
 		}
 	}
     
     private void LoginAndListenForData(CancellationToken token, string username, string password) {
-		SendMessageToServer(Packet.Login(username, password, "ALPHA33,3.5.2"));		
+		this.SendLogin(username, password, "ALPHA33,3.5.2");		
 		Byte[] bytes = new Byte[1024];        
 		while (true) {
 			using (NetworkStream stream = socketConnection.GetStream()) { 	
@@ -191,11 +176,11 @@ public class GameManager : MonoBehaviour
 		}
 		catch (SocketException socketException) {
 			Debug.Log("SendMessageToServer Socket exception: " + socketException); 
-			instance.Disconnect();
+			Disconnect();
 		} 	
 		catch (InvalidOperationException exception) {
 			Debug.Log("SendMessageToServer InvalidOperationException " + exception); 
-			instance.Disconnect();
+			Disconnect();
 		}     
 	} 
 
@@ -223,6 +208,10 @@ public class GameManager : MonoBehaviour
 		return gameObjects.Select(gameObject => gameObject.GetComponent<PlayerManager>()).ToArray();
 	}
 
+	public void ShowPlayerWindow(int windowId) {
+		m_state.ShowWindow(windowId);
+	}
+
 	public void UpdatePlayerNameFormat() {
 		PlayerManager[] players = GetAllPlayerManagers();
 		foreach(PlayerManager player in players) {
@@ -238,59 +227,59 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void UpdateTradeEnabled(bool enabledForSelf, bool tradeEnabled) {
-		PlayerState.UpdateTradeEnabled(enabledForSelf, tradeEnabled);
+		m_state.UpdateTradeEnabled(enabledForSelf, tradeEnabled);
 	}
 
 	public void UpdateTradeGold(bool goldForSelf, int amount) {
-		PlayerState.UpdateTradeGold(goldForSelf, amount);
+		m_state.UpdateTradeGold(goldForSelf, amount);
 	}
 
 	public void UpdateTradeSlot(bool itemForSelf, int slotIndex, string itemName, int amount, int graphicId, int itemSlotId, Color itemSlotColor) {
-		PlayerState.UpdateTradeSlot(itemForSelf, slotIndex, itemName, amount, graphicId, itemSlotId, itemSlotColor);
+		m_state.UpdateTradeSlot(itemForSelf, slotIndex, itemName, amount, graphicId, itemSlotId, itemSlotColor);
 	}
 
 	public void UpdateItemSlot(int slotIndex, int itemId, string itemName, int amount, int itemSlotId, Color itemSlotColor) {
-		PlayerState.UpdateItemSlot(slotIndex, itemId, itemName, amount, itemSlotId, itemSlotColor);
-        PlayerState.RefreshCommandBar();
+		m_state.UpdateItemSlot(slotIndex, itemId, itemName, amount, itemSlotId, itemSlotColor);
+        m_state.RefreshCommandBar();
 		//TODO Consider making more efficient
 	}
 
 	public void UpdateSpellSlot(int slotIndex, string spellName, int soundId, int spellId, string spellTarget, int spellSlotId) {
-		PlayerState.UpdateSpellSlot(slotIndex, spellName, soundId, spellId, spellTarget, spellSlotId);
-        PlayerState.RefreshCommandBar();
+		m_state.UpdateSpellSlot(slotIndex, spellName, soundId, spellId, spellTarget, spellSlotId);
+        m_state.RefreshCommandBar();
 		//TODO Consider making more efficient
 	}
 
 	public void UpdateBuffSlot(int slotIndex, string spellName, int spellId) {
-		PlayerState.UpdateBuffSlot(slotIndex, spellName, spellId);
+		m_state.UpdateBuffSlot(slotIndex, spellName, spellId);
 	}
 
 	public void UpdateWindowLine(int windowId, int windowLine, string description, int itemAmount, int itemId, int itemSlotId, Color itemSlotColor) {
-		PlayerState.UpdateWindowLine(windowId, windowLine, description, itemAmount, itemId, itemSlotId, itemSlotColor); 
-		PlayerState.RefreshCommandBar();
+		m_state.UpdateWindowLine(windowId, windowLine, description, itemAmount, itemId, itemSlotId, itemSlotColor); 
+		m_state.RefreshCommandBar();
 		//TODO Consider making more efficient
 	}
 
 	public void SetMainPlayer(int playerId) {
-		PlayerState.SetMainPlayer(playerId, GetPlayer(playerId));
+		m_state.SetMainPlayer(playerId, GetPlayer(playerId));
 	}
 
 	public void SetMainPlayerPosition(int x, int y) {
-		PlayerState.SetMainPlayerPosition(x, y);
+		m_state.SetMainPlayerPosition(x, y);
 	}
 
 	public void SetMainPlayerAttackSpeed(int weaponSpeed) {
-		PlayerState.SetMainPlayerAttackSpeed(weaponSpeed);
+		m_state.SetMainPlayerAttackSpeed(weaponSpeed);
 	}
 
 	public void SetMainPlayerStatInfo(string guildName, string unknown, string className, int level, int maxHp, int maxMp, int maxSp, int curHp, int curMp, int curSp, 
 			int statStr, int statSta, int statInt, int statDex, int armor, int resFire, int resWater, int resEarth, int resAir, int resSpirit, int gold) {
-		PlayerState.SetMainPlayerStatInfo(guildName, unknown, className, level, maxHp, maxMp, maxSp, curHp, curMp, curSp, 
+		m_state.SetMainPlayerStatInfo(guildName, unknown, className, level, maxHp, maxMp, maxSp, curHp, curMp, curSp, 
 			statStr, statSta, statInt, statDex, armor, resFire, resWater, resEarth, resAir, resSpirit, gold);
 	}
 
 	public void SetMainPlayerHPMPSP(int hpMax, int mpMax, int spMax, int hp, int mp, int sp, int hpBar, int mpBar) {
-		PlayerState.SetMainPlayerHPMPSP(hpMax, mpMax, spMax, hp, mp, sp);
+		m_state.SetMainPlayerHPMPSP(hpMax, mpMax, spMax, hp, mp, sp);
 		PlayerManager player = GetMainPlayerManager();
 		if(player != null) {
 			player.SetPlayerHPPercent(hpBar);
@@ -299,23 +288,23 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void SetMainPlayerExperience(int percent, int experience, int experienceTillNextLevel) {
-		PlayerState.SetMainPlayerExperience(percent, experience, experienceTillNextLevel);
+		m_state.SetMainPlayerExperience(percent, experience, experienceTillNextLevel);
     }
 
 	public void SetMainPlayerCanSeeInvisible(bool canSeeInvisible) {
-		PlayerState.SetMainPlayerCanSeeInvisible(canSeeInvisible);
 		PlayerManager[] playerManagers = GetAllPlayerManagers();
 		foreach(PlayerManager player in playerManagers) {
-			player?.UpdatePlayerVisibility();
+			player.SetMainPlayerCanSeeInvisible(canSeeInvisible);
+			player.UpdatePlayerVisibility();
 		}
 	}
 
 	public PlayerManager GetMainPlayerManager() {
-		return PlayerState.GetMainPlayerManager();
+		return m_state.GetMainPlayerManager();
 	}
 
 	public bool MainPlayerIsSurrounded() {
-		PlayerManager mainPlayer = PlayerState.GetMainPlayerManager();
+		PlayerManager mainPlayer = m_state.GetMainPlayerManager();
 		if(mainPlayer != null) {
 			return mainPlayer.IsSurrounded();
 		}
@@ -397,7 +386,7 @@ public class GameManager : MonoBehaviour
 		else {
         	Cursor.visible = true;
 		}
-		PlayerState.DisableCamera();
+		m_state.DisableCamera();
 	}
 
 	private void AfterLoadScene(string previousSceneName, string sceneName) {
@@ -472,7 +461,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public WindowUI GetWindowUI(int windowId) {
-		if(PlayerState.TryGetWindowUI(windowId, out WindowUI window)) {
+		if(m_state.TryGetWindowUI(windowId, out WindowUI window)) {
 			return window;
 		}
 		return null;
@@ -598,7 +587,7 @@ public class GameManager : MonoBehaviour
 		PlayerManager player = GetPlayerManager(playerId);
 		if(player != null) {
 			player.SetPlayerTarget(false);
-			SendMessageToServer(Packet.Cast(index, playerId));
+			this.SendCast(index, playerId);
 		}
 	}
 
@@ -621,6 +610,10 @@ public class GameManager : MonoBehaviour
 			player.UpdatePlayerAppearance(bodyId, poseId, hairId, hairColor, chestId, chestColor, helmId, helmColor, pantsId, pantsColor, shoesId, shoesColor, 
 				shieldId, shieldColor, weaponId, weaponColor, invis, faceId);
 			SetPartyPlayerHPMP(playerId, hpPercent, 0);
+			if(m_state.IsMainPlayer(playerId)) {	// Likely unnecessary since SetMainPlayer needs a PlayerManager to exist
+            	player.SetIsMainPlayer(true);
+				m_state.SetMainPlayerName(playerId, player.GetPlayerName());
+			}
 		}
 	}
 
@@ -634,13 +627,13 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void SetPartyPlayerHPMP(int playerId, int hpPercent, int mpPercent) {
-		PlayerState.UpdatePartyPlayerHP(playerId, hpPercent);
-		PlayerState.UpdatePartyPlayerMP(playerId, mpPercent);
+		m_state.UpdatePartyPlayerHP(playerId, hpPercent);
+		m_state.UpdatePartyPlayerMP(playerId, mpPercent);
 	}
 
 	public void UpdatePartyIndex(int index, int playerId, string name, int level, string className) {
-		PlayerState.UpdatePartyIndex(index, playerId, name, level, className);
-		(GetPlayerManager(playerId))?.SetPlayerInParty(PlayerState.IsPlayerInParty(playerId));
+		m_state.UpdatePartyIndex(index, playerId, name, level, className);
+		(GetPlayerManager(playerId))?.SetPlayerInParty(m_state.IsPlayerInParty(playerId));
 	}
 
 	public void UpdatePlayerAppearance(int playerId, int bodyId, int poseId, int hairId, Color hairColor, int chestId, Color chestColor, int helmId, Color helmColor, int pantsId, 
@@ -771,8 +764,8 @@ public class GameManager : MonoBehaviour
 			window.gameObject.name = windowId.ToString();
 			window.gameObject.tag = "Window";
 			window.gameObject.SetActive(false);
-			PlayerState.AddWindowToHierarchy(window);
-			PlayerState.LoadWindow(windowId, windowType, window);
+			m_state.AddWindowToHierarchy(window);
+			m_state.LoadWindow(windowId, windowType, window);
 			return window;
 		}
 		return null;
@@ -786,7 +779,7 @@ public class GameManager : MonoBehaviour
 			}
 			else {
 				WindowType windowType = window.GetWindowType();
-				PlayerState.RemoveWindow(windowId, windowType, window);
+				m_state.RemoveWindow(windowId, windowType, window);
 				Destroy(window.gameObject);
 			}
 		}
@@ -795,7 +788,7 @@ public class GameManager : MonoBehaviour
 	public void DoneSendingMessages() {
 		HandleCurrentMessages();
 		m_doneSendingMessages = true;
-		PlayerState.RefreshCommandBar();
+		m_state.RefreshCommandBar();
 	}
 
 	public void LoadItemDrop(int spriteId, int x, int y, string itemName, int count, Color itemColor) {
@@ -946,7 +939,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void TradeDone() {
-		PlayerState.TradeDone();
+		m_state.TradeDone();
 	}
 
 	public void AddPlayerChatMessage(int playerId, string message) {
@@ -985,7 +978,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	void AddChatMessage(string message, Color color) {
-		PlayerState.AddChatMessage(message, color);
+		m_state.AddChatMessage(message, color);
 	}
 
 	public void ContinueHandlingMessages() {
@@ -998,7 +991,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void ClearPlayerState() {
-		PlayerState.Destroy();
+		//m_state.Destroy();
 	}
 
     private void InitializeEvents() {
@@ -1050,7 +1043,7 @@ public class GameManager : MonoBehaviour
         foreach(KeyValuePair<string, Event> entry in messageToEvent) {
             if(message.StartsWith(entry.Key)) {
                 Event e = entry.Value;
-                e.Run(instance, message.Substring(entry.Key.Length));
+                e.Run(this, message.Substring(entry.Key.Length));
 				return;
             }
         }

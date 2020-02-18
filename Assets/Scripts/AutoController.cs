@@ -7,7 +7,6 @@ public enum AutoType { AttackInSpot, AttackFullMap, AttackAndWander, FollowGroup
 
 public class AutoController : MonoBehaviour
 {
-    static bool m_active = false;
     public GameManager m_gameManager;
     public AutoControllerState m_controllerState;
     public AutoType m_task;
@@ -16,6 +15,7 @@ public class AutoController : MonoBehaviour
     List<AutoTask> m_taskList;
 
     void Start() {
+        m_controllerState = new AutoControllerState();
         m_taskList = new List<AutoTask>();
         SetAutoTask(m_task);
     }
@@ -23,7 +23,7 @@ public class AutoController : MonoBehaviour
     IEnumerator CalculateAutoTask() {
         while(m_autoTaskCoroutine != null) {
             yield return new WaitForSeconds(MOVEMENT_TASK_TIME);
-            if(!AutoController.IsEnabled()) {
+            if(!IsEnabled()) {
                 m_autoTaskCoroutine = null;
             }
             else {
@@ -213,8 +213,8 @@ public class AutoController : MonoBehaviour
     //       Also find way to ignore mob range at times
 
 
-    public static void ToggleActive() {
-        if(m_active) {
+    public void ToggleActive() {
+        if(m_controllerState.IsActive()) {
             Disable();
         }
         else {
@@ -224,21 +224,21 @@ public class AutoController : MonoBehaviour
 
     //Move enable/disable to a higher state and make AutoController non-static. 
     //Have the higher state enable/disable all running controllers.
-    public static void Enable() {
+    public void Enable() {
         //SetAutoTask(m_task);
-        m_active = true;
+        m_controllerState.SetActive(true);
     }
 
-    public static void Disable() {
+    public void Disable() {
         //if(m_autoTaskCoroutine != null) {
         //    StopCoroutine(m_autoTaskCoroutine);
         //    m_autoTaskCoroutine = null;
         //} 
         //m_taskList.Clear();
-        m_active = false;
+        m_controllerState.SetActive(false);
     }
 
-    public static bool IsEnabled() {
-        return m_active;
+    public bool IsEnabled() {
+        return m_controllerState.IsActive();
     }
 }

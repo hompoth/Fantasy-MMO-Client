@@ -98,7 +98,7 @@ public class PlayerManager : MonoBehaviour
     int playerHP = 0;
     int playerMP = 0;
     int m_bodyId;
-    bool m_playerInvisible;
+    bool m_playerInvisible, m_mainPlayerCanSeeInvisible, m_isMainPlayer;
 
     IEnumerator moveCoroutine, attackCoroutine, hpMpCoroutine, chatBubbleCoroutine;
     bool m_isMoving, m_isAttacking, m_isAdmin, m_isPlayerInParty;
@@ -114,13 +114,13 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void MouseOver(Vector3 worldPosition) {
-        if(PlayerState.GetNameFormat().Equals(NameFormat.VisibleOnHover)) {
+        if(ClientManager.GetNameFormat().Equals(NameFormat.VisibleOnHover)) {
             m_textBubble.transform.position = worldPosition;
         }
     }
 
     public void MouseEnter(Vector3 worldPosition) {
-        if(PlayerState.GetNameFormat().Equals(NameFormat.VisibleOnHover)) {
+        if(ClientManager.GetNameFormat().Equals(NameFormat.VisibleOnHover)) {
             m_textBubble.gameObject.SetActive(true);
             m_textBubble.transform.position = worldPosition;
         }
@@ -199,8 +199,12 @@ public class PlayerManager : MonoBehaviour
         UpdatePlayerVisibility();
     }
 
+    public void SetMainPlayerCanSeeInvisible(bool invis) {
+        m_mainPlayerCanSeeInvisible = invis;
+    }
+
     bool IsPlayerVisible() {
-        return !m_playerInvisible || PlayerState.GetMainPlayerCanSeeInvisible() || IsMainPlayer();
+        return !m_playerInvisible || m_mainPlayerCanSeeInvisible || m_isMainPlayer;
     }
 
     public void UpdatePlayerVisibility() {
@@ -213,14 +217,14 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void UpdateNameVisibility() {
-        bool isActive = IsPlayerVisible() && PlayerState.GetNameFormat().Equals(NameFormat.Visible);
+        bool isActive = IsPlayerVisible() && ClientManager.GetNameFormat().Equals(NameFormat.Visible);
         nameTextObject.gameObject.SetActive(isActive);
     }
 
     public void UpdateHealthManaVisibility() {
         bool isActive = IsPlayerVisible();
         if(isActive) {
-            HealthManaFormat healthManaFormat = PlayerState.GetHealthManaFormat();
+            HealthManaFormat healthManaFormat = ClientManager.GetHealthManaFormat();
             switch(healthManaFormat) {
                 case HealthManaFormat.Hidden:
                     isActive = false;
@@ -289,7 +293,7 @@ public class PlayerManager : MonoBehaviour
             gameObject.layer = 12;
         }
         else {
-            if(IsMainPlayer()) {
+            if(m_isMainPlayer) {
                 gameObject.layer = 11;
             }
             else {
@@ -522,7 +526,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     public bool Face(Vector3 direction, bool fromKeyboard) {
-        if((!m_isMoving || !fromKeyboard) && !WindowRequiresAction()) {
+        if(!m_isMoving || !fromKeyboard) {
             m_currentDirection = direction;
             AnimatorFacing(direction.x, direction.y);
             return true;
@@ -536,7 +540,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool MoveFrom (Vector3 position, bool fromKeyboard) {
         if(!fromKeyboard || (!m_isMoving && (m_moveTimer > GetMovementSpeed(false)))) {
-            if(!IsPositionBlocked(position + m_currentDirection) && !WindowRequiresAction()) {
+            if(!IsPositionBlocked(position + m_currentDirection)) {
                 m_moveTimer = 0;
                 m_isMoving = true;
                 m_lerpSpeed = 0;
@@ -549,18 +553,6 @@ public class PlayerManager : MonoBehaviour
                 }
                 moveCoroutine = MoveOverTime();
                 StartCoroutine(moveCoroutine);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    bool WindowRequiresAction() {
-        if(IsMainPlayer()) {
-            if(PlayerState.GetWindowTypeCount(WindowType.VendorWindow) > 0) {
-                return true;
-            }
-            else if(PlayerState.GetWindowTypeCount(WindowType.TradeWindow) > 0) {
                 return true;
             }
         }
@@ -601,8 +593,12 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    bool IsMainPlayer() {
-        return PlayerState.IsMainPlayer(m_playerId);
+    public void SetIsMainPlayer(bool isMainPlayer) {
+        m_isMainPlayer = isMainPlayer;
+    }
+
+    public bool GetIsMainPlayer() {
+        return m_isMainPlayer;
     }
 
     public bool IsSurrounded() {
@@ -630,11 +626,14 @@ public class PlayerManager : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("aa");
         PlayerManager collidedPlayer = collision.gameObject.GetComponent<PlayerManager>();  // Assumes that moving targets have PlayerManagers
-        if (IsMainPlayer() && (collidedPlayer == null || collidedPlayer.IsAtPosition(m_targetLocation))) {
+        if (m_isMainPlayer && (collidedPlayer == null || collidedPlayer.IsAtPosition(m_targetLocation))) {
             ResetLocation();
         }
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider);
+        else if(collidedPlayer == null || !collidedPlayer.GetIsMainPlayer()) {
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider);
+        }
     }
 
     bool IsAtPosition(Vector3 positionToCheck) {
@@ -661,9 +660,6 @@ public class PlayerManager : MonoBehaviour
     void UpdatePlayerName() {
         string name = GetPlayerName();
         nameTextObject.SetText(name);
-        if(IsMainPlayer()) {
-            PlayerState.SetMainPlayerName(m_playerId, name);
-        }
     }
 
     void UpdatePlayerNameColor() {

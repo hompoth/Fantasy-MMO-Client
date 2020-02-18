@@ -12,13 +12,15 @@ public class CommandBarUI : WindowUI
         }
     }
 
-    public void LoadDefaults() {
+    public void LoadDefaults(PlayerState state) {
         for (int index = 0; index < m_slots.Length; ++index) {
-            int referenceIndex = UserPrefs.GetCommandBarReferenceIndex(index);
-            WindowType referenceWindowType = UserPrefs.GetCommandBarReferenceWindowType(index);
-            SlotUI slot = PlayerState.GetWindowSlot(referenceWindowType, referenceIndex);
-            if(slot != null) {
-                m_slots[index].CopySlot(slot, true);
+            if(UserPrefs.HasCommandBarIndex(index)) {
+                int referenceIndex = UserPrefs.GetCommandBarReferenceIndex(index);
+                WindowType referenceWindowType = UserPrefs.GetCommandBarReferenceWindowType(index);
+                SlotUI slot = state.GetWindowSlot(referenceWindowType, referenceIndex);
+                if(slot != null) {
+                    m_slots[index].CopySlot(slot, true);
+                }
             }
         }
     }

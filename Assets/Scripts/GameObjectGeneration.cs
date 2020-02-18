@@ -31,8 +31,8 @@ public class GameObjectGeneration : MonoBehaviour
             //SearchForSpriteId("*.adf", false, false);
             //ConvertSpritesToPNG(false);
             
-            GenerateSpritesAndAnimations(false, true);
-            GenerateAnimationGroups();
+            //GenerateSpritesAndAnimations(false, true);
+            //GenerateAnimationGroups();
             GenerateMaps();
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -376,8 +376,7 @@ public class GameObjectGeneration : MonoBehaviour
             int line, spriteId;
             bool blocked;
             byte unknown, unknown2, unknown3, unknown4;
-            Tile blockedTile = Resources.Load<Tile>("Tiles" + separator + "block");
-
+            Tile blockedTile = FindOrCreateTile(tilePath, "11424", "block");
             // Block top, bottom sides
             for (int x = 0; x <= 101; x++)
             {
@@ -456,14 +455,18 @@ public class GameObjectGeneration : MonoBehaviour
     }
 
     Tile FindOrCreateTile(string path, string spriteName) {
+        return FindOrCreateTile(path, spriteName, spriteName);
+    }
+
+    Tile FindOrCreateTile(string path, string spriteName, string assetName) {
         string separator = Path.DirectorySeparatorChar.ToString();
-        Tile tile = Resources.Load<Tile>("Tiles" + separator + spriteName);
+        Tile tile = Resources.Load<Tile>("Tiles" + separator + assetName);
         if(tile == null) {
             Sprite sprite = Resources.Load<Sprite>("Sprites" +separator + spriteName);
             if (sprite != null) {
                 tile = ScriptableObject.CreateInstance<Tile>();
                 tile.sprite = sprite;
-                AssetDatabase.CreateAsset(tile, path + separator + spriteName + ".asset");
+                AssetDatabase.CreateAsset(tile, path + separator + assetName + ".asset");
             }
         }
         return tile;

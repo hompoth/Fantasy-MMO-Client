@@ -22,7 +22,7 @@ public abstract class AutoAction
 	// Use a cancellation token or m_controllerState.IsEnabled
     private async void LoopAction() {
 		int delay;
-        while(AutoController.IsEnabled()) {
+        while(m_controllerState.IsActive()) {
             if(CanUseAction(m_manager, m_controllerState)) {
 				delay = UseAction(m_manager, m_controllerState);
 			}
