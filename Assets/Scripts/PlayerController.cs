@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
             m_state.Home();
         }
 
-        if(CanSendCommand(KeyCode.Return)) {
+        if(CanSendCommand(KeyCode.Return) || CanSendCommand(KeyCode.KeypadEnter)) {
             m_state.Enter();
         }
 

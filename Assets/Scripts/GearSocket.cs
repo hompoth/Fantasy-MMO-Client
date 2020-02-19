@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SocketType { Weapon, Shield, Helm, Hair, Top, Bottom, Shoes, Face, Body };
+
 public class GearSocket : MonoBehaviour
 {
     string ANIMATOR_ISMOVING = "IsMoving";
@@ -11,10 +13,10 @@ public class GearSocket : MonoBehaviour
     string ANIMATOR_VERTICAL = "Vertical";
     string ANIMATOR_MOVEMENTSPEED = "MovementSpeed";
     string ANIMATOR_ATTACKSPEED = "AttackSpeed";
+    public SocketType m_socketType;
 
     public SpriteRenderer m_spriteRenderer;
     public Animator m_animator;
-    public bool m_isWeaponOrShield;
     public AnimGroup m_animGroup;
     public AnimAttackType m_animAttackType;
     public Color m_animColor = Color.white;
@@ -94,9 +96,8 @@ public class GearSocket : MonoBehaviour
         if (horizontal != 0 || vertical != 0){
             m_animator.SetFloat(ANIMATOR_HORIZTONAL, horizontal);
             m_animator.SetFloat(ANIMATOR_VERTICAL, vertical);
-            
-            if(m_isWeaponOrShield) {
-                if(vertical < 0 || horizontal != 0) {
+            if(m_socketType.Equals(SocketType.Weapon) || m_socketType.Equals(SocketType.Shield)) {
+                if(vertical < 0 || horizontal > 0 && m_socketType.Equals(SocketType.Weapon) || horizontal < 0 && m_socketType.Equals(SocketType.Shield)) {
                     m_spriteRenderer.sortingOrder = m_originalSortingOrder;
                 }
                 else {

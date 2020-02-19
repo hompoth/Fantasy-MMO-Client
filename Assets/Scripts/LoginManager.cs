@@ -19,6 +19,8 @@ public class LoginManager : MonoBehaviour
     string SLASH = Path.DirectorySeparatorChar.ToString();
  
     private void Start() { 
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
         popUpMessage.SetActive(false);
         usernameField.text = UserPrefs.GetUsername();
         ipField.text = UserPrefs.GetServerIp();
@@ -71,7 +73,7 @@ public class LoginManager : MonoBehaviour
     void CreateGameManager() {
 		GameManager prefab = Resources.Load<GameManager>("Prefabs" + SLASH + "GameManager");
 		if (prefab != null) {
-			m_gameManager = Instantiate(prefab, Vector3.one, Quaternion.identity); 
+			m_gameManager = Instantiate(prefab, Vector3.zero, Quaternion.identity); 
 		}
     }
 

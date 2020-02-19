@@ -540,13 +540,13 @@ public class PlayerManager : MonoBehaviour
 
     public bool MoveFrom (Vector3 position, bool fromKeyboard) {
         if(!fromKeyboard || (!m_isMoving && (m_moveTimer > GetMovementSpeed(false)))) {
-            if(!IsPositionBlocked(position + m_currentDirection)) {
+            if(!fromKeyboard || !IsPositionBlocked(position + m_currentDirection)) {
                 m_moveTimer = 0;
                 m_isMoving = true;
                 m_lerpSpeed = 0;
                 m_startLocation = position;
                 m_targetLocation = m_startLocation + m_currentDirection;
-                AnimatorMoving(m_isMoving);
+                AnimatorMoving(true);
 
                 if(moveCoroutine != null) {
                     StopCoroutine(moveCoroutine);
@@ -626,7 +626,6 @@ public class PlayerManager : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("aa");
         PlayerManager collidedPlayer = collision.gameObject.GetComponent<PlayerManager>();  // Assumes that moving targets have PlayerManagers
         if (m_isMainPlayer && (collidedPlayer == null || collidedPlayer.IsAtPosition(m_targetLocation))) {
             ResetLocation();
@@ -647,7 +646,7 @@ public class PlayerManager : MonoBehaviour
         m_targetLocation = m_startLocation;
         m_lerpSpeed = 1f;
         m_isMoving = false;
-        AnimatorMoving(m_isMoving);
+        AnimatorMoving(false);
         if(moveCoroutine != null) {
             StopCoroutine(moveCoroutine);
         }
@@ -733,10 +732,11 @@ public class PlayerManager : MonoBehaviour
     }
 
     IEnumerator MoveOverTime() {
+        AnimatorMoving(true);
         yield return new WaitForSeconds(GetMovementSpeed(false));
         moveCoroutine = null;
         m_isMoving = false;
-        AnimatorMoving(m_isMoving);
+        AnimatorMoving(false);
     }
 
     IEnumerator AttackOverTime() {
@@ -749,7 +749,7 @@ public class PlayerManager : MonoBehaviour
         else {
             yield return new WaitForSeconds(animationAttackTime);
             AnimatorAttacking(false);
-            yield return new WaitForSeconds(attackTime - animationAttackTime);
+            //yield return new WaitForSeconds(attackTime - animationAttackTime);
         }
         attackCoroutine = null;
         m_isAttacking = false;

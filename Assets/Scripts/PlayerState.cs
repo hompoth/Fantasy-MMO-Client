@@ -627,34 +627,36 @@ public class PlayerState : MonoBehaviour
     }
 
     void HandleChatInput(string inputText) {
-        if(inputText.StartsWith(SLASH)) {
-            if(inputText.Equals(QUIT_MESSAGE)) {
-                m_gameManager.Disconnect();
-            }
-            else if(inputText.Equals(NAMES_MESSAGE)) {
-                ClientManager.SwitchNameFormat();
-            }
-            else if(inputText.Equals(VITABAR_MESSAGE)) {
-                ClientManager.SwitchHealthManaFormat();
-            }
-            else if(inputText.StartsWith(FILTER_MESSAGE)) {
-                if(inputText.Length > FILTER_MESSAGE.Length) {
-                    inputText = inputText.Substring(FILTER_MESSAGE.Length + 1);
+        if(!string.IsNullOrEmpty(inputText)) {
+            if(inputText.StartsWith(SLASH)) {
+                if(inputText.Equals(QUIT_MESSAGE)) {
+                    m_gameManager.Disconnect();
                 }
-                m_gameManager.HandleFilter(inputText);
-            }
-            else if(inputText.StartsWith(TOGGLESOUND_MESSAGE)) {
-                m_gameManager.ToggleSound();
-            }
-            else if(inputText.StartsWith("/send")){ // TODO Remove this
-                m_gameManager.SendMessageToServer(inputText.Substring(6));
+                else if(inputText.Equals(NAMES_MESSAGE)) {
+                    ClientManager.SwitchNameFormat();
+                }
+                else if(inputText.Equals(VITABAR_MESSAGE)) {
+                    ClientManager.SwitchHealthManaFormat();
+                }
+                else if(inputText.StartsWith(FILTER_MESSAGE)) {
+                    if(inputText.Length > FILTER_MESSAGE.Length) {
+                        inputText = inputText.Substring(FILTER_MESSAGE.Length + 1);
+                    }
+                    m_gameManager.HandleFilter(inputText);
+                }
+                else if(inputText.StartsWith(TOGGLESOUND_MESSAGE)) {
+                    m_gameManager.ToggleSound();
+                }
+                else if(inputText.StartsWith("/send")){ // TODO Remove this
+                    m_gameManager.SendMessageToServer(inputText.Substring(6));
+                }
+                else {
+                    m_gameManager.SendChatCommand(inputText);
+                }
             }
             else {
-                m_gameManager.SendChatCommand(inputText);
+                m_gameManager.SendChatMessage(inputText);
             }
-        }
-        else {
-            m_gameManager.SendChatMessage(inputText);
         }
     }
 
