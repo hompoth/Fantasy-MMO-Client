@@ -18,7 +18,7 @@ public class PlayerState : MonoBehaviour
     const string COLON = ":";
     const string FILTER_MESSAGE = "/filter", VITABAR_MESSAGE = "/vitabar";
     const string NAMES_MESSAGE = "/names", QUIT_MESSAGE = "/quit", SLASH = "/";
-    const string TOGGLESOUND_MESSAGE = "/togglesound";
+    const string TOGGLESOUND_MESSAGE = "/togglesound", REFRESH_MESSAGE = "/refresh";
     PlayerManager m_playerManager;
     int m_playerId, m_spellTargetIndex, m_spellTargetPlayerId;
     bool m_chatEnabled, m_spellTargetEnabled;
@@ -208,13 +208,21 @@ public class PlayerState : MonoBehaviour
     }
 
     private void SetGameUIActive(bool isActive) {
-        gameObject.SetActive(isActive);
         mainCamera.gameObject.SetActive(isActive);
-        foreach (Transform child in gameObject.transform) {
+        EnableChildSpriteRenderers(gameObject.transform, isActive);
+    }
+
+    private void EnableChildSpriteRenderers(Transform transform, bool enable) {
+        foreach (Transform child in transform) {
             SpriteRenderer spriteRenderer = child.gameObject.GetComponent<SpriteRenderer>();
+            MeshRenderer meshRenderer = child.gameObject.GetComponent<MeshRenderer>();
             if(spriteRenderer != null) {
-                spriteRenderer.enabled = isActive;
+                spriteRenderer.enabled = enable;
             }
+            if(meshRenderer != null) {
+                meshRenderer.enabled = enable;
+            }
+            EnableChildSpriteRenderers(child, enable);
         }
     }
 
@@ -440,6 +448,18 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    public void LaunchNewPlayer() {
+        if(!m_chatEnabled && !m_spellTargetEnabled) {
+            ClientManager.LoadLoginScene();
+        }
+    }
+
+    public void SwitchPlayer() {
+        if(!m_chatEnabled && !m_spellTargetEnabled) {
+            ClientManager.NextGameManager();
+        }
+    }
+
     public void PickUp() {
         if(!m_chatEnabled && !m_spellTargetEnabled) {
             m_gameManager.SendPickUp();
@@ -539,6 +559,10 @@ public class PlayerState : MonoBehaviour
         if(TryGetFirstWindow(WindowType.DiscardButton, out GameObject discardButtonObject)) {
             ToggleActive(discardButtonObject);
         }
+    }
+
+    public void Refresh() {
+        m_gameManager.SendMessageToServer(REFRESH_MESSAGE);
     }
 
     public void HandlePlayerMovement(Vector3 inputVector) {
@@ -824,7 +848,6 @@ public class PlayerState : MonoBehaviour
                 playerObject.layer = 11;
             }
         }
-		EnableCamera();
     }
 
     void RemoveMainPlayer() {
@@ -838,8 +861,15 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public void SetMainPlayerPosition(int x, int y) {
-        m_playerManager?.SetPlayerPosition(x, y);
+    public void GetMainPlayerPosition(out int x, out int y) {
+        x = 0;
+        y = 0;
+        m_playerManager?.GetPlayerPosition(out x, out y);
+    }
+
+    public void SetMainPlayerPosition(Vector3 worldPosition) {
+        Escape();
+        m_playerManager?.SetPlayerPosition(worldPosition);
     }
 
     public void SetMainPlayerAttackSpeed(int weaponSpeed) {

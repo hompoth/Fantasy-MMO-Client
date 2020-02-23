@@ -132,6 +132,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if(CanSendCommand(KeyCode.Tab)) {
+            if(shiftKeyPressed) {
+                m_state.LaunchNewPlayer();
+            }
+            else {
+                m_state.SwitchPlayer();
+            }
+        }
+
         if(CanSendCommand(KeyCode.Home)) {
             m_state.Home();
         }

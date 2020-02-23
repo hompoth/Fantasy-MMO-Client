@@ -15,14 +15,14 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {	
+	public GameObject m_playerController;
 	public PlayerState m_state;
+	public GameObject m_worldObjects;
 	private TcpClient socketConnection; 
     private Queue<string> messages;
 	private string lastMessage;
 	private CancellationTokenSource m_tokenSource;
-	private LoginManager loginManager;
     private Dictionary<string, Event> messageToEvent;
-    private IEnumerator loadSceneCoroutine;
 	private bool m_handleMessages = true, m_doneSendingMessages;
 	private float m_messageTimer;
 	private bool m_chatFilterEnabled = true, m_groupFilterEnabled = true;
@@ -161,37 +161,31 @@ public class GameManager : MonoBehaviour
 	}  	
     	
 	public void SendMessageToServer(string message) {
-		if (socketConnection == null) {             
-			return;         
+		if (socketConnection == null) {
+			return;
 		}
-		try { 			
-			// Get a stream object for writing. 			
+		try {
+			// Get a stream object for writing.
 			NetworkStream stream = socketConnection.GetStream();
 			if (stream.CanWrite) {
-				// Convert string message to byte array.                 
-				byte[] messageAsByteArray = Encoding.ASCII.GetBytes(message + '\u0001'); 				
-				// Write byte array to socketConnection stream.                 
-				stream.Write(messageAsByteArray, 0, messageAsByteArray.Length);            
+				// Convert string message to byte array.
+				byte[] messageAsByteArray = Encoding.ASCII.GetBytes(message + '\u0001');
+				// Write byte array to socketConnection stream.
+				stream.Write(messageAsByteArray, 0, messageAsByteArray.Length);
 			}
 		}
 		catch (SocketException socketException) {
-			Debug.Log("SendMessageToServer Socket exception: " + socketException); 
+			Debug.Log("SendMessageToServer Socket exception: " + socketException);
 			Disconnect();
-		} 	
+		}
 		catch (InvalidOperationException exception) {
-			Debug.Log("SendMessageToServer InvalidOperationException " + exception); 
+			Debug.Log("SendMessageToServer InvalidOperationException " + exception);
 			Disconnect();
-		}     
-	} 
+		}
+	}
 
-	public LoginManager GetLoginManager() {
-		if(loginManager != null) {
-			return loginManager;
-		}
-		else {
-			loginManager = GameObject.FindWithTag("LoginManager").GetComponent<LoginManager>();
-			return loginManager;
-		}
+	public bool IsDoneSending() {
+		return m_doneSendingMessages;
 	}
 
 	public PlayerManager GetPlayerManager(int playerId) {
@@ -204,7 +198,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public PlayerManager[] GetAllPlayerManagers() {
-		GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
+		GameObject[] gameObjects = GetPlayerObjects();
 		return gameObjects.Select(gameObject => gameObject.GetComponent<PlayerManager>()).ToArray();
 	}
 
@@ -260,12 +254,26 @@ public class GameManager : MonoBehaviour
 		//TODO Consider making more efficient
 	}
 
+	public void SetPlayerPosition(int playerId, int x, int y) {
+		Vector3 worldPosition = WorldPosition(x, y, true);
+        (GetPlayerManager(playerId))?.SetPlayerPosition(worldPosition, true);
+	}
+
+	public void Refresh() {
+		m_state.Refresh();
+		//TODO Replace with more sustainable method
+	}
+
 	public void SetMainPlayer(int playerId) {
 		m_state.SetMainPlayer(playerId, GetPlayer(playerId));
+		if(ClientManager.IsActiveGameManager(this)) {
+			ShowGameManager();
+		}
 	}
 
 	public void SetMainPlayerPosition(int x, int y) {
-		m_state.SetMainPlayerPosition(x, y);
+		Vector3 worldPosition = WorldPosition(x, y, true);
+		m_state.SetMainPlayerPosition(worldPosition);
 	}
 
 	public void SetMainPlayerAttackSpeed(int weaponSpeed) {
@@ -312,14 +320,8 @@ public class GameManager : MonoBehaviour
 	}
 
     public void Disconnect(){
-		if (SceneManager.GetActiveScene().name.Equals("LoginScreen")) {
-			DisplayLoginMessage("Unable to connect to the server.");
-		}
-		else {
-			DisplayLoginMessage("Disconnected from the server.");
-			ClientManager.RemoveGameManager(this);
-		}
         CancelLogin();
+		ClientManager.Disconnect(this);
     }
 
 	private void CancelLogin() {
@@ -334,154 +336,78 @@ public class GameManager : MonoBehaviour
 		ContinueHandlingMessages();
 	}
 
-	private void DisplayLoginMessage(string message) {
-		LoadScene("LoginScreen", "",
-			() => {
-				ConnectionIssue(message);
+	public void LoadWindowPreferences() {
+		WindowType[] windowTypesToLoad = new WindowType[] {
+			WindowType.OptionsBar, WindowType.InventoryWindow, WindowType.SpellsWindow, WindowType.CommandBar, 
+			WindowType.BuffBar, WindowType.FpsBar, WindowType.HealthBar, WindowType.ManaBar, WindowType.SpiritBar, 
+			WindowType.ExperienceBar, WindowType.CharacterWindow, WindowType.ChatWindow, WindowType.PartyWindow, 
+			WindowType.DiscardButton
+		};
+		foreach(WindowType windowType in windowTypesToLoad) {
+			int windowId = EnumHelper.GetNameValue<WindowType>(windowType);
+			WindowUI window = LoadWindow(windowId, windowType);
+			if(window != null && !windowType.Equals(WindowType.InventoryWindow) && !windowType.Equals(WindowType.SpellsWindow) && !windowType.Equals(WindowType.CharacterWindow)) {
+				window.gameObject.SetActive(true);
+				// TODO Set active based on preferences
 			}
-		);
-	}
-
-	public void ConnectionIssue(string message) {
-		(GetLoginManager())?.ConnectionIssue(message);
-	}
-
-	public void LoadScene(string sceneName, string mapName) {
-		LoadSceneCore(sceneName, mapName);
-	}
-
-	public void LoadScene(string sceneName, string mapName, Action action) {
-		LoadSceneCore(sceneName, mapName, action);
-	}
-
-	private void LoadSceneCore(string sceneName, string mapName, Action action = null) {
-		if(loadSceneCoroutine != null) {
-			StopCoroutine(loadSceneCoroutine);
-			loadSceneCoroutine = null;
-		}
-		loadSceneCoroutine = LoadSceneCoroutine(sceneName, mapName, action);
-		StartCoroutine(loadSceneCoroutine);
-	}
-
-	private IEnumerator LoadSceneCoroutine(string sceneName, string mapName, Action action = null) {
-		string previousSceneName = SceneManager.GetActiveScene().name;
-		if (!(previousSceneName.Equals("LoginScreen") && sceneName.Equals("LoginScreen"))) {
-			BeforeLoadScene(previousSceneName, sceneName);
-			yield return InitiateLoadingScreen();
-			yield return UpdateLoadingScreen(sceneName, mapName);
-			AfterLoadScene(previousSceneName, sceneName);
-		}
-		if (action != null) {
-			action();
 		}
 	}
 
-	private void BeforeLoadScene(string previousSceneName, string sceneName) {
-		if(previousSceneName.Equals("LoginScreen") && sceneName.Equals("GameWorld")) {
-			ClientManager.AddGameManager(this);
-		}
-		if(sceneName.Equals("GameWorld")) {
-        	Cursor.visible = false;
-		}
-		else {
-        	Cursor.visible = true;
-		}
+	public void ShowGameManager() {
+		Input.ResetInputAxes();
+		m_playerController.SetActive(true);
+		m_state.EnableCamera();
+	}
+
+	public void HideGameManager() {
+		m_playerController.SetActive(false);
 		m_state.DisableCamera();
 	}
 
-	private void AfterLoadScene(string previousSceneName, string sceneName) {
-		if(!previousSceneName.Equals("GameWorld") && sceneName.Equals("GameWorld")) {
-			WindowType[] windowTypesToLoad = new WindowType[] {
-				WindowType.OptionsBar, WindowType.InventoryWindow, WindowType.SpellsWindow, WindowType.CommandBar, 
-				WindowType.BuffBar, WindowType.FpsBar, WindowType.HealthBar, WindowType.ManaBar, WindowType.SpiritBar, 
-				WindowType.ExperienceBar, WindowType.CharacterWindow, WindowType.ChatWindow, WindowType.PartyWindow, 
-				WindowType.DiscardButton
-			};
-			foreach(WindowType windowType in windowTypesToLoad) {
-				int windowId = EnumHelper.GetNameValue<WindowType>(windowType);
-				WindowUI window = LoadWindow(windowId, windowType);
-				if(window != null && !windowType.Equals(WindowType.InventoryWindow) && !windowType.Equals(WindowType.SpellsWindow) && !windowType.Equals(WindowType.CharacterWindow)) {
-					window.gameObject.SetActive(true);
-					// TODO Set active based on preferences
-				}
-			}
-		}
-	}
-
-	private IEnumerator InitiateLoadingScreen() {
-		AsyncOperation loadingScreen = SceneManager.LoadSceneAsync("LoadingScreen");
-		while (!loadingScreen.isDone) {
-			yield return null;
-		}
-	}
-
-	private IEnumerator UpdateLoadingScreen(string sceneName, string mapName) {
-		float progress = 0f;
-		Slider slider = GameObject.FindWithTag("ProgressBar").GetComponent<Slider>();
-		TextMeshProUGUI text = GameObject.FindWithTag("LoadingMapName").GetComponent<TextMeshProUGUI>();
-		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-		text.text = mapName;
-		asyncLoad.allowSceneActivation = false;
-		while (progress < 1f && !m_doneSendingMessages)
-		{
-			progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-			slider.value = progress;
-			yield return null;
-		}
-		asyncLoad.allowSceneActivation = true;
-		while (!asyncLoad.isDone) {
-			yield return null;
+	public void DeleteWorldObjects() {
+		foreach (Transform child in m_worldObjects.transform) {
+			Destroy(child.gameObject);
 		}
 	}
 
 	public void LoadMap(int mapId) {
-		Destroy(GameObject.FindWithTag("Map"));
-		UnityEngine.Object prefab = Resources.Load("Prefabs" + SLASH + "map"+mapId);
+		Grid prefab = Resources.Load<Grid>("Prefabs" + SLASH + "map"+mapId);
 		if (prefab != null) {
-			Instantiate(prefab, Vector3.one, Quaternion.identity); 
+			Grid map = Instantiate(prefab, Vector3.zero, Quaternion.identity); 
+			map.transform.SetParent(m_worldObjects.transform, false);
 		}
 	}
 
 	public GameObject GetPlayer(int playerId) {
-		return GetObjectNameWithTag("Player", playerId.ToString());
+		string name = playerId.ToString();
+		GameObject[] gameObjects = GetPlayerObjects();
+		foreach (GameObject gameObject in gameObjects) {
+			if(gameObject.name.Equals(name)) {
+				return gameObject;
+			}
+		}
+		return null;
+	}
+
+	GameObject[] GetPlayerObjects() {
+		PlayerManager[] allChildren = gameObject.GetComponentsInChildren<PlayerManager>();
+		List<GameObject> playerObjects = new List<GameObject>();
+		foreach (PlayerManager child in allChildren) {
+			GameObject childObj = child.gameObject;
+			if (childObj.tag == "Player" && childObj.transform.parent.Equals(m_worldObjects.transform)) {
+				playerObjects.Add(childObj);
+			}
+		}
+		return playerObjects.ToArray();
 	}
 
 	public void RemovePlayer(int playerId) {
 		(GetPlayerManager(playerId))?.DestroyAllButPlayerUI();
 	}
 
-	public GameObject GetWindow(int windowId) {
-		WindowUI window = GetWindowUI(windowId);
-		if(window != null) {
-			return window.gameObject;
-		}
-		return null;
-		//TODO consider removing this
-		//return GetObjectNameWithTag("Window", windowId.ToString());
-	}
-
 	public WindowUI GetWindowUI(int windowId) {
 		if(m_state.TryGetWindowUI(windowId, out WindowUI window)) {
 			return window;
-		}
-		return null;
-	}
-	//TODO consider removing this
-	/*public WindowUI GetWindowUI(int windowId) {
-		WindowUI windowUI = null;
-		GameObject window = GetWindow(windowId);
-		if(window != null) {
-			windowUI = window.GetComponent<WindowUI>();
-		}
-		return windowUI;
-	}*/
-
-	public GameObject GetObjectNameWithTag(string tag, string name) {
-		GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tag);
-		foreach (GameObject gameObject in gameObjects) {
-			if(gameObject.name.Equals(name)) {
-				return gameObject;
-			}
 		}
 		return null;
 	}
@@ -511,7 +437,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	GameObject GetClosestPlayer(GameObject targetedPlayer, bool searchUp) {
-		GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
+		GameObject[] gameObjects = GetPlayerObjects();
 		GameObject mainPlayer = GetMainPlayerManager()?.gameObject;
 		GameObject closestPlayer = null;
 		float minXDistance = Int32.MaxValue;
@@ -568,7 +494,6 @@ public class GameManager : MonoBehaviour
 					}
 				}
 			}
-			
 		}
 		return closestPlayer;
 	}
@@ -597,6 +522,7 @@ public class GameManager : MonoBehaviour
 		PlayerManager playerObject = Resources.Load<PlayerManager>("Prefabs" + SLASH + "Player");
 		if (playerObject != null) {
 			PlayerManager player = Instantiate(playerObject, WorldPosition(x, y), Quaternion.identity);
+			player.transform.SetParent(m_worldObjects.transform, false);
 			player.name = playerId.ToString();
 			player.SetPlayerId(playerId);
     		player.SetPlayerHPPercent(hpPercent);
@@ -643,7 +569,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	ItemDrop GetItemDropAtPosition(int x, int y) {
-		Vector3 position = WorldPosition(x, y);
+		Vector3 position = WorldPosition(x, y, true);
 		position.y += 0.5f;
 		position.z += 10f;
 		RaycastHit2D[] raycastHits = Physics2D.RaycastAll(position, Vector3.forward, Mathf.Infinity, 1 << 8);
@@ -656,7 +582,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	Spell GetSpellAtPosition(int x, int y) {
-		Vector3 position = WorldPosition(x, y);
+		Vector3 position = WorldPosition(x, y, true);
 		position.y += 0.5f;
 		position.z += 10f;
 		RaycastHit2D[] raycastHits = Physics2D.RaycastAll(position, Vector3.forward, Mathf.Infinity, 1 << 9);
@@ -800,6 +726,7 @@ public class GameManager : MonoBehaviour
 			ItemDrop itemDropObject = Resources.Load<ItemDrop>("Prefabs" + SLASH + "ItemDrop");
 			if (itemDropObject != null) {
 				itemDrop = Instantiate(itemDropObject, WorldPosition(x, y), Quaternion.identity);
+				itemDrop.transform.SetParent(m_worldObjects.transform, false);
 				itemDrop.UpdateItem(spriteId, itemName, count, itemColor);
 			}
 		}
@@ -815,6 +742,7 @@ public class GameManager : MonoBehaviour
 			Spell spellObject = Resources.Load<Spell>("Prefabs" + SLASH + "Spell");
 			if (spellObject != null) {
 				spell = Instantiate(spellObject, WorldPosition(x, y), Quaternion.identity);
+				spell.transform.SetParent(m_worldObjects.transform, false);
 				AnimationClip anim = Resources.Load<AnimationClip>("Animations" + SLASH + animationId);
 				spell.PlayAnimation(anim);
 			}
@@ -881,13 +809,22 @@ public class GameManager : MonoBehaviour
         }
 	}
 
-	public static Vector3 WorldPosition(int x, int y) {
-		return new Vector3(x - 50, -y + 52, 0);
+	public Vector3 WorldPosition(int x, int y, bool applyWorldOffset = false) {
+		Vector3 worldPosition;
+		if(applyWorldOffset) {
+			worldPosition = gameObject.transform.position;
+		}
+		else {
+			worldPosition = new Vector3();
+		}
+		worldPosition.x += x - 51;
+		worldPosition.y += 51 - y;
+		return worldPosition;
 	}
 
 	public static void ServerPosition(Vector3 worldPosition, out int x, out int y) {
-		x = (int) Mathf.Round(worldPosition.x) + 50;
-		y = - (int) Mathf.Round(worldPosition.y - 0.5f) + 52;
+		x = (int) Mathf.Round(worldPosition.x) + 51;
+		y = - (int) Mathf.Round(worldPosition.y - 0.5f) + 51;
 	}
 
     int Mod(int val, int denom) {
@@ -948,6 +885,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void AddColorChatMessage(int messageType, string message) {
+		//TODO Update to use enum
 		switch(messageType) {
 			case 1:	// Chat
 				if(m_chatFilterEnabled) {
@@ -988,10 +926,6 @@ public class GameManager : MonoBehaviour
 
 	public void StopHandlingMessages() {
 		m_handleMessages = false;
-	}
-
-	private void ClearPlayerState() {
-		//m_state.Destroy();
 	}
 
     private void InitializeEvents() {
@@ -1040,12 +974,14 @@ public class GameManager : MonoBehaviour
     }
 
     private void HandleMessage(string message) {
-        foreach(KeyValuePair<string, Event> entry in messageToEvent) {
-            if(message.StartsWith(entry.Key)) {
-                Event e = entry.Value;
-                e.Run(this, message.Substring(entry.Key.Length));
-				return;
-            }
-        }
+		if(!string.IsNullOrEmpty(message)) {
+			foreach(KeyValuePair<string, Event> entry in messageToEvent) {
+				if(message.StartsWith(entry.Key)) {
+					Event e = entry.Value;
+					e.Run(this, message.Substring(entry.Key.Length));
+					return;
+				}
+			}
+		}
     }
 }

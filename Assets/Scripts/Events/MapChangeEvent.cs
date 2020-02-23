@@ -13,7 +13,7 @@ public class MapChangeEvent : Event
 		TryGetTokenValue(tokens, ref index, out string version);
 		TryGetTokenValue(tokens, ref index, out string mapName);
 		manager.StopHandlingMessages();
-		manager.LoadScene("GameWorld", mapName, () => {
+		ClientManager.LoadScene(manager, "GameWorld", mapName, () => {
 			manager.LoadMap(mapId);
 			manager.SendDoneLoadingMap(mapId);
 			manager.ContinueHandlingMessages();

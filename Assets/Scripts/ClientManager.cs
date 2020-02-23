@@ -23,14 +23,16 @@ public enum HealthManaFormat {
 public class ClientManager : MonoBehaviour
 {	
 	static ClientManager m_instance;
+	static LoginManager m_loginManager;
     static NameFormat m_nameFormat;
     static HealthManaFormat m_healthManaFormat;
-	static List<GameManager> m_gameManagers;
+	static ArrayList m_gameManagers;
+	static int m_gameManagerIndex;
 
     void Awake() {
 		if(m_instance == null) {
 			m_instance = this;
-			m_gameManagers = new List<GameManager>();
+			m_gameManagers = new ArrayList();
 			DontDestroyOnLoad(gameObject);
 		}
 		else {
@@ -39,21 +41,249 @@ public class ClientManager : MonoBehaviour
     }
 
 	public static void QuitGame() {
-        Application.Quit();
+		if(m_gameManagers.Count > 0) {
+			GameManager manager = GetGameManager(m_gameManagerIndex);
+			ToggleScene(manager, "GameWorld");
+		}
+		else {
+        	Application.Quit();
+		}
+	}
+
+	public static void Disconnect(GameManager manager) {
+		bool isActive = IsActiveGameManager(manager);
+		manager.HideGameManager();
+		manager.DeleteWorldObjects();
+		RemoveGameManager(manager);
+		if(isActive) {
+			if(m_gameManagers.Count > 0) {
+				QuitGame();
+			}
+			else {
+				if (SceneManager.GetActiveScene().name.Equals("LoginScreen")) {
+					DisplayLoginMessage("Unable to connect to the server.");
+				}
+				else {
+					DisplayLoginMessage("Disconnected from the server.");
+				}
+			}
+		}
+	}
+
+	private static void DisplayLoginMessage(string message) {
+		ToggleScene(null, "LoginScreen", () => {
+			ConnectionIssue(message);
+		});
+	}
+
+	public static void ConnectionIssue(string message) {
+		(GetLoginManager())?.ConnectionIssue(message);
+	}
+
+	private static LoginManager GetLoginManager() {
+		if(m_loginManager != null) {
+			return m_loginManager;
+		}
+		else {
+			m_loginManager = GameObject.FindWithTag("LoginManager")?.GetComponent<LoginManager>();
+			return m_loginManager;
+		}
+	}
+
+	public static bool IsActiveGameManager(GameManager manager) {
+		GameManager currentGameManager = GetGameManager(m_gameManagerIndex);
+		string sceneName = SceneManager.GetActiveScene().name;
+		if(currentGameManager == null) {
+			return true;
+		}
+		if(sceneName.Equals("LoginScreen")) {
+			return true;
+		}
+		return manager != null && manager.Equals(currentGameManager);
+	}
+
+	static async Task ToggleScene(GameManager manager, string sceneName, Action action = null) {
+		if(sceneName.Equals("LoginScreen")) {
+			manager?.HideGameManager();
+		}
+		if(sceneName.Equals("GameWorld")) {
+        	Cursor.visible = false;
+		}
+		else {
+        	Cursor.visible = true;
+		}
+		await InitiateLoadingScreen();
+		await UpdateLoadingScreen(manager, sceneName);
+		if(sceneName.Equals("GameWorld")) {
+			manager?.ShowGameManager();
+		}
+		if (action != null) {
+			action();
+		}
+	}
+
+	public static void LoadScene(GameManager manager, string sceneName, string mapName = "", Action action = null) {
+		if(IsActiveGameManager(manager)) {
+			LoadSceneWithLoadingScreen(manager, sceneName, mapName, action);
+		}
+		else {
+			LoadSceneSilently(manager, sceneName, mapName, action);
+		}
+	}
+	
+	static async Task LoadSceneSilently(GameManager manager, string sceneName, string mapName, Action action) {
+		string previousSceneName = SceneManager.GetActiveScene().name;
+		if (!(previousSceneName.Equals("LoginScreen") && sceneName.Equals("LoginScreen"))) {
+			if(manager != null) {
+				manager.HideGameManager();
+				manager.DeleteWorldObjects();
+				await WaitForGameManager(manager);
+			}
+		}
+		if (action != null) {
+			action();
+		}
+	}
+
+	static async Task LoadSceneWithLoadingScreen(GameManager manager, string sceneName, string mapName = "", Action action = null) {
+		string previousSceneName = SceneManager.GetActiveScene().name;
+		if (!(previousSceneName.Equals("LoginScreen") && sceneName.Equals("LoginScreen"))) {
+			BeforeLoadScene(manager, previousSceneName, sceneName);
+			await InitiateLoadingScreen();
+			await UpdateLoadingScreen(manager, sceneName, mapName);
+			AfterLoadScene(manager, previousSceneName, sceneName);
+		}
+		if (action != null) {
+			action();
+		}
+	}
+
+	static async Task InitiateLoadingScreen() {
+		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("LoadingScreen");
+		asyncLoad.allowSceneActivation = true;
+		while (!asyncLoad.isDone) {
+        	await Task.Yield();
+		}
+	}
+
+	static async Task UpdateLoadingScreen(GameManager manager, string sceneName, string mapName = "") {
+		float progress = 0f;
+		Slider slider = GameObject.FindWithTag("ProgressBar").GetComponent<Slider>();
+		TextMeshProUGUI text = GameObject.FindWithTag("LoadingMapName").GetComponent<TextMeshProUGUI>();
+		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+		text.text = mapName;
+		asyncLoad.allowSceneActivation = false;
+		while (progress < 1f && (manager == null || !manager.IsDoneSending())) {
+			progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+			slider.value = progress;
+        	await Task.Yield();
+		}
+		asyncLoad.allowSceneActivation = true;
+		while (!asyncLoad.isDone) {
+        	await Task.Yield();
+		}
+	}
+
+	static async Task WaitForGameManager(GameManager manager) {
+		while(manager == null || !manager.IsDoneSending()) {
+        	await Task.Yield();
+		}
+	}
+
+	static void BeforeLoadScene(GameManager manager, string previousSceneName, string sceneName) {
+		if(sceneName.Equals("GameWorld")) {
+        	Cursor.visible = false;
+		}
+		else {
+        	Cursor.visible = true;
+		}
+		if(manager != null) {
+			if(previousSceneName.Equals("LoginScreen") && sceneName.Equals("GameWorld")) {
+				AddGameManager(manager);
+			}
+			else {
+				manager.HideGameManager();
+				manager.DeleteWorldObjects();
+			}
+		}
+	}
+
+	static void AfterLoadScene(GameManager manager, string previousSceneName, string sceneName) {
+		if(manager != null) {
+			if(!previousSceneName.Equals("GameWorld") && sceneName.Equals("GameWorld")) {
+				manager.LoadWindowPreferences();
+			}
+		}
+	}
+
+	static void SetGameManagerPosition(GameManager manager, int index) {
+		manager.transform.position = new Vector3(index * 1000, 1000, 0);
+		manager.Refresh();
 	}
 
 	public static void AddGameManager(GameManager manager) {
-		GameObject gameObject = GameObject.FindWithTag("ClientManager");
-		if(gameObject != null) {
-			manager.transform.SetParent(gameObject.transform);
-		}
 		m_gameManagers.Add(manager);
 		LoadPlayerPreferences(manager);
+		m_gameManagerIndex = m_gameManagers.Count - 1;
+		GameObject gameObject = GameObject.FindWithTag("ClientManager");
+		if(gameObject != null) {
+			SetGameManagerPosition(manager, m_gameManagerIndex);
+			manager.transform.SetParent(gameObject.transform);
+		}
 	}
 
-	public static void RemoveGameManager(GameManager manager) {
-		m_gameManagers.Remove(manager);
-		Destroy(manager.gameObject, 10);
+	public static void RemoveGameManager(GameManager managerToRemove) {
+		int removedIndex = m_gameManagers.IndexOf(managerToRemove);
+		m_gameManagers.Remove(managerToRemove);
+		Destroy(managerToRemove.gameObject, 10);
+		for(int i = removedIndex; i < m_gameManagers.Count; ++i) {
+			GameManager manager = GetGameManager(i);
+			if(manager != null) {
+				SetGameManagerPosition(manager, i);
+			} 
+		}
+		m_gameManagerIndex = m_gameManagers.Count - 1;
+	}
+
+	public static void NextGameManager() {
+		string currentSceneName = SceneManager.GetActiveScene().name;
+		if(currentSceneName.Equals("GameWorld")) {
+			if(m_gameManagers.Count > 1) {
+				HideGameManager();
+				m_gameManagerIndex = (m_gameManagerIndex + 1) % m_gameManagers.Count;
+				ShowGameManager();
+			}
+		}
+	}
+
+	public static void LoadLoginScene() {
+		GameManager manager = GetGameManager(m_gameManagerIndex);
+		ToggleScene(manager, "LoginScreen");
+	}
+
+	static void HideGameManager(GameManager manager = default(GameManager)) {
+		if(manager == default(GameManager)) {
+			manager = GetGameManager(m_gameManagerIndex);
+		}
+		if(manager != null) {
+			manager.HideGameManager();
+		}
+	}
+
+	static void ShowGameManager(GameManager manager = default(GameManager)) {
+		if(manager == default(GameManager)) {
+			manager = GetGameManager(m_gameManagerIndex);
+		}
+		if(manager != null) {
+			manager.ShowGameManager();
+		}
+	}
+
+	static GameManager GetGameManager(int index) {
+		if(m_gameManagers.Count > 0 && index >= 0 && index < m_gameManagers.Count) {
+			return m_gameManagers[index] as GameManager;
+		}
+		return null;
 	}
 
     static void LoadPlayerPreferences(GameManager manager) {

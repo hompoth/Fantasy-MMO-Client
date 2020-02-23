@@ -47,9 +47,9 @@ public class GearSocket : MonoBehaviour
         m_animColor = color;
 
         if(m_animGroup != null) {
-            float playerNameHeight = m_animGroup.GetSpriteHeight();
+            float spriteHeight = m_animGroup.GetSpriteHeight();
             Vector3 pos = transform.localPosition;
-            pos.y = -Mathf.Max((playerNameHeight - 1.5f) / 2, 0f);
+            pos.y = -Mathf.Max((spriteHeight - 1.5f) / 2, 0f);
             transform.localPosition = pos;
 
             animGroup.UpdateAnimator(m_animatorOverrideController, m_animAttackType);

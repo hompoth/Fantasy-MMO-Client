@@ -106,7 +106,7 @@ public class PlayerManager : MonoBehaviour
     Vector3 m_currentDirection, m_startLocation, m_targetLocation;
     int m_displayObjectPosition = 0, m_playerType, m_playerId;
     string m_playerTitle, m_playerName, m_playerSurname;
-    AnimAttackType attackType;
+    AnimAttackType m_attackType;
 
     void Start() {
         m_textBubble.gameObject.SetActive(false);
@@ -131,15 +131,16 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void DisplayChatBubble(string message) {
-        if(chatBubbleCoroutine != null) {
-            StopCoroutine(chatBubbleCoroutine);
-            chatBubbleCoroutine = null;
+        if(!string.IsNullOrEmpty(message)) {
+            if(chatBubbleCoroutine != null) {
+                StopCoroutine(chatBubbleCoroutine);
+                chatBubbleCoroutine = null;
+            }
+            m_chatBubble.gameObject.SetActive(true);
+            m_chatBubble.UpdateBubbleText(message);
+            chatBubbleCoroutine = ClearChatBubble();
+            StartCoroutine(chatBubbleCoroutine);
         }
-        m_chatBubble.gameObject.SetActive(true);
-        m_chatBubble.UpdateBubbleText(message);
-        chatBubbleCoroutine = ClearChatBubble();
-        StartCoroutine(chatBubbleCoroutine);
-        
     }
 
     IEnumerator ClearChatBubble() {
@@ -310,9 +311,12 @@ public class PlayerManager : MonoBehaviour
         return m_currentDirection.ToMovingDirection();
     }
 
-    public void SetPlayerPosition(int x, int y, bool moveTowards = false) {
-        Vector3 position, newPosition, difference, direction = Vector3.down;
-        newPosition = GameManager.WorldPosition(x, y);
+    public void GetPlayerPosition(out int x, out int y) {
+        GameManager.ServerPosition(m_targetLocation, out x, out y);
+    }
+
+    public void SetPlayerPosition(Vector3 newPosition, bool moveTowards = false) {
+        Vector3 position, difference, direction = Vector3.down;
 
         if(moveTowards) {
             if(!m_targetLocation.Equals(Vector3.zero)) {
@@ -382,16 +386,21 @@ public class PlayerManager : MonoBehaviour
 
     void ClearPlayerAppearance() {
         foreach (GearSocket gear in gearSockets) {
-            gear.Equip(null, attackType);
+            gear.Equip(null, m_attackType);
         }
     }
 
     public void SetPlayerPose(int poseId) {
-        attackType = EnumHelper.GetValueName<AnimAttackType>(poseId);
-        SetPlayerPose(attackType);
+        if(ShowPlayerEquipment()) {
+            SetPlayerPoseEnum(EnumHelper.GetValueName<AnimAttackType>(poseId));
+        }
+        else {
+            SetPlayerPoseEnum(AnimAttackType.Fist);
+        }
     }
 
-    void SetPlayerPose(AnimAttackType attackType) {
+    void SetPlayerPoseEnum(AnimAttackType attackType) {
+        m_attackType = attackType;
         foreach (GearSocket gear in gearSockets) {
             gear.SetAttackType(attackType);
         }
@@ -406,11 +415,12 @@ public class PlayerManager : MonoBehaviour
         UpdateSpellTargetSize();
         m_bodyId = bodyId;
         if(!ShowPlayerEquipment()) {
+            SetPlayerPoseEnum(AnimAttackType.Fist);
             ClearPlayerAppearance();
         }
         GearSocket gearSocket = GetGearSocketWithName("Body");
         if (gearSocket != null) {
-            gearSocket.Equip(animGroup, attackType);
+            gearSocket.Equip(animGroup, m_attackType);
         }
     }
 
@@ -418,7 +428,7 @@ public class PlayerManager : MonoBehaviour
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Face" + SLASH + faceId);
         GearSocket gearSocket = GetGearSocketWithName("Face");
         if (gearSocket != null && ShowPlayerEquipment()) {
-            gearSocket.Equip(animGroup, attackType);
+            gearSocket.Equip(animGroup, m_attackType);
         }
     }
 
@@ -426,7 +436,7 @@ public class PlayerManager : MonoBehaviour
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Face" + SLASH + hairId);
         GearSocket gearSocket = GetGearSocketWithName("Hair");
         if (gearSocket != null && ShowPlayerEquipment()) {
-            gearSocket.Equip(animGroup, attackType, hairColor);
+            gearSocket.Equip(animGroup, m_attackType, hairColor);
         }
     }
 
@@ -434,7 +444,7 @@ public class PlayerManager : MonoBehaviour
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Helm" + SLASH + helmId);
         GearSocket gearSocket = GetGearSocketWithName("Helm");
         if (gearSocket != null && ShowPlayerEquipment()) {
-            gearSocket.Equip(animGroup, attackType, helmColor);
+            gearSocket.Equip(animGroup, m_attackType, helmColor);
         }
     }
 
@@ -442,7 +452,7 @@ public class PlayerManager : MonoBehaviour
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Top" + SLASH + chestId);
         GearSocket gearSocket = GetGearSocketWithName("Top");
         if (gearSocket != null && ShowPlayerEquipment()) {
-            gearSocket.Equip(animGroup, attackType, chestColor);
+            gearSocket.Equip(animGroup, m_attackType, chestColor);
         }
     }
 
@@ -450,7 +460,7 @@ public class PlayerManager : MonoBehaviour
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Bottom" + SLASH + pantsId);
         GearSocket gearSocket = GetGearSocketWithName("Bottom");
         if (gearSocket != null && ShowPlayerEquipment()) {
-            gearSocket.Equip(animGroup, attackType, pantsColor);
+            gearSocket.Equip(animGroup, m_attackType, pantsColor);
         }
     }
 
@@ -458,7 +468,7 @@ public class PlayerManager : MonoBehaviour
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Shoes" + SLASH + shoesId);
         GearSocket gearSocket = GetGearSocketWithName("Shoes");
         if (gearSocket != null && ShowPlayerEquipment()) {
-            gearSocket.Equip(animGroup, attackType, shoesColor);
+            gearSocket.Equip(animGroup, m_attackType, shoesColor);
         }
     }
 
@@ -466,7 +476,7 @@ public class PlayerManager : MonoBehaviour
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Weapon" + SLASH + shieldId);
         GearSocket gearSocket = GetGearSocketWithName("Shield");
         if (gearSocket != null && ShowPlayerEquipment()) {
-            gearSocket.Equip(animGroup, attackType, shieldColor);
+            gearSocket.Equip(animGroup, m_attackType, shieldColor);
         }
     }
 
@@ -474,7 +484,7 @@ public class PlayerManager : MonoBehaviour
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Weapon" + SLASH + weaponId);
         GearSocket gearSocket = GetGearSocketWithName("Weapon");
         if (gearSocket != null && ShowPlayerEquipment()) {
-            gearSocket.Equip(animGroup, attackType, weaponColor);
+            gearSocket.Equip(animGroup, m_attackType, weaponColor);
         }
     }
     
@@ -581,7 +591,7 @@ public class PlayerManager : MonoBehaviour
         if(displayObject != null) {
             Vector3 displayPosition = displayObjects.transform.position;
             DisplayObject display = Instantiate(displayObject, displayPosition, Quaternion.identity);
-            AsperetaTextObject asperetaText = Instantiate(asperetaTextObject, displayPosition + new Vector3(x, y, 0), Quaternion.identity);      
+            AsperetaTextObject asperetaText = Instantiate(asperetaTextObject, displayPosition + new Vector3(x, y, 0), Quaternion.identity); 
             display.SetTextObject(asperetaText); 
             display.SetYOffset(y);
             asperetaText.SetText(displayText);
@@ -611,8 +621,11 @@ public class PlayerManager : MonoBehaviour
         return false;
     }
 
-    bool IsPositionBlocked(Vector2 position) {
-        int blockMask = ((1 << 0) | (1 << 11) | (1 << 12));
+    bool IsPositionBlocked(Vector2 position, bool ignorePlayers = false) {
+        int blockMask = 0;
+        if(!ignorePlayers) {
+            blockMask = blockMask | ((1 << 0) | (1 << 11) | (1 << 12));
+        }
         if(!m_isAdmin){
             blockMask = blockMask | (1 << 10);
         }
@@ -630,9 +643,7 @@ public class PlayerManager : MonoBehaviour
         if (m_isMainPlayer && (collidedPlayer == null || collidedPlayer.IsAtPosition(m_targetLocation))) {
             ResetLocation();
         }
-        else if(collidedPlayer == null || !collidedPlayer.GetIsMainPlayer()) {
-            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider);
-        }
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider);
     }
 
     bool IsAtPosition(Vector3 positionToCheck) {

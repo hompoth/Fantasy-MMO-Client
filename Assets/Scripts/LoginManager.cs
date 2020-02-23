@@ -15,7 +15,6 @@ public class LoginManager : MonoBehaviour
     public AsperetaTextObject nameTextObject;
     public TMP_InputField ipField, portField, usernameField, passwordField;
     private IEnumerator pendingCoroutine;
-    public GameManager m_gameManager;
     string SLASH = Path.DirectorySeparatorChar.ToString();
  
     private void Start() { 
@@ -25,7 +24,6 @@ public class LoginManager : MonoBehaviour
         usernameField.text = UserPrefs.GetUsername();
         ipField.text = UserPrefs.GetServerIp();
         portField.text = UserPrefs.GetServerPort().ToString();
-        CreateGameManager();
     }
 
     private void Update()
@@ -70,10 +68,12 @@ public class LoginManager : MonoBehaviour
         return false;
     }
 
-    void CreateGameManager() {
+    void ConnectToServer(string ip, int port, string username, string password) {
 		GameManager prefab = Resources.Load<GameManager>("Prefabs" + SLASH + "GameManager");
 		if (prefab != null) {
-			m_gameManager = Instantiate(prefab, Vector3.zero, Quaternion.identity); 
+			GameManager manager = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+            manager.HideGameManager();
+            manager.ConnectToServer(ip, port, username, password);
 		}
     }
 
@@ -88,7 +88,7 @@ public class LoginManager : MonoBehaviour
             UserPrefs.SetServerIp(ip);
             UserPrefs.SetServerPort(port);
             UserPrefs.Save();
-            m_gameManager.ConnectToServer(ip, port, username, password);
+            ConnectToServer(ip, port, username, password);
             InteractableObjectsEnabled(false);
             popUpMessage.SetActive(true);
             if(pendingCoroutine != null) {

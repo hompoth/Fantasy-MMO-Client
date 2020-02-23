@@ -5,6 +5,6 @@ using UnityEngine;
 public class LoginFailEvent : Event
 {
 	public override void Run(GameManager manager, string message) {
-		manager.ConnectionIssue(message);
+		ClientManager.ConnectionIssue(message);
 	}
 }

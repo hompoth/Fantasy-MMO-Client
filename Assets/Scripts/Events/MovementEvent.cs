@@ -12,6 +12,6 @@ public class MovementEvent : Event
 		TryGetTokenValue(tokens, ref index, out int playerId);
 		TryGetTokenValue(tokens, ref index, out int x);
 		TryGetTokenValue(tokens, ref index, out int y);
-		(manager.GetPlayerManager(playerId))?.SetPlayerPosition(x, y, true);
+		manager.SetPlayerPosition(playerId, x, y);
 	}
 }
