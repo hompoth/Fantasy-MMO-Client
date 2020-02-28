@@ -311,8 +311,8 @@ public class PlayerManager : MonoBehaviour
         return m_currentDirection.ToMovingDirection();
     }
 
-    public void GetPlayerPosition(out int x, out int y) {
-        GameManager.ServerPosition(m_targetLocation, out x, out y);
+    public void GetPlayerPosition(GameManager manager, out int x, out int y) {
+        manager.ServerPosition(m_targetLocation, out x, out y);
     }
 
     public void SetPlayerPosition(Vector3 newPosition, bool moveTowards = false) {
@@ -408,19 +408,21 @@ public class PlayerManager : MonoBehaviour
 
     public void SetPlayerBody(int bodyId) {
         AnimGroup animGroup = Resources.Load<AnimGroup>("Animations" + SLASH + "Groupings" + SLASH + "Body" + SLASH + bodyId);
-        m_spriteHeight = animGroup.GetSpriteHeight();
-        m_spriteWidth = animGroup.GetSpriteWidth();
-        UpdatePlayerNamePosition(m_spriteHeight);
-        UpdateStatBarSize();
-        UpdateSpellTargetSize();
-        m_bodyId = bodyId;
-        if(!ShowPlayerEquipment()) {
-            SetPlayerPoseEnum(AnimAttackType.Fist);
-            ClearPlayerAppearance();
-        }
-        GearSocket gearSocket = GetGearSocketWithName("Body");
-        if (gearSocket != null) {
-            gearSocket.Equip(animGroup, m_attackType);
+        if(animGroup != null) {
+            m_spriteHeight = animGroup.GetSpriteHeight();
+            m_spriteWidth = animGroup.GetSpriteWidth();
+            UpdatePlayerNamePosition(m_spriteHeight);
+            UpdateStatBarSize();
+            UpdateSpellTargetSize();
+            m_bodyId = bodyId;
+            if(!ShowPlayerEquipment()) {
+                SetPlayerPoseEnum(AnimAttackType.Fist);
+                ClearPlayerAppearance();
+            }
+            GearSocket gearSocket = GetGearSocketWithName("Body");
+            if (gearSocket != null) {
+                gearSocket.Equip(animGroup, m_attackType);
+            }
         }
     }
 

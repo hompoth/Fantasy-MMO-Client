@@ -102,7 +102,7 @@ public class ClientManager : MonoBehaviour
 		return manager != null && manager.Equals(currentGameManager);
 	}
 
-	static async Task ToggleScene(GameManager manager, string sceneName, Action action = null) {
+	static async void ToggleScene(GameManager manager, string sceneName, Action action = null) {
 		if(sceneName.Equals("LoginScreen")) {
 			manager?.HideGameManager();
 		}
@@ -131,7 +131,7 @@ public class ClientManager : MonoBehaviour
 		}
 	}
 	
-	static async Task LoadSceneSilently(GameManager manager, string sceneName, string mapName, Action action) {
+	static async void LoadSceneSilently(GameManager manager, string sceneName, string mapName, Action action) {
 		string previousSceneName = SceneManager.GetActiveScene().name;
 		if (!(previousSceneName.Equals("LoginScreen") && sceneName.Equals("LoginScreen"))) {
 			if(manager != null) {
@@ -145,7 +145,7 @@ public class ClientManager : MonoBehaviour
 		}
 	}
 
-	static async Task LoadSceneWithLoadingScreen(GameManager manager, string sceneName, string mapName = "", Action action = null) {
+	static async void LoadSceneWithLoadingScreen(GameManager manager, string sceneName, string mapName = "", Action action = null) {
 		string previousSceneName = SceneManager.GetActiveScene().name;
 		if (!(previousSceneName.Equals("LoginScreen") && sceneName.Equals("LoginScreen"))) {
 			BeforeLoadScene(manager, previousSceneName, sceneName);
@@ -217,8 +217,11 @@ public class ClientManager : MonoBehaviour
 	}
 
 	static void SetGameManagerPosition(GameManager manager, int index) {
+		manager.GetMainPlayerPosition(out int x, out int y);
 		manager.transform.position = new Vector3(index * 1000, 1000, 0);
+		manager.SetMainPlayerPosition(x, y);
 		manager.Refresh();
+		//TODO remove refresh and fix
 	}
 
 	public static void AddGameManager(GameManager manager) {

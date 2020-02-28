@@ -232,7 +232,7 @@ public class CursorUI : MonoBehaviour
         x = 0; 
         y = 0;
         if(TryGetMouseWorldPosition(out Vector3 worldPosition)) {
-            GameManager.ServerPosition(worldPosition, out x, out y);
+            m_gameManager.ServerPosition(worldPosition, out x, out y);
             return true;
         }
         return false;

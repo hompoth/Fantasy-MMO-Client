@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void ConnectToServer(string ip, int port, string username, string password) { 
         CancelLogin();
-		ListenForData(ip, port, username, password);	
+		ListenForData(ip, port, username, password);
 	}
 
 	async void ListenForData(string ip, int port, string username, string password) {
@@ -128,35 +128,37 @@ public class GameManager : MonoBehaviour
 	}
     
     private void LoginAndListenForData(CancellationToken token, string username, string password) {
-		this.SendLogin(username, password, "ALPHA33,3.5.2");		
-		Byte[] bytes = new Byte[1024];        
+		this.SendLogin(username, password, "ALPHA33,3.5.2");
+		Byte[] bytes = new Byte[1024];
 		while (true) {
-			using (NetworkStream stream = socketConnection.GetStream()) { 	
-				int length; 									
-				while ((length = stream.Read(bytes, 0, bytes.Length)) != 0) {
-					if(token.IsCancellationRequested) {
-						token.ThrowIfCancellationRequested();
-					}					
-					byte[] incomingData = new byte[length];			
-					Array.Copy(bytes, 0, incomingData, 0, length);
-					string incomingDataString = lastMessage + Encoding.ASCII.GetString(incomingData);
-					string[] serverMessages = incomingDataString.Split('\u0001');
-					int messagesListLength = serverMessages.Length;
-					if (!String.IsNullOrEmpty(incomingDataString) && incomingDataString[incomingDataString.Length-1] != '\u0001') {
-						messagesListLength--;
-						lastMessage = serverMessages[serverMessages.Length - 1];
-					}
-					else {
-						lastMessage = "";
-					}
-					for(int i = 0; i < messagesListLength; ++i) {
-						string message = serverMessages[i];
-						if(!String.IsNullOrEmpty(message)){
-							messages.Enqueue(message);
+			if(socketConnection != null) {
+				using (NetworkStream stream = socketConnection.GetStream()) { 	
+					int length; 									
+					while ((length = stream.Read(bytes, 0, bytes.Length)) != 0) {
+						if(token.IsCancellationRequested) {
+							token.ThrowIfCancellationRequested();
+						}					
+						byte[] incomingData = new byte[length];			
+						Array.Copy(bytes, 0, incomingData, 0, length);
+						string incomingDataString = lastMessage + Encoding.ASCII.GetString(incomingData);
+						string[] serverMessages = incomingDataString.Split('\u0001');
+						int messagesListLength = serverMessages.Length;
+						if (!String.IsNullOrEmpty(incomingDataString) && incomingDataString[incomingDataString.Length-1] != '\u0001') {
+							messagesListLength--;
+							lastMessage = serverMessages[serverMessages.Length - 1];
 						}
-					}
-				}				
-			} 
+						else {
+							lastMessage = "";
+						}
+						for(int i = 0; i < messagesListLength; ++i) {
+							string message = serverMessages[i];
+							if(!String.IsNullOrEmpty(message)){
+								messages.Enqueue(message);
+							}
+						}
+					}				
+				} 
+			}
 		}  
 	}  	
     	
@@ -262,6 +264,10 @@ public class GameManager : MonoBehaviour
 	public void Refresh() {
 		m_state.Refresh();
 		//TODO Replace with more sustainable method
+	}
+
+	public void GetMainPlayerPosition(out int x, out int y) {
+		m_state.GetMainPlayerPosition(out x, out y);
 	}
 
 	public void SetMainPlayer(int playerId) {
@@ -822,7 +828,9 @@ public class GameManager : MonoBehaviour
 		return worldPosition;
 	}
 
-	public static void ServerPosition(Vector3 worldPosition, out int x, out int y) {
+	public void ServerPosition(Vector3 worldPosition, out int x, out int y) {
+		Vector3 worldOffset = gameObject.transform.position;
+		worldPosition-= worldOffset;
 		x = (int) Mathf.Round(worldPosition.x) + 51;
 		y = - (int) Mathf.Round(worldPosition.y - 0.5f) + 51;
 	}

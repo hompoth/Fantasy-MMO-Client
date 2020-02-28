@@ -864,7 +864,7 @@ public class PlayerState : MonoBehaviour
     public void GetMainPlayerPosition(out int x, out int y) {
         x = 0;
         y = 0;
-        m_playerManager?.GetPlayerPosition(out x, out y);
+        m_playerManager?.GetPlayerPosition(m_gameManager, out x, out y);
     }
 
     public void SetMainPlayerPosition(Vector3 worldPosition) {
