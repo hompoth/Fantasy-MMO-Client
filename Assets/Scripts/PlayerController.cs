@@ -23,10 +23,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update() {   
-        if(Input.GetKey(KeyCode.Minus) && CanSendCommand(KeyCode.Equals)) {
-            m_autoController.ToggleActive();
-        }
-
         if (Input.GetMouseButtonUp(0)) {
             bool controlKeyPressed = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
             m_state.LeftMouseUp(controlKeyPressed);
@@ -139,6 +135,14 @@ public class PlayerController : MonoBehaviour
             else {
                 m_state.SwitchPlayer();
             }
+        }
+        
+        if(CanSendCommand(KeyCode.Minus)) {
+            m_autoController.Disable();
+        }
+        
+        if(shiftKeyPressed && CanSendCommand(KeyCode.Equals)) {
+            m_autoController.Enable();
         }
 
         if(CanSendCommand(KeyCode.Home)) {

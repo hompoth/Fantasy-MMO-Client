@@ -8,7 +8,5 @@ public class IdleTask : AutoTask
 	public override bool IsActive(GameManager gameManager, AutoControllerState state) {
 		return !IsSurrounded(gameManager, state);
 	}
-	public override void Move(GameManager gameManager, AutoControllerState state) {
-
-	}
+	public override void Move(GameManager gameManager, AutoControllerState state) { }
 }

@@ -312,7 +312,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void GetPlayerPosition(GameManager manager, out int x, out int y) {
-        manager.ServerPosition(m_targetLocation, out x, out y);
+        Vector3 position = new Vector3(m_targetLocation.x, m_targetLocation.y + 0.5f, 0);
+        manager.ServerPosition(position, out x, out y);
     }
 
     public void SetPlayerPosition(Vector3 newPosition, bool moveTowards = false) {
@@ -552,7 +553,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool MoveFrom (Vector3 position, bool fromKeyboard) {
         if(!fromKeyboard || (!m_isMoving && (m_moveTimer > GetMovementSpeed(false)))) {
-            if(!fromKeyboard || !IsPositionBlocked(position + m_currentDirection)) {
+            if(!fromKeyboard || !GameManager.IsPositionBlocked(position + m_currentDirection, m_isAdmin)) {
                 m_moveTimer = 0;
                 m_isMoving = true;
                 m_lerpSpeed = 0;
@@ -614,26 +615,11 @@ public class PlayerManager : MonoBehaviour
     }
 
     public bool IsSurrounded() {
-        if(IsPositionBlocked(m_targetLocation + Vector3.up) &&
-            IsPositionBlocked(m_targetLocation + Vector3.down) &&
-            IsPositionBlocked(m_targetLocation + Vector3.left) &&
-            IsPositionBlocked(m_targetLocation + Vector3.right)) {
-            return true;
-        }
-        return false;
-    }
-
-    bool IsPositionBlocked(Vector2 position, bool ignorePlayers = false) {
-        int blockMask = 0;
-        if(!ignorePlayers) {
-            blockMask = blockMask | ((1 << 0) | (1 << 11) | (1 << 12));
-        }
-        if(!m_isAdmin){
-            blockMask = blockMask | (1 << 10);
-        }
-        position.y+=0.5f; // Player and map collisions are offset by 0.5f.
-        RaycastHit2D hit = Physics2D.Raycast(position, Vector3.forward, Mathf.Infinity, blockMask);
-        if (hit.collider != null && !hit.collider.tag.Equals("ItemDrop")) {
+        //TODO Move to gameManager and instead getLocation from mainPlayer instead
+        if(GameManager.IsPositionBlocked(m_targetLocation + Vector3.up, m_isAdmin) &&
+            GameManager.IsPositionBlocked(m_targetLocation + Vector3.down, m_isAdmin) &&
+            GameManager.IsPositionBlocked(m_targetLocation + Vector3.left, m_isAdmin) &&
+            GameManager.IsPositionBlocked(m_targetLocation + Vector3.right, m_isAdmin)) {
             return true;
         }
         return false;

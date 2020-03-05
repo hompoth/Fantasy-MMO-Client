@@ -17,6 +17,7 @@ public class AutoController : MonoBehaviour
     void Start() {
         m_controllerState = new AutoControllerState();
         m_taskList = new List<AutoTask>();
+        m_task = AutoType.FollowGroup;
         SetAutoTask(m_task);
     }
 
@@ -212,14 +213,8 @@ public class AutoController : MonoBehaviour
     //Note - If point can't be moved to or a timer passes, skip it. I.e move to next waypoint
     //       Also find way to ignore mob range at times
 
+    private void PopulateAutoAction() {
 
-    public void ToggleActive() {
-        if(m_controllerState.IsActive()) {
-            Disable();
-        }
-        else {
-            Enable();
-        }
     }
 
     //Move enable/disable to a higher state and make AutoController non-static. 
@@ -227,6 +222,8 @@ public class AutoController : MonoBehaviour
     public void Enable() {
         //SetAutoTask(m_task);
         m_controllerState.SetActive(true);
+        SetAutoTask(m_task);
+        PopulateAutoAction();
     }
 
     public void Disable() {

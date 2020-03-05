@@ -217,11 +217,9 @@ public class ClientManager : MonoBehaviour
 	}
 
 	static void SetGameManagerPosition(GameManager manager, int index) {
-		manager.GetMainPlayerPosition(out int x, out int y);
+		manager.GetMainPlayerPosition(out int _, out int x, out int y);
 		manager.transform.position = new Vector3(index * 1000, 1000, 0);
 		manager.SetMainPlayerPosition(x, y);
-		manager.Refresh();
-		//TODO remove refresh and fix
 	}
 
 	public static void AddGameManager(GameManager manager) {
@@ -264,6 +262,11 @@ public class ClientManager : MonoBehaviour
 		ToggleScene(manager, "LoginScreen");
 	}
 
+    public static GameManager GetCurrentGameManager() {
+        GameManager currentGameManager = GetGameManager(m_gameManagerIndex);
+        return currentGameManager;
+    }
+
 	static void HideGameManager(GameManager manager = default(GameManager)) {
 		if(manager == default(GameManager)) {
 			manager = GetGameManager(m_gameManagerIndex);
@@ -292,7 +295,6 @@ public class ClientManager : MonoBehaviour
     static void LoadPlayerPreferences(GameManager manager) {
         m_nameFormat = UserPrefs.GetNameFormat();
         m_healthManaFormat = UserPrefs.GetHealthManaFormat();
-        UserPrefs.Save();
 		manager.UpdatePlayerNameFormat();
 		manager.UpdatePlayerHealthManaFormat();
     }

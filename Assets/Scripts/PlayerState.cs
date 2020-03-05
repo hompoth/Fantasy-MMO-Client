@@ -18,7 +18,7 @@ public class PlayerState : MonoBehaviour
     const string COLON = ":";
     const string FILTER_MESSAGE = "/filter", VITABAR_MESSAGE = "/vitabar";
     const string NAMES_MESSAGE = "/names", QUIT_MESSAGE = "/quit", SLASH = "/";
-    const string TOGGLESOUND_MESSAGE = "/togglesound", REFRESH_MESSAGE = "/refresh";
+    const string TOGGLESOUND_MESSAGE = "/togglesound";
     PlayerManager m_playerManager;
     int m_playerId, m_spellTargetIndex, m_spellTargetPlayerId;
     bool m_chatEnabled, m_spellTargetEnabled;
@@ -561,22 +561,22 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public void Refresh() {
-        m_gameManager.SendMessageToServer(REFRESH_MESSAGE);
-    }
-
-    public void HandlePlayerMovement(Vector3 inputVector) {
-        if(!m_spellTargetEnabled) {
-            if((m_playerManager != null) && !m_chatEnabled && (!inputVector.Equals(Vector3.zero))) {
+    public void HandlePlayerMovement(Vector3 inputVector, bool fromKeyboard = true) {
+        if(!m_spellTargetEnabled && !m_chatEnabled && !inputVector.Equals(Vector3.zero)) {
+            if(m_playerManager != null) {
+                bool elseCase = true;
                 if (!m_playerManager.IsFacingDirection(inputVector)) {
-                    if (m_playerManager.Face(inputVector, true)) {
-                        movementTimer = Time.time;
+                    if (m_playerManager.Face(inputVector, fromKeyboard)) {
                         FacingDirection direction = m_playerManager.GetPlayerFacingDirection();
                         m_gameManager.SendFace(direction);
+                        if(fromKeyboard) {
+                            movementTimer = Time.time;
+                        }
                     }
+                    elseCase = false;
                 }
-                else if(Time.time - movementTimer > MOVEMENT_WAIT_TIME) {
-                    if(m_playerManager.Move(true)){
+                if(!fromKeyboard || elseCase && Time.time - movementTimer > MOVEMENT_WAIT_TIME) {
+                    if(m_playerManager.Move(fromKeyboard)){
                         MovingDirection direction = m_playerManager.GetPlayerMovingDirection();
                         m_gameManager.SendMove(direction);
                     }

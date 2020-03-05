@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 	private bool m_chatFilterEnabled = true, m_groupFilterEnabled = true;
 	private bool m_guildFilterEnabled = true, m_tellFilterEnabled = true;
 	private bool m_soundEnabled = true;
+    private int m_mapId = 0;
 
 	const int MESSAGE_TIMER_WAIT_TIME = 5;
 	const string FILTER_CHAT = "chat", FILTER_GROUP = "group", FILTER_GUILD = "guild", FILTER_TELL = "tell";
@@ -261,12 +262,12 @@ public class GameManager : MonoBehaviour
         (GetPlayerManager(playerId))?.SetPlayerPosition(worldPosition, true);
 	}
 
-	public void Refresh() {
-		m_state.Refresh();
-		//TODO Replace with more sustainable method
-	}
+    public void HandlePlayerPosition(Vector3 input, bool fromKeyboard = true) {
+        m_state.HandlePlayerMovement(input, fromKeyboard);
+    }
 
-	public void GetMainPlayerPosition(out int x, out int y) {
+	public void GetMainPlayerPosition(out int map, out int x, out int y) {
+        map = m_mapId;
 		m_state.GetMainPlayerPosition(out x, out y);
 	}
 
@@ -377,6 +378,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void LoadMap(int mapId) {
+        m_mapId = mapId;
 		Grid prefab = Resources.Load<Grid>("Prefabs" + SLASH + "map"+mapId);
 		if (prefab != null) {
 			Grid map = Instantiate(prefab, Vector3.zero, Quaternion.identity); 
@@ -539,6 +541,7 @@ public class GameManager : MonoBehaviour
 			player.SetPlayerName(name);
 			player.SetPlayerSurname(surname);
 			player.SetPlayerFacing(facing);
+            player.SetPlayerPosition(WorldPosition(x, y, true));
 			player.UpdatePlayerAppearance(bodyId, poseId, hairId, hairColor, chestId, chestColor, helmId, helmColor, pantsId, pantsColor, shoesId, shoesColor, 
 				shieldId, shieldColor, weaponId, weaponColor, invis, faceId);
 			SetPartyPlayerHPMP(playerId, hpPercent, 0);
@@ -573,6 +576,28 @@ public class GameManager : MonoBehaviour
 		(GetPlayerManager(playerId))?.UpdatePlayerAppearance(bodyId, poseId, hairId, hairColor, chestId, chestColor, helmId, helmColor, pantsId, pantsColor, shoesId, shoesColor, 
 			shieldId, shieldColor, weaponId, weaponColor, invis, faceId);
 	}
+
+    public bool IsWorldPositionBlocked(int x, int y) {
+        Vector3 worldPosition = WorldPosition(x, y, true);
+        return IsPositionBlocked(worldPosition);
+    }
+
+    public static bool IsPositionBlocked(Vector2 position, bool isAdmin = false, bool ignorePlayers = false) {
+        int blockMask = 0;
+        if(!ignorePlayers) {
+            blockMask = blockMask | ((1 << 0) | (1 << 12));
+        }
+        if(!isAdmin){
+            blockMask = blockMask | (1 << 10);
+        }
+        position.y+=0.5f; // Player and map collisions are offset by 0.5f.
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector3.forward, Mathf.Infinity, blockMask);
+        if (hit.collider != null && !hit.collider.tag.Equals("ItemDrop")) {
+            // TODO if player, check if actually at this position
+            return true;
+        }
+        return false;
+    }
 
 	ItemDrop GetItemDropAtPosition(int x, int y) {
 		Vector3 position = WorldPosition(x, y, true);
