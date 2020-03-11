@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerController: {fileID: 7940017311816137207}
+  m_autoController: {fileID: 7940017311130802640}
   m_state: {fileID: 7940017312153009219}
   m_worldObjects: {fileID: 7768215626130539696}
 --- !u!1 &7940017312153009221

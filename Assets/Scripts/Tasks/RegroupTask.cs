@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using MapTile = System.Tuple<int, int, int>;
 using WarpDevice = System.Tuple<string, int>;
@@ -12,14 +13,19 @@ public class RegroupTask : AutoTask
         // If in group &&
         // -- If a member of your group has been gone for 5 seconds or more (customizable)
         // -- -- If leader go to waypoint, otherwise go to leader. Leader is the first gamemanager in list
+
+        // Rather than check if surrounded, check if move failed recently.
+        // This will be stored in state and will be referenced in all other tags. 
+        // For instance, if you can't get to the goal, try killing mobs for 15seconds? or until the path is available. 
 		return !IsSurrounded(gameManager, state);
 	}
-	public override void Move(GameManager gameManager, AutoControllerState state) {
-        MapTile goal = getTargetLocation(gameManager);
-        MoveToTile(gameManager, state, goal);
+	public override async Task Move(GameManager gameManager, AutoControllerState state) {
+        MapTile goal = GetTargetLocation(gameManager);
+        int distanceFromTarget = state.GetDistanceToPlayer();
+        await MoveToTile(gameManager, state, goal, distanceFromTarget);
 	}
 
-    private MapTile getTargetLocation(GameManager gameManager) {
+    private MapTile GetTargetLocation(GameManager gameManager) {
         GameManager currentGameManager = ClientManager.GetCurrentGameManager();
         if(gameManager.Equals(currentGameManager)) {
             // TODO go to waypoint instead

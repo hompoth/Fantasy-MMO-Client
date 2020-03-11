@@ -123,6 +123,7 @@ public class PlayerManager : MonoBehaviour
         if(ClientManager.GetNameFormat().Equals(NameFormat.VisibleOnHover)) {
             m_textBubble.gameObject.SetActive(true);
             m_textBubble.transform.position = worldPosition;
+            UpdatePlayerName();
         }
     }
 
@@ -257,7 +258,6 @@ public class PlayerManager : MonoBehaviour
     public void SetPlayerName(string name) {
         m_playerName = name.Trim();
         UpdatePlayerName();
-        m_textBubble.UpdateBubbleText(GetPlayerName());
     }
 
     public string GetPlayerName() {
@@ -658,6 +658,7 @@ public class PlayerManager : MonoBehaviour
     void UpdatePlayerName() {
         string name = GetPlayerName();
         nameTextObject.SetText(name);
+        m_textBubble.UpdateBubbleText(name);
     }
 
     void UpdatePlayerNameColor() {

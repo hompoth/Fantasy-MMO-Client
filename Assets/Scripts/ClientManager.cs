@@ -54,6 +54,7 @@ public class ClientManager : MonoBehaviour
 		bool isActive = IsActiveGameManager(manager);
 		manager.HideGameManager();
 		manager.DeleteWorldObjects();
+        manager.DisableAutoController();
 		RemoveGameManager(manager);
 		if(isActive) {
 			if(m_gameManagers.Count > 0) {

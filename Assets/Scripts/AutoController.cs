@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 using System.Threading.Tasks;
 
 public enum AutoType { AttackInSpot, AttackFullMap, AttackAndWander, FollowGroup, FarmGold, BossFarming }
@@ -10,41 +12,36 @@ public class AutoController : MonoBehaviour
     public GameManager m_gameManager;
     public AutoControllerState m_controllerState;
     public AutoType m_task;
+    CancellationTokenSource m_cts;
     const float MOVEMENT_TASK_TIME = 0.4f;  // TODO Use BASE_MOVEMENT_SPEED from PlayerManager
-    IEnumerator m_autoTaskCoroutine;
     List<AutoTask> m_taskList;
 
     void Start() {
+        m_cts = new CancellationTokenSource();
         m_controllerState = new AutoControllerState();
+        //m_controllerState.InitializeCache(m_gameManager);
         m_taskList = new List<AutoTask>();
         m_task = AutoType.FollowGroup;
         SetAutoTask(m_task);
     }
 
-    IEnumerator CalculateAutoTask() {
-        while(m_autoTaskCoroutine != null) {
-            yield return new WaitForSeconds(MOVEMENT_TASK_TIME);
-            if(!IsEnabled()) {
-                m_autoTaskCoroutine = null;
-            }
-            else {
-                AutoTask chosenTask = null;
-                foreach(AutoTask task in m_taskList) {
-                    if(task.IsActive(m_gameManager, m_controllerState)) {
-                        chosenTask = task;
-                        break;
-                    }
+    async void CalculateAutoTask(CancellationToken token) {
+        while(IsEnabled() && !token.IsCancellationRequested) {
+            foreach(AutoTask task in m_taskList) {
+                if(task.IsActive(m_gameManager, m_controllerState)) {
+                    await task.Move(m_gameManager, m_controllerState);
+                    break;
                 }
-                chosenTask?.Move(m_gameManager, m_controllerState);
             }
+            await Task.Delay(TimeSpan.FromSeconds(MOVEMENT_TASK_TIME));
         }
     }
 
     public void SetAutoTask(AutoType task) {
-        if(m_autoTaskCoroutine != null) {
-            StopCoroutine(m_autoTaskCoroutine);
-            m_autoTaskCoroutine = null;
-        } 
+        m_cts.Cancel();
+        m_cts = new CancellationTokenSource();
+        // TODO Cancel existing async
+        // TODO Start new async
         m_taskList.Clear();
         switch(m_task) {
             case AutoType.AttackInSpot:
@@ -85,8 +82,7 @@ public class AutoController : MonoBehaviour
                 m_taskList.Add(new CycleMapsTask());
                 break;
         }
-        m_autoTaskCoroutine = CalculateAutoTask();
-        StartCoroutine(m_autoTaskCoroutine);
+        CalculateAutoTask(m_cts.Token);
     }
 
 
@@ -220,19 +216,17 @@ public class AutoController : MonoBehaviour
     //Move enable/disable to a higher state and make AutoController non-static. 
     //Have the higher state enable/disable all running controllers.
     public void Enable() {
-        //SetAutoTask(m_task);
-        m_controllerState.SetActive(true);
-        SetAutoTask(m_task);
-        PopulateAutoAction();
+        if(m_controllerState != null) {
+            m_controllerState.SetActive(true);
+            SetAutoTask(m_task);
+            PopulateAutoAction();
+        }
     }
 
     public void Disable() {
-        //if(m_autoTaskCoroutine != null) {
-        //    StopCoroutine(m_autoTaskCoroutine);
-        //    m_autoTaskCoroutine = null;
-        //} 
-        //m_taskList.Clear();
-        m_controllerState.SetActive(false);
+        if(m_controllerState != null) {
+            m_controllerState.SetActive(false);
+        }
     }
 
     public bool IsEnabled() {

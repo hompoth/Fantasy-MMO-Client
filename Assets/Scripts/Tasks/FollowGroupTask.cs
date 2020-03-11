@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class FollowGroupTask : AutoTask
@@ -8,7 +9,7 @@ public class FollowGroupTask : AutoTask
 	public override bool IsActive(GameManager gameManager, AutoControllerState state) {
 		return !IsSurrounded(gameManager, state);
 	}
-	public override void Move(GameManager gameManager, AutoControllerState state) {
-
+	public override async Task Move(GameManager gameManager, AutoControllerState state) {
+        await Task.Yield();
 	}
 }

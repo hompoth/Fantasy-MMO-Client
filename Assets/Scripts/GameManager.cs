@@ -9,6 +9,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
@@ -16,6 +17,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {	
 	public GameObject m_playerController;
+	public AutoController m_autoController;
 	public PlayerState m_state;
 	public GameObject m_worldObjects;
 	private TcpClient socketConnection; 
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
 
 	const int MESSAGE_TIMER_WAIT_TIME = 5;
 	const string FILTER_CHAT = "chat", FILTER_GROUP = "group", FILTER_GUILD = "guild", FILTER_TELL = "tell";
-	string SLASH = Path.DirectorySeparatorChar.ToString();
+	static string SLASH = Path.DirectorySeparatorChar.ToString();
 
 	#if UNITY_STANDALONE_WIN
 		[DllImport("user32.dll")]
@@ -266,6 +268,10 @@ public class GameManager : MonoBehaviour
         m_state.HandlePlayerMovement(input, fromKeyboard);
     }
 
+    public int GetMapId() {
+        return m_mapId;
+    }
+
 	public void GetMainPlayerPosition(out int map, out int x, out int y) {
         map = m_mapId;
 		m_state.GetMainPlayerPosition(out x, out y);
@@ -370,6 +376,10 @@ public class GameManager : MonoBehaviour
 		m_playerController.SetActive(false);
 		m_state.DisableCamera();
 	}
+
+    public void DisableAutoController() {
+        m_autoController.Disable();
+    }
 
 	public void DeleteWorldObjects() {
 		foreach (Transform child in m_worldObjects.transform) {
@@ -576,6 +586,27 @@ public class GameManager : MonoBehaviour
 		(GetPlayerManager(playerId))?.UpdatePlayerAppearance(bodyId, poseId, hairId, hairColor, chestId, chestColor, helmId, helmColor, pantsId, pantsColor, shoesId, shoesColor, 
 			shieldId, shieldColor, weaponId, weaponColor, invis, faceId);
 	}
+
+    public static Tilemap GetTileMap(int mapId) {
+        Grid prefab = Resources.Load<Grid>("Prefabs" + SLASH + "map" + mapId);
+        if(prefab != null) {
+            foreach(Transform childTransform in prefab.transform) {
+                if(childTransform.name.Equals("Blocked Tiles")) {
+                    return childTransform.GetComponent<Tilemap>();
+                }
+            }
+        }
+        return null;
+    }
+
+    public static bool IsMapPositionBlocked(Tilemap tilemap, int x, int y) {
+        Tile tile = tilemap.GetTile<Tile>(new Vector3Int(x - 51, 51 - y, 0));
+        if (tile != null)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public bool IsWorldPositionBlocked(int x, int y) {
         Vector3 worldPosition = WorldPosition(x, y, true);
