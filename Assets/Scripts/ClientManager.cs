@@ -27,7 +27,7 @@ public class ClientManager : MonoBehaviour
     static NameFormat m_nameFormat;
     static HealthManaFormat m_healthManaFormat;
 	static ArrayList m_gameManagers;
-	static int m_gameManagerIndex;
+	static int m_gameManagerIndex, m_uniqueId;
 
     void Awake() {
 		if(m_instance == null) {
@@ -186,7 +186,7 @@ public class ClientManager : MonoBehaviour
 	}
 
 	static async Task WaitForGameManager(GameManager manager) {
-		while(manager == null || !manager.IsDoneSending()) {
+		while(manager != null && !manager.IsDoneSending()) {
         	await Task.Yield();
 		}
 	}
@@ -217,7 +217,10 @@ public class ClientManager : MonoBehaviour
 		}
 	}
 
-	static void SetGameManagerPosition(GameManager manager, int index) {
+	static void SetGameManagerPosition(GameManager manager, int index = default(int)) {
+        if(index == default(int)) {
+            index = ++m_uniqueId;
+        }
 		manager.GetMainPlayerPosition(out int _, out int x, out int y);
 		manager.transform.position = new Vector3(index * 1000, 1000, 0);
 		manager.SetMainPlayerPosition(x, y);
@@ -229,21 +232,16 @@ public class ClientManager : MonoBehaviour
 		m_gameManagerIndex = m_gameManagers.Count - 1;
 		GameObject gameObject = GameObject.FindWithTag("ClientManager");
 		if(gameObject != null) {
-			SetGameManagerPosition(manager, m_gameManagerIndex);
+			SetGameManagerPosition(manager);
 			manager.transform.SetParent(gameObject.transform);
 		}
 	}
 
 	public static void RemoveGameManager(GameManager managerToRemove) {
 		int removedIndex = m_gameManagers.IndexOf(managerToRemove);
+        SetGameManagerPosition(managerToRemove, -1);   // Move away to prevent collisions
 		m_gameManagers.Remove(managerToRemove);
 		Destroy(managerToRemove.gameObject, 10);
-		for(int i = removedIndex; i < m_gameManagers.Count; ++i) {
-			GameManager manager = GetGameManager(i);
-			if(manager != null) {
-				SetGameManagerPosition(manager, i);
-			} 
-		}
 		m_gameManagerIndex = m_gameManagers.Count - 1;
 	}
 

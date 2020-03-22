@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
         if(CanSendCommand(KeyCode.LeftArrow)) {
             m_state.LeftArrow();
             m_autoController.Disable();
+            // TODO: Move into m_state, and only trigger on move
         }
 
         if(CanSendCommand(KeyCode.RightArrow)) {

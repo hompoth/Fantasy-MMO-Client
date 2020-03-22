@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PartyPlayerUI : WindowUI
+public class PartyPlayerUI : MonoBehaviour
 {
     public AsperetaTextObject asperetaTextObject;
     public AsperetaStatBar asperetaStatBar;

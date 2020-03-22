@@ -10,8 +10,8 @@ using WarpDevice = System.Tuple<string, int>;
 
 public abstract class AutoTask
 {
-	public abstract bool IsActive(GameManager gameManager, AutoControllerState state);
-	public abstract Task Move(GameManager gameManager, AutoControllerState state);
+	public abstract bool IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state);
+	public abstract Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state);
 
 	protected bool IsSurrounded(GameManager gameManager, AutoControllerState state) {
 		return state.IsSurrounded(gameManager);
@@ -76,10 +76,10 @@ public abstract class AutoTask
 		return Mathf.Abs(xDiff) + Mathf.Abs(yDiff);
 	}
 
-    protected async Task MoveToTile(GameManager gameManager, AutoControllerState state, MapTile goal, int distanceFromGoal = 0) {
+    protected async Task MoveToTile(GameManager gameManager, PathManager pathManager, AutoControllerState state, MapTile goal, int distanceFromGoal = 0) {
         MapTile start = getCurrentLocation(gameManager);
         goal = GetClosestUnblockedPosition(gameManager, start, goal);
-        Tuple<WarpDevice, LinkedList<MapTile>> mapPathInfo = await state.GetMapPath(gameManager, start, goal);
+        Tuple<WarpDevice, LinkedList<MapTile>> mapPathInfo = await pathManager.GetMapPath(gameManager, start, goal);
         WarpDevice warpDevice = mapPathInfo.Item1;
         LinkedList<MapTile> mapPath = mapPathInfo.Item2;
         if(DistanceHeuristic(start, goal) >= distanceFromGoal) {
@@ -91,7 +91,7 @@ public abstract class AutoTask
                 mapPath.RemoveFirst();
                 MapTile targetTile = mapPath.First();
                 Debug.Log(targetTile + " --------");
-                LinkedList<MapTile> walkPath = await state.GetWalkPath(gameManager, start, targetTile);
+                LinkedList<MapTile> walkPath = await pathManager.GetWalkPath(gameManager, start, targetTile);
                 if(walkPath.Count > 1) {
                     Debug.Log("HasWalk --------"+(walkPath.First()));
                     walkPath.RemoveFirst();

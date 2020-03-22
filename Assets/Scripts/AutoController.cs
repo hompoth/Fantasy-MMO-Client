@@ -19,17 +19,17 @@ public class AutoController : MonoBehaviour
     void Start() {
         m_cts = new CancellationTokenSource();
         m_controllerState = new AutoControllerState();
-        //m_controllerState.InitializeCache(m_gameManager);
         m_taskList = new List<AutoTask>();
         m_task = AutoType.FollowGroup;
-        SetAutoTask(m_task);
+        RefreshAutomation();
     }
 
     async void CalculateAutoTask(CancellationToken token) {
+        PathManager pathManager = PathManager.Instance;
         while(IsEnabled() && !token.IsCancellationRequested) {
             foreach(AutoTask task in m_taskList) {
-                if(task.IsActive(m_gameManager, m_controllerState)) {
-                    await task.Move(m_gameManager, m_controllerState);
+                if(task.IsActive(m_gameManager, pathManager, m_controllerState)) {
+                    await task.Move(m_gameManager, pathManager, m_controllerState);
                     break;
                 }
             }
@@ -37,11 +37,27 @@ public class AutoController : MonoBehaviour
         }
     }
 
-    public void SetAutoTask(AutoType task) {
+    private void RefreshAutomation() {
         m_cts.Cancel();
         m_cts = new CancellationTokenSource();
-        // TODO Cancel existing async
-        // TODO Start new async
+        CancellationToken token = m_cts.Token;
+        PopulateAutoTask(token);
+        PopulateAutoAction(token);
+    }
+    
+    private void PopulateAutoAction(CancellationToken token) {
+        //new AutoAction(m_gameManager, m_controllerState, token);
+
+        //AttackAction
+        //CastAction
+        //PickupAction
+        //SellAction/DestroyAction
+        //ItemAction
+        //EmoteAction
+        //TypeAction (/buyvita, "Hello there!")
+    }
+    
+    private void PopulateAutoTask(CancellationToken token) {
         m_taskList.Clear();
         switch(m_task) {
             case AutoType.AttackInSpot:
@@ -82,7 +98,7 @@ public class AutoController : MonoBehaviour
                 m_taskList.Add(new CycleMapsTask());
                 break;
         }
-        CalculateAutoTask(m_cts.Token);
+        CalculateAutoTask(token);
     }
 
 
@@ -209,17 +225,12 @@ public class AutoController : MonoBehaviour
     //Note - If point can't be moved to or a timer passes, skip it. I.e move to next waypoint
     //       Also find way to ignore mob range at times
 
-    private void PopulateAutoAction() {
-
-    }
-
     //Move enable/disable to a higher state and make AutoController non-static. 
     //Have the higher state enable/disable all running controllers.
     public void Enable() {
         if(m_controllerState != null) {
             m_controllerState.SetActive(true);
-            SetAutoTask(m_task);
-            PopulateAutoAction();
+            RefreshAutomation();
         }
     }
 
@@ -230,6 +241,9 @@ public class AutoController : MonoBehaviour
     }
 
     public bool IsEnabled() {
-        return m_controllerState.IsActive();
+        if(m_controllerState != null) {
+            return m_controllerState.IsActive();
+        }
+        return false;
     }
 }

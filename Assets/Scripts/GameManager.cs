@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 	private bool m_soundEnabled = true;
     private int m_mapId = 0;
 
-	const int MESSAGE_TIMER_WAIT_TIME = 5;
+	const int MESSAGE_TIMER_WAIT_TIME = 60;
 	const string FILTER_CHAT = "chat", FILTER_GROUP = "group", FILTER_GUILD = "guild", FILTER_TELL = "tell";
 	static string SLASH = Path.DirectorySeparatorChar.ToString();
 
@@ -388,6 +388,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void LoadMap(int mapId) {
+        m_state.Escape();
         m_mapId = mapId;
 		Grid prefab = Resources.Load<Grid>("Prefabs" + SLASH + "map"+mapId);
 		if (prefab != null) {

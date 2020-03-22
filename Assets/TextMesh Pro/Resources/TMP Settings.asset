@@ -33,9 +33,9 @@ MonoBehaviour:
   m_matchMaterialPreset: 1
   m_defaultSpriteAsset: {fileID: 11400000, guid: 0126dc4028f560043978743e478c71f6,
     type: 2}
-  m_defaultSpriteAssetPath: Sprite Assets/
+  m_defaultSpriteAssetPath: Sprites/TMPSprites
   m_defaultColorGradientPresetsPath: Color Gradient Presets/
-  m_enableEmojiSupport: 1
+  m_enableEmojiSupport: 0
   m_defaultStyleSheet: {fileID: 11400000, guid: f952c082cb03451daed3ee968ac6c63e,
     type: 2}
   m_leadingCharacters: {fileID: 4900000, guid: d82c1b31c7e74239bff1220585707d2b, type: 3}

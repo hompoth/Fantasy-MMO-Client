@@ -9,7 +9,7 @@ using WarpDevice = System.Tuple<string, int>;
 
 public class RegroupTask : AutoTask
 {
-	public override bool IsActive(GameManager gameManager, AutoControllerState state) {
+	public override bool IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
         // If in group &&
         // -- If a member of your group has been gone for 5 seconds or more (customizable)
         // -- -- If leader go to waypoint, otherwise go to leader. Leader is the first gamemanager in list
@@ -19,10 +19,10 @@ public class RegroupTask : AutoTask
         // For instance, if you can't get to the goal, try killing mobs for 15seconds? or until the path is available. 
 		return !IsSurrounded(gameManager, state);
 	}
-	public override async Task Move(GameManager gameManager, AutoControllerState state) {
+	public override async Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
         MapTile goal = GetTargetLocation(gameManager);
-        int distanceFromTarget = state.GetDistanceToPlayer();
-        await MoveToTile(gameManager, state, goal, distanceFromTarget);
+        int distanceFromTarget = pathManager.GetDistanceToPlayer();
+        await MoveToTile(gameManager, pathManager, state, goal, distanceFromTarget);
 	}
 
     private MapTile GetTargetLocation(GameManager gameManager) {

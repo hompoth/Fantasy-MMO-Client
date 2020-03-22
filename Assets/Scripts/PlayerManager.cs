@@ -640,14 +640,16 @@ public class PlayerManager : MonoBehaviour
     }
 
     void ResetLocation() {
-        rb.MovePosition(m_startLocation);
-        m_moveTimer = 0;
-        m_targetLocation = m_startLocation;
-        m_lerpSpeed = 1f;
-        m_isMoving = false;
-        AnimatorMoving(false);
-        if(moveCoroutine != null) {
-            StopCoroutine(moveCoroutine);
+        if(rb != null) {
+            rb.MovePosition(m_startLocation);
+            m_moveTimer = 0;
+            m_targetLocation = m_startLocation;
+            m_lerpSpeed = 1f;
+            m_isMoving = false;
+            AnimatorMoving(false);
+            if(moveCoroutine != null) {
+                StopCoroutine(moveCoroutine);
+            }
         }
     }
 
