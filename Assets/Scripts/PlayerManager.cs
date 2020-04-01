@@ -554,16 +554,16 @@ public class PlayerManager : MonoBehaviour
     public bool MoveFrom (Vector3 position, bool fromKeyboard) {
         if(!fromKeyboard || (!m_isMoving && (m_moveTimer > GetMovementSpeed(false)))) {
             if(!fromKeyboard || !GameManager.IsPositionBlocked(position + m_currentDirection, m_isAdmin)) {
+                if(moveCoroutine != null) {
+                    StopCoroutine(moveCoroutine);
+                    AnimatorMoving(false);
+                }
                 m_moveTimer = 0;
                 m_isMoving = true;
                 m_lerpSpeed = 0;
                 m_startLocation = position;
                 m_targetLocation = m_startLocation + m_currentDirection;
                 AnimatorMoving(true);
-
-                if(moveCoroutine != null) {
-                    StopCoroutine(moveCoroutine);
-                }
                 moveCoroutine = MoveOverTime();
                 StartCoroutine(moveCoroutine);
                 return true;
@@ -574,13 +574,13 @@ public class PlayerManager : MonoBehaviour
 
     public bool Attack(bool fromKeyboard) {
         if(!fromKeyboard || (!m_isAttacking && (m_attackTimer > GetAttackSpeed(false)))) {
+            if(attackCoroutine != null) {
+                StopCoroutine(attackCoroutine);
+                AnimatorAttacking(false);
+            }
             m_attackTimer = 0;
             m_isAttacking = true;
             AnimatorAttacking(true);
-
-            if(attackCoroutine != null) {
-                StopCoroutine(attackCoroutine);
-            }
             attackCoroutine = AttackOverTime();
             StartCoroutine(attackCoroutine);
             return true;
@@ -734,11 +734,10 @@ public class PlayerManager : MonoBehaviour
     }
 
     IEnumerator MoveOverTime() {
-        AnimatorMoving(true);
         yield return new WaitForSeconds(GetMovementSpeed(false));
+        AnimatorMoving(false);
         moveCoroutine = null;
         m_isMoving = false;
-        AnimatorMoving(false);
     }
 
     IEnumerator AttackOverTime() {
@@ -746,13 +745,12 @@ public class PlayerManager : MonoBehaviour
         float animationAttackTime = 1 / ATTACK_ANIMATION_SPEED;
         if(attackTime <= animationAttackTime) {
             yield return new WaitForSeconds(attackTime);
-            AnimatorAttacking(false);
         }
         else {
             yield return new WaitForSeconds(animationAttackTime);
-            AnimatorAttacking(false);
             //yield return new WaitForSeconds(attackTime - animationAttackTime);
         }
+        AnimatorAttacking(false);
         attackCoroutine = null;
         m_isAttacking = false;
     }

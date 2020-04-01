@@ -285,7 +285,7 @@ public class ClientManager : MonoBehaviour
 	}
 
 	static GameManager GetGameManager(int index) {
-		if(m_gameManagers.Count > 0 && index >= 0 && index < m_gameManagers.Count) {
+		if(m_gameManagers != null && m_gameManagers.Count > 0 && index >= 0 && index < m_gameManagers.Count) {
 			return m_gameManagers[index] as GameManager;
 		}
 		return null;

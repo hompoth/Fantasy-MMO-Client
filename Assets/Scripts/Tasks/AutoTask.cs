@@ -79,26 +79,26 @@ public abstract class AutoTask
     protected async Task MoveToTile(GameManager gameManager, PathManager pathManager, AutoControllerState state, MapTile goal, int distanceFromGoal = 0) {
         MapTile start = getCurrentLocation(gameManager);
         goal = GetClosestUnblockedPosition(gameManager, start, goal);
-        Tuple<WarpDevice, LinkedList<MapTile>> mapPathInfo = await pathManager.GetMapPath(gameManager, start, goal);
-        WarpDevice warpDevice = mapPathInfo.Item1;
-        LinkedList<MapTile> mapPath = mapPathInfo.Item2;
-        if(DistanceHeuristic(start, goal) >= distanceFromGoal) {
-            if(warpDevice != default(WarpDevice)) {
-                // Use spell/item
-            }
-            else if(mapPath.Count > 1) {
-                Debug.Log("HasMap --------"+(mapPath.First()));
-                mapPath.RemoveFirst();
-                MapTile targetTile = mapPath.First();
-                Debug.Log(targetTile + " --------");
-                LinkedList<MapTile> walkPath = await pathManager.GetWalkPath(gameManager, start, targetTile);
-                if(walkPath.Count > 1) {
-                    Debug.Log("HasWalk --------"+(walkPath.First()));
-                    walkPath.RemoveFirst();
-                    Debug.Log(" --------"+(walkPath.First()));
-                    MapTile nextTile = walkPath.First();
-                    Vector3 direction = new Vector3(nextTile.Item2 - start.Item2, -(nextTile.Item3 - start.Item3), 0);
-                    gameManager.HandlePlayerPosition(direction, false);
+        Tuple<LinkedList<MapTile>, WarpDevice, int> mapPathInfo = await pathManager.GetMapPath(gameManager, start, goal);
+        if(mapPathInfo != null) {
+            LinkedList<MapTile> mapPath = mapPathInfo.Item1;
+            WarpDevice warpDevice = mapPathInfo.Item2;
+            int pathDistance = mapPathInfo.Item3;
+            bool sameArea = await pathManager.IsSameArea(gameManager, start, goal);
+            if(!sameArea || pathDistance > distanceFromGoal) {
+                if(warpDevice != default(WarpDevice)) {
+                    // Use spell/item
+                }
+                else if(mapPath.Count > 1) {
+                    mapPath.RemoveFirst();
+                    MapTile targetTile = mapPath.First();
+                    LinkedList<MapTile> walkPath = await pathManager.GetWalkPath(gameManager, start, targetTile);
+                    if(walkPath.Count > 1) {
+                        walkPath.RemoveFirst();
+                        MapTile nextTile = walkPath.First();
+                        Vector3 direction = new Vector3(nextTile.Item2 - start.Item2, -(nextTile.Item3 - start.Item3), 0);
+                        gameManager.HandlePlayerPosition(direction, false);
+                    }
                 }
             }
         }
