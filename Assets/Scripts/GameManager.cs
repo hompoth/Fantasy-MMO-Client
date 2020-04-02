@@ -601,15 +601,17 @@ public class GameManager : MonoBehaviour
     }
 
     public static bool IsMapPositionBlocked(Tilemap tilemap, int x, int y) {
-        Tile tile = tilemap.GetTile<Tile>(new Vector3Int(x - 51, 51 - y, 0));
-        if (tile != null)
-        {
+        if(x <= 0 || x > 100 || y <= 0 || y > 100) {
             return true;
         }
-        return false;
+        Tile tile = tilemap?.GetTile<Tile>(new Vector3Int(x - 51, 51 - y, 0));
+        return tile != null;
     }
 
     public bool IsWorldPositionBlocked(int x, int y) {
+        if(x <= 0 || x > 100 || y <= 0 || y > 100) {
+            return true;
+        }
         Vector3 worldPosition = WorldPosition(x, y, true);
         return IsPositionBlocked(worldPosition);
     }
