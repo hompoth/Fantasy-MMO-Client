@@ -23,7 +23,7 @@ public class PlayerState : MonoBehaviour
     int m_playerId, m_spellTargetIndex, m_spellTargetPlayerId;
     bool m_chatEnabled, m_spellTargetEnabled;
     float movementTimer;
-    string m_messageFromPlayerName;
+    string m_messageFromPlayerName, m_playerName;
 
     void Awake()
     {
@@ -321,8 +321,9 @@ public class PlayerState : MonoBehaviour
 
     public void AddCommandSlot(int slotIndex, SlotUI slot) {
         if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
+            string playerName = GetMainPlayerName();
             foreach(CommandBarUI commandBar in commandBarList) {
-                commandBar.CopySlot(slotIndex, slot);
+                commandBar.CopySlot(slotIndex, slot, playerName);
             }
             UserPrefs.Save();
         }
@@ -330,8 +331,9 @@ public class PlayerState : MonoBehaviour
 
     public void SwapCommandSlot(int slotIndex, int newSlotIndex) {
         if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
+            string playerName = GetMainPlayerName();
             foreach(CommandBarUI commandBar in commandBarList) {
-                commandBar.SwapSlot(slotIndex, newSlotIndex);
+                commandBar.SwapSlot(slotIndex, newSlotIndex, playerName);
             }
             UserPrefs.Save();
         }
@@ -339,8 +341,9 @@ public class PlayerState : MonoBehaviour
 
     public void ClearCommandSlot(int slotIndex) {
         if(TryGetCommandBar(out List<CommandBarUI> commandBarList)) {
+            string playerName = GetMainPlayerName();
             foreach(CommandBarUI commandBar in commandBarList) {
-                commandBar.ClearSlot(slotIndex);
+                commandBar.ClearSlot(slotIndex, playerName);
             }
         }
     }
@@ -745,6 +748,10 @@ public class PlayerState : MonoBehaviour
         return playerId.Equals(m_playerId);
     }
 
+    public int GetMainPlayerId() {
+        return m_playerId;
+    }
+
     public PlayerManager GetMainPlayerManager() {
         return m_playerManager;
     }
@@ -825,9 +832,13 @@ public class PlayerState : MonoBehaviour
         }
 	}
 
+    public string GetMainPlayerName() {
+        return m_playerName;
+    }
+
     public void SetMainPlayerName(int playerId, string name) {
         if(IsMainPlayer(playerId)) {
-            UserPrefs.playerName = name;
+            m_playerName = name;
             if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
                 foreach(CharacterWindowUI characterWindow in characterWindowList) {
                     characterWindow.SetPlayerName(name);
@@ -844,7 +855,7 @@ public class PlayerState : MonoBehaviour
             m_playerManager.SetIsMainPlayer(true);
             string name = m_playerManager.GetPlayerName();
             SetMainPlayerName(playerId, name);
-            if(playerObject.layer != 12) {
+            if(playerObject.layer != 12) {//TODO Check if this is an admin layer. If so, remove it and check bool when needed
                 playerObject.layer = 11;
             }
         }

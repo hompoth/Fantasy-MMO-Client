@@ -30,12 +30,10 @@ public abstract class AutoTask
                     // Use spell/item
                 }
                 else if(mapPath.Count > 1) {
-                    mapPath.RemoveFirst();
-                    MapTile targetTile = mapPath.First();
+                    MapTile targetTile = mapPath.ElementAt(1);
                     LinkedList<MapTile> walkPath = await pathManager.GetWalkPath(gameManager, start, targetTile);
                     if(walkPath.Count > 1) {
-                        walkPath.RemoveFirst();
-                        MapTile nextTile = walkPath.First();
+                        MapTile nextTile = walkPath.ElementAt(1);
                         Vector3 direction = new Vector3(nextTile.Item2 - start.Item2, -(nextTile.Item3 - start.Item3), 0);
                         gameManager.HandlePlayerPosition(direction, false);
                     }

@@ -7,8 +7,6 @@ using WarpDevice = System.Tuple<string, int>;
 
 public static class UserPrefs
 {
-    public static string playerName;
-
     public static void DeleteAll() {
         PlayerPrefs.DeleteAll();
     }
@@ -17,28 +15,28 @@ public static class UserPrefs
         PlayerPrefs.Save();
     }
 
-    public static bool HasCommandBarIndex(int index) {
+    public static bool HasCommandBarIndex(int index, string playerName) {
         return PlayerPrefs.HasKey("CommandBar-ReferenceIndex-" + playerName + "-" + index) || PlayerPrefs.HasKey("CommandBar-ReferenceWindowType-" + playerName + "-" + index);
     }
 
-    public static int GetCommandBarReferenceIndex(int index) {
+    public static int GetCommandBarReferenceIndex(int index, string playerName) {
         return PlayerPrefs.GetInt("CommandBar-ReferenceIndex-" + playerName + "-" + index, 0);
     }
 
-    public static WindowType GetCommandBarReferenceWindowType(int index) {
+    public static WindowType GetCommandBarReferenceWindowType(int index, string playerName) {
             return GetUserPrefEnumValue<WindowType>("CommandBar-ReferenceWindowType-" + playerName + "-" + index);
     }
 
-    public static void SetCommandBarReferenceIndex(int index, int referenceIndex) {
+    public static void SetCommandBarReferenceIndex(int index, int referenceIndex, string playerName) {
         PlayerPrefs.SetInt("CommandBar-ReferenceIndex-" + playerName + "-" + index, referenceIndex);
     }
 
-    public static void SetCommandBarReferenceWindowType(int index, WindowType referenceWindowType) {
+    public static void SetCommandBarReferenceWindowType(int index, WindowType referenceWindowType, string playerName) {
             int referenceWindowTypeIndex = EnumHelper.GetIndex<WindowType>(referenceWindowType);
             PlayerPrefs.SetInt("CommandBar-ReferenceWindowType-" + playerName + "-" + index, referenceWindowTypeIndex);
     }
 
-    public static void ClearCommandBarIndex(int index) {
+    public static void ClearCommandBarIndex(int index, string playerName) {
         PlayerPrefs.DeleteKey("CommandBar-ReferenceIndex-" + playerName + "-" + index);
         PlayerPrefs.DeleteKey("CommandBar-ReferenceWindowType-" + playerName + "-" + index);
     }

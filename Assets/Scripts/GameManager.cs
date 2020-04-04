@@ -77,10 +77,6 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	void OnDestroy() {
-		StopAllCoroutines();
-	}
-
 	bool IsConnectedToServer() {
 		return socketConnection != null && m_handleMessages;
 	}
@@ -270,6 +266,10 @@ public class GameManager : MonoBehaviour
 
     public int GetMapId() {
         return m_mapId;
+    }
+
+    public int GetMainPlayerId() {
+        return m_state.GetMainPlayerId();
     }
 
 	public void GetMainPlayerPosition(out int map, out int x, out int y) {
@@ -986,8 +986,13 @@ public class GameManager : MonoBehaviour
 		m_state.AddChatMessage(message, color);
 	}
 
+    public bool HasBeenLoaded() {
+        return m_handleMessages;
+    }
+
 	public void ContinueHandlingMessages() {
 		m_handleMessages = true;
+        m_doneSendingMessages = false;
 		m_messageTimer = Time.time;
 	}
 

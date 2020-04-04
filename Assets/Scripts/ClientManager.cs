@@ -61,7 +61,8 @@ public class ClientManager : MonoBehaviour
 				QuitGame();
 			}
 			else {
-				if (SceneManager.GetActiveScene().name.Equals("LoginScreen")) {
+                string sceneName = SceneManager.GetActiveScene().name;
+				if (IsLoginScreen(sceneName)) {
 					DisplayLoginMessage("Unable to connect to the server.");
 				}
 				else {
@@ -92,22 +93,30 @@ public class ClientManager : MonoBehaviour
 	}
 
 	public static bool IsActiveGameManager(GameManager manager) {
-		GameManager currentGameManager = GetGameManager(m_gameManagerIndex);
 		string sceneName = SceneManager.GetActiveScene().name;
+		GameManager currentGameManager = GetGameManager(m_gameManagerIndex);
 		if(currentGameManager == null) {
 			return true;
 		}
-		if(sceneName.Equals("LoginScreen")) {
-			return true;
-		}
+        if(IsLoginScreen(sceneName)) {
+            return !manager.HasBeenLoaded();
+        }
 		return manager != null && manager.Equals(currentGameManager);
 	}
 
+    private static bool IsLoginScreen(string sceneName) {
+        return sceneName.Equals("LoginScreen");
+    }
+
+    private static bool IsGameWorld(string sceneName) {
+        return sceneName.Equals("GameWorld");
+    }
+
 	static async void ToggleScene(GameManager manager, string sceneName, Action action = null) {
-		if(sceneName.Equals("LoginScreen")) {
+		if(IsLoginScreen(sceneName)) {
 			manager?.HideGameManager();
 		}
-		if(sceneName.Equals("GameWorld")) {
+		if(IsGameWorld(sceneName)) {
         	Cursor.visible = false;
 		}
 		else {
@@ -115,7 +124,7 @@ public class ClientManager : MonoBehaviour
 		}
 		await InitiateLoadingScreen();
 		await UpdateLoadingScreen(manager, sceneName);
-		if(sceneName.Equals("GameWorld")) {
+		if(IsGameWorld(sceneName)) {
 			manager?.ShowGameManager();
 		}
 		if (action != null) {
@@ -134,10 +143,11 @@ public class ClientManager : MonoBehaviour
 	
 	static async void LoadSceneSilently(GameManager manager, string sceneName, string mapName, Action action) {
 		string previousSceneName = SceneManager.GetActiveScene().name;
-		if (!(previousSceneName.Equals("LoginScreen") && sceneName.Equals("LoginScreen"))) {
+		if (!(IsLoginScreen(previousSceneName) && IsLoginScreen(sceneName))) {
 			if(manager != null) {
 				manager.HideGameManager();
 				manager.DeleteWorldObjects();
+                await Task.Delay(500);  // TODO See if this can be handled differently. We need to delay for DeleteWorldObjects
 				await WaitForGameManager(manager);
 			}
 		}
@@ -148,7 +158,7 @@ public class ClientManager : MonoBehaviour
 
 	static async void LoadSceneWithLoadingScreen(GameManager manager, string sceneName, string mapName = "", Action action = null) {
 		string previousSceneName = SceneManager.GetActiveScene().name;
-		if (!(previousSceneName.Equals("LoginScreen") && sceneName.Equals("LoginScreen"))) {
+		if (!(IsLoginScreen(previousSceneName) && IsLoginScreen(sceneName))) {
 			BeforeLoadScene(manager, previousSceneName, sceneName);
 			await InitiateLoadingScreen();
 			await UpdateLoadingScreen(manager, sceneName, mapName);
@@ -156,6 +166,30 @@ public class ClientManager : MonoBehaviour
 		}
 		if (action != null) {
 			action();
+		}
+	}
+
+	static async Task WaitForGameManager(GameManager manager) {
+		while(manager != null && !manager.IsDoneSending()) {
+        	await Task.Yield();
+		}
+	}
+
+	static void BeforeLoadScene(GameManager manager, string previousSceneName, string sceneName) {
+		if(IsGameWorld(sceneName)) {
+        	Cursor.visible = false;
+		}
+		else {
+        	Cursor.visible = true;
+		}
+		if(manager != null) {
+			if(IsLoginScreen(previousSceneName) && IsGameWorld(sceneName)) {
+				AddGameManager(manager);
+			}
+			else {
+				manager.HideGameManager();
+				manager.DeleteWorldObjects();
+			}
 		}
 	}
 
@@ -185,33 +219,9 @@ public class ClientManager : MonoBehaviour
 		}
 	}
 
-	static async Task WaitForGameManager(GameManager manager) {
-		while(manager != null && !manager.IsDoneSending()) {
-        	await Task.Yield();
-		}
-	}
-
-	static void BeforeLoadScene(GameManager manager, string previousSceneName, string sceneName) {
-		if(sceneName.Equals("GameWorld")) {
-        	Cursor.visible = false;
-		}
-		else {
-        	Cursor.visible = true;
-		}
-		if(manager != null) {
-			if(previousSceneName.Equals("LoginScreen") && sceneName.Equals("GameWorld")) {
-				AddGameManager(manager);
-			}
-			else {
-				manager.HideGameManager();
-				manager.DeleteWorldObjects();
-			}
-		}
-	}
-
 	static void AfterLoadScene(GameManager manager, string previousSceneName, string sceneName) {
 		if(manager != null) {
-			if(!previousSceneName.Equals("GameWorld") && sceneName.Equals("GameWorld")) {
+			if(!IsGameWorld(previousSceneName) && IsGameWorld(sceneName)) {
 				manager.LoadWindowPreferences();
 			}
 		}
@@ -247,7 +257,7 @@ public class ClientManager : MonoBehaviour
 
 	public static void NextGameManager() {
 		string currentSceneName = SceneManager.GetActiveScene().name;
-		if(currentSceneName.Equals("GameWorld")) {
+		if(IsGameWorld(currentSceneName)) {
 			if(m_gameManagers.Count > 1) {
 				HideGameManager();
 				m_gameManagerIndex = (m_gameManagerIndex + 1) % m_gameManagers.Count;

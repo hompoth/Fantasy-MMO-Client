@@ -15,6 +15,7 @@ public class AutoController : MonoBehaviour
     CancellationTokenSource m_cts;
     const float MOVEMENT_TASK_TIME = 0.4f;  // TODO Use BASE_MOVEMENT_SPEED from PlayerManager
     List<AutoTask> m_taskList;
+    PathManager m_pathManager;
 
     void Start() {
         m_cts = new CancellationTokenSource();
@@ -22,14 +23,15 @@ public class AutoController : MonoBehaviour
         m_taskList = new List<AutoTask>();
         m_task = AutoType.FollowGroup;
         RefreshAutomation();
+        m_pathManager = PathManager.Instance;
+        m_pathManager.InitializeCache(m_gameManager);
     }
 
     async void CalculateAutoTask(CancellationToken token) {
-        PathManager pathManager = PathManager.Instance;
         while(IsEnabled() && !token.IsCancellationRequested) {
             foreach(AutoTask task in m_taskList) {
-                if(task.IsActive(m_gameManager, pathManager, m_controllerState)) {
-                    await task.Move(m_gameManager, pathManager, m_controllerState);
+                if(task.IsActive(m_gameManager, m_pathManager, m_controllerState)) {
+                    await task.Move(m_gameManager, m_pathManager, m_controllerState);
                     break;
                 }
             }
