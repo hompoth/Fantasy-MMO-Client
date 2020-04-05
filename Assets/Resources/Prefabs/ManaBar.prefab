@@ -154,9 +154,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2651006802367520142}
   - component: {fileID: 2651006802367520143}
-  - component: {fileID: 2651006802367520141}
   - component: {fileID: 2651006802367520140}
   - component: {fileID: -488843759143248927}
+  - component: {fileID: 8452006276078270015}
   m_Layer: 5
   m_Name: ManaBar
   m_TagString: Window
@@ -231,23 +231,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &2651006802367520141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2651006802367520177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04248d20164238a4e9b92e906ad898dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_windowType: 8
-  m_spriteRenderer: {fileID: 2651006802367520143}
-  m_solidOnHover: 0
-  statBarSpriteMask: {fileID: 2651006801973484087}
-  asperetaTextObject: {fileID: 7109554662173328141}
 --- !u!210 &2651006802367520140
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -285,6 +268,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.0625, y: 0.6875}
   m_EdgeRadius: 0
+--- !u!114 &8452006276078270015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651006802367520177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4298896d99b3842b8b6266351e0c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_windowType: 8
+  m_spriteRenderer: {fileID: 2651006802392791366}
+  m_solidOnHover: 0
+  statBarSpriteMask: {fileID: 2651006801973484087}
+  asperetaTextObject: {fileID: 7109554662173328141}
 --- !u!1 &2651006802392791368
 GameObject:
   m_ObjectHideFlags: 0

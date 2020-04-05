@@ -21,7 +21,7 @@ public abstract class AutoAction
 	protected abstract int DelayAction(GameManager gameManager, AutoControllerState state);
 
 	// Use a cancellation token or m_controllerState.IsEnabled
-    private async void LoopAction(CancellationToken token) {
+    protected async void LoopAction(CancellationToken token) {
 		int delay;
         while(m_controllerState.IsActive() && !token.IsCancellationRequested) {
             if(CanUseAction(m_manager, m_controllerState)) {

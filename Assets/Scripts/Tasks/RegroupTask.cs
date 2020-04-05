@@ -19,21 +19,27 @@ public class RegroupTask : AutoTask
         // For instance, if you can't get to the goal, try killing mobs for 15seconds? or until the path is available. 
 		return !IsSurrounded(gameManager, state);
 	}
+    
 	public override async Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
         MapTile goal = GetTargetLocation(gameManager);
-        int distanceFromTarget = pathManager.GetDistanceToPlayer();
-        await MoveToTile(gameManager, pathManager, state, goal, distanceFromTarget);
+        if(goal != null) {
+            int distanceFromTarget = pathManager.GetDistanceToPlayer();
+            await MoveToTile(gameManager, pathManager, state, goal, distanceFromTarget);
+        }
 	}
 
     private MapTile GetTargetLocation(GameManager gameManager) {
         GameManager currentGameManager = ClientManager.GetCurrentGameManager();
-        if(gameManager.Equals(currentGameManager)) {
-            // TODO go to waypoint instead
-            gameManager.GetMainPlayerPosition(out int map, out int x, out int y);
+        if(currentGameManager == null) {
+            return null;
+        }
+        if(!gameManager.Equals(currentGameManager)) {
+            currentGameManager.GetMainPlayerPosition(out int map, out int x, out int y);
             return Tuple.Create(map, x, y);
         }
         else {
-            currentGameManager.GetMainPlayerPosition(out int map, out int x, out int y);
+            // TODO go to waypoint instead
+            gameManager.GetMainPlayerPosition(out int map, out int x, out int y);
             return Tuple.Create(map, x, y);
         }
     }

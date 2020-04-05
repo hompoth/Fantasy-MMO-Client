@@ -171,9 +171,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2101199057105604485}
   - component: {fileID: 2101199057105604484}
-  - component: {fileID: 2101199057105604486}
   - component: {fileID: 2101199057105604487}
   - component: {fileID: -748628619566844086}
+  - component: {fileID: 8459269833305406256}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Window
@@ -248,23 +248,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &2101199057105604486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101199057105604538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04248d20164238a4e9b92e906ad898dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_windowType: 7
-  m_spriteRenderer: {fileID: 2101199057105604484}
-  m_solidOnHover: 0
-  statBarSpriteMask: {fileID: 2101199056443197500}
-  asperetaTextObject: {fileID: 6577656243349393670}
 --- !u!210 &2101199057105604487
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -302,6 +285,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.0625, y: 0.6875}
   m_EdgeRadius: 0
+--- !u!114 &8459269833305406256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101199057105604538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4298896d99b3842b8b6266351e0c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_windowType: 7
+  m_spriteRenderer: {fileID: 2101199057097386829}
+  m_solidOnHover: 0
+  statBarSpriteMask: {fileID: 2101199056443197500}
+  asperetaTextObject: {fileID: 6577656243349393670}
 --- !u!1 &4134952354323529127
 GameObject:
   m_ObjectHideFlags: 0

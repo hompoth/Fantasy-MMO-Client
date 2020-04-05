@@ -375,11 +375,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5609034351866379490}
   - component: {fileID: 5609034351866379491}
-  - component: {fileID: 5609034351866379489}
   - component: {fileID: 5609034351866379488}
   - component: {fileID: 2128813951644810182}
+  - component: {fileID: 8873982266270219607}
   m_Layer: 5
-  m_Name: StatBarUI
+  m_Name: PlayerStatBarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,23 +452,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &5609034351866379489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5609034351866379485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04248d20164238a4e9b92e906ad898dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_windowType: 0
-  m_spriteRenderer: {fileID: 5609034351866379491}
-  m_solidOnHover: 0
-  statBarSpriteMask: {fileID: 5609034351186672475}
-  asperetaTextObject: {fileID: 844207151091524193}
 --- !u!210 &5609034351866379488
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -506,6 +489,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.0625, y: 0.6875}
   m_EdgeRadius: 0
+--- !u!114 &8873982266270219607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609034351866379485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4298896d99b3842b8b6266351e0c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_windowType: 7
+  m_spriteRenderer: {fileID: 5609034351841105962}
+  m_solidOnHover: 0
+  statBarSpriteMask: {fileID: 5609034351186672475}
+  asperetaTextObject: {fileID: 844207151091524193}
 --- !u!1 &7610506318318751424
 GameObject:
   m_ObjectHideFlags: 0

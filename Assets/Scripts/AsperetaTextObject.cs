@@ -7,6 +7,7 @@ public class AsperetaTextObject : MonoBehaviour
 {
     public GameObject m_textOverlay, m_textUnderlay;
     public bool m_isCanvasUI;
+    string m_currentText;
 
     TMP_Text m_tmpOverlay, m_tmpUnderlay;
     string ASPERETA_TEXT_GUIDE = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
@@ -39,6 +40,7 @@ public class AsperetaTextObject : MonoBehaviour
 
     public void SetText(string text) {
         string asperetaText = ConvertToAsperetaText(text);
+        m_currentText = text;
         if (m_tmpOverlay != null) {
             m_tmpOverlay.text = asperetaText;
         }
@@ -49,6 +51,10 @@ public class AsperetaTextObject : MonoBehaviour
 
     public void SetText(int value) {
         SetText(value.ToString());
+    }
+
+    public string GetText() {
+        return m_currentText;
     }
 
     string ConvertToAsperetaText(string text) {

@@ -779,7 +779,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7535468757049424786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84fed90e1808d704186507a76c04a5ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 04248d20164238a4e9b92e906ad898dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_hpBar: {fileID: 3245774349813034070}
@@ -832,9 +832,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6c13e0ca648f748839dff2071f4942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_windowType: 0
   asperetaTextObject: {fileID: 994896670553789749}
-  asperetaStatBar: {fileID: 8022642512029593608}
+  statBar: {fileID: 8022642512029593608}
 --- !u!210 &2374631447855788430
 SortingGroup:
   m_ObjectHideFlags: 0

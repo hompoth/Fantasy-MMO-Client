@@ -81,7 +81,7 @@ public class PlayerManager : MonoBehaviour
     public float attackSpeedMultiplier = 1f;
     public GameObject playerUIObject;
     public AsperetaTextObject nameTextObject;
-    public AsperetaStatBar statBarObject;
+    public StatBarUI statBarObject;
     public SpriteRenderer bodySpriteRenderer;
     public GameObject displayObjects;
     public Spell spell;
@@ -185,6 +185,10 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public int GetPlayerHPPercent() {
+        return playerHP;
+    }
+
     public void SetPlayerMPPercent(int mpPercent) {
         int previousMP = playerMP;
         statBarObject.SetMPBar(mpPercent);
@@ -194,6 +198,10 @@ public class PlayerManager : MonoBehaviour
         if(!(mpPercent == 0 || previousMP == 0)) {
             UpdateHPMPActive();
         }
+    }
+
+    public int GetPlayerMPPercent() {
+        return playerMP;
     }
  
     public void SetPlayerInvisible(bool invis) {

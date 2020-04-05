@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
 	public void UpdateSpellSlot(int slotIndex, string spellName, int soundId, int spellId, string spellTarget, int spellSlotId) {
 		m_state.UpdateSpellSlot(slotIndex, spellName, soundId, spellId, spellTarget, spellSlotId);
         m_state.RefreshCommandBar();
+        m_autoController.Refresh();
 		//TODO Consider making more efficient
 	}
 
@@ -277,6 +278,18 @@ public class GameManager : MonoBehaviour
 		m_state.GetMainPlayerPosition(out x, out y);
 	}
 
+    public string GetMainPlayerClassName() {
+        return m_state.GetMainPlayerClassName();
+    }
+
+    public SlotUI GetSpellSlot(int index) {
+        return m_state.GetWindowSlot(WindowType.SpellsWindow, index);
+    }
+
+    public PartyPlayerUI GetPartyPlayer(int index) {
+        return m_state.GetPartyPlayer(index);
+    }
+
 	public void SetMainPlayer(int playerId) {
 		m_state.SetMainPlayer(playerId, GetPlayer(playerId));
 		if(ClientManager.IsActiveGameManager(this)) {
@@ -297,6 +310,7 @@ public class GameManager : MonoBehaviour
 			int statStr, int statSta, int statInt, int statDex, int armor, int resFire, int resWater, int resEarth, int resAir, int resSpirit, int gold) {
 		m_state.SetMainPlayerStatInfo(guildName, unknown, className, level, maxHp, maxMp, maxSp, curHp, curMp, curSp, 
 			statStr, statSta, statInt, statDex, armor, resFire, resWater, resEarth, resAir, resSpirit, gold);
+        m_autoController.Refresh();
 	}
 
 	public void SetMainPlayerHPMPSP(int hpMax, int mpMax, int spMax, int hp, int mp, int sp, int hpBar, int mpBar) {
@@ -307,6 +321,18 @@ public class GameManager : MonoBehaviour
 			player.SetPlayerMPPercent(mpBar);
 		}
 	}
+
+    public void GetMainPlayerHP(out int hp, out int hpMax) {
+        m_state.GetMainPlayerHealth(out hp, out hpMax);
+    }
+
+    public void GetMainPlayerMP(out int mp, out int mpMax) {
+        m_state.GetMainPlayerMana(out mp, out mpMax);
+    }
+
+    public void GetMainPlayerSP(out int sp, out int spMax) {
+        m_state.GetMainPlayerSpirit(out sp, out spMax);
+    }
 
 	public void SetMainPlayerExperience(int percent, int experience, int experienceTillNextLevel) {
 		m_state.SetMainPlayerExperience(percent, experience, experienceTillNextLevel);
@@ -369,11 +395,13 @@ public class GameManager : MonoBehaviour
 	public void ShowGameManager() {
 		Input.ResetInputAxes();
 		m_playerController.SetActive(true);
+        m_autoController.Enable();
 		m_state.EnableCamera();
 	}
 
 	public void HideGameManager() {
 		m_playerController.SetActive(false);
+        m_autoController.Enable();
 		m_state.DisableCamera();
 	}
 

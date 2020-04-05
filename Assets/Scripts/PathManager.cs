@@ -14,6 +14,7 @@ public sealed class PathManager
 {
     private static readonly Lazy<PathManager> lazy = new Lazy<PathManager>(() => new PathManager());
     int m_warpSpellPriority, m_warpItemPriority, m_distanceToPlayer, m_mapAreaId;
+    bool m_hasInitialized = false, m_hasStartedInitialize = false;
 	List<Tuple<MapTile, MapTile>> m_warpZones;
 	List<Tuple<WarpDevice, MapTile>> m_warpSpells;
 	List<Tuple<WarpDevice, MapTile>> m_warpItems;
@@ -59,14 +60,32 @@ public sealed class PathManager
         }
 		m_warpSpellPriority = 0; // TODO UserPrefs.GetWarpSpellPriority();
 		m_warpItemPriority = 0; // TODO UserPrefs.GetWarpItemPriority();
-        m_distanceToPlayer = 4; // TODO UserPrefs.GetDistanceToPlayer();
+        m_distanceToPlayer = 3; // TODO UserPrefs.GetDistanceToPlayer();
 	}
 
     public async void InitializeCache(GameManager manager) {
-        foreach(Tuple<MapTile, MapTile> warpZone in m_warpZones) {
-            MapTile warpFromTile = warpZone.Item1;
-            await GetMapArea(manager, warpFromTile);
+        if(!m_hasInitialized && !m_hasStartedInitialize) {
+            m_hasStartedInitialize = true;
+            List<Task> mapAreaTaskList = new List<Task>();
+            foreach(int map in m_warpZoneMap.Keys) {
+                mapAreaTaskList.Add(InitializeMapCache(manager, map));
+            }
+            await Task.WhenAll(mapAreaTaskList);
+            m_hasInitialized = true;
         }
+    }
+
+    private async Task InitializeMapCache(GameManager manager, int map) {
+        if(m_warpZoneMap.ContainsKey(map)) {
+            foreach(Tuple<MapTile, MapTile> warpZone in m_warpZoneMap[map]) {
+                MapTile warpFromTile = warpZone.Item1;
+                await GetMapArea(manager, warpFromTile);
+            }
+        }
+    }
+
+    public bool IsInitialized() {
+        return m_hasInitialized;
     }
 
     private void AddWarpZoneToDictionary(Dictionary<int, List<Tuple<MapTile, MapTile>>> warpZoneMap, int map, Tuple<MapTile, MapTile> warpZone) {

@@ -256,6 +256,13 @@ public class PlayerState : MonoBehaviour
         }
         return null;
     }
+
+    public PartyPlayerUI GetPartyPlayer(int index) {
+        if(TryGetPartyWindow(out List<PartyWindowUI> partyWindowList)) {
+            return partyWindowList.FirstOrDefault()?.GetPartyPlayer(index);
+        }
+        return null;
+    }
     
     void CastTargetSpell(int index) {
         m_spellTargetEnabled = true;
@@ -878,6 +885,16 @@ public class PlayerState : MonoBehaviour
         m_playerManager?.GetPlayerPosition(m_gameManager, out x, out y);
     }
 
+    public string GetMainPlayerClassName() {
+        if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
+            CharacterWindowUI characterWindow = characterWindowList.FirstOrDefault();
+            if(characterWindow != null) {
+                return characterWindow.GetClassName();
+            }
+        }
+        return "";
+    }
+
     public void SetMainPlayerPosition(Vector3 worldPosition) {
         Escape();
         m_playerManager?.SetPlayerPosition(worldPosition);
@@ -920,9 +937,9 @@ public class PlayerState : MonoBehaviour
 	}
 
     void SetMainPlayerHealth(int curHp, int maxHp) {
-        if(TryGetHealthBar(out List<StatBarUI> healthBarList)) {
-            foreach(StatBarUI healthBar in healthBarList) {
-                UpdateStatBar(healthBar, curHp, maxHp);
+        if(TryGetHealthBar(out List<PlayerStatBarUI> healthBarList)) {
+            foreach(PlayerStatBarUI healthBar in healthBarList) {
+                UpdatePlayerStatBar(healthBar, curHp, maxHp);
             }
         }
         if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
@@ -932,10 +949,21 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    public void GetMainPlayerHealth(out int curHp, out int maxHp) {
+        curHp = 0;
+        maxHp = 0;
+        if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
+            CharacterWindowUI characterWindow = characterWindowList.FirstOrDefault();
+            if(characterWindow != null) {
+                characterWindow.GetHealth(out curHp, out maxHp);
+            }
+        }
+    }
+
     void SetMainPlayerMana(int curMp, int maxMp) {
-        if(TryGetManaBar(out List<StatBarUI> manaBarList)) {
-            foreach(StatBarUI manaBar in manaBarList) {
-                UpdateStatBar(manaBar, curMp, maxMp);
+        if(TryGetManaBar(out List<PlayerStatBarUI> manaBarList)) {
+            foreach(PlayerStatBarUI manaBar in manaBarList) {
+                UpdatePlayerStatBar(manaBar, curMp, maxMp);
             }
         }
         if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
@@ -945,10 +973,21 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    public void GetMainPlayerMana(out int curMp, out int maxMp) {
+        curMp = 0;
+        maxMp = 0;
+        if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
+            CharacterWindowUI characterWindow = characterWindowList.FirstOrDefault();
+            if(characterWindow != null) {
+                characterWindow.GetMana(out curMp, out maxMp);
+            }
+        }
+    }
+
     void SetMainPlayerSpirit(int curSp, int maxSp) {
-        if(TryGetSpiritBar(out List<StatBarUI> spiritBarList)) {
-            foreach(StatBarUI spiritBar in spiritBarList) {
-                UpdateStatBar(spiritBar, curSp, maxSp);
+        if(TryGetSpiritBar(out List<PlayerStatBarUI> spiritBarList)) {
+            foreach(PlayerStatBarUI spiritBar in spiritBarList) {
+                UpdatePlayerStatBar(spiritBar, curSp, maxSp);
             }
         }
         if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
@@ -958,7 +997,18 @@ public class PlayerState : MonoBehaviour
         }
     }	
 
-    void UpdateStatBar(StatBarUI statBar, int curStat, int maxStat) {
+    public void GetMainPlayerSpirit(out int curSp, out int maxSp) {
+        curSp = 0;
+        maxSp = 0;
+        if(TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList)) {
+            CharacterWindowUI characterWindow = characterWindowList.FirstOrDefault();
+            if(characterWindow != null) {
+                characterWindow.GetSpirit(out curSp, out maxSp);
+            }
+        }
+    }
+
+    void UpdatePlayerStatBar(PlayerStatBarUI statBar, int curStat, int maxStat) {
         int percent = 0;
         if(maxStat > 0) {
             percent = (int) Mathf.Ceil(100f * curStat / maxStat);
@@ -968,8 +1018,8 @@ public class PlayerState : MonoBehaviour
     }
 
     public void SetMainPlayerExperience(int percent, int experience, int experienceTillNextLevel) {
-        if(TryGetExperienceBar(out List<StatBarUI> experienceBarList)) {
-            foreach(StatBarUI experienceBar in experienceBarList) {
+        if(TryGetExperienceBar(out List<PlayerStatBarUI> experienceBarList)) {
+            foreach(PlayerStatBarUI experienceBar in experienceBarList) {
                 experienceBar.SetStatAmount(experienceTillNextLevel);
                 experienceBar.SetStatPercent(percent);
             }
@@ -1058,20 +1108,20 @@ public class PlayerState : MonoBehaviour
         return TryGetWindow<PartyWindowUI>(WindowType.PartyWindow, out partyWindowList);
     }
 
-    bool TryGetHealthBar(out List<StatBarUI> statBarList) {
-        return TryGetWindow<StatBarUI>(WindowType.HealthBar, out statBarList);
+    bool TryGetHealthBar(out List<PlayerStatBarUI> statBarList) {
+        return TryGetWindow<PlayerStatBarUI>(WindowType.HealthBar, out statBarList);
     }
 
-    bool TryGetManaBar(out List<StatBarUI> statBarList) {
-        return TryGetWindow<StatBarUI>(WindowType.ManaBar, out statBarList);
+    bool TryGetManaBar(out List<PlayerStatBarUI> statBarList) {
+        return TryGetWindow<PlayerStatBarUI>(WindowType.ManaBar, out statBarList);
     }
 
-    bool TryGetSpiritBar(out List<StatBarUI> statBarList) {
-        return TryGetWindow<StatBarUI>(WindowType.SpiritBar, out statBarList);
+    bool TryGetSpiritBar(out List<PlayerStatBarUI> statBarList) {
+        return TryGetWindow<PlayerStatBarUI>(WindowType.SpiritBar, out statBarList);
     }
 
-    bool TryGetExperienceBar(out List<StatBarUI> statBarList) {
-        return TryGetWindow<StatBarUI>(WindowType.ExperienceBar, out statBarList);
+    bool TryGetExperienceBar(out List<PlayerStatBarUI> statBarList) {
+        return TryGetWindow<PlayerStatBarUI>(WindowType.ExperienceBar, out statBarList);
     }
 
     bool TryGetCharacterWindow(out List<CharacterWindowUI> characterWindowList) {

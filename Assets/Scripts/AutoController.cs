@@ -15,12 +15,14 @@ public class AutoController : MonoBehaviour
     CancellationTokenSource m_cts;
     const float MOVEMENT_TASK_TIME = 0.4f;  // TODO Use BASE_MOVEMENT_SPEED from PlayerManager
     List<AutoTask> m_taskList;
+    List<AutoAction> m_actionList;
     PathManager m_pathManager;
 
     void Start() {
         m_cts = new CancellationTokenSource();
         m_controllerState = new AutoControllerState();
         m_taskList = new List<AutoTask>();
+        m_actionList = new List<AutoAction>();
         m_task = AutoType.FollowGroup;
         RefreshAutomation();
         m_pathManager = PathManager.Instance;
@@ -48,6 +50,29 @@ public class AutoController : MonoBehaviour
     }
     
     private void PopulateAutoAction(CancellationToken token) {
+        m_actionList.Clear();
+
+        string playerClass = m_gameManager.GetMainPlayerClassName();
+        if(playerClass.Equals("Priest")) {
+            bool hasHealing = false, hasSacrifice = false, hasRegeneration = false;
+            for(int index = 1; index <= 30; ++index) {
+                SlotUI slot = m_gameManager.GetSpellSlot(index);
+                string spellName = slot.GetSlotName();
+                if(!String.IsNullOrEmpty(spellName)) {
+                    if(!hasHealing && spellName.Contains("Healing")) {
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 1, "Healing"));
+                    }
+                    else if(!hasSacrifice && spellName.Contains("Sacrifice")) {
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 55, "Sacrifice"));
+                    }
+                    else if(!hasRegeneration && (spellName.Contains("Regeneration") || spellName.Contains("Rejuvination"))) {
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 10000, "Regeneration"));
+                    }
+                }
+            }
+        }
+
+        //m_state.IsPlayerInParty(playerId)
         //new AutoAction(m_gameManager, m_controllerState, token);
 
         //AttackAction
@@ -229,6 +254,10 @@ public class AutoController : MonoBehaviour
 
     //Move enable/disable to a higher state and make AutoController non-static. 
     //Have the higher state enable/disable all running controllers.
+    public void Refresh() {
+        RefreshAutomation();
+    }
+
     public void Enable() {
         if(m_controllerState != null) {
             m_controllerState.SetActive(true);

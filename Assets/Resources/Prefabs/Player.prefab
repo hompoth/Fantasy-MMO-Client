@@ -1065,7 +1065,7 @@ MonoBehaviour:
   attackSpeedMultiplier: 1
   playerUIObject: {fileID: 2468990550286804073}
   nameTextObject: {fileID: 2811957871059769695}
-  statBarObject: {fileID: 9071341655105813880}
+  statBarObject: {fileID: 5156766490604391980}
   bodySpriteRenderer: {fileID: 7077436570847082937}
   displayObjects: {fileID: 3678926795415776207}
   spell: {fileID: 3663994833247005339}
@@ -3309,6 +3309,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
       propertyPath: m_text
@@ -3348,16 +3353,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -3413,6 +3408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -3606,6 +3606,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
       propertyPath: m_text
@@ -3645,16 +3650,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -3710,6 +3705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -4406,6 +4406,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
       propertyPath: m_text
@@ -4445,16 +4450,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -4510,6 +4505,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -4713,18 +4713,19 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6806398942991455182, guid: 90bbe63d37f00134f959de720d689050, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 90bbe63d37f00134f959de720d689050, type: 3}
---- !u!114 &9071341655105813880 stripped
+--- !u!114 &5156766490604391980 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6806398942991455182, guid: 90bbe63d37f00134f959de720d689050,
+  m_CorrespondingSourceObject: {fileID: 7207533086476361882, guid: 90bbe63d37f00134f959de720d689050,
     type: 3}
   m_PrefabInstance: {fileID: 2564464544404516534}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84fed90e1808d704186507a76c04a5ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 04248d20164238a4e9b92e906ad898dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1545272796547036689 stripped
@@ -4860,6 +4861,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
       propertyPath: m_text
@@ -4899,16 +4905,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -4964,6 +4960,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -5305,6 +5306,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
       propertyPath: m_text
@@ -5344,16 +5350,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -5409,6 +5405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -5602,6 +5603,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
       propertyPath: m_text
@@ -5641,16 +5647,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -5706,6 +5702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -6289,6 +6290,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
       propertyPath: m_text
@@ -6328,16 +6334,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -6393,6 +6389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -6586,6 +6587,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8983369620318379749, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
       propertyPath: m_text
@@ -6625,16 +6631,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179102489018782934, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1345260331117775037, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}
@@ -6690,6 +6686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864640079926187329, guid: 5d8fef50fd364504bb00262a9d238120,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3297909359802564982, guid: 5d8fef50fd364504bb00262a9d238120,
         type: 3}

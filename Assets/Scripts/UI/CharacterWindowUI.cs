@@ -8,6 +8,7 @@ public class CharacterWindowUI : WindowUI
     public AsperetaTextObject[] m_textObjects;
     public AsperetaTextObject m_playerName, m_guildName, m_className, m_playerLevel, m_experience, m_strength, m_stamina, m_intelligence, 
         m_dexterity, m_armor, m_fireResist, m_waterResist, m_earthResist, m_airResist, m_spiritResist, m_gold, m_health, m_mana, m_spirit;
+    int m_curHp, m_maxHp, m_curMp, m_maxMp, m_curSp, m_maxSp;
 
     new void Awake() {
         base.Awake();
@@ -63,15 +64,36 @@ public class CharacterWindowUI : WindowUI
     }
     
     public void SetHealth(int curHp, int maxHp) {
+        m_curHp = curHp;
+        m_maxHp = maxHp;
         m_health.SetText(curHp + "/" + maxHp);
+    }
+
+    public void GetHealth(out int curHp, out int maxHp) {
+        curHp = m_curHp;
+        maxHp = m_maxHp;
     }
     
     public void SetMana(int curMp, int maxMp) {
+        m_curMp = curMp;
+        m_maxMp = maxMp;
         m_mana.SetText(curMp + "/" + maxMp);
+    }
+
+    public void GetMana(out int curMp, out int maxMp) {
+        curMp = m_curMp;
+        maxMp = m_maxMp;
     }
     
     public void SetSpirit(int curSp, int maxSp) {
+        m_curSp = curSp;
+        m_maxSp = maxSp;
         m_spirit.SetText(curSp + "/" + maxSp);
+    }
+
+    public void GetSpirit(out int curSp, out int maxSp) {
+        curSp = m_curSp;
+        maxSp = m_maxSp;
     }
     
     public void SetGuildName(string guildName) {
@@ -80,6 +102,10 @@ public class CharacterWindowUI : WindowUI
 
     public void SetClassName(string className) {
         m_className.SetText(className);
+    }
+
+    public string GetClassName() {
+        return m_className.GetText();
     }
     
     public void SetPlayerLevel(int level){
