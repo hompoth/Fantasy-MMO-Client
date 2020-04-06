@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -9,21 +10,22 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using MapTile = System.Tuple<int, int, int>;
 using WarpDevice = System.Tuple<string, int>;
+using WarpZone = System.Tuple<System.Tuple<int, int, int>, System.Tuple<int, int, int>>;
 
 public sealed class PathManager
 {
     private static readonly Lazy<PathManager> lazy = new Lazy<PathManager>(() => new PathManager());
     int m_warpSpellPriority, m_warpItemPriority, m_distanceToPlayer, m_mapAreaId;
     bool m_hasInitialized = false, m_hasStartedInitialize = false;
-	List<Tuple<MapTile, MapTile>> m_warpZones;
-	List<Tuple<WarpDevice, MapTile>> m_warpSpells;
-	List<Tuple<WarpDevice, MapTile>> m_warpItems;
+	List<WarpZone> m_warpZones;
+	List<Tuple<WarpDevice, MapTile>> m_warpSpells, m_warpItems;
     List<Tuple<int, int, int, Tuple<LinkedList<MapTile>, WarpDevice, int>>> m_playerMapPathCache;
     List<Tuple<int, int, int, LinkedList<MapTile>, float>> m_playerWalkPathCache;
-    Dictionary<int, List<Tuple<MapTile, MapTile>>> m_warpZoneMap;
-    Dictionary<Tuple<MapTile, MapTile>, int> m_walkDistanceMap;
-    Dictionary<Tuple<int, int>, Dictionary<int, List<Tuple<MapTile, MapTile>>>> m_mapAreaWarpZones;
-    Dictionary<MapTile, int> m_mapAreaMap;
+    ConcurrentDictionary<WarpZone, int> m_walkDistanceMap;
+    ConcurrentDictionary<Tuple<int, int>, ConcurrentDictionary<int, List<WarpZone>>> m_mapAreaWarpZones;
+    ConcurrentDictionary<int, List<WarpZone>> m_warpZoneMap, m_warpZoneArea;
+    ConcurrentDictionary<MapTile, int> m_mapAreaMap;
+    HashSet<MapTile> m_blockedTiles;
     HashSet<MapTile> m_warpStartSet, m_warpEndSet;
 
     float WALK_PATH_RESET_TIMER = 4f;
@@ -36,21 +38,23 @@ public sealed class PathManager
     }
 
 	private PathManager() {
+        m_blockedTiles = new HashSet<MapTile>();
 		m_warpZones = UserPrefs.GetWarpZones();
 		m_warpSpells = UserPrefs.GetWarpSpells();
 		m_warpItems = UserPrefs.GetWarpItems();
         if(m_warpZones.Count == 0 && m_warpSpells.Count == 0 && m_warpItems.Count == 0) {
             LoadWarpDefaults();
         }
-        m_walkDistanceMap = new Dictionary<Tuple<MapTile, MapTile>, int>();
-        m_warpZoneMap = new Dictionary<int, List<Tuple<MapTile, MapTile>>>();
-        m_mapAreaMap = new Dictionary<MapTile, int>();
-        m_mapAreaWarpZones = new Dictionary<Tuple<int, int>, Dictionary<int, List<Tuple<MapTile, MapTile>>>>();
+        m_walkDistanceMap = new ConcurrentDictionary<WarpZone, int>();
+        m_mapAreaWarpZones = new ConcurrentDictionary<Tuple<int, int>, ConcurrentDictionary<int, List<WarpZone>>>();
+        m_warpZoneMap = new ConcurrentDictionary<int, List<WarpZone>>();
+        m_warpZoneArea = new ConcurrentDictionary<int, List<WarpZone>>();
+        m_mapAreaMap = new ConcurrentDictionary<MapTile, int>();
         m_warpStartSet = new HashSet<MapTile>();
         m_warpEndSet = new HashSet<MapTile>();
         m_playerMapPathCache = new List<Tuple<int, int, int, Tuple<LinkedList<MapTile>, WarpDevice, int>>>();
         m_playerWalkPathCache = new List<Tuple<int, int, int, LinkedList<MapTile>, float>>();
-        foreach(Tuple<MapTile, MapTile> warpZone in m_warpZones) {
+        foreach(WarpZone warpZone in m_warpZones) {
             MapTile warpFromTile = warpZone.Item1;
             MapTile warpToTile = warpZone.Item2;
             int warpFromMap = warpFromTile.Item1;
@@ -66,20 +70,26 @@ public sealed class PathManager
     public async void InitializeCache(GameManager manager) {
         if(!m_hasInitialized && !m_hasStartedInitialize) {
             m_hasStartedInitialize = true;
+            LoadBlockedTiles();
             List<Task> mapAreaTaskList = new List<Task>();
             foreach(int map in m_warpZoneMap.Keys) {
                 mapAreaTaskList.Add(InitializeMapCache(manager, map));
             }
             await Task.WhenAll(mapAreaTaskList);
+            foreach(WarpZone warpZone in m_warpZones) {
+                MapTile warpToTile = warpZone.Item2;
+                await GetMapArea(manager, warpToTile);
+            }
             m_hasInitialized = true;
         }
     }
 
     private async Task InitializeMapCache(GameManager manager, int map) {
         if(m_warpZoneMap.ContainsKey(map)) {
-            foreach(Tuple<MapTile, MapTile> warpZone in m_warpZoneMap[map]) {
+            foreach(WarpZone warpZone in m_warpZoneMap[map]) {
                 MapTile warpFromTile = warpZone.Item1;
-                await GetMapArea(manager, warpFromTile);
+                int warpFromArea = await GetMapArea(manager, warpFromTile);
+                AddWarpZoneToDictionary(m_warpZoneArea, warpFromArea, warpZone);
             }
         }
     }
@@ -88,13 +98,29 @@ public sealed class PathManager
         return m_hasInitialized;
     }
 
-    private void AddWarpZoneToDictionary(Dictionary<int, List<Tuple<MapTile, MapTile>>> warpZoneMap, int map, Tuple<MapTile, MapTile> warpZone) {
+    private void AddWarpZoneToDictionary(ConcurrentDictionary<int, List<WarpZone>> warpZoneMap, int map, WarpZone warpZone) {
         if(warpZoneMap.ContainsKey(map)) {
             warpZoneMap[map].Add(warpZone);
         }
         else {
-            warpZoneMap[map] = new List<Tuple<MapTile, MapTile>>();
+            warpZoneMap[map] = new List<WarpZone>();
             warpZoneMap[map].Add(warpZone);
+        }
+    }
+
+    private void LoadBlockedTiles() {
+        for(int mapId = 1; mapId <= 200; mapId++) { // TODO Replace if keeping
+            Tilemap tilemap = GameManager.GetTileMap(mapId);
+            if(tilemap != null) {
+                for(int x = 1; x <= 100; x++) {  
+                    for(int y = 1; y <= 100; y++) {
+                        if(GameManager.IsMapPositionBlocked(tilemap, x, y)) {
+                            MapTile tile = Tuple.Create(mapId, x, y);
+                            m_blockedTiles.Add(tile);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -456,52 +482,41 @@ public sealed class PathManager
         return m_distanceToPlayer;
     }
 
-    private async Task<Dictionary<int, List<Tuple<MapTile, MapTile>>>> GetWarpZonesToGoal(GameManager manager, MapTile start, MapTile goal) {
-        Dictionary<int, List<Tuple<MapTile, MapTile>>> potentialWarpZones = new Dictionary<int, List<Tuple<MapTile, MapTile>>>();
-        Dictionary<int, List<Tuple<MapTile, MapTile>>> usedWarpZones = new Dictionary<int, List<Tuple<MapTile, MapTile>>>();
-        Queue<Tuple<int, int>> areaOpenQueue = new Queue<Tuple<int, int>>();
+    private async Task<ConcurrentDictionary<int, List<WarpZone>>> GetWarpZonesToGoal(GameManager manager, MapTile start, MapTile goal) {
+        ConcurrentDictionary<int, List<WarpZone>> potentialWarpZones = new ConcurrentDictionary<int, List<WarpZone>>();
+        ConcurrentDictionary<int, List<WarpZone>> usedWarpZones = new ConcurrentDictionary<int, List<WarpZone>>();
+        Queue<int> areasToCheck = new Queue<int>();
+        Queue<int> openAreaQueue = new Queue<int>();
         List<int> closedAreaList = new List<int>();
-        int startMap = start.Item1;
         int startArea = await GetMapArea(manager, start);
         int goalArea = await GetMapArea(manager, goal);
         Tuple<int, int> startGoalZone = Tuple.Create(startArea, goalArea);
-        bool goalFound = false; 
+        bool goalFound = false;
         if(m_mapAreaWarpZones.ContainsKey(startGoalZone)) {
             return m_mapAreaWarpZones[startGoalZone];
         }
-        if(!closedAreaList.Contains(startArea)) {
-            areaOpenQueue.Enqueue(Tuple.Create(startMap, startArea));
-            closedAreaList.Add(startArea);
-        }
-        while(areaOpenQueue.Count > 0) {
-            Tuple<int, int> areaMap = areaOpenQueue.Dequeue();
-            int map = areaMap.Item1;
-            int area = areaMap.Item2;
-            if(area != goalArea) {
-                if(m_warpZoneMap.ContainsKey(map)) {
-                    List<Tuple<int, int>> areasToClose = new List<Tuple<int, int>>();
-                    foreach(Tuple<MapTile, MapTile> warpZone in m_warpZoneMap[map]) {   // TODO replace with area map.
-                        MapTile warpFromTile = warpZone.Item1;
-                        int mapAreaFrom = await GetMapArea(manager, warpFromTile);
-                        if(mapAreaFrom == area) {
+        areasToCheck.Enqueue(startArea);
+        while(areasToCheck.Count > 0 && !goalFound) {
+            while(areasToCheck.Count > 0) {
+                int warpToArea = areasToCheck.Dequeue();
+                if(warpToArea == goalArea) {
+                    goalFound = true;
+                }
+                if(!closedAreaList.Contains(warpToArea)) {
+                    openAreaQueue.Enqueue(warpToArea);
+                    closedAreaList.Add(warpToArea);
+                }
+            }
+            while(openAreaQueue.Count > 0) {
+                int area = openAreaQueue.Dequeue();
+                if(area != goalArea) {        
+                    if(m_warpZoneArea.ContainsKey(area)) {
+                        foreach(WarpZone warpZone in m_warpZoneArea[area]) {
                             MapTile warpToTile = warpZone.Item2;
-                            int warpToMap = warpToTile.Item1;
                             int warpToArea = await GetMapArea(manager, warpToTile);
                             if(!closedAreaList.Contains(warpToArea)) {
-                                areasToClose.Add(Tuple.Create(warpToMap, warpToArea));
+                                areasToCheck.Enqueue(warpToArea);
                                 AddWarpZoneToDictionary(potentialWarpZones, warpToArea, warpZone);
-                            }
-                        }
-                    }
-                    if(!goalFound) {
-                        foreach(Tuple<int, int> newAreaMap in areasToClose) {
-                            int warpToArea = newAreaMap.Item2;
-                            if(warpToArea == goalArea) {
-                                goalFound = true;
-                            }
-                            if(!closedAreaList.Contains(warpToArea)) {
-                                areaOpenQueue.Enqueue(newAreaMap);
-                                closedAreaList.Add(warpToArea);
                             }
                         }
                     }
@@ -511,15 +526,15 @@ public sealed class PathManager
         Queue<int> currentAreaQueue = new Queue<int>();
         Queue<int> nextAreaQueue = new Queue<int>();
         List<int> closedNextAreaList = new List<int>();
-        nextAreaQueue.Enqueue(goalArea);
         int currentArea = -1;
+        nextAreaQueue.Enqueue(goalArea);
         while(nextAreaQueue.Count > 0 && currentArea != startArea) {
             currentAreaQueue = new Queue<int>(nextAreaQueue);
             nextAreaQueue.Clear();
             while(currentAreaQueue.Count > 0 && currentArea != startArea) {
                 currentArea = currentAreaQueue.Dequeue();
                 if(potentialWarpZones.ContainsKey(currentArea)) {
-                    foreach(Tuple<MapTile, MapTile> warpZone in potentialWarpZones[currentArea]) {
+                    foreach(WarpZone warpZone in potentialWarpZones[currentArea]) {
                         MapTile warpFromTile = warpZone.Item1;
                         int warpFromArea = await GetMapArea(manager, warpFromTile);
                         MapTile warpToTile = warpZone.Item2;
@@ -577,38 +592,32 @@ public sealed class PathManager
         return minMapPath;
     }
 
-	public async Task<Tuple<LinkedList<MapTile>, WarpDevice, int>> GetMapPathCore(GameManager manager, MapTile start, MapTile goal, WarpDevice warpDevice, int pathLength) {
+    public async Task<Tuple<LinkedList<MapTile>, WarpDevice, int>> GetMapPathCore(GameManager manager, MapTile start, MapTile goal, WarpDevice warpDevice, int pathLength) {
         await Task.Yield();
-        Dictionary<int, List<Tuple<MapTile, MapTile>>> usedWarpZones = await GetWarpZonesToGoal(manager, start, goal);
-		Dictionary<MapTile, MapTile> cameFrom = new Dictionary<MapTile, MapTile>();
-		Dictionary<MapTile, int> gScore = new Dictionary<MapTile, int>();
-        Queue<Tuple<MapTile, MapTile>> openQueue = new Queue<Tuple<MapTile, MapTile>>();
+        ConcurrentDictionary<int, List<WarpZone>> usedWarpZones = await GetWarpZonesToGoal(manager, start, goal);
+		ConcurrentDictionary<MapTile, MapTile> cameFrom = new ConcurrentDictionary<MapTile, MapTile>();
+		ConcurrentDictionary<MapTile, int> gScore = new ConcurrentDictionary<MapTile, int>();
+        Queue<WarpZone> openQueue = new Queue<WarpZone>();
+        List<Task> adjacentWarpZonesTaskList = new List<Task>();
         int startArea = await GetMapArea(manager, start);
         int goalArea = await GetMapArea(manager, goal);
-        usedWarpZones = new Dictionary<int, List<Tuple<MapTile, MapTile>>>(usedWarpZones);
+        usedWarpZones = new ConcurrentDictionary<int, List<WarpZone>>(usedWarpZones);
         AddWarpZoneToDictionary(usedWarpZones, goalArea, Tuple.Create(goal, goal));
         openQueue.Enqueue(Tuple.Create(start, start));
         gScore[start] = 0;
         while(openQueue.Count > 0) {
-            Tuple<MapTile, MapTile> currentWarp = openQueue.Dequeue();
-            MapTile currentFrom = currentWarp.Item1;
-            MapTile currentTo = currentWarp.Item2;
-            int area = await GetMapArea(manager, currentTo);
-            if(usedWarpZones.ContainsKey(area)) {
-                foreach(Tuple<MapTile, MapTile> warpZone in usedWarpZones[area]) {
-                    MapTile warpFromTile = warpZone.Item1;
-                    int distance = 0;
-                    if(currentTo.Equals(warpFromTile) || (distance = await GetDistanceToPoint(manager, currentTo, warpFromTile)) > 0) {
-                        int currentGScore = gScore[currentFrom] + distance;
-                        if(!gScore.ContainsKey(warpFromTile) || currentGScore < gScore[warpFromTile]) {
-                            cameFrom[warpFromTile] = currentFrom;
-                            gScore[warpFromTile] = currentGScore;
-                            if(!openQueue.Contains(warpZone)) {
-                                openQueue.Enqueue(warpZone);
-                            }
-                        }
+            while(openQueue.Count > 0) {
+                WarpZone currentWarp = openQueue.Dequeue();
+                adjacentWarpZonesTaskList.Add(GetAdjacentWarpZones(manager, usedWarpZones, cameFrom, gScore, currentWarp));
+            }
+            while(adjacentWarpZonesTaskList.Count > 0) {
+                Task<List<WarpZone>> task = (Task<List<WarpZone>>) await Task.WhenAny(adjacentWarpZonesTaskList);
+                foreach(WarpZone warpZone in task.Result) {
+                    if(!openQueue.Contains(warpZone)) {
+                        openQueue.Enqueue(warpZone);
                     }
                 }
+                adjacentWarpZonesTaskList.Remove(task);
             }
         }
         LinkedList<MapTile> path = new LinkedList<MapTile>();
@@ -625,6 +634,30 @@ public sealed class PathManager
         return Tuple.Create(path, warpDevice, pathLength);
     }
 
+    private async Task<List<WarpZone>> GetAdjacentWarpZones(GameManager manager, ConcurrentDictionary<int, List<WarpZone>> usedWarpZones, ConcurrentDictionary<MapTile, MapTile> cameFrom, ConcurrentDictionary<MapTile, int> gScore, WarpZone currentWarp) {
+        List<WarpZone> openSet = new List<WarpZone>();
+        MapTile currentFrom = currentWarp.Item1;
+        MapTile currentTo = currentWarp.Item2;
+        int area = await GetMapArea(manager, currentTo);
+        if(usedWarpZones.ContainsKey(area)) {
+            foreach(WarpZone warpZone in usedWarpZones[area]) {
+                MapTile warpFromTile = warpZone.Item1;
+                int distance = 0;
+                if(currentTo.Equals(warpFromTile) || (distance = await GetDistanceToPoint(manager, currentTo, warpFromTile)) > 0) {
+                    int currentGScore = gScore[currentFrom] + distance;
+                    if(!gScore.ContainsKey(warpFromTile) || currentGScore < gScore[warpFromTile]) {
+                        cameFrom[warpFromTile] = currentFrom;
+                        gScore[warpFromTile] = currentGScore;
+                        if(!openSet.Contains(warpZone)) {
+                            openSet.Add(warpZone);
+                        }
+                    }
+                }
+            }
+        }
+        return openSet;
+    }
+
     public async Task<LinkedList<MapTile>> GetWalkPath(GameManager manager, MapTile start, MapTile goal, bool forceMapPosition = false) {
         int startArea = await GetMapArea(manager, start);
         int goalArea = await GetMapArea(manager, goal);
@@ -632,10 +665,10 @@ public sealed class PathManager
             if((previousPath.Count > WALK_PATH_RESET_COUNT) && (Time.time - timer < WALK_PATH_RESET_TIMER)) {
                 int tileCount = 0;
                 bool tileBlocked = false;
-                Tilemap tilemap = GameManager.GetTileMap(start.Item1);
+                int startMap = start.Item1;
                 foreach(MapTile tile in previousPath) {
                     int x = tile.Item2, y = tile.Item3;
-                    if(IsPositionBlocked(manager, tilemap, true, x, y)) {
+                    if(IsPositionBlocked(manager, true, startMap, x, y)) {
                         tileBlocked = true;
                     }
                     if(++tileCount >= WALK_PATH_BLOCK_COUNT || tileBlocked) break;
@@ -664,19 +697,19 @@ public sealed class PathManager
             }
         }
         timer = Time.time + UnityEngine.Random.Range (0f, 2f);
+        goal = await GetClosestUnblockedPosition(manager, start, goal);
         LinkedList<MapTile> path = await GetWalkPathCore(manager, start, goal, forceMapPosition);
         AddWalkPathCache(manager, startArea, goalArea, path, timer);
         return path;
     }
 
-    public async Task<LinkedList<MapTile>> GetWalkPathCore(GameManager manager, MapTile start, MapTile goal, bool forceMapPosition = false) {
+    public async Task<LinkedList<MapTile>> GetWalkPathCore(GameManager manager, MapTile start, MapTile goal, bool ignorePlayers = false) {
         await Task.Yield();
-        goal = await GetClosestUnblockedPosition(manager, start, goal);
-        Tuple<MapTile, MapTile> warpZone = Tuple.Create(start, goal);
+        WarpZone warpZone = Tuple.Create(start, goal);
         List<MapTile> openSet = new List<MapTile>();
-		Dictionary<MapTile, MapTile> cameFrom = new Dictionary<MapTile, MapTile>();
-		Dictionary<MapTile, int> gScore = new Dictionary<MapTile, int>();
-		Dictionary<MapTile, int> fScore = new Dictionary<MapTile, int>();
+		ConcurrentDictionary<MapTile, MapTile> cameFrom = new ConcurrentDictionary<MapTile, MapTile>();
+		ConcurrentDictionary<MapTile, int> gScore = new ConcurrentDictionary<MapTile, int>();
+		ConcurrentDictionary<MapTile, int> fScore = new ConcurrentDictionary<MapTile, int>();
 		if(start.Item1 == goal.Item1) {
             int startArea = await GetMapArea(manager, start);
             int goalArea = await GetMapArea(manager, goal);
@@ -695,39 +728,74 @@ public sealed class PathManager
             throw new Exception("Invalid map travel. (" + start + ", " + goal + ")");
         }
         int count = 0;
+        List<Task> adjacentTilesTaskList = new List<Task>();
 		while(openSet.Count > 0) {
 			int minDistance = Int32.MaxValue;
-			MapTile current = openSet.First();
+			List<MapTile> currentList = new List<MapTile>();
 			foreach(MapTile tile in openSet) {
 				int currentDistance = fScore[tile];
 				if(currentDistance < minDistance) {
 					minDistance = currentDistance;
-					current = tile;
+					currentList.Clear();
+                    currentList.Add(tile);
 				}
+                else if(currentDistance == minDistance) {
+                    currentList.Add(tile);
+                }
 			}
-			openSet.Remove(current);
-			if(current.Equals(goal)) {
-				return ConstructPath(cameFrom, goal);
-			}
-            // Find a way to make this loop parallel. Not necessary but it should be faster
-			foreach(MapTile tile in TileNeighbours(manager, current, forceMapPosition)) {
-                if(tile.Equals(goal) || !IsWarpTile(tile)) {
-                    int currentGScore = gScore[current] + 1;
-                    if(!gScore.ContainsKey(tile) || currentGScore < gScore[tile]) {
-                        cameFrom[tile] = current;
-                        fScore[tile] = currentGScore + DistanceHeuristic(tile, goal);
-                        gScore[tile] = currentGScore;
+            foreach(MapTile tile in currentList) {
+                if(tile.Equals(goal)) {
+                    return ConstructPath(cameFrom, goal);
+                }
+			    openSet.Remove(tile);
+            }
+            if(ignorePlayers) {
+                foreach(MapTile current in currentList) {
+                    adjacentTilesTaskList.Add(GetAdjacentTiles(manager, cameFrom, gScore, fScore, current, goal, ignorePlayers, ++count));
+                }
+                while(adjacentTilesTaskList.Count > 0) {
+                    Task<List<MapTile>> task = (Task<List<MapTile>>) await Task.WhenAny(adjacentTilesTaskList);
+                    foreach(MapTile tile in task.Result) {
+                        if(!openSet.Contains(tile)) {
+                            openSet.Add(tile);
+                        }
+                    }
+                    adjacentTilesTaskList.Remove(task);
+                }
+            }
+            else {  // Use the main thread
+                foreach(MapTile current in currentList) {
+                    List<MapTile> adjacentTiles = await GetAdjacentTiles(manager, cameFrom, gScore, fScore, current, goal, ignorePlayers, ++count);
+                    foreach(MapTile tile in adjacentTiles) {
                         if(!openSet.Contains(tile)) {
                             openSet.Add(tile);
                         }
                     }
                 }
-			}
-            if(++count%100 == 0) {
-                await Task.Yield();
             }
 		}
 		return new LinkedList<MapTile>();
+    }
+
+    private async Task<List<MapTile>> GetAdjacentTiles(GameManager manager, ConcurrentDictionary<MapTile, MapTile> cameFrom, ConcurrentDictionary<MapTile, int> gScore, ConcurrentDictionary<MapTile, int> fScore, MapTile current, MapTile goal, bool ignorePlayers, int count) {
+        if(++count%100 == 0) {
+            await Task.Yield();
+        }
+        List<MapTile> openSet = new List<MapTile>();
+        foreach(MapTile tile in TileNeighbours(manager, current, ignorePlayers)) {
+            if(tile.Equals(goal) || !IsWarpTile(tile)) {
+                int currentGScore = gScore[current] + 1;
+                if(!gScore.ContainsKey(tile) || currentGScore < gScore[tile]) {
+                    cameFrom[tile] = current;
+                    fScore[tile] = currentGScore + DistanceHeuristic(tile, goal);
+                    gScore[tile] = currentGScore;
+                    if(!openSet.Contains(tile)) {
+                        openSet.Add(tile);
+                    }
+                }
+            }
+        }
+        return openSet;
     }
 
     private bool TryGetMapPathCache(GameManager manager, int startArea, int goalArea, out Tuple<LinkedList<MapTile>, WarpDevice, int> path) {
@@ -784,7 +852,7 @@ public sealed class PathManager
         int startArea = await GetMapArea(manager, start);
         int goalArea = await GetMapArea(manager, goal);
         if((start.Item1 == goal.Item1) && !start.Equals(goal) && (startArea == goalArea)) {
-            Tuple<MapTile, MapTile> warpZone = Tuple.Create(start, goal);
+            WarpZone warpZone = Tuple.Create(start, goal);
             if(m_walkDistanceMap.ContainsKey(warpZone)) {
                 return m_walkDistanceMap[warpZone];
             }
@@ -817,8 +885,7 @@ public sealed class PathManager
 
     private async Task<int> GetMapArea(GameManager manager, MapTile mapTile) {
         int map = mapTile.Item1, x = mapTile.Item2, y = mapTile.Item3;
-        Tilemap tilemap = GameManager.GetTileMap(map);
-        if(IsPositionBlocked(manager, tilemap, false, x, y)) {
+        if(IsPositionBlocked(manager, false, map, x, y)) {
             return 0;
         }
         if(m_mapAreaMap.ContainsKey(mapTile)) {
@@ -830,51 +897,53 @@ public sealed class PathManager
             List<MapTile> openSet = new List<MapTile>();
             openSet.Add(mapTile);
             m_mapAreaMap[mapTile] = areaId;
+            List<Task> mapAreaTaskList = new List<Task>();
             int count = 0;
             while(openSet.Count > 0) {
-                MapTile current = openSet.First();
-                openSet.Remove(current);
-                foreach(MapTile tile in TileNeighbours(manager, current, true)) {
-                    if(!m_mapAreaMap.ContainsKey(tile)) {
-                        openSet.Add(tile);
-                        m_mapAreaMap[tile] = areaId;
-                    }
+                while(openSet.Count > 0) {
+                    MapTile current = openSet.First();
+                    openSet.Remove(current);
+                    mapAreaTaskList.Add(GetMapAreaCore(manager, current, areaId, ++count));
                 }
-                if(++count%100 == 0) {
-                    await Task.Yield();
+                while(mapAreaTaskList.Count > 0) {
+                    Task<List<MapTile>> task = (Task<List<MapTile>>) await Task.WhenAny(mapAreaTaskList);
+                    foreach(MapTile tile in task.Result) {
+                        openSet.Add(tile);
+                    }
+                    mapAreaTaskList.Remove(task);//
                 }
             }
             return areaId;
         }
     }
 
-	private List<MapTile> TileNeighbours(GameManager manager, MapTile moveFrom, bool forceMapPosition = false) {
+    private async Task<List<MapTile>> GetMapAreaCore(GameManager manager, MapTile tile, int areaId, int count) {
+        if(count%50 == 0) {
+            await Task.Yield();
+        }
+        List<MapTile> openSet = new List<MapTile>();
+        foreach(MapTile neighbour in TileNeighbours(manager, tile, true)) {
+            if(!m_mapAreaMap.ContainsKey(neighbour)) {
+                openSet.Add(neighbour);
+                m_mapAreaMap[neighbour] = areaId;
+            }
+        }
+        return openSet;
+    }
+
+	private List<MapTile> TileNeighbours(GameManager manager, MapTile moveFrom, bool ignorePlayers = false) {
 		List<MapTile> neighbours = new List<MapTile>();
 		int map = moveFrom.Item1, x = moveFrom.Item2, y = moveFrom.Item3;
-        bool sameMap = (manager.GetMapId() == moveFrom.Item1) && !forceMapPosition;
-        Tilemap tilemap = GameManager.GetTileMap(map);
-        if(tilemap) {
-            for(int i = -1; i <= 1; i++) {
-                for(int j = -1; j <= 1; j++) {
-                    if(i != j && (i == 0 || j == 0)) {
-                        if(!IsPositionBlocked(manager, tilemap, sameMap, x + i, y + j)) {
-                            neighbours.Add(Tuple.Create(map, x + i, y + j));
-                        }
+        bool sameMap = (manager.GetMapId() == moveFrom.Item1) && !ignorePlayers;
+        for(int i = -1; i <= 1; i++) {
+            for(int j = -1; j <= 1; j++) {
+                if(i != j && (i == 0 || j == 0)) {
+                    if(!IsPositionBlocked(manager, sameMap, map, x + i, y + j)) {
+                        neighbours.Add(Tuple.Create(map, x + i, y + j));
                     }
                 }
             }
         }
-		return neighbours;
-	}
-
-	private List<Tuple<MapTile, MapTile>> MapNeighbours(MapTile moveFrom, List<Tuple<MapTile, MapTile>> warpZoneList) {
-		List<Tuple<MapTile, MapTile>> neighbours = new List<Tuple<MapTile, MapTile>>();
-		foreach(Tuple<MapTile, MapTile> warpZone in warpZoneList) {
-			MapTile warpFrom = warpZone.Item1;
-			if(warpFrom.Item1 == moveFrom.Item1) {
-				neighbours.Add(warpZone);
-			} 
-		}
 		return neighbours;
 	}
 
@@ -884,12 +953,15 @@ public sealed class PathManager
 		return Mathf.Abs(xDiff) + Mathf.Abs(yDiff);
 	}
 
-    private bool IsPositionBlocked(GameManager manager, Tilemap tilemap, bool sameMap, int x, int y) {
+    private bool IsPositionBlocked(GameManager manager, bool sameMap, int map, int x, int y) {
+        if(x <= 0 || x > 100 || y <= 0 || y > 100) {
+            return true;
+        }
         if(sameMap) {
             return manager.IsWorldPositionBlocked(x, y);
         }
         else {
-            return GameManager.IsMapPositionBlocked(tilemap, x, y);
+            return m_blockedTiles.Contains(Tuple.Create(map, x, y));
         }
     }
 
@@ -899,9 +971,8 @@ public sealed class PathManager
 
     private async Task<MapTile> GetClosestUnblockedPosition(GameManager manager, MapTile start, MapTile goal) {
         int map = goal.Item1;
-        Tilemap tilemap = GameManager.GetTileMap(map);
         bool sameMap = manager.GetMapId() == map;
-        if(tilemap != null && IsPositionBlocked(manager, tilemap, sameMap, goal.Item2, goal.Item3)) {
+        if(IsPositionBlocked(manager, sameMap, map, goal.Item2, goal.Item3)) {
             Queue<MapTile> neighbours = new Queue<MapTile>();
             Queue<MapTile> unblockedTiles = new Queue<MapTile>();
             int goalArea = await GetMapArea(manager, goal);
@@ -915,7 +986,7 @@ public sealed class PathManager
                             if(x + i > 0 && x + i <= 100 && y + j > 0 && y + j <= 100) {
                                 MapTile newTile = Tuple.Create(map, x + i, y + j);
                                 int tileArea = await GetMapArea(manager, current);
-                                if(!IsPositionBlocked(manager, tilemap, sameMap, x + i, y + j) && !IsWarpTile(newTile)) {
+                                if(!IsPositionBlocked(manager, sameMap, map, x + i, y + j) && !IsWarpTile(newTile)) {
                                     if((goalArea == 0) || (goalArea == tileArea)) {
                                         unblockedTiles.Enqueue(newTile);
                                     }
@@ -945,7 +1016,7 @@ public sealed class PathManager
         return goal;
     }
 
-	private LinkedList<MapTile> ConstructPath(Dictionary<MapTile, MapTile> cameFrom, MapTile current) {
+	private LinkedList<MapTile> ConstructPath(ConcurrentDictionary<MapTile, MapTile> cameFrom, MapTile current) {
 		LinkedList<MapTile> path = new LinkedList<MapTile>();
         if(current != null) {
             path.AddFirst(current);

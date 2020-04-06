@@ -308,9 +308,12 @@ public class GameManager : MonoBehaviour
 
 	public void SetMainPlayerStatInfo(string guildName, string unknown, string className, int level, int maxHp, int maxMp, int maxSp, int curHp, int curMp, int curSp, 
 			int statStr, int statSta, int statInt, int statDex, int armor, int resFire, int resWater, int resEarth, int resAir, int resSpirit, int gold) {
+        string previousClassName = GetMainPlayerClassName();
 		m_state.SetMainPlayerStatInfo(guildName, unknown, className, level, maxHp, maxMp, maxSp, curHp, curMp, curSp, 
 			statStr, statSta, statInt, statDex, armor, resFire, resWater, resEarth, resAir, resSpirit, gold);
-        m_autoController.Refresh();
+        if(!String.Equals(previousClassName, className)) {
+            m_autoController.Refresh();
+        }
 	}
 
 	public void SetMainPlayerHPMPSP(int hpMax, int mpMax, int spMax, int hp, int mp, int sp, int hpBar, int mpBar) {

@@ -55,18 +55,21 @@ public class AutoController : MonoBehaviour
         string playerClass = m_gameManager.GetMainPlayerClassName();
         if(playerClass.Equals("Priest")) {
             bool hasHealing = false, hasSacrifice = false, hasRegeneration = false;
-            for(int index = 1; index <= 30; ++index) {
+            for(int index = 30; index >= 1; --index) {
                 SlotUI slot = m_gameManager.GetSpellSlot(index);
                 string spellName = slot.GetSlotName();
                 if(!String.IsNullOrEmpty(spellName)) {
                     if(!hasHealing && spellName.Contains("Healing")) {
-                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 1, "Healing"));
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 5, "Healing"));
+                        hasHealing = true;
                     }
                     else if(!hasSacrifice && spellName.Contains("Sacrifice")) {
                         m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 55, "Sacrifice"));
+                        hasSacrifice = true;
                     }
                     else if(!hasRegeneration && (spellName.Contains("Regeneration") || spellName.Contains("Rejuvination"))) {
-                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 10000, "Regeneration"));
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 10050, "Regeneration"));
+                        hasRegeneration = true;
                     }
                 }
             }
