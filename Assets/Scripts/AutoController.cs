@@ -32,7 +32,7 @@ public class AutoController : MonoBehaviour
     async void CalculateAutoTask(CancellationToken token) {
         while(IsEnabled() && !token.IsCancellationRequested) {
             foreach(AutoTask task in m_taskList) {
-                if(task.IsActive(m_gameManager, m_pathManager, m_controllerState)) {
+                if(await task.IsActive(m_gameManager, m_pathManager, m_controllerState)) {
                     await task.Move(m_gameManager, m_pathManager, m_controllerState);
                     break;
                 }

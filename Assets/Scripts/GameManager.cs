@@ -290,6 +290,17 @@ public class GameManager : MonoBehaviour
         return m_state.GetPartyPlayer(index);
     }
 
+    public List<PartyPlayerUI> GetAllPartyPlayers() {
+        List<PartyPlayerUI> partyPlayerList = new List<PartyPlayerUI>();
+        for(int index = 1; index <= 10; ++index) {
+            PartyPlayerUI partyPlayer = GetPartyPlayer(index);
+            if(partyPlayer != null) {
+                partyPlayerList.Add(partyPlayer);
+            }
+        }
+        return partyPlayerList;
+    }
+
 	public void SetMainPlayer(int playerId) {
 		m_state.SetMainPlayer(playerId, GetPlayer(playerId));
 		if(ClientManager.IsActiveGameManager(this)) {

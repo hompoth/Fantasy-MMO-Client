@@ -17,6 +17,7 @@ public sealed class PathManager
     private static readonly Lazy<PathManager> lazy = new Lazy<PathManager>(() => new PathManager());
     int m_warpSpellPriority, m_warpItemPriority, m_distanceToPlayer, m_mapAreaId;
     bool m_hasInitialized = false, m_hasStartedInitialize = false;
+    MapTile m_safePoint;
 	List<WarpZone> m_warpZones;
 	List<Tuple<WarpDevice, MapTile>> m_warpSpells, m_warpItems;
     List<Tuple<int, int, int, Tuple<LinkedList<MapTile>, WarpDevice, int>>> m_playerMapPathCache;
@@ -65,6 +66,7 @@ public sealed class PathManager
 		m_warpSpellPriority = 0; // TODO UserPrefs.GetWarpSpellPriority();
 		m_warpItemPriority = 0; // TODO UserPrefs.GetWarpItemPriority();
         m_distanceToPlayer = 3; // TODO UserPrefs.GetDistanceToPlayer();
+        m_safePoint = Tuple.Create(1, 50, 50); // TODO UserPrefs.GetSafePoint();
 	}
 
     public async void InitializeCache(GameManager manager) {
@@ -480,6 +482,10 @@ public sealed class PathManager
 
     public int GetDistanceToPlayer() {
         return m_distanceToPlayer;
+    }
+
+    public MapTile GetSafePoint() {
+        return m_safePoint;
     }
 
     private async Task<ConcurrentDictionary<int, List<WarpZone>>> GetWarpZonesToGoal(GameManager manager, MapTile start, MapTile goal) {

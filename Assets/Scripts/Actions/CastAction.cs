@@ -37,15 +37,12 @@ public class CastAction : AutoAction
                 }
                 else {
                     if(mpPercent > 20) {
-                        for(int index = 1; index <= 10; ++index) {
-                            PartyPlayerUI partyPlayer = gameManager.GetPartyPlayer(index);
-                            if(partyPlayer != null) {
-                                if(partyPlayer.GetHPBar() < 90) {
-                                    targetPlayerId = partyPlayer.GetPlayerId();
-                                    break;
-                                }
+                        foreach(PartyPlayerUI partyPlayer in gameManager.GetAllPartyPlayers()) {
+                            if(partyPlayer.GetHPBar() < 90) {
+                                targetPlayerId = partyPlayer.GetPlayerId();
+                                break;
                             }
-                        }
+                        } 
                     }
                 }
                 if(targetPlayerId > 0) {
@@ -60,13 +57,10 @@ public class CastAction : AutoAction
                         targetPlayerId = gameManager.GetMainPlayerId();
                     }
                     else {
-                        for(int index = 1; index <= 10; ++index) {
-                            PartyPlayerUI partyPlayer = gameManager.GetPartyPlayer(index);
-                            if(partyPlayer != null) {
-                                if(partyPlayer.GetMPBar() < 90) {
-                                    targetPlayerId = partyPlayer.GetPlayerId();
-                                    break;
-                                }
+                        foreach(PartyPlayerUI partyPlayer in gameManager.GetAllPartyPlayers()) {
+                            if(partyPlayer.GetMPBar() < 90) {
+                                targetPlayerId = partyPlayer.GetPlayerId();
+                                break;
                             }
                         }
                     }

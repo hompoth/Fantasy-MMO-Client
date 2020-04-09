@@ -276,6 +276,14 @@ public class ClientManager : MonoBehaviour
         return currentGameManager;
     }
 
+    public static List<GameManager> GetAllGameManagers() {
+        List<GameManager> gameManagerList = new List<GameManager>();
+        foreach(GameManager manager in m_gameManagers) {
+            gameManagerList.Add(manager);
+        }
+        return gameManagerList;
+    }
+
 	static void HideGameManager(GameManager manager = default(GameManager)) {
 		if(manager == default(GameManager)) {
 			manager = GetGameManager(m_gameManagerIndex);
