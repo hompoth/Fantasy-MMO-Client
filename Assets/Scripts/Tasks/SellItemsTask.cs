@@ -8,7 +8,7 @@ public class SellItemsTask : AutoTask
 {
 	public async override Task<bool> IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
 		await Task.Yield();
-        return !IsSurrounded(gameManager, state);
+        return false;
 	}
 	public override async Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
         await Task.Yield();

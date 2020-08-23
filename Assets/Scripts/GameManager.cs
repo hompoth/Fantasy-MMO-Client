@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 	private bool m_soundEnabled = true;
     private int m_mapId = 0;
 
-	const int MESSAGE_TIMER_WAIT_TIME = 60;
+	const int MESSAGE_TIMER_WAIT_TIME = 15;
 	const string FILTER_CHAT = "chat", FILTER_GROUP = "group", FILTER_GUILD = "guild", FILTER_TELL = "tell";
 	static string SLASH = Path.DirectorySeparatorChar.ToString();
 
@@ -198,9 +198,9 @@ public class GameManager : MonoBehaviour
 		return playerManager;
 	}
 
-	public PlayerManager[] GetAllPlayerManagers() {
+	public List<PlayerManager> GetAllPlayerManagers() {
 		GameObject[] gameObjects = GetPlayerObjects();
-		return gameObjects.Select(gameObject => gameObject.GetComponent<PlayerManager>()).ToArray();
+		return gameObjects.Select(gameObject => gameObject.GetComponent<PlayerManager>()).ToList();
 	}
 
 	public void ShowPlayerWindow(int windowId) {
@@ -208,14 +208,14 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void UpdatePlayerNameFormat() {
-		PlayerManager[] players = GetAllPlayerManagers();
+		List<PlayerManager> players = GetAllPlayerManagers();
 		foreach(PlayerManager player in players) {
 			player?.UpdateNameVisibility();
 		}
 	}
 
 	public void UpdatePlayerHealthManaFormat() {
-		PlayerManager[] players = GetAllPlayerManagers();
+		List<PlayerManager> players = GetAllPlayerManagers();
 		foreach(PlayerManager player in players) {
 			player?.UpdateHealthManaVisibility();
 		}
@@ -254,6 +254,16 @@ public class GameManager : MonoBehaviour
 		m_state.UpdateWindowLine(windowId, windowLine, description, itemAmount, itemId, itemSlotId, itemSlotColor); 
 		m_state.RefreshCommandBar();
 		//TODO Consider making more efficient
+	}
+
+	public void SetMainPlayerFacingDirection(int x, int y) {
+		Vector3 worldPosition = WorldPosition(x, y, true);
+        PlayerManager player = GetMainPlayerManager();
+		if(player != null) {
+			player.SetPlayerDirection(worldPosition);
+			FacingDirection direction = player.GetPlayerFacingDirection();
+			this.SendFace(direction);
+		}
 	}
 
 	public void SetPlayerPosition(int playerId, int x, int y) {
@@ -317,6 +327,10 @@ public class GameManager : MonoBehaviour
 		m_state.SetMainPlayerAttackSpeed(weaponSpeed);
 	}
 
+	public int GetMainPlayerAttackSpeed() {
+		return m_state.GetMainPlayerAttackSpeed();
+	}
+
 	public void SetMainPlayerStatInfo(string guildName, string unknown, string className, int level, int maxHp, int maxMp, int maxSp, int curHp, int curMp, int curSp, 
 			int statStr, int statSta, int statInt, int statDex, int armor, int resFire, int resWater, int resEarth, int resAir, int resSpirit, int gold) {
         string previousClassName = GetMainPlayerClassName();
@@ -353,7 +367,7 @@ public class GameManager : MonoBehaviour
     }
 
 	public void SetMainPlayerCanSeeInvisible(bool canSeeInvisible) {
-		PlayerManager[] playerManagers = GetAllPlayerManagers();
+		List<PlayerManager> playerManagers = GetAllPlayerManagers();
 		foreach(PlayerManager player in playerManagers) {
 			player.SetMainPlayerCanSeeInvisible(canSeeInvisible);
 			player.UpdatePlayerVisibility();
@@ -411,6 +425,7 @@ public class GameManager : MonoBehaviour
 		m_playerController.SetActive(true);
         m_autoController.Enable();
 		m_state.EnableCamera();
+		m_state.ResetCursor();
 	}
 
 	public void HideGameManager() {
@@ -575,6 +590,10 @@ public class GameManager : MonoBehaviour
 			player.SetPlayerTarget(false);
 			this.SendCast(index, playerId);
 		}
+	}
+
+	public void HandlePlayerAttack() {
+		m_state.Attack();
 	}
 
 	public void LoadPlayer(int playerId, int type, string name, string title, string surname, string guild, int x, int y, int facing, int hpPercent, int bodyId, int poseId, 

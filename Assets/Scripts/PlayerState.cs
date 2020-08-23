@@ -179,6 +179,10 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    public void ResetCursor() {
+        cursor.ResetCursor();
+    }
+
     public void LeftMouseUp(bool controlKeyPressed) {
         cursor.LeftMouseUp(controlKeyPressed);
     }
@@ -902,6 +906,13 @@ public class PlayerState : MonoBehaviour
 
     public void SetMainPlayerAttackSpeed(int weaponSpeed) {
         m_playerManager?.SetPlayerAttackSpeed(weaponSpeed);
+    }
+
+    public int GetMainPlayerAttackSpeed() {
+        if(m_playerManager != null) {
+            return m_playerManager.GetPlayerAttackSpeed();
+        }
+        return 1000;
     }
 
     public void SetMainPlayerStatInfo(string guildName, string unknown, string className, int level, int maxHp, int maxMp, int maxSp, int curHp, int curMp, int curSp, 

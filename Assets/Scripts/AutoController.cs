@@ -23,7 +23,6 @@ public class AutoController : MonoBehaviour
         m_controllerState = new AutoControllerState();
         m_taskList = new List<AutoTask>();
         m_actionList = new List<AutoAction>();
-        m_task = AutoType.FollowGroup;
         RefreshAutomation();
         m_pathManager = PathManager.Instance;
         m_pathManager.InitializeCache(m_gameManager);
@@ -31,13 +30,15 @@ public class AutoController : MonoBehaviour
 
     async void CalculateAutoTask(CancellationToken token) {
         while(IsEnabled() && !token.IsCancellationRequested) {
-            foreach(AutoTask task in m_taskList) {
-                if(await task.IsActive(m_gameManager, m_pathManager, m_controllerState)) {
-                    await task.Move(m_gameManager, m_pathManager, m_controllerState);
-                    break;
+            if(m_pathManager.IsInitialized()) {
+                foreach(AutoTask task in m_taskList) {
+                    if(await task.IsActive(m_gameManager, m_pathManager, m_controllerState)) {
+                        await task.Move(m_gameManager, m_pathManager, m_controllerState);
+                        break;
+                    }
                 }
+                await Task.Delay(TimeSpan.FromSeconds(MOVEMENT_TASK_TIME));
             }
-            await Task.Delay(TimeSpan.FromSeconds(MOVEMENT_TASK_TIME));
         }
     }
 
@@ -51,7 +52,7 @@ public class AutoController : MonoBehaviour
     
     private void PopulateAutoAction(CancellationToken token) {
         m_actionList.Clear();
-
+        m_actionList.Add(new AttackAction(m_gameManager, m_controllerState, token));
         string playerClass = m_gameManager.GetMainPlayerClassName();
         if(playerClass.Equals("Priest")) {
             bool hasHealing = false, hasSacrifice = false, hasRegeneration = false;
@@ -89,6 +90,13 @@ public class AutoController : MonoBehaviour
     
     private void PopulateAutoTask(CancellationToken token) {
         m_taskList.Clear();
+        string playerClass = m_gameManager.GetMainPlayerClassName();
+        if(playerClass.Equals("Warrior")) {
+            m_task = AutoType.FarmGold;
+        }
+        else {
+            m_task = AutoType.FollowGroup;
+        }
         switch(m_task) {
             case AutoType.AttackInSpot:
                 m_taskList.Add(new IdleTask());

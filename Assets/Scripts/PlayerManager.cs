@@ -254,6 +254,10 @@ public class PlayerManager : MonoBehaviour
         UpdatePlayerNameColor();
     }
 
+    public bool IsPlayerMob() {
+        return m_playerType == 2;
+    }
+
     public void SetPlayerGuild(string guild) {
         // TODO Do something with the guild
     }
@@ -319,38 +323,48 @@ public class PlayerManager : MonoBehaviour
         return m_currentDirection.ToMovingDirection();
     }
 
+    public void SetPlayerDirection(Vector3 newPosition) {
+        Vector3 direction = GetPositionDirection(newPosition);
+        Face(direction, false);
+    }
+
+    Vector3 GetPositionDirection(Vector3 newPosition) {
+        Vector3 position, difference, direction = Vector3.down;
+        if(!m_targetLocation.Equals(Vector3.zero)) {
+            position = m_targetLocation;
+        }
+        else {
+            position = rb.transform.position;
+        }
+        difference = newPosition - position;
+        if(Mathf.Abs(difference.x) > Mathf.Abs(difference.y)) {
+            if (difference.x > 0) {
+                direction = Vector3.right;
+            }
+            else {
+                direction = Vector3.left;
+            }
+        }
+        else {
+            if (difference.y > 0) {
+                direction = Vector3.up;
+            }
+            else {
+                direction = Vector3.down;
+            }
+        }
+        return direction;
+    }
+
     public void GetPlayerPosition(GameManager manager, out int x, out int y) {
         Vector3 position = new Vector3(m_targetLocation.x, m_targetLocation.y + 0.5f, 0);
         manager.ServerPosition(position, out x, out y);
     }
 
     public void SetPlayerPosition(Vector3 newPosition, bool moveTowards = false) {
-        Vector3 position, difference, direction = Vector3.down;
+        Vector3 direction = GetPositionDirection(newPosition);
 
-        if(moveTowards) {
-            if(!m_targetLocation.Equals(Vector3.zero)) {
-                position = m_targetLocation;
-            }
-            else {
-                position = rb.transform.position;
-            }
-            difference = newPosition - position;
-            if(Mathf.Abs(difference.x) > Mathf.Abs(difference.y)) {
-                if (difference.x > 0) {
-                    direction = Vector3.right;
-                }
-                else {
-                    direction = Vector3.left;
-                }
-            }
-            else {
-                if (difference.y > 0) {
-                    direction = Vector3.up;
-                }
-                else {
-                    direction = Vector3.down;
-                }
-            }
+        if(moveTowards) {            
             Face(direction, false);
             MoveFrom(newPosition - direction, false);
         }
@@ -362,6 +376,10 @@ public class PlayerManager : MonoBehaviour
 
     public void SetPlayerAttackSpeed(int weaponSpeed) {
         BASE_ATTACK_SPEED = weaponSpeed / 1000f;
+    }
+
+    public int GetPlayerAttackSpeed() {
+        return (int)(BASE_ATTACK_SPEED * 1000);
     }
 
     public void SetPlayerAttacking() {

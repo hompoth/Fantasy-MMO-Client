@@ -10,26 +10,31 @@ using WarpDevice = System.Tuple<string, int>;
 public class RegroupTask : AutoTask
 {
     int REGROUP_REQUIRED_DISTANCE = 12;
+    float REGROUP_TIMEOUT = 5f;
 
 	public override async Task<bool> IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
         bool regroupRequired = false;
-        if(pathManager.IsInitialized()) {
             if(Time.time > state.GetRegroupPointExpireTime()) {
                 regroupRequired = await UpdateRegroupPoint(gameManager, pathManager, state);
             }
-            else if(state.GetRegroupRequired()) {
+            else {
                 MapTile start = GetPlayerPosition(gameManager);
                 MapTile goal = state.GetRegroupPoint();
-                Tuple<LinkedList<MapTile>, WarpDevice, int> mapPathInfo = await pathManager.GetMapPath(gameManager, start, goal);
-                int distance = mapPathInfo.Item3;
-                if(distance <= REGROUP_REQUIRED_DISTANCE) {
-                    regroupRequired = await UpdateRegroupPoint(gameManager, pathManager, state);
-                }
-                else {
+                bool sameArea = await pathManager.IsSameArea(gameManager, start, goal);
+                if(!sameArea) {
                     regroupRequired = true;
                 }
+                else {
+                    Tuple<LinkedList<MapTile>, WarpDevice, int> mapPathInfo = await pathManager.GetMapPath(gameManager, start, goal);
+                    int distance = mapPathInfo.Item3;
+                    if(distance <= REGROUP_REQUIRED_DISTANCE) {
+                        regroupRequired = await UpdateRegroupPoint(gameManager, pathManager, state);
+                    }
+                    else {
+                        regroupRequired = true;
+                    }
+                }
             }
-        }
         return regroupRequired;
 	}
     
@@ -73,8 +78,7 @@ public class RegroupTask : AutoTask
                 state.SetRegroupPoint(safePoint);
             }
         }
-        state.SetRegroupPointExpireTime(Time.time + 5f);
-        state.SetRegroupRequired(regroupRequired);
+        state.SetRegroupPointExpireTime(Time.time + REGROUP_TIMEOUT);
         return regroupRequired;
     }
 }

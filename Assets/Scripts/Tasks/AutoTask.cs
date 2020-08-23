@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 using MapTile = System.Tuple<int, int, int>;
 using WarpDevice = System.Tuple<string, int>;
 
-public abstract class AutoTask
+public abstract class AutoTask : AutoBase
 {
 	public abstract Task<bool> IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state);
 	public abstract Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state);
@@ -16,18 +16,25 @@ public abstract class AutoTask
 	protected bool IsSurrounded(GameManager gameManager, AutoControllerState state) {
 		return state.IsSurrounded(gameManager);
 	}
-    
-    protected MapTile GetPlayerPosition(GameManager manager) {
-        manager.GetMainPlayerPosition(out int map, out int x, out int y);
-        return Tuple.Create(map, x, y);
-    }
 
     protected async Task WalkToTile(GameManager gameManager, PathManager pathManager, AutoControllerState state, MapTile start, MapTile goal, int distanceFromGoal = 0) {
-        LinkedList<MapTile> walkPath = await pathManager.GetWalkPath(gameManager, start, goal);
-        if(walkPath.Count > distanceFromGoal + 1) {
-            MapTile nextTile = walkPath.ElementAt(1);
-            Vector3 direction = new Vector3(nextTile.Item2 - start.Item2, -(nextTile.Item3 - start.Item3), 0);
-            gameManager.HandlePlayerPosition(direction, false);
+        LinkedList<MapTile> walkPath = null;
+        if(await pathManager.TryGetWalkPath(gameManager, start, goal, value => walkPath = value)) {
+            
+            if(ClientManager.IsActiveGameManager(gameManager)) {    // TODO REMOVE
+                string pathString = "Current Path:";
+                foreach(MapTile tile in walkPath) {
+                    pathString = pathString + " " + tile;  
+                }
+                Debug.Log(pathString);
+            }
+            
+            
+            if(walkPath.Count > distanceFromGoal + 1) {
+                MapTile nextTile = walkPath.ElementAt(1);
+                Vector3 direction = new Vector3(nextTile.Item2 - start.Item2, -(nextTile.Item3 - start.Item3), 0);
+                gameManager.HandlePlayerPosition(direction, false);
+            }
         }
     }
 

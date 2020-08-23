@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Threading;
 using System.Threading.Tasks;
 
-public abstract class AutoAction
+public abstract class AutoAction : AutoBase
 {
 	GameManager m_manager;
 	AutoControllerState m_controllerState;

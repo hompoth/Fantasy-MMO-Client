@@ -4,10 +4,10 @@ using WarpDevice = System.Tuple<string, int>;
 
 public class AutoControllerState
 {
-	bool m_active, m_regroupRequired;
+	bool m_active;
     float m_regroupExpireTime;
     int m_totalFollowTargets;
-    MapTile m_regroupPointTile, m_followPointTile;
+    MapTile m_regroupPointTile, m_followPointTile, m_attackPointTile;
     GameManager m_regroupPointManager;
 
 	// Cache value?
@@ -51,19 +51,19 @@ public class AutoControllerState
         m_regroupPointManager = manager;
     }
 
-    public bool GetRegroupRequired() {
-        return m_regroupRequired;
-    }
-
-    public void SetRegroupRequired(bool required) {
-        m_regroupRequired = required;
-    }
-
     public MapTile GetFollowPoint() {
         return m_followPointTile;
     }
 
     public void SetFollowPoint(MapTile tile) {
         m_followPointTile = tile;
+    }
+
+    public MapTile GetAttackPoint() {
+        return m_attackPointTile;
+    }
+
+    public void SetAttackPoint(MapTile tile) {
+        m_attackPointTile = tile;
     }
 }

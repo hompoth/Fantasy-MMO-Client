@@ -18,7 +18,7 @@ public class FollowGroupTask : AutoTask
                 int playerId = manager.GetMainPlayerId();
                 MapTile goal = GetPlayerPosition(manager);
                 if(await pathManager.IsSameArea(gameManager, start, goal)) {
-                    int distance = pathManager.DistanceHeuristic(start, goal);
+                    int distance = PathManager.DistanceHeuristic(start, goal);
                     float scale = (float) distance / distanceFromTarget * 2;
                     if(!playerIdList.Contains(playerId)) {
                         totalX += goal.Item2 * scale;
@@ -35,7 +35,7 @@ public class FollowGroupTask : AutoTask
             if(player != null) {
                 player.GetPlayerPosition(gameManager, out int x, out int y);
                 MapTile goal = Tuple.Create(map, x, y);
-                int distance = pathManager.DistanceHeuristic(start, goal);
+                int distance = PathManager.DistanceHeuristic(start, goal);
                 float scale = (float) distance / distanceFromTarget * 2;
                 if(!playerIdList.Contains(playerId)) {
                     totalX += x * scale;

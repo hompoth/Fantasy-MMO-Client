@@ -21,7 +21,7 @@ public class CursorUI : MonoBehaviour
 	const int CURSOR_WIDTH = 24, CURSOR_HEIGHT = 24, UNIT_SIZE = 32;
     
     void Awake() {
-        UpdateCursor(m_cursorType);
+        SetCursor(m_cursorType);
         m_mousedOverObjects = new List<GameObject>();
     }
 
@@ -43,8 +43,15 @@ public class CursorUI : MonoBehaviour
         }
     }
 
-    public void LeftMouseUp(bool controlKeyPressed) {
+    public void ResetCursor() {
         SetCursor(m_cursorType);
+        m_selectedSlot = null;
+        m_selectedWindow = null;
+        m_selectedWindowOffset = Vector3.zero;
+        ClearCursorSlot();
+    }
+
+    public void LeftMouseUp(bool controlKeyPressed) {
         if(m_selectedSlot != null) {
             if(TryGetSelectSlot(out WindowUI window, out SlotUI slot)) {
                 SwapSelectedSlot(slot, controlKeyPressed);
@@ -52,11 +59,8 @@ public class CursorUI : MonoBehaviour
             else {
                 DropSelectedSlot(window, controlKeyPressed);
             }
-            m_selectedSlot = null;
         }
-        m_selectedWindow = null;
-        m_selectedWindowOffset = Vector3.zero;
-        ClearCursorSlot();
+        ResetCursor();
     }
 
     public void LeftMouseDown() {
@@ -168,8 +172,7 @@ public class CursorUI : MonoBehaviour
     }
 
     public void RightMouseUp() {
-        SetCursor(m_cursorType);
-        ClearCursorSlot();
+        ResetCursor();
     }
 
     public void RightMouseDown(bool controlKeyPressed) {
@@ -533,10 +536,6 @@ public class CursorUI : MonoBehaviour
     }
 
     void SetCursor(CursorType cursorType) {
-		UpdateCursor(cursorType);
-	}
-
-	void UpdateCursor(CursorType cursorType) {
 		Sprite cursorSprite = GetCursorSprite(m_cursors, cursorType);
         m_spriteRenderer.sprite = cursorSprite;
         m_spriteRenderer.color = Color.white;
