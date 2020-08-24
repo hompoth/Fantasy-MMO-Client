@@ -685,6 +685,7 @@ public sealed class PathManager
 
     //TODO Ensure that walking to a player doesn't find a new unblocked tile unless it's surrounded
     //     Find a new way to work around the blocked tile issue (GetClosestUnblockedPosition)
+    //TODO Cache with target playerId when available
     private async Task<LinkedList<MapTile>> GetWalkPath(GameManager manager, MapTile start, MapTile goal, bool forceMapPosition = false) {
         int startArea = await GetMapArea(manager, start);
         int goalArea = await GetMapArea(manager, goal);

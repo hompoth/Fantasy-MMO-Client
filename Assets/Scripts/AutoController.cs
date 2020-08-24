@@ -37,8 +37,8 @@ public class AutoController : MonoBehaviour
                         break;
                     }
                 }
-                await Task.Delay(TimeSpan.FromSeconds(MOVEMENT_TASK_TIME));
             }
+            await Task.Delay(TimeSpan.FromSeconds(MOVEMENT_TASK_TIME));
         }
     }
 
