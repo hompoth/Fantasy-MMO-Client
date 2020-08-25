@@ -17,8 +17,7 @@ public class AttackAction : AutoAction
         int map = start.Item1;
         foreach(PlayerManager player in gameManager.GetAllPlayerManagers()) {
             if(player.IsPlayerMob()) {
-                player.GetPlayerPosition(gameManager, out int x, out int y);
-                MapTile goal = Tuple.Create(map, x, y);
+                MapTile goal = GetPlayerPosition(gameManager, player);
                 int simpleDistance = PathManager.DistanceHeuristic(start, goal);
                 if(simpleDistance <= 1) {
                     m_target = goal;

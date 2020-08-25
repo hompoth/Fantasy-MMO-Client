@@ -50,14 +50,17 @@ public sealed class PathManager
         m_mapAreaMap = new ConcurrentDictionary<MapTile, int>();
         m_warpStartSet = new HashSet<MapTile>();
         m_warpEndSet = new HashSet<MapTile>();
+        // TODO Update cache to ConcurrentDictionary
         m_playerMapPathCache = new List<Tuple<int, int, int, Tuple<LinkedList<MapTile>, WarpDevice, int>>>();
         m_playerWalkPathCache = new List<Tuple<int, int, int, LinkedList<MapTile>, float>>();
-        Debug.Log("Started.");
 	}
+
+    public void Refresh() {
+        m_playerWalkPathCache.Clear();
+    }
 
     public async void InitializeCache(GameManager manager) {
         if(!m_hasInitialized && !m_hasStartedInitialize) {
-            Debug.Log("Started Initialize.");
             m_hasStartedInitialize = true;
             if(m_warpZones.Count == 0 && m_warpSpells.Count == 0 && m_warpItems.Count == 0) {
                 LoadWarpDefaults();
@@ -75,13 +78,11 @@ public sealed class PathManager
             m_distanceToPlayer = 3; // TODO UserPrefs.GetDistanceToPlayer();
             m_safePoint = Tuple.Create(1, 50, 50); // TODO UserPrefs.GetSafePoint();
             LoadBlockedTiles();
-            Debug.Log("Started Map Cache.");
             List<Task> mapAreaTaskList = new List<Task>();
             foreach(int map in m_warpZoneMap.Keys) {
                 mapAreaTaskList.Add(InitializeMapCache(manager, map));
             }
             await Task.WhenAll(mapAreaTaskList);
-            Debug.Log("Completed Map Cache.");
             foreach(WarpZone warpZone in m_warpZones) {
                 MapTile warpToTile = warpZone.Item2;
                 await GetMapArea(manager, warpToTile);
@@ -562,7 +563,6 @@ public sealed class PathManager
 
 	public async Task<Tuple<LinkedList<MapTile>, WarpDevice, int>> GetMapPath(GameManager manager, MapTile start, MapTile goal, bool useWarpDevices = true) {
         List<Task> mapPathList = new List<Task>();
-        float timeStart = Time.time; // TODO REMOVE
         int startArea = await GetMapArea(manager, start);
         int goalArea = await GetMapArea(manager, goal);
         if(startArea == goalArea) {
@@ -598,7 +598,6 @@ public sealed class PathManager
             mapPathList.Remove(task);
         }
         AddMapPathCache(manager, startArea, goalArea, minMapPath);
-        Debug.Log("Map Time "+(Time.time-timeStart));
         return minMapPath;
     }
 
@@ -668,28 +667,30 @@ public sealed class PathManager
         return openSet;
     }
 
-    public async Task<bool> TryGetWalkPath(GameManager manager, MapTile start, MapTile goal, Action<LinkedList<MapTile>> value) {
-        return await TryGetWalkPath(manager, start, goal, false, value);
+    public async Task<bool> TryGetWalkPath(GameManager manager, MapTile start, MapTile goal, PlayerManager player, Action<LinkedList<MapTile>> value) {
+        return await TryGetWalkPath(manager, start, goal, player, false, value);
     }
 
-    public async Task<bool> TryGetWalkPath(GameManager manager, MapTile start, MapTile goal, bool forceMapPosition, Action<LinkedList<MapTile>> value) {
+    public async Task<bool> TryGetWalkPath(GameManager manager, MapTile start, MapTile goal, PlayerManager player, bool forceMapPosition, Action<LinkedList<MapTile>> value) {
         bool success;
         LinkedList<MapTile> path = null;
-        if(success = await CanWalkPath(manager, start, goal)) {
-            path = await GetWalkPath(manager, start, goal, forceMapPosition);
-            value(path);
+        if(await CanWalkPath(manager, start, goal)) {
+            path = await GetWalkPath(manager, start, goal, player, forceMapPosition);
+            if(path.Count >= DistanceHeuristic(start, goal)) {
+                value(path);
+                return true;
+            }
         }
-        return success;
+        return false;
     }
 
 
     //TODO Ensure that walking to a player doesn't find a new unblocked tile unless it's surrounded
-    //     Find a new way to work around the blocked tile issue (GetClosestUnblockedPosition)
-    //TODO Cache with target playerId when available
-    private async Task<LinkedList<MapTile>> GetWalkPath(GameManager manager, MapTile start, MapTile goal, bool forceMapPosition = false) {
-        int startArea = await GetMapArea(manager, start);
+    //     Find a new way to work around the blocked tile issue (or fix GetClosestUnblockedPosition)
+    private async Task<LinkedList<MapTile>> GetWalkPath(GameManager manager, MapTile start, MapTile goal, PlayerManager player, bool forceMapPosition = false) {
         int goalArea = await GetMapArea(manager, goal);
-        if(TryGetWalkPathCache(manager, startArea, goalArea, out LinkedList<MapTile> previousPath, out float timer)) {
+        int playerId = player != null ? player.GetPlayerId() : 0;
+        if(TryGetWalkPathCache(manager, playerId, goalArea, out LinkedList<MapTile> previousPath, out float timer)) {
             if((previousPath.Count > WALK_PATH_RESET_COUNT) && (Time.time - timer < WALK_PATH_RESET_TIMER)) {
                 int tileCount = 0;
                 bool tileBlocked = false;
@@ -721,14 +722,14 @@ public sealed class PathManager
                     previousPath.AddFirst(newPathStart.Last());
                     newPathStart.RemoveLast();
                 }
-                AddWalkPathCache(manager, startArea, goalArea, previousPath, timer);
+                AddWalkPathCache(manager, playerId, goalArea, previousPath, timer);
                 return previousPath;
             }
         }
         timer = Time.time + UnityEngine.Random.Range (0f, 2f);
         goal = await GetClosestUnblockedPosition(manager, start, goal);
         LinkedList<MapTile> path = await GetWalkPathCore(manager, start, goal, forceMapPosition);
-        AddWalkPathCache(manager, startArea, goalArea, path, timer);
+        AddWalkPathCache(manager, playerId, goalArea, path, timer);
         return path;
     }
 
@@ -818,6 +819,7 @@ public sealed class PathManager
         return openSet;
     }
 
+    // TODO This doesn't seem to work. Fix such that longer paths are prioritized
     private bool HasMoreEfficientPath(MapTile start, MapTile originalTile, MapTile newTile, MapTile goal) {
         int xDiffStartTile = Mathf.Abs(start.Item2 - goal.Item2);
 		int yDiffStartTile = Mathf.Abs(start.Item3 - goal.Item3);
@@ -858,11 +860,11 @@ public sealed class PathManager
         }
     }
 
-    private bool TryGetWalkPathCache(GameManager manager, int startArea, int goalArea, out LinkedList<MapTile> path, out float timer) {
+    private bool TryGetWalkPathCache(GameManager manager, int targetPlayerId, int goalArea, out LinkedList<MapTile> path, out float timer) {
         int playerId = manager.GetMainPlayerId();
-        var itemToRetrieve = m_playerWalkPathCache.SingleOrDefault(pathCache => pathCache.Item1 == playerId);
+        var itemToRetrieve = m_playerWalkPathCache.SingleOrDefault(pathCache => pathCache.Item1 == playerId && pathCache.Item2 == targetPlayerId);
         if (itemToRetrieve != null) {
-            if(itemToRetrieve.Item2 == startArea && itemToRetrieve.Item3 == goalArea) {
+            if(itemToRetrieve.Item3 == goalArea) {
                 path = itemToRetrieve.Item4;
                 timer = itemToRetrieve.Item5;
                 return true;
@@ -873,16 +875,17 @@ public sealed class PathManager
         return false;
     }
 
-    private void AddWalkPathCache(GameManager manager, int startArea, int goalArea, LinkedList<MapTile> path, float timer) {
+    private void AddWalkPathCache(GameManager manager, int targetPlayerId, int goalArea, LinkedList<MapTile> path, float timer) {
         int playerId = manager.GetMainPlayerId();
-        var playerPath = Tuple.Create(playerId, startArea, goalArea, path, timer);
-        var itemToRemove = m_playerWalkPathCache.SingleOrDefault(pathCache => pathCache.Item1 == playerId);
+        var playerPath = Tuple.Create(playerId, targetPlayerId, goalArea, path, timer);
+        var itemToRemove = m_playerWalkPathCache.SingleOrDefault(pathCache => pathCache.Item1 == playerId && pathCache.Item2 == targetPlayerId);
         if (itemToRemove != null) {
             m_playerWalkPathCache.Remove(itemToRemove);
         }
         m_playerWalkPathCache.Add(playerPath);
     }
 
+    // TODO Consider blocked tiles with an area of 0.
     public async Task<bool> CanWalkPath(GameManager manager, MapTile start, MapTile goal) {
         if(start.Item1 == goal.Item1) {     
             int startArea = await GetMapArea(manager, start);
@@ -938,7 +941,6 @@ public sealed class PathManager
         else {
             await Task.Yield();
             int areaId = Interlocked.Increment(ref m_mapAreaId);
-            Debug.Log("New " + areaId);
             List<MapTile> openSet = new List<MapTile>();
             openSet.Add(mapTile);
             m_mapAreaMap[mapTile] = areaId;
@@ -1014,6 +1016,7 @@ public sealed class PathManager
         return m_warpStartSet.Contains(tile);
     }
 
+    // TODO This can find a tile that cannot be reached. Fix this
     private async Task<MapTile> GetClosestUnblockedPosition(GameManager manager, MapTile start, MapTile goal) {
         int map = goal.Item1;
         bool sameMap = manager.GetMapId() == map;

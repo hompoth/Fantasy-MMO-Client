@@ -5,15 +5,8 @@ using WarpDevice = System.Tuple<string, int>;
 public class AutoControllerState
 {
 	bool m_active;
-    float m_regroupExpireTime;
-    int m_totalFollowTargets;
-    MapTile m_regroupPointTile, m_followPointTile, m_attackPointTile;
-    GameManager m_regroupPointManager;
-
-	// Cache value?
-	public bool IsSurrounded(GameManager gameManager) {
-		return gameManager.MainPlayerIsSurrounded();
-	}
+    MapTile m_targetTile;
+    PlayerManager m_target;
 
 	public bool IsActive() {
 		return m_active;
@@ -23,47 +16,19 @@ public class AutoControllerState
 		m_active = active;
 	}
 
-    public float GetRegroupPointExpireTime() {
-        return m_regroupExpireTime;
+    public MapTile GetTargetTile() {
+        return m_targetTile;
     }
 
-    public void SetRegroupPointExpireTime(float expireTime) {
-        m_regroupExpireTime = expireTime;
+    public void SetTargetTile(MapTile tile) {
+        m_targetTile = tile;
     }
 
-    public MapTile GetRegroupPoint() {
-        if(m_regroupPointManager != null) {
-            m_regroupPointManager.GetMainPlayerPosition(out int map, out int x, out int y);
-            return Tuple.Create(map, x, y);
-        }
-        else {
-            return m_regroupPointTile;
-        }
+    public PlayerManager GetTarget() {
+        return m_target;
     }
 
-    public void SetRegroupPoint(MapTile tile) {
-        m_regroupPointTile = tile;
-        m_regroupPointManager = null;
-    }
-
-    public void SetRegroupPoint(GameManager manager) {
-        m_regroupPointTile = null;
-        m_regroupPointManager = manager;
-    }
-
-    public MapTile GetFollowPoint() {
-        return m_followPointTile;
-    }
-
-    public void SetFollowPoint(MapTile tile) {
-        m_followPointTile = tile;
-    }
-
-    public MapTile GetAttackPoint() {
-        return m_attackPointTile;
-    }
-
-    public void SetAttackPoint(MapTile tile) {
-        m_attackPointTile = tile;
+    public void SetTarget(PlayerManager player) {
+        m_target = player;
     }
 }

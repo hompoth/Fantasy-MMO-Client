@@ -10,43 +10,9 @@ using WarpDevice = System.Tuple<string, int>;
 public class RegroupTask : AutoTask
 {
     int REGROUP_REQUIRED_DISTANCE = 12;
-    float REGROUP_TIMEOUT = 5f;
 
 	public override async Task<bool> IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
-        bool regroupRequired = false;
-            if(Time.time > state.GetRegroupPointExpireTime()) {
-                regroupRequired = await UpdateRegroupPoint(gameManager, pathManager, state);
-            }
-            else {
-                MapTile start = GetPlayerPosition(gameManager);
-                MapTile goal = state.GetRegroupPoint();
-                bool sameArea = await pathManager.IsSameArea(gameManager, start, goal);
-                if(!sameArea) {
-                    regroupRequired = true;
-                }
-                else {
-                    Tuple<LinkedList<MapTile>, WarpDevice, int> mapPathInfo = await pathManager.GetMapPath(gameManager, start, goal);
-                    int distance = mapPathInfo.Item3;
-                    if(distance <= REGROUP_REQUIRED_DISTANCE) {
-                        regroupRequired = await UpdateRegroupPoint(gameManager, pathManager, state);
-                    }
-                    else {
-                        regroupRequired = true;
-                    }
-                }
-            }
-        return regroupRequired;
-	}
-    
-	public override async Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
-        MapTile goal = state.GetRegroupPoint();
-        if(goal != null) {
-            await MoveToMapTile(gameManager, pathManager, state, goal);
-        }
-	}
-
-    private async Task<bool> UpdateRegroupPoint(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
-        GameManager closestPlayer = ClientManager.GetCurrentGameManager();
+        GameManager closestGameManager = ClientManager.GetCurrentGameManager();
         int minDistance = Int32.MaxValue;
         bool regroupRequired = false;
         bool allWithinRange = true;
@@ -60,7 +26,7 @@ public class RegroupTask : AutoTask
                 if(distance > REGROUP_REQUIRED_DISTANCE) {
                     if(distance < minDistance) {
                         minDistance = distance;
-                        closestPlayer = manager;
+                        closestGameManager = manager;
                     }
                     allWithinRange = false;
                 }
@@ -69,16 +35,29 @@ public class RegroupTask : AutoTask
                 }
             }
         }
-        state.SetRegroupPoint(closestPlayer);
+        if(closestGameManager != null) {
+            PlayerManager player = closestGameManager.GetMainPlayerManager();
+            state.SetTargetTile(GetPlayerPosition(closestGameManager, player));
+            state.SetTarget(player);
+        }
         if(regroupRequired && !allWithinRange) {
             MapTile safePoint = pathManager.GetSafePoint();
             Tuple<LinkedList<MapTile>, WarpDevice, int> mapPathInfo = await pathManager.GetMapPath(gameManager, start, safePoint);
             int distance = mapPathInfo.Item3;
             if(distance < minDistance) {
-                state.SetRegroupPoint(safePoint);
+                state.SetTargetTile(safePoint);
+                state.SetTarget(null);
             }
         }
-        state.SetRegroupPointExpireTime(Time.time + REGROUP_TIMEOUT);
         return regroupRequired;
-    }
+	}
+    
+	public override async Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
+        MapTile goal = state.GetTargetTile();
+        PlayerManager player = state.GetTarget();
+        int distance = (player == null ? 3 : 0);
+        if(goal != null) {
+            await MoveToMapTile(gameManager, pathManager, state, goal, player, distance);
+        }
+	}
 }

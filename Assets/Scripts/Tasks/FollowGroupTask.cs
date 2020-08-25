@@ -33,10 +33,10 @@ public class FollowGroupTask : AutoTask
             int playerId = partyPlayer.GetPlayerId();
             PlayerManager player = gameManager.GetPlayerManager(playerId);
             if(player != null) {
-                player.GetPlayerPosition(gameManager, out int x, out int y);
-                MapTile goal = Tuple.Create(map, x, y);
+                MapTile goal = GetPlayerPosition(gameManager, player);
                 int distance = PathManager.DistanceHeuristic(start, goal);
                 float scale = (float) distance / distanceFromTarget * 2;
+                int x = goal.Item2, y = goal.Item3;
                 if(!playerIdList.Contains(playerId)) {
                     totalX += x * scale;
                     totalY += y * scale;
@@ -48,17 +48,17 @@ public class FollowGroupTask : AutoTask
         if(playerIdList.Count > 0) {
             int x = (int) (totalX / followPositionScale);
             int y = (int) (totalY / followPositionScale);
-            state.SetFollowPoint(Tuple.Create(map, x, y));
+            state.SetTargetTile(Tuple.Create(map, x, y));
         }
         return playerIdList.Count > 0;
 	}
 
 	public override async Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
         MapTile start = GetPlayerPosition(gameManager);
-        MapTile goal = state.GetFollowPoint();
+        MapTile goal = state.GetTargetTile();
         if(goal != null) {
             int distanceFromTarget = pathManager.GetDistanceToPlayer();
-            await WalkToTile(gameManager, pathManager, state, start, goal, distanceFromTarget);
+            await WalkToTile(gameManager, pathManager, state, start, goal, null, distanceFromTarget);
         }
 	}
 }

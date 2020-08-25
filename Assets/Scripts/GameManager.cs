@@ -379,7 +379,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public bool MainPlayerIsSurrounded() {
-		PlayerManager mainPlayer = m_state.GetMainPlayerManager();
+		PlayerManager mainPlayer = GetMainPlayerManager();
 		if(mainPlayer != null) {
 			return mainPlayer.IsSurrounded();
 		}

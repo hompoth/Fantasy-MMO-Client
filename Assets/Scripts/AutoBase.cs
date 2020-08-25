@@ -13,4 +13,10 @@ public abstract class AutoBase
         manager.GetMainPlayerPosition(out int map, out int x, out int y);
         return Tuple.Create(map, x, y);
     }
+    
+    protected MapTile GetPlayerPosition(GameManager manager, PlayerManager player) {
+        int map = manager.GetMapId(), x = 0, y = 0;
+        player?.GetPlayerPosition(manager, out x, out y);
+        return Tuple.Create(map, x, y);
+    }
 }

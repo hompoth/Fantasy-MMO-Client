@@ -31,6 +31,7 @@ public class AutoController : MonoBehaviour
     async void CalculateAutoTask(CancellationToken token) {
         while(IsEnabled() && !token.IsCancellationRequested) {
             if(m_pathManager.IsInitialized()) {
+                // TODO Replace list with ConncurrentQueue
                 foreach(AutoTask task in m_taskList) {
                     if(await task.IsActive(m_gameManager, m_pathManager, m_controllerState)) {
                         await task.Move(m_gameManager, m_pathManager, m_controllerState);
@@ -267,6 +268,7 @@ public class AutoController : MonoBehaviour
     //Have the higher state enable/disable all running controllers.
     public void Refresh() {
         RefreshAutomation();
+        m_pathManager?.Refresh();
     }
 
     public void Enable() {

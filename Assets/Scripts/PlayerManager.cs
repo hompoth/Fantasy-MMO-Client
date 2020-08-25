@@ -174,6 +174,10 @@ public class PlayerManager : MonoBehaviour
         m_playerId = playerId;
     }
 
+    public int GetPlayerId() {
+        return m_playerId;
+    }
+
     public void SetPlayerHPPercent(int hpPercent) {
         int previousHP = playerHP;
         statBarObject.SetHPBar(hpPercent);
