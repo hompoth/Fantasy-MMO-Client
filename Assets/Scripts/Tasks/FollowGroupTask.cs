@@ -46,8 +46,8 @@ public class FollowGroupTask : AutoTask
             }
         }
         if(playerIdList.Count > 0) {
-            int x = (int) (totalX / followPositionScale);
-            int y = (int) (totalY / followPositionScale);
+            int x = (int) Mathf.Round(totalX / followPositionScale);
+            int y = (int) Mathf.Round(totalY / followPositionScale);
             state.SetTargetTile(Tuple.Create(map, x, y));
         }
         return playerIdList.Count > 0;

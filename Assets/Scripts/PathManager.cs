@@ -672,11 +672,10 @@ public sealed class PathManager
     }
 
     public async Task<bool> TryGetWalkPath(GameManager manager, MapTile start, MapTile goal, PlayerManager player, bool forceMapPosition, Action<LinkedList<MapTile>> value) {
-        bool success;
         LinkedList<MapTile> path = null;
         if(await CanWalkPath(manager, start, goal)) {
             path = await GetWalkPath(manager, start, goal, player, forceMapPosition);
-            if(path.Count >= DistanceHeuristic(start, goal)) {
+            if(path.Count + 1 >= DistanceHeuristic(start, goal)) {
                 value(path);
                 return true;
             }
@@ -805,8 +804,8 @@ public sealed class PathManager
         foreach(MapTile tile in TileNeighbours(manager, current, ignorePlayers)) {
             if(tile.Equals(goal) || !IsWarpTile(tile)) {
                 int currentGScore = gScore[current] + 1;
-                if(!gScore.ContainsKey(tile) || currentGScore < gScore[tile] 
-                || currentGScore == gScore[tile] && HasMoreEfficientPath(tile, cameFrom[tile], current, goal)) {
+                if(!gScore.ContainsKey(tile) || (currentGScore < gScore[tile]) 
+                    || (currentGScore == gScore[tile]) && HasMoreEfficientPath(tile, cameFrom[tile], current, goal)) {
                     cameFrom[tile] = current;
                     fScore[tile] = currentGScore + DistanceHeuristic(tile, goal);
                     gScore[tile] = currentGScore;
@@ -826,12 +825,12 @@ public sealed class PathManager
         if(xDiffStartTile > yDiffStartTile) {
             int xDiffNewTile = Mathf.Abs(newTile.Item2 - goal.Item2);
             int xDiffOriginalTile = Mathf.Abs(originalTile.Item2 - goal.Item2);
-            return xDiffNewTile > xDiffOriginalTile;
+            return !(xDiffNewTile > xDiffOriginalTile);
         }
         else {
             int yDiffNewTile = Mathf.Abs(newTile.Item3 - goal.Item3);
             int yDiffOriginalTile = Mathf.Abs(originalTile.Item3 - goal.Item3);
-            return yDiffNewTile > yDiffOriginalTile;
+            return !(yDiffNewTile > yDiffOriginalTile);
         }
     }
 
