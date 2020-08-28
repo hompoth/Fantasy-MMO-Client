@@ -76,6 +76,19 @@ public class AutoController : MonoBehaviour
                 }
             }
         }
+        else if(playerClass.Equals("Warrior")) {
+            bool hasStrike = false;
+            for(int index = 30; index >= 1; --index) {
+                SlotUI slot = m_gameManager.GetSpellSlot(index);
+                string spellName = slot.GetSlotName();
+                if(!String.IsNullOrEmpty(spellName)) {
+                    if(!hasStrike && spellName.Contains("Spirit Strike")) {
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 1550, "Spirit Strike"));
+                        hasStrike = true;
+                    }
+                }
+            }
+        }
 
         //m_state.IsPlayerInParty(playerId)
         //new AutoAction(m_gameManager, m_controllerState, token);

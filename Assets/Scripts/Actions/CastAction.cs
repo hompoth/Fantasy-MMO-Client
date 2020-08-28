@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 using System.Threading.Tasks;
+using MapTile = System.Tuple<int, int, int>;
 
 public class CastAction : AutoAction
 {
     SlotUI m_slot;
     int m_aether, m_playerId;
     string m_type;
+    MapTile m_target;
 
 	public CastAction(GameManager gameManager, AutoControllerState state, CancellationToken token, SlotUI slot, int aether, string type) : base(gameManager, state, token) {
         m_slot = slot;
@@ -25,6 +27,7 @@ public class CastAction : AutoAction
     }
 
 	protected override bool CanUseAction(GameManager gameManager, AutoControllerState state) {
+        m_target = null;
         if(!String.IsNullOrEmpty(m_type)) {
             gameManager.GetMainPlayerHP(out int curHp, out int maxHp);
             gameManager.GetMainPlayerMP(out int curMp, out int maxMp);
@@ -74,11 +77,31 @@ public class CastAction : AutoAction
                 m_playerId = gameManager.GetMainPlayerId();
                 return true;
             }
+            else if(m_type.Equals("Spirit Strike")) {
+                if(hpPercent > 90) {
+                    m_playerId = gameManager.GetMainPlayerId();
+                    MapTile start = GetPlayerPosition(gameManager);
+                    foreach(PlayerManager player in gameManager.GetAllPlayerManagers()) {
+                        if(player.IsPlayerMob()) {
+                            MapTile goal = GetPlayerPosition(gameManager, player);
+                            int simpleDistance = PathManager.DistanceHeuristic(start, goal);
+                            if(simpleDistance <= 1) {
+                                m_target = goal;
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
         }
         return false;
     }
 
 	protected override int UseAction(GameManager gameManager, AutoControllerState state) {  // Todo create data object to keep track of slot / playerId
+        if(m_target != null) {
+            int x = m_target.Item2, y = m_target.Item3;
+            gameManager.SetMainPlayerFacingDirection(x, y);
+        }
         CastSpell(gameManager, m_slot, m_playerId);
         return m_aether;
     }

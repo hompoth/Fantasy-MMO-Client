@@ -423,14 +423,12 @@ public class GameManager : MonoBehaviour
 	public void ShowGameManager() {
 		Input.ResetInputAxes();
 		m_playerController.SetActive(true);
-        m_autoController.Enable();
 		m_state.EnableCamera();
 		m_state.ResetCursor();
 	}
 
 	public void HideGameManager() {
 		m_playerController.SetActive(false);
-        m_autoController.Enable();
 		m_state.DisableCamera();
 	}
 
