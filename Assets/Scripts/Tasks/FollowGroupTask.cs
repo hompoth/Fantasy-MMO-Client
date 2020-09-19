@@ -7,7 +7,20 @@ using MapTile = System.Tuple<int, int, int>;
 
 public class FollowGroupTask : AutoTask
 {
-	public async override Task<bool> IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
+	
+    public async override Task<bool> IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
+		await Task.Yield();
+        GameManager currentManager = ClientManager.GetCurrentGameManager();
+        if(!currentManager.Equals(gameManager)) {
+            PlayerManager player = currentManager.GetMainPlayerManager();
+            state.SetTarget(player);
+            state.SetTargetTile(GetPlayerPosition(currentManager, player));
+            return true;
+        }
+        return false;
+    }
+
+    /*public async override Task<bool> IsActive(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
         int distanceFromTarget = pathManager.GetDistanceToPlayer();
         MapTile start = GetPlayerPosition(gameManager);
         List<int> playerIdList = new List<int>();
@@ -51,7 +64,7 @@ public class FollowGroupTask : AutoTask
             state.SetTargetTile(Tuple.Create(map, x, y));
         }
         return playerIdList.Count > 0;
-	}
+	}*/
 
 	public override async Task Move(GameManager gameManager, PathManager pathManager, AutoControllerState state) {
         MapTile start = GetPlayerPosition(gameManager);

@@ -1020,27 +1020,37 @@ public sealed class PathManager
         int map = goal.Item1;
         bool sameMap = manager.GetMapId() == map;
         if(IsPositionBlocked(manager, sameMap, map, goal.Item2, goal.Item3)) {
+            Queue<MapTile> nextNeighbours = new Queue<MapTile>();
             Queue<MapTile> neighbours = new Queue<MapTile>();
+            Queue<MapTile> visited = new Queue<MapTile>();
             Queue<MapTile> unblockedTiles = new Queue<MapTile>();
             int goalArea = await GetMapArea(manager, goal);
-            neighbours.Enqueue(goal);
-            while(neighbours.Count() > 0) {
-                MapTile current = neighbours.Dequeue();
-                int x = current.Item2, y = current.Item3;
-                for(int i = -1; i <= 1; i++) {
-                    for(int j = -1; j <= 1; j++) {
-                        if(i != j && (i == 0 || j == 0)) {
-                            if(x + i > 0 && x + i <= 100 && y + j > 0 && y + j <= 100) {
-                                MapTile newTile = Tuple.Create(map, x + i, y + j);
-                                int tileArea = await GetMapArea(manager, current);
-                                if(!IsPositionBlocked(manager, sameMap, map, x + i, y + j) && !IsWarpTile(newTile)) {
-                                    if((goalArea == 0) || (goalArea == tileArea)) {
-                                        unblockedTiles.Enqueue(newTile);
+            nextNeighbours.Enqueue(goal);
+            visited.Enqueue(goal);
+            while(nextNeighbours.Count > 0 && unblockedTiles.Count == 0) {
+                while(nextNeighbours.Count > 0) {
+                    MapTile tile = nextNeighbours.Dequeue();
+                    neighbours.Enqueue(tile);
+                }
+                while(neighbours.Count > 0) {
+                    MapTile current = neighbours.Dequeue();
+                    int x = current.Item2, y = current.Item3;
+                    for(int i = -1; i <= 1; i++) {
+                        for(int j = -1; j <= 1; j++) {
+                            if(i != j && (i == 0 || j == 0)) {
+                                if(x + i > 0 && x + i <= 100 && y + j > 0 && y + j <= 100) {
+                                    MapTile newTile = Tuple.Create(map, x + i, y + j);
+                                    int tileArea = await GetMapArea(manager, current);
+                                    if(!IsPositionBlocked(manager, sameMap, map, x + i, y + j) && !IsWarpTile(newTile)) {
+                                        if((goalArea == 0) || (goalArea == tileArea)) {
+                                            unblockedTiles.Enqueue(newTile);
+                                        }
                                     }
-                                }
-                                else if(unblockedTiles.Count == 0){
-                                    if(!neighbours.Contains(newTile)) {
-                                        neighbours.Enqueue(newTile);
+                                    else if(unblockedTiles.Count == 0){
+                                        if(!visited.Contains(newTile)) {
+                                            visited.Enqueue(newTile);
+                                            nextNeighbours.Enqueue(newTile);
+                                        }
                                     }
                                 }
                             }

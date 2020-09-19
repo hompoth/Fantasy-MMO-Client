@@ -13,15 +13,17 @@ public class AttackAction : AutoAction
 	public AttackAction(GameManager gameManager, AutoControllerState state, CancellationToken token) : base(gameManager, state, token) {}
 
 	protected override bool CanUseAction(GameManager gameManager, AutoControllerState state) {
-        MapTile start = GetPlayerPosition(gameManager);
-        int map = start.Item1;
-        foreach(PlayerManager player in gameManager.GetAllPlayerManagers()) {
-            if(player.IsPlayerMob()) {
-                MapTile goal = GetPlayerPosition(gameManager, player);
-                int simpleDistance = PathManager.DistanceHeuristic(start, goal);
-                if(simpleDistance <= 1) {
-                    m_target = goal;
-                    return true;
+        if(!gameManager.IsMainPlayerMoving()) {
+            MapTile start = GetPlayerPosition(gameManager);
+            int map = start.Item1;
+            foreach(PlayerManager player in gameManager.GetAllPlayerManagers()) {
+                if(player.IsPlayerMob()) {
+                    MapTile goal = GetPlayerPosition(gameManager, player);
+                    int simpleDistance = PathManager.DistanceHeuristic(start, goal);
+                    if(simpleDistance <= 1) {
+                        m_target = goal;
+                        return true;
+                    }
                 }
             }
         }

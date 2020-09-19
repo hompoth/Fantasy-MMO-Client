@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Net.Sockets;
 using System.Text;
 using System.Runtime.InteropServices;
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
 	public PlayerState m_state;
 	public GameObject m_worldObjects;
 	private TcpClient socketConnection; 
-    private Queue<string> messages;
+    private ConcurrentQueue<string> messages;
 	private string lastMessage;
 	private CancellationTokenSource m_tokenSource;
     private Dictionary<string, Event> messageToEvent;
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
 	}
 
     void Awake() {
-		messages = new Queue<string>();
+		messages = new ConcurrentQueue<string>();
 		messageToEvent = new Dictionary<string, Event>();
 		InitializeEvents();
     }
@@ -71,7 +72,9 @@ public class GameManager : MonoBehaviour
 			else {
 				m_messageTimer = Time.time;
 				while(messages != null && messages.Count > 0 && m_handleMessages) {
-					HandleMessage(messages.Dequeue());
+					if(messages.TryDequeue(out string message)) {
+						HandleMessage(message);
+					}
 				}
 			}
 		}
@@ -279,6 +282,14 @@ public class GameManager : MonoBehaviour
         return m_mapId;
     }
 
+	public bool IsMainPlayerMoving() {
+		PlayerManager player = m_state.GetMainPlayerManager();
+		if(player != null) {
+			return player.IsMoving();
+		}
+		return false;
+	}
+
     public int GetMainPlayerId() {
         return m_state.GetMainPlayerId();
     }
@@ -398,9 +409,13 @@ public class GameManager : MonoBehaviour
 			m_tokenSource = null;
         }
 		socketConnection = null;
-		messages.Clear();
+		while(messages.TryDequeue(out string ignored)); // Clear
 		lastMessage = "";
 		ContinueHandlingMessages();
+	}
+
+	public void HandleChatInput(string message) {
+		m_state.HandleChatInput(message);
 	}
 
 	public void LoadWindowPreferences() {

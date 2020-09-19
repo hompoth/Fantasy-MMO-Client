@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using UnityEngine;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,14 +15,14 @@ public class AutoController : MonoBehaviour
     public AutoType m_task;
     CancellationTokenSource m_cts;
     const float MOVEMENT_TASK_TIME = 0.4f;  // TODO Use BASE_MOVEMENT_SPEED from PlayerManager
-    List<AutoTask> m_taskList;
+    ConcurrentQueue<AutoTask> m_taskList;
     List<AutoAction> m_actionList;
     PathManager m_pathManager;
 
     void Start() {
         m_cts = new CancellationTokenSource();
         m_controllerState = new AutoControllerState();
-        m_taskList = new List<AutoTask>();
+        m_taskList = new ConcurrentQueue<AutoTask>();
         m_actionList = new List<AutoAction>();
         RefreshAutomation();
         m_pathManager = PathManager.Instance;
@@ -31,7 +32,6 @@ public class AutoController : MonoBehaviour
     async void CalculateAutoTask(CancellationToken token) {
         while(IsEnabled() && !token.IsCancellationRequested) {
             if(m_pathManager.IsInitialized()) {
-                // TODO Replace list with ConncurrentQueue
                 foreach(AutoTask task in m_taskList) {
                     if(await task.IsActive(m_gameManager, m_pathManager, m_controllerState)) {
                         await task.Move(m_gameManager, m_pathManager, m_controllerState);
@@ -53,6 +53,7 @@ public class AutoController : MonoBehaviour
     
     private void PopulateAutoAction(CancellationToken token) {
         m_actionList.Clear();
+        m_actionList.Add(new MessageAction(m_gameManager, m_controllerState, token, 10000, "/refresh"));
         m_actionList.Add(new AttackAction(m_gameManager, m_controllerState, token));
         string playerClass = m_gameManager.GetMainPlayerClassName();
         if(playerClass.Equals("Priest")) {
@@ -62,16 +63,37 @@ public class AutoController : MonoBehaviour
                 string spellName = slot.GetSlotName();
                 if(!String.IsNullOrEmpty(spellName)) {
                     if(!hasHealing && spellName.Contains("Healing")) {
-                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 5, "Healing"));
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 1, "Healing"));
                         hasHealing = true;
                     }
                     else if(!hasSacrifice && spellName.Contains("Sacrifice")) {
-                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 55, "Sacrifice"));
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 205, "Sacrifice"));
                         hasSacrifice = true;
                     }
                     else if(!hasRegeneration && (spellName.Contains("Regeneration") || spellName.Contains("Rejuvination"))) {
                         m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 10050, "Regeneration"));
                         hasRegeneration = true;
+                    }
+                }
+            }
+        }
+        else if(playerClass.Equals("Magus")) {
+            bool hasBlast = false, hasAssault = false, hasCovenant = false;
+            for(int index = 30; index >= 1; --index) {
+                SlotUI slot = m_gameManager.GetSpellSlot(index);
+                string spellName = slot.GetSlotName();
+                if(!String.IsNullOrEmpty(spellName)) {
+                    if(!hasBlast && spellName.Contains("Blast")) {
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 2050, "Blast"));
+                        hasBlast = true;
+                    }
+                    else if(!hasAssault && spellName.Contains("Assault")) {
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 3050, "Assault"));
+                        hasAssault = true;
+                    }
+                    else if(!hasCovenant && spellName.Contains("Covenant")) {
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 4050, "Covenant"));
+                        hasCovenant = true;
                     }
                 }
             }
@@ -84,6 +106,19 @@ public class AutoController : MonoBehaviour
                 if(!String.IsNullOrEmpty(spellName)) {
                     if(!hasStrike && spellName.Contains("Spirit Strike")) {
                         m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 1550, "Spirit Strike"));
+                        hasStrike = true;
+                    }
+                }
+            }
+        }
+        else if(playerClass.Equals("Rogue")) {
+            bool hasStrike = false;
+            for(int index = 30; index >= 1; --index) {
+                SlotUI slot = m_gameManager.GetSpellSlot(index);
+                string spellName = slot.GetSlotName();
+                if(!String.IsNullOrEmpty(spellName)) {
+                    if(!hasStrike && spellName.Contains("Critical Strike")) {
+                        m_actionList.Add(new CastAction(m_gameManager, m_controllerState, token, slot, 1050, "Critical Strike"));
                         hasStrike = true;
                     }
                 }
@@ -103,51 +138,52 @@ public class AutoController : MonoBehaviour
     }
     
     private void PopulateAutoTask(CancellationToken token) {
-        m_taskList.Clear();
+        while(m_taskList.TryDequeue(out AutoTask ignore));  // Clear
         string playerClass = m_gameManager.GetMainPlayerClassName();
-        if(playerClass.Equals("Warrior")) {
+        if(playerClass.Equals("Warrior") || playerClass.Equals("Rogue")) {
             m_task = AutoType.FarmGold;
         }
         else {
             m_task = AutoType.FollowGroup;
         }
+        m_task = AutoType.FollowGroup;
         switch(m_task) {
             case AutoType.AttackInSpot:
-                m_taskList.Add(new IdleTask());
+                m_taskList.Enqueue(new IdleTask());
                 break;
             case AutoType.AttackFullMap:
-                m_taskList.Add(new RegroupTask());
-                m_taskList.Add(new AvoidPlayerTask());
-                m_taskList.Add(new AttackMobTask());
-                m_taskList.Add(new PickUpTask());
-                m_taskList.Add(new CycleMapsTask());
+                m_taskList.Enqueue(new RegroupTask());
+                m_taskList.Enqueue(new AvoidPlayerTask());
+                m_taskList.Enqueue(new AttackMobTask());
+                m_taskList.Enqueue(new PickUpTask());
+                m_taskList.Enqueue(new CycleMapsTask());
                 break;
             case AutoType.AttackAndWander:
-                m_taskList.Add(new RegroupTask());
-                m_taskList.Add(new AvoidPlayerTask());
-                m_taskList.Add(new AttackMobTask());
-                m_taskList.Add(new PickUpTask());
-                m_taskList.Add(new WanderTask());
+                m_taskList.Enqueue(new RegroupTask());
+                m_taskList.Enqueue(new AvoidPlayerTask());
+                m_taskList.Enqueue(new AttackMobTask());
+                m_taskList.Enqueue(new PickUpTask());
+                m_taskList.Enqueue(new WanderTask());
                 break;
             case AutoType.FollowGroup:
-                m_taskList.Add(new RegroupTask());
-                m_taskList.Add(new FollowGroupTask());
-                m_taskList.Add(new IdleTask());
+                m_taskList.Enqueue(new RegroupTask());
+                m_taskList.Enqueue(new FollowGroupTask());
+                m_taskList.Enqueue(new IdleTask());
                 break;
             case AutoType.FarmGold:
-                m_taskList.Add(new RegroupTask());
-                m_taskList.Add(new AvoidPlayerTask());
-                m_taskList.Add(new SellItemsTask());
-                m_taskList.Add(new PickUpTask());
-                m_taskList.Add(new AttackMobTask());
-                m_taskList.Add(new WanderTask());
+                m_taskList.Enqueue(new RegroupTask());
+                m_taskList.Enqueue(new AvoidPlayerTask());
+                m_taskList.Enqueue(new SellItemsTask());
+                m_taskList.Enqueue(new PickUpTask());
+                m_taskList.Enqueue(new AttackMobTask());
+                m_taskList.Enqueue(new WanderTask());
                 break;
             case AutoType.BossFarming:
-                m_taskList.Add(new RegroupTask());
-                m_taskList.Add(new AvoidPlayerTask());
-                m_taskList.Add(new KillBossTask());
-                m_taskList.Add(new PickUpTask());
-                m_taskList.Add(new CycleMapsTask());
+                m_taskList.Enqueue(new RegroupTask());
+                m_taskList.Enqueue(new AvoidPlayerTask());
+                m_taskList.Enqueue(new KillBossTask());
+                m_taskList.Enqueue(new PickUpTask());
+                m_taskList.Enqueue(new CycleMapsTask());
                 break;
         }
         CalculateAutoTask(token);

@@ -664,7 +664,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    void HandleChatInput(string inputText) {
+    public void HandleChatInput(string inputText) {
         if(!string.IsNullOrEmpty(inputText)) {
             if(inputText.StartsWith(SLASH)) {
                 if(inputText.Equals(QUIT_MESSAGE)) {

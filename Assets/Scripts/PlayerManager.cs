@@ -568,6 +568,10 @@ public class PlayerManager : MonoBehaviour
         return direction.Equals(m_currentDirection);
     }
 
+    public bool IsMoving() {
+        return m_isMoving;
+    }
+
     public bool Face(Vector3 direction, bool fromKeyboard) {
         if(!m_isMoving || !fromKeyboard) {
             m_currentDirection = direction;

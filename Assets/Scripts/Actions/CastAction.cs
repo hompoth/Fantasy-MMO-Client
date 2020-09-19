@@ -9,7 +9,7 @@ using MapTile = System.Tuple<int, int, int>;
 public class CastAction : AutoAction
 {
     SlotUI m_slot;
-    int m_aether, m_playerId;
+    int m_aether = 1000, m_playerId;
     string m_type;
     MapTile m_target;
 
@@ -77,20 +77,90 @@ public class CastAction : AutoAction
                 m_playerId = gameManager.GetMainPlayerId();
                 return true;
             }
-            else if(m_type.Equals("Spirit Strike")) {
-                if(hpPercent > 90) {
-                    m_playerId = gameManager.GetMainPlayerId();
+            else if(m_type.Equals("Blast")) {
+                if(mpPercent == 100) {
+                    int maxDistance = Int32.MinValue, maxPlayerId = 0;
+                    bool targetFound = false;
                     MapTile start = GetPlayerPosition(gameManager);
                     foreach(PlayerManager player in gameManager.GetAllPlayerManagers()) {
                         if(player.IsPlayerMob()) {
                             MapTile goal = GetPlayerPosition(gameManager, player);
                             int simpleDistance = PathManager.DistanceHeuristic(start, goal);
-                            if(simpleDistance <= 1) {
-                                m_target = goal;
-                                return true;
+                            if(maxDistance < simpleDistance) {
+                                maxDistance = simpleDistance;
+                                maxPlayerId = player.GetPlayerId();
+                                targetFound = true;
                             }
                         }
                     }
+                    if(targetFound) {
+                        m_playerId = maxPlayerId;
+                        return true;
+                    }
+                }
+            }
+            else if(m_type.Equals("Assault")) {
+                if(mpPercent > 90) {
+                    int maxDistance = Int32.MinValue, maxPlayerId = 0;
+                    bool targetFound = false;
+                    MapTile start = GetPlayerPosition(gameManager);
+                    foreach(PlayerManager player in gameManager.GetAllPlayerManagers()) {
+                        if(player.IsPlayerMob()) {
+                            MapTile goal = GetPlayerPosition(gameManager, player);
+                            int simpleDistance = PathManager.DistanceHeuristic(start, goal);
+                            if(maxDistance < simpleDistance) {
+                                maxDistance = simpleDistance;
+                                maxPlayerId = player.GetPlayerId();
+                                targetFound = true;
+                            }
+                        }
+                    }
+                    if(targetFound) {
+                        m_playerId = maxPlayerId;
+                        return true;
+                    }
+                }
+            }
+            else if(m_type.Equals("Spirit Strike")) {
+                if(!gameManager.IsMainPlayerMoving()) {
+                    if(hpPercent > 90) {
+                        m_playerId = gameManager.GetMainPlayerId();
+                        MapTile start = GetPlayerPosition(gameManager);
+                        foreach(PlayerManager player in gameManager.GetAllPlayerManagers()) {
+                            if(player.IsPlayerMob()) {
+                                MapTile goal = GetPlayerPosition(gameManager, player);
+                                int simpleDistance = PathManager.DistanceHeuristic(start, goal);
+                                if(simpleDistance <= 1) {
+                                    m_target = goal;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(m_type.Equals("Critical Strike")) {
+                if(!gameManager.IsMainPlayerMoving()) {
+                    if(hpPercent > 90) {
+                        m_playerId = gameManager.GetMainPlayerId();
+                        MapTile start = GetPlayerPosition(gameManager);
+                        foreach(PlayerManager player in gameManager.GetAllPlayerManagers()) {
+                            if(player.IsPlayerMob()) {
+                                MapTile goal = GetPlayerPosition(gameManager, player);
+                                int simpleDistance = PathManager.DistanceHeuristic(start, goal);
+                                if(simpleDistance <= 1) {
+                                    m_target = goal;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(m_type.Equals("Covenant")) {
+                if(hpPercent > 90 && mpPercent < 90) {
+                    m_playerId = gameManager.GetMainPlayerId();
+                    return true;
                 }
             }
         }
